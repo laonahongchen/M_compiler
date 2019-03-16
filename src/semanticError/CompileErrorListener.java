@@ -18,12 +18,12 @@ public class CompileErrorListener extends RuntimeException {
     private static final String ANSI_WHITE = "\u001B[37m";
 
     public CompileErrorListener() {
-        errorList = new LinkedList<String>();
+        errorList = new LinkedList<>();
     }
 
     public void addError(Location loc, String msg) {
         StackTraceElement[] stackTraceElements = new Throwable().getStackTrace();
-        errorList.add(ANSI_CYAN + stackTraceElements[1].getClassName() + '.' + stackTraceElements[1].getLineNumber() + ':' + ANSI_BLUE + loc + ANSI_RESET + ANSI_PURPLE + ':' + msg + ANSI_RESET);
+        errorList.add(stackTraceElements[1].getClassName() + '.' + stackTraceElements[1].getLineNumber() + ':' + loc +  ':' + msg);
     }
 
     public boolean hasError() {
@@ -33,9 +33,9 @@ public class CompileErrorListener extends RuntimeException {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("There are in total" + errorList.size() + "errors:\n");
+        stringBuilder.append("There are in total " + errorList.size() + " errors:\n");
         for(String s : errorList) {
-            stringBuilder.append(s + "\n");
+            stringBuilder.append(s + '\n');
         }
         return stringBuilder.toString();
     }

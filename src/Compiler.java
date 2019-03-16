@@ -28,9 +28,14 @@ public class Compiler {
         parser.removeErrorListeners();
         parser.addErrorListener(parserErrorListener);
 
+        ParseTree parseTree = parser.program();
+
         if (errorListener.hasError()) {
             errorListener.printTo(System.err);
             exit(1);
+        }
+        else {
+            System.out.println("compile success!");
         }
     }
 }

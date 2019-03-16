@@ -54,39 +54,40 @@ parameterDeclaration
     ;
 
 variableType
-    : variableType '['empty']'
-    | variableTypeBasic
+    : variableTypeBasic( '['empty']')*
+//    | variableTypeBasic
     ;
 
 empty
     :;
 
 variableTypeBasic
-    : INT               #intType
-    | STRING            #stringType
-    | BOOL              #boolType
-    | Identifier        #identifierType
+    : INT
+    | STRING
+    | BOOL
+    | Identifier
     ;
 
 
 
 //----------blocks------------
 block
-    : '{' blockBody* '}'
+    : '{' statement* '}'
     ;
-
+/*
 blockBody
     : variableDeclaration
     | statement
     ;
-
+*/
 statement
-    : block
-    | expression';'
-    | conditionStatement
-    | loopStatement
-    | jumpStatement
-    | ';'
+    : block                                                 #blockStmt
+    | expression';'                                         #exprStmt
+    | conditionStatement                                    #conditionStmt
+    | loopStatement                                         #loopStmt
+    | jumpStatement                                         #jumpStmt
+    | variableDeclaration                                   #variableStmt
+    | ';'                                                   #emptyStmt
     ;
 
 conditionStatement
@@ -94,23 +95,23 @@ conditionStatement
     ;
 
 jumpStatement
-    : CONTINUE';'                                           #continueStmt
-    | BREAK';'                                              #breakStmt
-    | RETURN expression?';'                                 #returnStmt
+    : CONTINUE';'
+    | BREAK';'
+    | RETURN expression?';'
     ;
 
 loopStatement
     : WHILE'('expression')'statement                                                            #WhileExpr
-    | FOR'('initialize=expression? ';' condition=expression? ';'step=expression?')'statement    #ForEXpr
+    | FOR'('initialize=expression? ';' condition=expression? ';'step=expression?')'statement    #ForExpr
     ;
 //---------Expressions
 expression
     : Identifier                                            # primaryExpr
     | THIS                                                  # primaryExpr
-    | BoolConstant                                          # primaryExpr
-    | StringConstant                                        # primaryExpr
-    | IntegerConstant                                       # primaryExpr
-    | NULL                                                  # primaryExpr
+    | token=Bool_Literal                                    # primaryExpr
+    | token=String_Literal                                  # primaryExpr
+    | token=Integer_Literal                                 # primaryExpr
+    | token=NULL_Literal                                    # primaryExpr
     | expression '.' (Identifier | functionCall)            # memberExpr
     | expression '[' expression ']'                         # arrayExpr
     | '(' expression ')'                                    # subExpr
@@ -119,17 +120,17 @@ expression
     | expression postfix=('++'|'--')                        # unaryExpr
     | prefix=('++' | '--' | '+' | '-')expression            # unaryExpr
     | prefix=('~'|'!')expression                            # unaryExpr
-    | expression bop = ('*' | '/' | '%') expression         # binaryExpr
-    | expression bop = ('+' | '-') expression               # binaryExpr
-    | expression bop = ('>>' | '<<') expression             # binaryExpr
-    | expression bop = ('<=' | '>=' | '<' | '>') expression # binaryExpr
-    | expression bop = ('==' | '!=') expression             # binaryExpr
-    | expression bop = '&' expression                       # binaryExpr
-    | expression bop = '^' expression                       # binaryExpr
-    | expression bop = '|' expression                       # binaryExpr
-    | expression bop = '&&' expression                      # binaryExpr
-    | expression bop = '||' expression                      # binaryExpr
-    | expression bop = '?' expression ':' expression        # binaryExpr
+    | expression bop=('*' | '/' | '%') expression           # binaryExpr
+    | expression bop=('+' | '-') expression                 # binaryExpr
+    | expression bop=('>>' | '<<') expression               # binaryExpr
+    | expression bop=('<=' | '>=' | '<' | '>') expression   # binaryExpr
+    | expression bop=('==' | '!=') expression               # binaryExpr
+    | expression bop='&' expression                         # binaryExpr
+    | expression bop='^' expression                         # binaryExpr
+    | expression bop='|' expression                         # binaryExpr
+    | expression bop='&&' expression                        # binaryExpr
+    | expression bop='||' expression                        # binaryExpr
+    | expression bop='?' expression ':' expression          # binaryExpr
     | <assoc=right> expression bop='=' expression           # assignExpr
     ;
 
@@ -149,7 +150,7 @@ creator
 BOOL : 'bool';
 INT : 'int';
 STRING: 'string';
-NULL: 'null';
+fragment NULL: 'null';
 VOID: 'void';
 fragment TRUE: 'true';
 fragment FALSE: 'false';
@@ -166,12 +167,16 @@ THIS: 'this';
 
 //-------------Constant
 
-IntegerConstant
+Integer_Literal
     : [1-9][0-9]*
     | '0'
     ;
 
-StringConstant
+NULL_Literal
+    : NULL
+    ;
+
+String_Literal
     : '"'StringCharacters*'"'
     ;
 
@@ -180,7 +185,7 @@ fragment StringCharacters
     | '\\' ["n\\]
     ;
 
-BoolConstant
+Bool_Literal
     : TRUE
     | FALSE
     ;

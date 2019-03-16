@@ -184,49 +184,13 @@ public class MxstarBaseListener implements MxstarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIntType(MxstarParser.IntTypeContext ctx) { }
+	@Override public void enterVariableTypeBasic(MxstarParser.VariableTypeBasicContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIntType(MxstarParser.IntTypeContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterStringType(MxstarParser.StringTypeContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitStringType(MxstarParser.StringTypeContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterBoolType(MxstarParser.BoolTypeContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitBoolType(MxstarParser.BoolTypeContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterIdentifierType(MxstarParser.IdentifierTypeContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitIdentifierType(MxstarParser.IdentifierTypeContext ctx) { }
+	@Override public void exitVariableTypeBasic(MxstarParser.VariableTypeBasicContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -244,25 +208,85 @@ public class MxstarBaseListener implements MxstarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBlockBody(MxstarParser.BlockBodyContext ctx) { }
+	@Override public void enterBlockStmt(MxstarParser.BlockStmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBlockBody(MxstarParser.BlockBodyContext ctx) { }
+	@Override public void exitBlockStmt(MxstarParser.BlockStmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStatement(MxstarParser.StatementContext ctx) { }
+	@Override public void enterExprStmt(MxstarParser.ExprStmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStatement(MxstarParser.StatementContext ctx) { }
+	@Override public void exitExprStmt(MxstarParser.ExprStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterConditionStmt(MxstarParser.ConditionStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitConditionStmt(MxstarParser.ConditionStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterLoopStmt(MxstarParser.LoopStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitLoopStmt(MxstarParser.LoopStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterJumpStmt(MxstarParser.JumpStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitJumpStmt(MxstarParser.JumpStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterVariableStmt(MxstarParser.VariableStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVariableStmt(MxstarParser.VariableStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterEmptyStmt(MxstarParser.EmptyStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitEmptyStmt(MxstarParser.EmptyStmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -280,37 +304,13 @@ public class MxstarBaseListener implements MxstarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterContinueStmt(MxstarParser.ContinueStmtContext ctx) { }
+	@Override public void enterJumpStatement(MxstarParser.JumpStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitContinueStmt(MxstarParser.ContinueStmtContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterBreakStmt(MxstarParser.BreakStmtContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitBreakStmt(MxstarParser.BreakStmtContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterReturnStmt(MxstarParser.ReturnStmtContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitReturnStmt(MxstarParser.ReturnStmtContext ctx) { }
+	@Override public void exitJumpStatement(MxstarParser.JumpStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -328,13 +328,13 @@ public class MxstarBaseListener implements MxstarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterForEXpr(MxstarParser.ForEXprContext ctx) { }
+	@Override public void enterForExpr(MxstarParser.ForExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitForEXpr(MxstarParser.ForEXprContext ctx) { }
+	@Override public void exitForExpr(MxstarParser.ForExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

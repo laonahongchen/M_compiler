@@ -1,4 +1,5 @@
 package semanticError;
+import ast.AstNode;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.Token;
 
@@ -22,7 +23,10 @@ public class Location {
         this(ctx.start);
     }
 
-
+    public Location(AstNode node) {
+        this.line = node.location.line;
+        this.col = node.location.col;
+    }
 
     public int getLine() {
         return line;
