@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="35739463-e986-4e75-a4bd-855459eb39c8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/build.bash" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/semantic.bash" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -247,7 +249,7 @@
     <property name="$PROJECT_DIR$/src/parser/mxstar.g4::/gen-visitor" value="true" />
     <property name="$PROJECT_DIR$/src/parser/mxstar.g4::/output-dir" value="D:\homework\2018-19-second\compiler\mxstar\src" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553614996857" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553615217973" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../compiler2016-master" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -353,7 +355,7 @@
       <workItem from="1553574140250" duration="4702000" />
       <workItem from="1553587492020" duration="3770000" />
       <workItem from="1553601730061" duration="2742000" />
-      <workItem from="1553609658360" duration="5022000" />
+      <workItem from="1553609658360" duration="5323000" />
     </task>
     <task id="LOCAL-00001" summary="finish coding AST part, need more tests">
       <created>1552728485740</created>
@@ -369,11 +371,18 @@
       <option name="project" value="LOCAL" />
       <updated>1553613942159</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="changed bash for test">
+      <created>1553615010130</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1553615010130</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="143951000" />
+    <option name="totallyTimeSpent" value="144252000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -385,7 +394,7 @@
       <window_info id="Capture Tool" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" weight="0.3297587" />
-      <window_info content_ui="combo" id="Project" order="6" weight="0.23123324" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.23123324" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32991204" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.329429" />
@@ -456,7 +465,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="finish coding AST part, need more tests" />
     <MESSAGE value="finish coding, need debug, just upload for bash testing purpose" />
-    <option name="LAST_COMMIT_MESSAGE" value="finish coding, need debug, just upload for bash testing purpose" />
+    <MESSAGE value="changed bash for test" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed bash for test" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
