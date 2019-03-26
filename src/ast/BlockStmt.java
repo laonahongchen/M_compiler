@@ -3,8 +3,7 @@ package ast;
 import java.util.List;
 
 public class BlockStmt extends Statement{
-    List<Statement> statements;
-    //List<Va>
+    public List<Statement> statements;
 
     public void accept(IAstVisitor visitor) {
         visitor.visit(this);

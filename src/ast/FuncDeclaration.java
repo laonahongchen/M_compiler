@@ -1,5 +1,7 @@
 package ast;
 
+import symbol.FunctionSymbol;
+
 import java.util.List;
 
 public class FuncDeclaration extends  Declaration {
@@ -7,6 +9,8 @@ public class FuncDeclaration extends  Declaration {
     public String name;
     public List<VariableDeclaration> parameters;
     public List<Statement> body;
+
+    public FunctionSymbol symbol;
 
     @Override
     public String toString() {

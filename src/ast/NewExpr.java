@@ -3,7 +3,7 @@ package ast;
 import java.util.List;
 
 public class NewExpr extends Expression {
-    public TypeNode type;
+    public TypeNode typeNode;
     public List<Expression> expressionDimension;
     public int restDimension;
 

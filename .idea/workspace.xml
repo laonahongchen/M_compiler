@@ -1,111 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="35739463-e986-4e75-a4bd-855459eb39c8" name="Default Changelist" comment="finish coding AST part, need more tests">
-      <change afterPath="$PROJECT_DIR$/hiearchy.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ast/ArrayExpr.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ast/ArrayType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ast/AssignExpr.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ast/AstNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ast/AstProgram.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ast/BinExpr.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ast/BlockStmt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ast/ClassDeclaration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ast/ClassType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ast/ConditionStmt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ast/Declaration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ast/EmptyStmt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ast/ExprStmt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ast/Expression.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ast/FuncCallExpr.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ast/FuncDeclaration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ast/IAstVisitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ast/Identifier.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ast/JumpStmt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ast/LiteralExpr.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ast/LoopStmt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ast/MembExpr.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ast/NewExpr.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ast/PrimitiveType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ast/Statement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ast/TypeNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ast/UnaryExpr.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ast/VarDeclStmt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ast/VariableDeclaration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/frontend/AstBuilder.java" afterDir="false" />
+    <list default="true" id="35739463-e986-4e75-a4bd-855459eb39c8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/frontend/SemanticChecker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/frontend/SymbolTableBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/symbol/ArrayType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/symbol/ClassSymbol.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/symbol/ClassType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/symbol/FunctionSymbol.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/symbol/GlobalSymbolTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/symbol/PrimitiveSymbol.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/symbol/PrimitiveType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/symbol/SymbolTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/symbol/TypeSymbol.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/symbol/VariableSymbol.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/symbol/VariableType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/mxstar/Compiler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/Compiler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/Mxstar.g4" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/Mxstar.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/Mxstar.interp" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/Mxstar.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/Mxstar.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/Mxstar.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarBaseListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarBaseListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarBaseVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarBaseVisitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarLexer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarLexer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarLexer.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarLexer.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$ArrayExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$ArrayExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$AssignExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$AssignExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$BinaryExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$BinaryExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$BlockBodyContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$BlockContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$BlockContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$BoolTypeContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$BreakStmtContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$ClassDefinitionContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$ClassDefinitionContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$ConditionStatementContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$ConditionStatementContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$ConstructDefinitionContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$ConstructDefinitionContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$ContinueStmtContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$CreatorContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$CreatorContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$DeclarationsContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$DeclarationsContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$EmptyContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$EmptyContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$ExpressionContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$ExpressionContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$ForEXprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$ForEXprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$FunctionCallContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$FunctionCallContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$FunctionDefinitionContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$FunctionDefinitionContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$FuntionExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$FuntionExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$IdentifierTypeContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$IntTypeContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$JumpStatementContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$JumpStatementContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$LoopStatementContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$LoopStatementContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$MemberDeclarationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$MemberDeclarationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$MemberExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$MemberExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$NewExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$NewExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$ParameterDeclarationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$ParameterDeclarationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$ParameterDeclarationListContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$ParameterDeclarationListContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$PrimaryExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$PrimaryExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$ProgramContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$ProgramContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$ReturnStmtContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$StatementContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$StatementContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$StringTypeContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$SubExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$SubExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$UnaryExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$UnaryExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$VariableDeclarationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$VariableDeclarationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$VariableDefinitionContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$VariableDefinitionContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$VariableListContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$VariableListContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$VariableTypeBasicContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$VariableTypeBasicContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$VariableTypeContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$VariableTypeContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$VariableTypeOrVoidContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$VariableTypeOrVoidContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$WhileExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser$WhileExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/parser/MxstarVisitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/semanticError/CompileErrorListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/semanticError/CompileErrorListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/semanticError/Location.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mxstar/semanticError/Location.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mxstar/semanticError/StringProcessing.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Compiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Compiler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/Mxstar.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/Mxstar.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/Mxstar.interp" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/Mxstar.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/Mxstar.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/Mxstar.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/MxstarBaseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/MxstarBaseListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/MxstarBaseVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/MxstarBaseVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/MxstarLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/MxstarLexer.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/MxstarLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/MxstarLexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/MxstarLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/MxstarLexer.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/MxstarListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/MxstarListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/MxstarParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/MxstarParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/MxstarVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/MxstarVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/semanticError/CompileErrorListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/semanticError/CompileErrorListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/semanticError/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/semanticError/Location.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/semanticError/StringProcessing.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ast/ArrayExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/ArrayExpr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ast/ArrayType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/ArrayTypeNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ast/BlockStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/BlockStmt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ast/ClassType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/ClassTypeNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ast/ConditionStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/ConditionStmt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ast/Expression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/Expression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ast/FuncCallExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/FuncCallExpr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ast/FuncDeclaration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/FuncDeclaration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ast/IAstVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/IAstVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ast/Identifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/Identifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ast/JumpStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/JumpStmt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ast/NewExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/NewExpr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ast/PrimitiveType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/PrimitiveTypeNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ast/VariableDeclaration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/VariableDeclaration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/AstBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/AstBuilder.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -121,56 +48,62 @@
     <favorites_list name="mxstar" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5093834">
+    <splitter split-orientation="horizontal" split-proportion="0.6689008">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/frontend/AstBuilder.java">
+            <entry file="file://$PROJECT_DIR$/src/frontend/SymbolTableBuilder.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="136">
-                  <caret line="60" column="57" selection-start-line="60" selection-start-column="57" selection-end-line="60" selection-end-column="57" />
+                <state relative-caret-position="-873">
+                  <caret line="108" column="9" selection-start-line="108" selection-start-column="9" selection-end-line="108" selection-end-column="9" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#10495#10496#0" expanded="true" />
-                    <element signature="e#10545#10546#0" expanded="true" />
-                    <element signature="e#13441#13442#0" expanded="true" />
-                    <element signature="e#13465#13466#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Compiler.java">
+            <entry file="file://$PROJECT_DIR$/src/symbol/GlobalSymbolTable.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="136">
-                  <caret line="20" column="35" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
+                <state relative-caret-position="322">
+                  <caret line="18" selection-start-line="18" selection-end-line="18" />
                   <folding>
                     <element signature="imports" expanded="true" />
+                    <element signature="e#529#530#0" expanded="true" />
+                    <element signature="e#575#576#0" expanded="true" />
+                    <element signature="e#764#765#0" expanded="true" />
+                    <element signature="e#804#805#0" expanded="true" />
+                    <element signature="e#865#866#0" expanded="true" />
+                    <element signature="e#908#909#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/frontend/SemanticChecker.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="3263">
+                  <caret line="326" selection-start-line="326" selection-end-line="326" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#5123#5124#0" expanded="true" />
+                    <element signature="e#5168#5169#0" expanded="true" />
+                    <element signature="e#5222#5223#0" expanded="true" />
+                    <element signature="e#5266#5267#0" expanded="true" />
+                    <element signature="e#5572#5573#0" expanded="true" />
+                    <element signature="e#5611#5612#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/semanticError/CompileErrorListener.java">
+            <entry file="file://$PROJECT_DIR$/src/Compiler.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="182">
-                  <caret line="37" column="41" selection-start-line="37" selection-start-column="41" selection-end-line="37" selection-end-column="41" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#766#767#0" expanded="true" />
-                    <element signature="e#818#819#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/ast/LiteralExpr.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="136">
-                  <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+                <state relative-caret-position="388">
+                  <caret line="72" lean-forward="true" selection-start-line="72" selection-end-line="72" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -179,49 +112,31 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/ast/AstProgram.java">
+            <entry file="file://$PROJECT_DIR$/build.bash">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="155">
-                  <caret line="29" column="57" selection-start-line="29" selection-start-column="57" selection-end-line="29" selection-end-column="57" />
+                <state relative-caret-position="138">
+                  <caret line="6" selection-start-line="6" selection-end-line="6" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/semantic.bash">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="161">
+                  <caret line="7" column="73" selection-start-line="7" selection-start-column="73" selection-end-line="7" selection-end-column="73" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/frontend/AstBuilder.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="231">
+                  <caret line="366" column="33" selection-start-line="366" selection-start-column="29" selection-end-line="366" selection-end-column="33" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/ast/AssignExpr.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="46">
-                  <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/ast/BinExpr.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="46">
-                  <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/ast/ArrayExpr.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="92">
-                  <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/parser/MxstarBaseVisitor.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="4301">
-                  <caret line="187" column="22" selection-start-line="187" selection-start-column="22" selection-end-line="187" selection-end-column="22" />
                 </state>
               </provider>
             </entry>
@@ -231,37 +146,19 @@
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/parser/Mxstar.g4">
+            <entry file="file://$PROJECT_DIR$/src/ast/UnaryExpr.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="208">
-                  <caret line="136" column="8" selection-start-line="136" selection-end-line="136" selection-end-column="8" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/ast/MembExpr.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="115">
-                  <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/ast/FuncCallExpr.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="92">
-                  <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+                <state relative-caret-position="46">
+                  <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/ast/NewExpr.java">
+            <entry file="file://$PROJECT_DIR$/src/ast/BinExpr.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="138">
-                  <caret line="6" column="47" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
+                <state relative-caret-position="46">
+                  <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
                 </state>
               </provider>
             </entry>
@@ -274,6 +171,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="Kotlin File" />
         <option value="Class" />
       </list>
     </option>
@@ -290,6 +188,15 @@
       <find>stmt</find>
       <find>jumpStatem</find>
       <find>function</find>
+      <find>classT</find>
+      <find>accept</find>
+      <find>condition</find>
+      <find>Loop</find>
+      <find>TypeS</find>
+      <find>Func</find>
+      <find>&quot;this&quot;</find>
+      <find>argu</find>
+      <find>parameter</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -304,57 +211,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/parser/parser/parseTree.java" />
-        <option value="$PROJECT_DIR$/src/errorHandler.java" />
-        <option value="$PROJECT_DIR$/src/parserErrorListener.java" />
-        <option value="$PROJECT_DIR$/src/parser/mxstar.g4" />
-        <option value="$PROJECT_DIR$/src/ParserErrorListener.java" />
-        <option value="$PROJECT_DIR$/src/semanticError/CompileError.java" />
-        <option value="$PROJECT_DIR$/src/semanticError/ParserErrorListener.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/Compiler.java" />
-        <option value="$PROJECT_DIR$/src/ast/AstNode.java" />
-        <option value="$PROJECT_DIR$/hiearchy.md" />
-        <option value="$PROJECT_DIR$/src/ast/StringConstan.java" />
-        <option value="$PROJECT_DIR$/src/ast/MemberExor.java" />
-        <option value="$PROJECT_DIR$/src/semanticError/Location.java" />
-        <option value="$PROJECT_DIR$/src/ast/Statement.java" />
-        <option value="$PROJECT_DIR$/src/ast/TypeNode.java" />
-        <option value="$PROJECT_DIR$/src/ast/ConditionStmt.java" />
-        <option value="$PROJECT_DIR$/src/ast/Declaration.java" />
-        <option value="$PROJECT_DIR$/src/ast/EmptyStmt.java" />
-        <option value="$PROJECT_DIR$/src/ast/IntConstant.java" />
-        <option value="$PROJECT_DIR$/src/ast/NullConstant.java" />
-        <option value="$PROJECT_DIR$/src/ast/StringConstant.java" />
-        <option value="$PROJECT_DIR$/src/ast/AssignExpr.java" />
-        <option value="$PROJECT_DIR$/src/ast/BinExpr.java" />
-        <option value="$PROJECT_DIR$/src/ast/BlockStmt.java" />
         <option value="$PROJECT_DIR$/src/ast/BoolConstant.java" />
-        <option value="$PROJECT_DIR$/src/ast/IAstVisitor.java" />
         <option value="$PROJECT_DIR$/src/ast/VariableType.java" />
-        <option value="$PROJECT_DIR$/src/ast/Expression.java" />
-        <option value="$PROJECT_DIR$/src/ast/FuncCallExpr.java" />
-        <option value="$PROJECT_DIR$/src/ast/FuncDeclaration.java" />
-        <option value="$PROJECT_DIR$/src/ast/JumpStmt.java" />
         <option value="$PROJECT_DIR$/src/ast/LoopStmt.java" />
         <option value="$PROJECT_DIR$/src/ast/UnaryExpr.java" />
-        <option value="$PROJECT_DIR$/src/ast/VariableDeclaration.java" />
         <option value="$PROJECT_DIR$/src/ast/ClassDeclaration.java" />
         <option value="$PROJECT_DIR$/src/ast/PrimitiveType.java" />
-        <option value="$PROJECT_DIR$/src/ast/ArrayType.java" />
         <option value="$PROJECT_DIR$/src/ast/ExprStmt.java" />
         <option value="$PROJECT_DIR$/src/parser/MxstarBaseVisitor.java" />
         <option value="$PROJECT_DIR$/src/ast/ClassType.java" />
         <option value="$PROJECT_DIR$/src/ast/VarDeclStmt.java" />
-        <option value="$PROJECT_DIR$/src/ast/Identifier.java" />
         <option value="$PROJECT_DIR$/src/ast/LiteralExpr.java" />
-        <option value="$PROJECT_DIR$/src/ast/ArrayExpr.java" />
         <option value="$PROJECT_DIR$/src/parser/Mxstar.g4" />
-        <option value="$PROJECT_DIR$/src/ast/MembExpr.java" />
-        <option value="$PROJECT_DIR$/src/ast/NewExpr.java" />
         <option value="$PROJECT_DIR$/src/ast/AstProgram.java" />
-        <option value="$PROJECT_DIR$/src/frontend/AstBuilder.java" />
         <option value="$PROJECT_DIR$/src/semanticError/CompileErrorListener.java" />
+        <option value="$PROJECT_DIR$/src/symbol/Type.java" />
+        <option value="$PROJECT_DIR$/src/symbol/SymbolInfo.java" />
+        <option value="$PROJECT_DIR$/src/symbol/ArraySymbol.java" />
+        <option value="$PROJECT_DIR$/src/ast/ArrayType.java" />
+        <option value="$PROJECT_DIR$/src/ast/ClassTypeNode.java" />
+        <option value="$PROJECT_DIR$/src/ast/PrimitiveTypeNode.java" />
+        <option value="$PROJECT_DIR$/src/symbol/SymbolTableBuilder.java" />
+        <option value="$PROJECT_DIR$/src/ast/FuncDeclaration.java" />
+        <option value="$PROJECT_DIR$/src/ast/Identifier.java" />
+        <option value="$PROJECT_DIR$/src/ast/VariableDeclaration.java" />
+        <option value="$PROJECT_DIR$/src/symbol/TypeSymbol.java" />
+        <option value="$PROJECT_DIR$/src/symbol/SymbolTable.java" />
+        <option value="$PROJECT_DIR$/src/ast/IAstVisitor.java" />
+        <option value="$PROJECT_DIR$/src/ast/ConditionStmt.java" />
+        <option value="$PROJECT_DIR$/src/ast/BlockStmt.java" />
+        <option value="$PROJECT_DIR$/src/ast/FuncCallExpr.java" />
+        <option value="$PROJECT_DIR$/src/ast/NewExpr.java" />
+        <option value="$PROJECT_DIR$/src/ast/ArrayExpr.java" />
+        <option value="$PROJECT_DIR$/src/ast/JumpStmt.java" />
+        <option value="$PROJECT_DIR$/src/frontend/AstBuilder.java" />
+        <option value="$PROJECT_DIR$/src/symbol/ClassSymbol.java" />
+        <option value="$PROJECT_DIR$/src/symbol/TypeNode.java" />
+        <option value="$PROJECT_DIR$/src/symbol/PrimitiveSymbol.java" />
+        <option value="$PROJECT_DIR$/src/symbol/VariableType.java" />
+        <option value="$PROJECT_DIR$/src/symbol/PrimitiveType.java" />
+        <option value="$PROJECT_DIR$/src/symbol/ClassType.java" />
+        <option value="$PROJECT_DIR$/src/symbol/ArrayType.java" />
+        <option value="$PROJECT_DIR$/src/symbol/FunctionSymbol.java" />
+        <option value="$PROJECT_DIR$/src/symbol/GlobalSymbolTable.java" />
+        <option value="$PROJECT_DIR$/src/ast/Expression.java" />
+        <option value="$PROJECT_DIR$/src/symbol/VariableSymbol.java" />
+        <option value="$PROJECT_DIR$/src/ast/MembExpr.java" />
+        <option value="$PROJECT_DIR$/src/frontend/SymbolTableBuilder.java" />
+        <option value="$PROJECT_DIR$/src/frontend/SemanticChecker.java" />
+        <option value="$PROJECT_DIR$/src/Compiler.java" />
+        <option value="$PROJECT_DIR$/build.bash" />
+        <option value="$PROJECT_DIR$/semantic.bash" />
       </list>
     </option>
   </component>
@@ -372,6 +279,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -382,37 +290,17 @@
             <path>
               <item name="mxstar" type="b2602c69:ProjectViewProjectNode" />
               <item name="mxstar" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="bin" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mxstar" type="b2602c69:ProjectViewProjectNode" />
               <item name="mxstar" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ast" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mxstar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mxstar" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mxstar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mxstar" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="parser" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mxstar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mxstar" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="semanticError" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -425,12 +313,18 @@
     <property name="$PROJECT_DIR$/src/parser/mxstar.g4::/gen-visitor" value="true" />
     <property name="$PROJECT_DIR$/src/parser/mxstar.g4::/output-dir" value="D:\homework\2018-19-second\compiler\mxstar\src" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552728438491" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mstar-compiler-master" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553613891153" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../compiler2016-master" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="frontend" />
+      <recent name="symbol" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -511,12 +405,34 @@
       <workItem from="1552611510266" duration="2326000" />
       <workItem from="1552628307186" duration="1102000" />
       <workItem from="1552700115715" duration="7543000" />
-      <workItem from="1552724048400" duration="4311000" />
+      <workItem from="1552724048400" duration="4408000" />
+      <workItem from="1552897842200" duration="728000" />
+      <workItem from="1553327596912" duration="1158000" />
+      <workItem from="1553338200694" duration="2451000" />
+      <workItem from="1553350181500" duration="5645000" />
+      <workItem from="1553388285874" duration="8593000" />
+      <workItem from="1553414450928" duration="1813000" />
+      <workItem from="1553424457490" duration="689000" />
+      <workItem from="1553508380369" duration="9922000" />
+      <workItem from="1553523742742" duration="364000" />
+      <workItem from="1553560013036" duration="10701000" />
+      <workItem from="1553574140250" duration="4702000" />
+      <workItem from="1553587492020" duration="3770000" />
+      <workItem from="1553601730061" duration="2742000" />
+      <workItem from="1553609658360" duration="4149000" />
     </task>
+    <task id="LOCAL-00001" summary="finish coding AST part, need more tests">
+      <created>1552728485740</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1552728485740</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85554000" />
+    <option name="totallyTimeSpent" value="143078000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -528,7 +444,7 @@
       <window_info id="Capture Tool" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" weight="0.3297587" />
-      <window_info content_ui="combo" id="Project" order="6" weight="0.20911528" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.23123324" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32991204" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.329429" />
@@ -544,7 +460,7 @@
       <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="bottom" id="Version Control" order="13" weight="0.32991204" />
       <window_info anchor="bottom" id="ANTLR Preview" order="14" sideWeight="0.49865952" weight="0.37243402" />
-      <window_info active="true" anchor="bottom" id="Messages" order="15" visible="true" weight="0.32844576" />
+      <window_info anchor="bottom" id="Messages" order="15" weight="0.32844576" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24896266" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -581,6 +497,20 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="finish coding AST part, need more tests" />
@@ -591,161 +521,45 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://D:/Program Files/javajdk/src.zip!/java/lang/RuntimeException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="91" column="24" lean-forward="true" selection-start-line="91" selection-start-column="24" selection-end-line="91" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/semanticError/CompileError.java" />
-    <entry file="file://$PROJECT_DIR$/src/Main.java" />
-    <entry file="file://$PROJECT_DIR$/src/semanticError/StringProcessing.java" />
-    <entry file="file://$PROJECT_DIR$/src/semanticError/ParserErrorListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="16" column="47" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#704#705#0" expanded="true" />
-            <element signature="e#758#759#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hiearchy.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="286">
-            <caret line="28" column="2" lean-forward="true" selection-start-line="28" selection-start-column="2" selection-end-line="28" selection-end-column="2" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/StringConstan.java" />
-    <entry file="file://$PROJECT_DIR$/src/ast/MemberExor.java" />
-    <entry file="file://$PROJECT_DIR$/src/semanticError/Location.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="13" column="23" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/NullConstant.java" />
-    <entry file="file://$PROJECT_DIR$/src/ast/Statement.java">
+    <entry file="file://$PROJECT_DIR$/src/symbol/ArrayTypeSymbol.java" />
+    <entry file="file://$PROJECT_DIR$/src/symbol/FunctionTypeSymbol.java" />
+    <entry file="file://$PROJECT_DIR$/src/symbol/StructType.java" />
+    <entry file="file://$PROJECT_DIR$/src/symbol/FuncionSymbol.java" />
+    <entry file="file://$PROJECT_DIR$/src/symbol/PrimitiveTypeSymbol.java" />
+    <entry file="file://$PROJECT_DIR$/src/symbol/StructTypeSymbol.java" />
+    <entry file="file://$PROJECT_DIR$/src/symbol/SymbolInfo.java" />
+    <entry file="file://$PROJECT_DIR$/src/symbol/Type.java" />
+    <entry file="file://$PROJECT_DIR$/src/symbol/ArraySymbol.java" />
+    <entry file="file://$PROJECT_DIR$/src/ast/ArrayTypeNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
-          <caret line="2" column="49" selection-start-line="2" selection-start-column="49" selection-end-line="2" selection-end-column="49" />
+          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/StringConstant.java" />
-    <entry file="file://$PROJECT_DIR$/src/ast/BlockStmt.java">
+    <entry file="file://$PROJECT_DIR$/src/ast/PrimitiveTypeNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/IntConstant.java" />
-    <entry file="file://$PROJECT_DIR$/src/ast/BoolConstant.java" />
-    <entry file="file://$PROJECT_DIR$/src/ast/VariableType.java" />
-    <entry file="file://$PROJECT_DIR$/src/ast/Declaration.java">
+    <entry file="file://$PROJECT_DIR$/src/symbol/PrimitiveSymbol.kt" />
+    <entry file="file://$PROJECT_DIR$/src/ast/VariableDeclaration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="5" selection-end-column="5" />
-          <folding>
-            <element signature="e#100#101#0" expanded="true" />
-            <element signature="e#135#136#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="368">
+          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/EmptyStmt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="42" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/parser/Mxstar.interp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/parser/MxstarLexer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="43" column="78" selection-start-line="43" selection-start-column="78" selection-end-line="43" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/bin/antlr-runtime-4.7.2.jar!/org/antlr/v4/runtime/tree/TerminalNode.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="10" column="10" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/Expression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="50" selection-start-line="2" selection-start-column="50" selection-end-line="2" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/PrimitiveType.java">
+    <entry file="file://$PROJECT_DIR$/src/ast/ClassTypeNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/ClassDeclaration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/IAstVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/FuncDeclaration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
           <folding>
-            <element signature="e#269#270#0" expanded="true" />
-            <element signature="e#303#304#0" expanded="true" />
+            <element signature="e#179#180#0" expanded="true" />
+            <element signature="e#211#212#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/VariableDeclaration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/ArrayType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/TypeNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="45" lean-forward="true" selection-start-line="2" selection-start-column="45" selection-end-line="2" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -756,94 +570,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/ExprStmt.java">
+    <entry file="file://$PROJECT_DIR$/src/ast/IAstVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
-          <folding>
-            <element signature="e#184#185#0" expanded="true" />
-            <element signature="e#228#229#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/JumpStmt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/VarDeclStmt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="42" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
+        <state relative-caret-position="345">
+          <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ast/ConditionStmt.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state relative-caret-position="115">
+          <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/LoopStmt.java">
+    <entry file="file://$PROJECT_DIR$/src/symbol/SymbolTable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/Identifier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
+        <state relative-caret-position="218">
+          <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1255#1256#0" expanded="true" />
+            <element signature="e#1296#1297#0" expanded="true" />
+            <element signature="e#1364#1365#0" expanded="true" />
+            <element signature="e#1410#1411#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/parser/MxstarBaseVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4301">
-          <caret line="187" column="22" selection-start-line="187" selection-start-column="22" selection-end-line="187" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/ClassType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/UnaryExpr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/ArrayExpr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/MembExpr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/BinExpr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -854,79 +605,271 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/FuncCallExpr.java">
+    <entry file="file://$PROJECT_DIR$/src/ast/Statement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/BlockStmt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/Identifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/NewExpr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/AstProgram.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/ClassDeclaration.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
           <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/parser/Mxstar.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="136" column="8" selection-start-line="136" selection-end-line="136" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/NewExpr.java">
+    <entry file="file://$PROJECT_DIR$/src/ast/FuncDeclaration.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
-          <caret line="6" column="47" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/AstProgram.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="29" column="57" selection-start-line="29" selection-start-column="57" selection-end-line="29" selection-end-column="57" />
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/LiteralExpr.java">
+    <entry file="file://$PROJECT_DIR$/src/ast/LoopStmt.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+        <state relative-caret-position="92">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/JumpStmt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/parser/Mxstar.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="99" column="20" selection-start-line="99" selection-start-column="20" selection-end-line="99" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/symbol/FunctionSymbol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="13" column="42" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/symbol/ArrayType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/symbol/TypeSymbol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="27" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/symbol/ClassSymbol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/symbol/PrimitiveType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/symbol/PrimitiveSymbol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/ArrayExpr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/Expression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/symbol/VariableType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" column="47" selection-start-line="3" selection-start-column="47" selection-end-line="3" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/symbol/VariableSymbol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/symbol/GlobalSymbolTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#529#530#0" expanded="true" />
+            <element signature="e#575#576#0" expanded="true" />
+            <element signature="e#764#765#0" expanded="true" />
+            <element signature="e#804#805#0" expanded="true" />
+            <element signature="e#865#866#0" expanded="true" />
+            <element signature="e#908#909#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/symbol/ClassType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/MembExpr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/FuncCallExpr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/SymbolTableBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-873">
+          <caret line="108" column="9" selection-start-line="108" selection-start-column="9" selection-end-line="108" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/UnaryExpr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/frontend/AstBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="60" column="57" selection-start-line="60" selection-start-column="57" selection-end-line="60" selection-end-column="57" />
+        <state relative-caret-position="231">
+          <caret line="366" column="33" selection-start-line="366" selection-start-column="29" selection-end-line="366" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#10495#10496#0" expanded="true" />
-            <element signature="e#10545#10546#0" expanded="true" />
-            <element signature="e#13441#13442#0" expanded="true" />
-            <element signature="e#13465#13466#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/BinExpr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/frontend/SemanticChecker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3263">
+          <caret line="326" selection-start-line="326" selection-end-line="326" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5123#5124#0" expanded="true" />
+            <element signature="e#5168#5169#0" expanded="true" />
+            <element signature="e#5222#5223#0" expanded="true" />
+            <element signature="e#5266#5267#0" expanded="true" />
+            <element signature="e#5572#5573#0" expanded="true" />
+            <element signature="e#5611#5612#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.bash">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/semantic.bash">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="73" selection-start-line="7" selection-start-column="73" selection-end-line="7" selection-end-column="73" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Compiler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="20" column="35" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
+        <state relative-caret-position="388">
+          <caret line="72" lean-forward="true" selection-start-line="72" selection-end-line="72" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/semanticError/CompileErrorListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="37" column="41" selection-start-line="37" selection-start-column="41" selection-end-line="37" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#766#767#0" expanded="true" />
-            <element signature="e#818#819#0" expanded="true" />
           </folding>
         </state>
       </provider>

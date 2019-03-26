@@ -1,9 +1,13 @@
+import ast.AstProgram;
+import frontend.*;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 import semanticError.CompileErrorListener;
 import semanticError.ParserErrorListener;
 import parser.MxstarLexer;
 import parser.MxstarParser;
+import symbol.GlobalSymbolTable;
+import symbol.SymbolTable;
 
 import java.io.*;
 
@@ -37,5 +41,36 @@ public class Compiler {
         else {
             System.out.println("compile success!");
         }
+
+        AstBuilder astBuilder = new AstBuilder(errorListener);
+        astBuilder.visit(parseTree);
+
+        if(errorListener.hasError()) {
+            errorListener.printTo(System.err);
+            exit(1);
+        }
+
+        AstProgram astProgram = astBuilder.getAstProgram();
+
+        SymbolTableBuilder symbolTableBuilder = new SymbolTableBuilder(errorListener);
+
+        symbolTableBuilder.visit(astProgram);
+
+        if(errorListener.hasError()) {
+            errorListener.printTo(System.err);
+            exit(1);
+        }
+
+        GlobalSymbolTable globalSymbolTable = symbolTableBuilder.globalSymbolTable;
+
+        SemanticChecker semanticChecker = new SemanticChecker(errorListener, globalSymbolTable);
+        semanticChecker.visit(astProgram);
+
+        if(errorListener.hasError()) {
+            errorListener.printTo(System.err);
+            exit(1);
+        }
+
+        exit(0);
     }
 }

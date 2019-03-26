@@ -20,6 +20,12 @@ public class AstBuilder extends MxstarBaseVisitor<Object> {
         this.errorListener = new CompileErrorListener();
     }
 
+    public AstBuilder(CompileErrorListener errorListener) {
+        this.errorListener = errorListener;
+        this.astProgram = new AstProgram();
+        this.astProgram.location = new Location(0, 0);
+    }
+
     public AstProgram getAstProgram() {
         return astProgram;
     }
@@ -108,7 +114,7 @@ public class AstBuilder extends MxstarBaseVisitor<Object> {
 
     @Override public FuncDeclaration visitConstructDefinition(ConstructDefinitionContext ctx) {
         FuncDeclaration funcDeclaration = new FuncDeclaration();
-        funcDeclaration.retType = new PrimitiveType("void");
+        funcDeclaration.retType = new PrimitiveTypeNode("void");
         funcDeclaration.name = ctx.Identifier().getSymbol().getText();
         funcDeclaration.parameters = visitParameterDeclarationList(ctx.parameterDeclarationList());
         funcDeclaration.body = visitBlock(ctx.block());
@@ -118,7 +124,7 @@ public class AstBuilder extends MxstarBaseVisitor<Object> {
 
     @Override public TypeNode visitVariableTypeOrVoid(VariableTypeOrVoidContext ctx) {
         if(ctx.VOID() != null) {
-            return new PrimitiveType("void");
+            return new PrimitiveTypeNode("void");
         } else {
             return visitVariableType(ctx.variableType());
         }
@@ -145,7 +151,7 @@ public class AstBuilder extends MxstarBaseVisitor<Object> {
         if(ctx.empty() == null) {
             return visitVariableTypeBasic(ctx.variableTypeBasic());
         } else {
-            ArrayType arrayType = new ArrayType();
+            ArrayTypeNode arrayType = new ArrayTypeNode();
             arrayType.location = new Location(ctx);
             arrayType.dim = ctx.empty().size();
             arrayType.arraytype = visitVariableTypeBasic(ctx.variableTypeBasic());
@@ -155,17 +161,17 @@ public class AstBuilder extends MxstarBaseVisitor<Object> {
 
     @Override public TypeNode visitVariableTypeBasic(VariableTypeBasicContext ctx) {
         if(ctx.INT() != null) {
-            PrimitiveType primitiveType = new PrimitiveType();
+            PrimitiveTypeNode primitiveType = new PrimitiveTypeNode();
             primitiveType.location = new Location(ctx);
             primitiveType.name = "int";
             return primitiveType;
         } else if (ctx.BOOL() != null) {
-            PrimitiveType primitiveType = new PrimitiveType();
+            PrimitiveTypeNode primitiveType = new PrimitiveTypeNode();
             primitiveType.location = new Location(ctx);
             primitiveType.name = "bool";
             return primitiveType;
         } else {
-            ClassType classType = new ClassType();
+            ClassTypeNode classType = new ClassTypeNode();
             classType.name = ctx.getText();
             classType.location = new Location(ctx);
             return classType;
@@ -212,8 +218,11 @@ public class AstBuilder extends MxstarBaseVisitor<Object> {
         JumpStmt jumpStmt= new JumpStmt();
         jumpStmt.location = new Location(ctx);
         if(ctx.RETURN() != null) {
-            jumpStmt.retExpr = (Expression)ctx.expression().accept(this);
-        }
+            jumpStmt.isReturn = true;
+            if (ctx.expression() != null)
+                jumpStmt.retExpr = (Expression)ctx.expression().accept(this);
+        } else
+            jumpStmt.isReturn = false;
         return jumpStmt;
     }
 
@@ -232,6 +241,9 @@ public class AstBuilder extends MxstarBaseVisitor<Object> {
     @Override public ConditionStmt visitConditionStatement(ConditionStatementContext ctx) {
         ConditionStmt conditionStmt = new ConditionStmt();
         conditionStmt.location = new Location(ctx);
+        conditionStmt.thenStmt = (Statement)ctx.thenStatement.accept(this);
+        conditionStmt.elseStmt = (Statement)ctx.elseStatement.accept(this);
+        conditionStmt.expression = (Expression)ctx.expression().accept(this);
         return conditionStmt;
     }
 
@@ -300,7 +312,7 @@ public class AstBuilder extends MxstarBaseVisitor<Object> {
     @Override public Expression visitArrayExpr(ArrayExprContext ctx) {
         ArrayExpr expr = new ArrayExpr();
         expr.location = new Location(ctx);
-        expr.Expr = (Expression) ctx.expression(0).accept(this);
+        expr.expr = (Expression) ctx.expression(0).accept(this);
         expr.idx = (Expression) ctx.expression(1).accept(this);
         if(expr.idx instanceof  NewExpr && ctx.expression(0).stop.getText().equals("]")) {
             errorListener.addError(expr.idx.location, "can not mess new a[n][i] with (new a[n])[i]");
@@ -361,7 +373,7 @@ public class AstBuilder extends MxstarBaseVisitor<Object> {
     @Override public NewExpr visitCreator(CreatorContext ctx) {
         NewExpr newExpr = new NewExpr();
         newExpr.location = new Location(ctx);
-        newExpr.type = visitVariableTypeBasic(ctx.variableTypeBasic());
+        newExpr.typeNode = visitVariableTypeBasic(ctx.variableTypeBasic());
         newExpr.expressionDimension = new LinkedList<>();
         if(ctx.expression() != null) {
             for(ExpressionContext c : ctx.expression()) {

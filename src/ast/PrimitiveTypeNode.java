@@ -1,12 +1,12 @@
 package ast;
 
-public class ClassType extends TypeNode {
+public class PrimitiveTypeNode extends TypeNode {
     public String name;
 
-    public ClassType() {
+    public PrimitiveTypeNode () {
         name = null;
     }
-    public ClassType(String name) {
+    public PrimitiveTypeNode (String name) {
         this.name = name;
     }
 

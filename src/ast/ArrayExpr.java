@@ -1,7 +1,7 @@
 package ast;
 
 public class ArrayExpr extends Expression{
-    public Expression Expr;
+    public Expression expr;
     public Expression idx;
 
     public void accept(IAstVisitor visitor) {

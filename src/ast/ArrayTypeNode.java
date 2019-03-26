@@ -1,6 +1,6 @@
 package ast;
 
-public class ArrayType extends TypeNode{
+public class ArrayTypeNode extends TypeNode{
     public TypeNode arraytype = null;
     public int dim;
 
