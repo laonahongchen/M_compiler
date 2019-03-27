@@ -207,12 +207,12 @@ public class SemanticChecker implements IAstVisitor {
 
     @Override
     public void visit(FuncCallExpr node) {
-        int parameterCount = node.functionSymbol.parameterTypes.size();
-        if (node.arguments.size() != parameterCount) {
+        if (node.arguments.size() != node.functionSymbol.parameterTypes.size()) {
             errorListener.addError(node.location, "there is not enough parameters");
         } else {
             for (int i = 0; i < node.arguments.size(); ++i) {
                 node.arguments.get(i).accept(this);
+
                 if (!node.arguments.get(i).type.match(node.functionSymbol.parameterTypes.get(i))) {
                     errorListener.addError(node.location, "the parameter type does not match");
                     break;
@@ -330,6 +330,13 @@ public class SemanticChecker implements IAstVisitor {
         node.rhs.accept(this);
         node.lhs.accept(this);
         if (!node.lhs.type.match(node.rhs.type)) {
+            int cnt = 0;
+            VariableType tmp = node.lhs.type;
+            while (tmp instanceof  ArrayType) {
+                cnt++;
+                tmp = ((ArrayType) tmp).baseType;
+            }
+            System.out.println(cnt);
             errorListener.addError(node.location, "two expression are not the same type");
         }
         if (!node.lhs.modifiable) {

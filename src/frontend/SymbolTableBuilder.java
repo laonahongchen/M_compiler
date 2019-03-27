@@ -70,7 +70,9 @@ public class SymbolTableBuilder implements IAstVisitor {
                 baseType = resolveVariableType(((ArrayTypeNode) node).arraytype);
             } else {
                 ArrayTypeNode newArray = new ArrayTypeNode();
+
                 newArray.dim = arrayTypeNode.dim - 1;
+             //   System.err.print(newArray.dim);
                 newArray.location = arrayTypeNode.location;
                 newArray.arraytype = arrayTypeNode.arraytype;
                 baseType = resolveVariableType(newArray);
@@ -155,6 +157,7 @@ public class SymbolTableBuilder implements IAstVisitor {
     }
 
     private void defineVariable(VariableDeclaration node) {
+        //System.out.println(node.location);
         VariableType type = resolveVariableType(node.type);
         if (node.init != null)
             node.init.accept(this);
@@ -185,7 +188,7 @@ public class SymbolTableBuilder implements IAstVisitor {
         FunctionSymbol functionSymbol = (FunctionSymbol)curSymbolTable.getTypeSymbol(node.name);
         functionSymbol.funtionSymbolTable = new SymbolTable(curSymbolTable);
         enter(functionSymbol.funtionSymbolTable);
-        if (curSymbolTable != null) {
+        if (classSymbol != null) {
             defineVariable(new VariableDeclaration(new ClassTypeNode(classSymbol.name), "this", null));
         }
         for (VariableDeclaration d: node.parameters)
@@ -223,6 +226,11 @@ public class SymbolTableBuilder implements IAstVisitor {
         }
         if (errorListener.hasError())
             return;
+        for (VariableDeclaration d : node.globalVariables) {
+            defineVariable(d);
+        }
+        if (errorListener.hasError())
+            return;
         for (ClassDeclaration d : node.classDeclarations) {
             defineClassFields(d);
         }
@@ -238,11 +246,7 @@ public class SymbolTableBuilder implements IAstVisitor {
         }
         if (errorListener.hasError())
             return;
-        for (VariableDeclaration d : node.globalVariables) {
-            defineVariable(d);
-        }
-        if (errorListener.hasError())
-            return;
+
     }
 
 
@@ -263,7 +267,7 @@ public class SymbolTableBuilder implements IAstVisitor {
 
     @Override
     public void visit(VariableDeclaration node) {
-
+        defineVariable(node);
     }
 
     @Override
@@ -357,6 +361,7 @@ public class SymbolTableBuilder implements IAstVisitor {
 
     @Override
     public void visit(LiteralExpr node) {
+//        System.out.print("now in literal expression:"+ node.location + node.typeName);
         switch (node.typeName) {
             case "int":
                 node.type = new PrimitiveType("int", globalSymbolTable.getPrimitiveSymbol("int"));
@@ -368,6 +373,7 @@ public class SymbolTableBuilder implements IAstVisitor {
                 node.type = new PrimitiveType("null", globalSymbolTable.getPrimitiveSymbol("null"));
                 break;
             case "string":
+//                System.out.print(node.location);
                 node.type = new ClassType("string", globalSymbolTable.getClassSymbol("string"));
                 break;
             default:
@@ -408,11 +414,11 @@ public class SymbolTableBuilder implements IAstVisitor {
         int dimension = node.expressionDimension.size() + node.restDimension;
         node.type = resolveVariableType(node.typeNode);
         if (node.type == null) {
-            errorListener.addError(node.location, "cannot resolve the type");
+            errorListener.addError(node.location, "cannot resolve the type 2");
             node.type = null;
             return ;
         }
-        if (dimension == 0 && node.typeNode instanceof PrimitiveTypeNode && ((PrimitiveTypeNode) node.typeNode).name == "void") {
+        if (dimension == 0 && node.typeNode instanceof PrimitiveTypeNode && ((PrimitiveTypeNode) node.typeNode).name.equals("void")) {
             errorListener.addError(node.location, "cannot new void");
             node.type = null;
             return ;
@@ -442,8 +448,10 @@ public class SymbolTableBuilder implements IAstVisitor {
             enter(symbolTable);
             if (node.methodCall != null) {
                 node.methodCall.accept(this);
+                node.type = node.methodCall.type;
             } else {
                 node.fieldAccess.accept(this);
+                node.type = node.fieldAccess.type;
             }
             leave();
         }
@@ -456,18 +464,24 @@ public class SymbolTableBuilder implements IAstVisitor {
     }
 
     private boolean isRelationOperation(String op) {
-        return (op == "==" || op == ">" || op == "<" || op == ">=" || op == "<=" || op == "!=");
+        return (op.equals("==") || op.equals(">") || op.equals("<") || op.equals(">=") || op.equals("<=") || op.equals("!="));
     }
 
     @Override
     public void visit(BinExpr node) {
         node.lhs.accept(this);
         node.rhs.accept(this);
-        if (isRelationOperation(node.op) == true) {
+        if (isRelationOperation(node.op)) {
             node.type = new PrimitiveType("bool", globalSymbolTable.getPrimitiveSymbol("bool"));
         } else {
             node.type = node.lhs.type;
         }
+        /*if (node.op == "<") {
+            System.out.println(node.location);
+            if (node.type instanceof PrimitiveType) {
+                System.out.println("name: " + ((PrimitiveType)node.type).name);
+            }
+        }*/
     }
 
     @Override

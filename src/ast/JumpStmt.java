@@ -1,6 +1,6 @@
 package ast;
 
-public class JumpStmt extends Expression {
+public class JumpStmt extends Statement {
     public Expression retExpr = null; // if it is a return jump then this will have true value
     public boolean isReturn;
 

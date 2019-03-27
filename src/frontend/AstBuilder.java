@@ -1,5 +1,6 @@
 package frontend;
 
+import jdk.nashorn.internal.ir.Block;
 import parser.MxstarBaseVisitor;
 import parser.MxstarParser;
 import parser.MxstarParser.*;
@@ -51,6 +52,7 @@ public class AstBuilder extends MxstarBaseVisitor<Object> {
         funcDeclaration.name = ctx.Identifier().getSymbol().getText();
         funcDeclaration.parameters = visitParameterDeclarationList(ctx.parameterDeclarationList());
         funcDeclaration.body = visitBlock(ctx.block());
+        funcDeclaration.location = funcDeclaration.retType.location;
         return funcDeclaration;
     }
 
@@ -59,6 +61,7 @@ public class AstBuilder extends MxstarBaseVisitor<Object> {
         classDeclaration.name = ctx.Identifier().getSymbol().getText();
         classDeclaration.fields = new LinkedList<>();
         classDeclaration.methods = new LinkedList<>();
+        classDeclaration.location = new Location(ctx);
 
         for (MemberDeclarationContext c: ctx.memberDeclaration()) {
             if(c.functionDefinition() != null) {
@@ -132,8 +135,10 @@ public class AstBuilder extends MxstarBaseVisitor<Object> {
 
     @Override public List<VariableDeclaration> visitParameterDeclarationList(ParameterDeclarationListContext ctx) {
         List<VariableDeclaration> variableDeclarations = new LinkedList<>();
-        for(ParameterDeclarationContext c : ctx.parameterDeclaration()) {
-            variableDeclarations.add(visitParameterDeclaration(c));
+        if (ctx != null) {
+            for (ParameterDeclarationContext c : ctx.parameterDeclaration()) {
+                variableDeclarations.add(visitParameterDeclaration(c));
+            }
         }
         return variableDeclarations;
     }
@@ -148,7 +153,7 @@ public class AstBuilder extends MxstarBaseVisitor<Object> {
     }
 
     @Override public TypeNode visitVariableType(VariableTypeContext ctx) {
-        if(ctx.empty() == null) {
+        if(ctx.empty().isEmpty()) {
             return visitVariableTypeBasic(ctx.variableTypeBasic());
         } else {
             ArrayTypeNode arrayType = new ArrayTypeNode();
@@ -191,8 +196,11 @@ public class AstBuilder extends MxstarBaseVisitor<Object> {
         }
         return statements;
     }
-    @Override public List<Statement> visitBlockStmt(BlockStmtContext ctx) {
-        return visitBlock(ctx.block());
+    @Override public BlockStmt visitBlockStmt(BlockStmtContext ctx) {
+        BlockStmt blockStmt = new BlockStmt();
+        blockStmt.location = new Location(ctx);
+        blockStmt.statements = visitBlock(ctx.block());
+        return blockStmt;
     }
 
     @Override public ExprStmt visitExprStmt(ExprStmtContext ctx) {
@@ -242,7 +250,9 @@ public class AstBuilder extends MxstarBaseVisitor<Object> {
         ConditionStmt conditionStmt = new ConditionStmt();
         conditionStmt.location = new Location(ctx);
         conditionStmt.thenStmt = (Statement)ctx.thenStatement.accept(this);
-        conditionStmt.elseStmt = (Statement)ctx.elseStatement.accept(this);
+        if (conditionStmt.elseStmt != null) {
+            conditionStmt.elseStmt = (Statement) ctx.elseStatement.accept(this);
+        }
         conditionStmt.expression = (Expression)ctx.expression().accept(this);
         return conditionStmt;
     }
@@ -260,8 +270,8 @@ public class AstBuilder extends MxstarBaseVisitor<Object> {
 
     @Override public LoopStmt visitForExpr(ForExprContext ctx) {
         LoopStmt loopStmt = new LoopStmt();
-        loopStmt.startStmt = (Statement) ctx.initialize.accept(this);
-        loopStmt.updateStmt = (Statement) ctx.step.accept(this);
+        loopStmt.startStmt = new ExprStmt((Expression) ctx.initialize.accept(this));
+        loopStmt.updateStmt = new ExprStmt((Expression) ctx.step.accept(this));
         loopStmt.condition = (Expression) ctx.condition.accept(this);
         loopStmt.body = (Statement) ctx.statement().accept(this);
         return loopStmt;
@@ -339,6 +349,7 @@ public class AstBuilder extends MxstarBaseVisitor<Object> {
         binExpr.lhs = (Expression)ctx.expression(0).accept(this);
         binExpr.rhs = (Expression)ctx.expression(1).accept(this);
         binExpr.op = ctx.bop.getText();
+        binExpr.location = new Location(ctx);
         return  binExpr;
     }
 
@@ -350,6 +361,7 @@ public class AstBuilder extends MxstarBaseVisitor<Object> {
         AssignExpr assignExpr = new AssignExpr();
         assignExpr.lhs = (Expression)ctx.expression(0).accept(this);
         assignExpr.rhs = (Expression)ctx.expression(1).accept(this);
+        assignExpr.location = new Location(ctx);
         return assignExpr;
     }
 
@@ -365,6 +377,7 @@ public class AstBuilder extends MxstarBaseVisitor<Object> {
         if (ctx.expression() != null) {
             for (ExpressionContext c : ctx.expression()) {
                 funcCallExpr.arguments.add((Expression) c.accept(this));
+                //System.out.print(((LinkedList<Expression>) funcCallExpr.arguments).getLast().);
             }
         }
         return funcCallExpr;

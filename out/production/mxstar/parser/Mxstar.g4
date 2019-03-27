@@ -200,7 +200,7 @@ NewLines: '\r' ? '\n' ->skip;
 LineComment:  '//' ~[\r\n]* ->skip;
 
 BlockComment
-    :   '/*' .*? '*' -> skip
+    :   '/*' .*? '*/' -> skip
     ;
 
 

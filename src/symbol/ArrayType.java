@@ -15,7 +15,7 @@ public class ArrayType extends VariableType {
         if(other instanceof  ClassType && ((ClassType)other).name.equals("null"))
             return false;
         else if(other instanceof  ArrayType) {
-            return baseType == ((ArrayType) other).baseType;
+            return baseType.match(((ArrayType) other).baseType);
         } else
             return false;
     }

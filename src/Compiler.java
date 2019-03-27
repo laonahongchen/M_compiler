@@ -18,6 +18,7 @@ public class Compiler {
     public static void main(String args[]) throws IOException {
         //parseArgs(args);
         compile();
+        exit(0);
     }
     public static void compile() throws IOException{
         BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
@@ -38,9 +39,7 @@ public class Compiler {
             errorListener.printTo(System.err);
             exit(1);
         }
-        else {
-            System.out.println("compile success!");
-        }
+
 
         AstBuilder astBuilder = new AstBuilder(errorListener);
         astBuilder.visit(parseTree);
@@ -70,7 +69,7 @@ public class Compiler {
             errorListener.printTo(System.err);
             exit(1);
         }
-
-        exit(0);
+        System.err.print("compiler success");
+        //exit(0);
     }
 }

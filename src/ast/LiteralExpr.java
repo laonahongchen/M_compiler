@@ -12,21 +12,26 @@ public class LiteralExpr extends Expression {
 
     public LiteralExpr(Token token) {
         location = new Location(token);
+//        System.out.println(location);
         switch (token.getType()) {
             case Integer_Literal:
+//                System.out.println("int");
                 typeName = "int";
                 value = token.getText();
                 break;
             case NULL_Literal:
+//                System.out.println("null");
                 typeName = "null";
                 value = token.getText();
                 break;
             case Bool_Literal:
+//                System.out.println("bool");
                 typeName = "bool";
                 value = token.getText();
                 break;
             default:
-                typeName = "String";
+//                System.out.println("string");
+                typeName = "string";
                 value = escape(token.getText());
         }
     }
