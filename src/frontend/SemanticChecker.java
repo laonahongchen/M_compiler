@@ -132,7 +132,7 @@ public class SemanticChecker implements IAstVisitor {
                 return ;
             }
         } else {//return here
-            System.out.println("return!!!");
+//            System.out.println("return!!!");
             VariableType requireType = curFunction.returnType;
             PrimitiveType voidType = new PrimitiveType("void", globalSymbolTable.getPrimitiveSymbol("void"));
             if (requireType.match(voidType) && node.retExpr != null) {
@@ -144,8 +144,8 @@ public class SemanticChecker implements IAstVisitor {
                 retType = new PrimitiveType("void", globalSymbolTable.getPrimitiveSymbol("void"));
             else
                 retType = node.retExpr.type;
-            System.out.println(((PrimitiveType)requireType).name);
-            System.out.println(retType instanceof ClassType);
+//            System.out.println(((PrimitiveType)requireType).name);
+//            System.out.println(retType instanceof ClassType);
             if (!retType.match(requireType)) {
                 errorListener.addError(node.location, "the return type does not match");
                 return ;
@@ -305,6 +305,7 @@ public class SemanticChecker implements IAstVisitor {
         node.lhs.accept(this);
         node.rhs.accept(this);
         if (!node.lhs.type.match(node.rhs.type)) {
+            System.out.println(node.rhs.type instanceof  ClassType );
             errorListener.addError(node.location, "type can not match");
         } else {
             boolean typeError = false;
@@ -336,13 +337,7 @@ public class SemanticChecker implements IAstVisitor {
         node.rhs.accept(this);
         node.lhs.accept(this);
         if (!node.lhs.type.match(node.rhs.type)) {
-            int cnt = 0;
-            VariableType tmp = node.lhs.type;
-            while (tmp instanceof  ArrayType) {
-                cnt++;
-                tmp = ((ArrayType) tmp).baseType;
-            }
-            System.out.println(cnt);
+            System.out.println(node.lhs.type instanceof ClassType);
             errorListener.addError(node.location, "two expression are not the same type");
         }
         if (!node.lhs.modifiable) {

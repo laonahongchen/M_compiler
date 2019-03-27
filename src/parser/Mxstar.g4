@@ -139,7 +139,7 @@ functionCall
     ;
 
 creator
-    : variableTypeBasic  (('['expression']')*('['empty']')*|('('empty')'))//--------------------------------'('')' need to be written separately , and if I write it in '()' it would go wrong
+    : variableTypeBasic  (('['expression']')*('['empty']')*|('('')'))//--------------------------------'('')' need to be written separately , and if I write it in '()' it would go wrong
   //  | variableTypeBasic ()
     ;
 

@@ -43,6 +43,9 @@ public class GlobalSymbolTable extends SymbolTable{
         return new PrimitiveType("int", primitives.get("int"));
     }
     private VariableType stringType() {
+        if (classes.get("string") == null) {
+            System.out.println("does not have string type");
+        }
         return new ClassType("string", classes.get("string"));
     }
 
@@ -144,11 +147,11 @@ public class GlobalSymbolTable extends SymbolTable{
         stringSymbol.name = "string";
         stringSymbol.location = new Location(0, 0);
         stringSymbol.symbolTable = new SymbolTable(this);
+        putClassSymbol("string", stringSymbol);
         stringSymbol.symbolTable.putTypeSymbol("length", stringLength());
         stringSymbol.symbolTable.putTypeSymbol("substring", stringSubString());
         stringSymbol.symbolTable.putTypeSymbol("parseInt", stringParseInt());
         stringSymbol.symbolTable.putTypeSymbol("ord", stringOrd());
-        putClassSymbol("string", stringSymbol);
     }
 
     private void addDefaultNull() {

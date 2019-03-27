@@ -39,14 +39,13 @@ public class SymbolTableBuilder implements IAstVisitor {
             if(symbol instanceof  VariableSymbol)
                 return (VariableSymbol) symbol;
             else {
-                System.out.println("wrong type");
+//                System.out.println("wrong type");
                 return null;
             }
         } else {
             if (symbolTable.parent != null)
                 return resolveVariableSymbol(name, symbolTable.parent);
             else {
-                System.out.println(name);
                 return null;
             }
         }
@@ -399,9 +398,6 @@ public class SymbolTableBuilder implements IAstVisitor {
             node.type = null;
         } else {
             node.type = symbol.variableType;
-            if (node.type == null) {
-                System.out.println("");
-            }
             node.symbol = symbol;
         }
     }
@@ -417,7 +413,7 @@ public class SymbolTableBuilder implements IAstVisitor {
                 node.type = new PrimitiveType("bool", globalSymbolTable.getPrimitiveSymbol("bool"));
                 break;
             case "null":
-                node.type = new PrimitiveType("null", globalSymbolTable.getPrimitiveSymbol("null"));
+                node.type = new ClassType("null", globalSymbolTable.getClassSymbol("null"));
                 break;
             case "string":
 //                System.out.print(node.location);
@@ -460,6 +456,8 @@ public class SymbolTableBuilder implements IAstVisitor {
         }
         int dimension = node.expressionDimension.size() + node.restDimension;
         node.type = resolveVariableType(node.typeNode);
+        System.out.println(node.location);
+        System.out.println(dimension);
         if (node.type == null) {
             errorListener.addError(node.location, "cannot resolve the type 2");
             node.type = null;
@@ -483,7 +481,7 @@ public class SymbolTableBuilder implements IAstVisitor {
             return ;
         } else if (node.object.type instanceof ArrayType) {
             ArrayType arrayType = (ArrayType)node.object.type;
-            if (node.methodCall != null || node.methodCall.functionName.equals("size") == false) {
+            if (node.methodCall == null || node.methodCall.functionName.equals("size") == false) {
                 errorListener.addError(node.location, "this is not a class");
                 return ;
             } else {
@@ -497,6 +495,10 @@ public class SymbolTableBuilder implements IAstVisitor {
             SymbolTable symbolTable = classType.symbol.symbolTable;
             enter(symbolTable);*/
             if (node.methodCall != null) {
+                if (classType.symbol == null) {
+
+                    System.out.println(classType.name);
+                }
                 node.methodCall.functionSymbol = resolveFunctionSymbol(node.methodCall.functionName, classType.symbol.symbolTable);
                 if (node.methodCall.functionSymbol == null) {
                     node.type = null;
