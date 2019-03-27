@@ -276,5 +276,12 @@ public class MxstarBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitCreator(MxstarParser.CreatorContext ctx) { return visitChildren(ctx); }
+	@Override public T visitInvalidCreater(MxstarParser.InvalidCreaterContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitValidCreater(MxstarParser.ValidCreaterContext ctx) { return visitChildren(ctx); }
 }

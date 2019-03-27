@@ -276,15 +276,18 @@ public class AstBuilder extends MxstarBaseVisitor<Object> {
 
     @Override public LoopStmt visitForExpr(ForExprContext ctx) {
         LoopStmt loopStmt = new LoopStmt();
-        loopStmt.startStmt = new ExprStmt((Expression) ctx.initialize.accept(this));
-        loopStmt.updateStmt = new ExprStmt((Expression) ctx.step.accept(this));
-        loopStmt.condition = (Expression) ctx.condition.accept(this);
+        if (ctx.initialize != null)
+            loopStmt.startStmt = new ExprStmt((Expression) ctx.initialize.accept(this));
+        if (ctx.step != null)
+            loopStmt.updateStmt = new ExprStmt((Expression) ctx.step.accept(this));
+        if (ctx.condition != null)
+            loopStmt.condition = (Expression) ctx.condition.accept(this);
         loopStmt.body = (Statement) ctx.statement().accept(this);
         return loopStmt;
     }
 
     @Override public NewExpr visitNewExpr(NewExprContext ctx) {
-        return visitCreator(ctx.creator());
+        return (NewExpr)ctx.creator().accept(this);
     }
 
     @Override public UnaryExpr visitUnaryExpr(UnaryExprContext ctx) {
@@ -389,7 +392,12 @@ public class AstBuilder extends MxstarBaseVisitor<Object> {
         return funcCallExpr;
     }
 
-    @Override public NewExpr visitCreator(CreatorContext ctx) {
+    @Override public NewExpr visitInvalidCreater(InvalidCreaterContext ctx) {
+        errorListener.addError(new Location(ctx), "can not resolve this new creator");
+        return new NewExpr();
+    }
+
+    @Override public NewExpr visitValidCreater(ValidCreaterContext ctx) {
         NewExpr newExpr = new NewExpr();
         newExpr.location = new Location(ctx);
         newExpr.typeNode = visitVariableTypeBasic(ctx.variableTypeBasic());

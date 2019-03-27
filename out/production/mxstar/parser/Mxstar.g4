@@ -113,10 +113,10 @@ expression
     | token=Integer_Literal                                 # primaryExpr
     | token=NULL_Literal                                    # primaryExpr
     | expression '.' (Identifier | functionCall)            # memberExpr
+    | NEW creator                                           # newExpr
     | expression '[' expression ']'                         # arrayExpr
     | '(' expression ')'                                    # subExpr
     | functionCall                                          # funtionExpr
-    | NEW creator                                           # newExpr
     | expression postfix=('++'|'--')                        # unaryExpr
     | prefix=('++' | '--' | '+' | '-')expression            # unaryExpr
     | prefix=('~'|'!')expression                            # unaryExpr
@@ -139,8 +139,8 @@ functionCall
     ;
 
 creator
-    : variableTypeBasic  (('['expression']')*('['empty']')*|('('')'))//--------------------------------'('')' need to be written separately , and if I write it in '()' it would go wrong
-  //  | variableTypeBasic ()
+    : variableTypeBasic  (('['expression']')*('['empty']')+('['expression']')+)                    #invalidCreater
+    | variableTypeBasic  (('['expression']')*('['empty']')*|('('')'))                              #validCreater   //--------------------------------'('')' need to be written separately , and if I write it in '()' it would go wrong
     ;
 
 

@@ -16,7 +16,7 @@ public class PrimitiveType extends VariableType {
     @Override
     public boolean match(VariableType other) {
         if(other instanceof ClassType && ((ClassType) other).name.equals("null")) {
-            return true;
+            return false;
         } else if(other instanceof PrimitiveType && ((PrimitiveType) other).name.equals(name))
             return true;
         else {
