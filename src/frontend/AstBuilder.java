@@ -234,6 +234,8 @@ public class AstBuilder extends MxstarBaseVisitor<Object> {
                 jumpStmt.retExpr = (Expression)ctx.expression().accept(this);
         } else
             jumpStmt.isReturn = false;
+        System.out.println(jumpStmt.location);
+        System.out.println(jumpStmt.isReturn);
         return jumpStmt;
     }
 
@@ -252,8 +254,9 @@ public class AstBuilder extends MxstarBaseVisitor<Object> {
     @Override public ConditionStmt visitConditionStatement(ConditionStatementContext ctx) {
         ConditionStmt conditionStmt = new ConditionStmt();
         conditionStmt.location = new Location(ctx);
+        //System.out.println(conditionStmt.location);
         conditionStmt.thenStmt = (Statement)ctx.thenStatement.accept(this);
-        if (conditionStmt.elseStmt != null) {
+        if (ctx.elseStatement != null) {
             conditionStmt.elseStmt = (Statement) ctx.elseStatement.accept(this);
         }
         conditionStmt.expression = (Expression)ctx.expression().accept(this);

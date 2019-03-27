@@ -181,7 +181,7 @@ public class SymbolTableBuilder implements IAstVisitor {
                 errorListener.addError(node.location, "there is a class already been defined in the same field with this variable and has the same name.");
                 return ;
             } else {
-                System.out.println("define " + node.name);
+//                System.out.println("define " + node.name);
                 node.symbol = new VariableSymbol(node.name, type,node.location);
                 curSymbolTable.putTypeSymbol(node.name, node.symbol);
             }
@@ -277,13 +277,13 @@ public class SymbolTableBuilder implements IAstVisitor {
             //if (!(curSymbolTable instanceof  GlobalSymbolTable))
                 //System.out.println("out error");
             if (d instanceof VariableDeclaration) {
-                System.out.println("variable");
+//                System.out.println("variable");
                 defineVariable((VariableDeclaration)d);
             } else if (d instanceof ClassDeclaration) {
-                System.out.println("class");
+//                System.out.println("class");
                 defineClassFunction((ClassDeclaration)d);
             } else {
-                System.out.println("function");
+//                System.out.println("function");
                 defineFunction((FuncDeclaration)d, null);
             }
         }

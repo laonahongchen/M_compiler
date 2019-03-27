@@ -17,7 +17,5 @@ public class VariableSymbol extends TypeSymbol{
         this.variableType = variableType;
         this.location = location;
     }
-    public boolean match(VariableSymbol rhs){
-        return true;
-    }
+
 }

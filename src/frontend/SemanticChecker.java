@@ -69,7 +69,9 @@ public class SemanticChecker implements IAstVisitor {
 
     @Override
     public void visit(VariableDeclaration node) {
-        assert false;
+        if (node.init != null && !node.symbol.variableType.match(node.init.type)) {
+            errorListener.addError(node.location, "they should be in the same type!");
+        }
     }
 
     @Override
@@ -130,6 +132,7 @@ public class SemanticChecker implements IAstVisitor {
                 return ;
             }
         } else {//return here
+            System.out.println("return!!!");
             VariableType requireType = curFunction.returnType;
             PrimitiveType voidType = new PrimitiveType("void", globalSymbolTable.getPrimitiveSymbol("void"));
             if (requireType.match(voidType) && node.retExpr != null) {
@@ -141,6 +144,8 @@ public class SemanticChecker implements IAstVisitor {
                 retType = new PrimitiveType("void", globalSymbolTable.getPrimitiveSymbol("void"));
             else
                 retType = node.retExpr.type;
+            System.out.println(((PrimitiveType)requireType).name);
+            System.out.println(retType instanceof ClassType);
             if (!retType.match(requireType)) {
                 errorListener.addError(node.location, "the return type does not match");
                 return ;
