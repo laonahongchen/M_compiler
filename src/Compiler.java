@@ -69,7 +69,7 @@ public class Compiler {
             errorListener.printTo(System.err);
             exit(1);
         }
-        System.err.print("compiler success");
+        System.out.print("compiler success");
         //exit(0);
     }
 }
