@@ -107,6 +107,10 @@ public class SymbolTableBuilder implements IAstVisitor {
         functionSymbol.returnType = resolveVariableType(node.retType);
         functionSymbol.name = node.name;
         functionSymbol.funtionSymbolTable = null;
+        if (curClass != null) {
+            functionSymbol.parameterNames.add("this");
+            functionSymbol.parameterTypes.add(new ClassType("", curClass));
+        }
         for (VariableDeclaration d: node.parameters) {
             VariableType type = resolveVariableType(d.type);
             if(type == null)
@@ -114,10 +118,7 @@ public class SymbolTableBuilder implements IAstVisitor {
             functionSymbol.parameterTypes.add(type);
             functionSymbol.parameterNames.add(d.name);
         }
-        if (curClass != null) {
-            functionSymbol.parameterNames.add("this");
-            functionSymbol.parameterTypes.add(new ClassType("", curClass));
-        }
+
         node.symbol = functionSymbol;
 
         curSymbolTable.putTypeSymbol(functionSymbol.name, functionSymbol);

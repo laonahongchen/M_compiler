@@ -214,6 +214,9 @@ public class SemanticChecker implements IAstVisitor {
     public void visit(FuncCallExpr node) {
         int inClass = (node.functionSymbol.parameterNames.size() > 0 && node.functionSymbol.parameterNames.get(0).equals("this")) ? 1 : 0;
         if (node.arguments.size() + inClass != node.functionSymbol.parameterTypes.size()) {
+            System.out.println(node.arguments.size());
+            System.out.println(inClass);
+            System.out.println(node.functionSymbol.parameterTypes.size());
             errorListener.addError(node.location, "there is not enough parameters");
         } else {
             for (int i = 0; i < node.arguments.size(); ++i) {
