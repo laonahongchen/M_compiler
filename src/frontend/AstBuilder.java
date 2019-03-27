@@ -77,10 +77,12 @@ public class AstBuilder extends MxstarBaseVisitor<Object> {
                 classDeclaration.fields.addAll(visitVariableDeclaration(c.variableDeclaration()));
             }
             if(c.constructDefinition() != null) {
-                if(classDeclaration.construct == null) {
+                if(classDeclaration.construct != null) {
+                    errorListener.addError(new Location(c), "there should only be one constructor in one class.");
+                } else if (c.constructDefinition().Identifier().getSymbol().getText().equals(classDeclaration.name)){
                     classDeclaration.construct = visitConstructDefinition(c.constructDefinition());
                 } else {
-                    errorListener.addError(new Location(c), "there should only be one constructor in one class.");
+                    errorListener.addError(new Location(c), "the construct should have the same name with class name");
                 }
             }
         }
