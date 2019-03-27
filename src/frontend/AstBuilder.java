@@ -84,6 +84,9 @@ public class AstBuilder extends MxstarBaseVisitor<Object> {
                 }
             }
         }
+        if (classDeclaration.construct == null) {
+            classDeclaration.construct = FuncDeclaration.defaultConstructor(classDeclaration.name);
+        }
         return classDeclaration;
 
     }
@@ -189,7 +192,7 @@ public class AstBuilder extends MxstarBaseVisitor<Object> {
             for(StatementContext c : ctx.statement()) {
                 if(c instanceof  VariableStmtContext) {
                     statements.addAll(visitVariableStmt((VariableStmtContext) c));
-                } else {
+                } else if (!(c instanceof EmptyStmtContext)) {
                     statements.add((Statement)c.accept(this));
                 }
             }

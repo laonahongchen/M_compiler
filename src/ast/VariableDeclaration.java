@@ -20,6 +20,13 @@ public class VariableDeclaration extends  Declaration {
         this.init = init;
     }
 
+    public VariableDeclaration(TypeNode type, String name, Expression init, VariableSymbol symbol) {
+        this.type = type;
+        this.name = name;
+        this.init = init;
+        this.symbol = symbol;
+    }
+
     public void accept(IAstVisitor visitor) {
         visitor.visit(this);
     }

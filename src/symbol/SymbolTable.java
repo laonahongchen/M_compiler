@@ -11,12 +11,12 @@ public class SymbolTable {
     public SymbolTable parent;
     public List<SymbolTable> children;
 
-    public SymbolTable() {
+    /*public SymbolTable() {
         contents = new LinkedHashMap<>();
         //variables = new LinkedHashMap<>();
         parent = new SymbolTable();
         children = new LinkedList<>();
-    }
+    }*/
 
     public SymbolTable(SymbolTable symbolTable) {
         contents = new LinkedHashMap<>();

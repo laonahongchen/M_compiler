@@ -28,6 +28,7 @@ public class AstProgram extends AstNode{
 
     public void addAll(List<VariableDeclaration> variableDeclaration) {
         this.globalVariables.addAll(variableDeclaration);
+        declarations.addAll(variableDeclaration);
     }
 
     public void accept(IAstVisitor visitor) {

@@ -23,11 +23,13 @@ public class SymbolTableBuilder implements IAstVisitor {
     }
 
     private void enter(SymbolTable symbolTable) {
+//        System.out.println("+1");
         symbolTable.parent = curSymbolTable;
         curSymbolTable = symbolTable;
     }
 
     private void leave() {
+//        System.out.println("-1");
         curSymbolTable = curSymbolTable.parent;
     }
 
@@ -36,13 +38,17 @@ public class SymbolTableBuilder implements IAstVisitor {
         if (symbol != null) {
             if(symbol instanceof  VariableSymbol)
                 return (VariableSymbol) symbol;
-            else
+            else {
+                System.out.println("wrong type");
                 return null;
+            }
         } else {
             if (symbolTable.parent != null)
                 return resolveVariableSymbol(name, symbolTable.parent);
-            else
+            else {
+                System.out.println(name);
                 return null;
+            }
         }
     }
 
@@ -114,7 +120,9 @@ public class SymbolTableBuilder implements IAstVisitor {
             functionSymbol.parameterTypes.add(new ClassType("", curClass));
         }
         node.symbol = functionSymbol;
+
         curSymbolTable.putTypeSymbol(functionSymbol.name, functionSymbol);
+        //System.out.println(functionSymbol.name);
     }
 
     private  FunctionSymbol resolveFunctionSymbol(String name, SymbolTable symbolTable) {
@@ -142,6 +150,8 @@ public class SymbolTableBuilder implements IAstVisitor {
             classSymbol.name = node.name;
             classSymbol.location = node.location;
             classSymbol.symbolTable = new SymbolTable(globalSymbolTable);
+            classSymbol.variableType = new ClassType(node.name, classSymbol);
+
             globalSymbolTable.putClassSymbol(node.name, classSymbol);
         }
     }
@@ -149,9 +159,11 @@ public class SymbolTableBuilder implements IAstVisitor {
     private void registerClassFunction(ClassDeclaration node) {
         ClassSymbol classSymbol = globalSymbolTable.getClassSymbol(node.name);
         enter(classSymbol.symbolTable);
+
         for (FuncDeclaration d : node.methods) {
             registerFunc(d, classSymbol);
         }
+
         registerFunc(node.construct, classSymbol);
         leave();
     }
@@ -169,6 +181,7 @@ public class SymbolTableBuilder implements IAstVisitor {
                 errorListener.addError(node.location, "there is a class already been defined in the same field with this variable and has the same name.");
                 return ;
             } else {
+                System.out.println("define " + node.name);
                 node.symbol = new VariableSymbol(node.name, type,node.location);
                 curSymbolTable.putTypeSymbol(node.name, node.symbol);
             }
@@ -184,18 +197,44 @@ public class SymbolTableBuilder implements IAstVisitor {
         leave();
     }
 
+    private void getCurrentDepth() {
+        SymbolTable x = curSymbolTable;
+        int ret = 0;
+        while(!(x instanceof GlobalSymbolTable)) {
+            ret++;
+            x = x.parent;
+        }
+        System.out.println(ret);
+    }
+
     private void defineFunction(FuncDeclaration node, ClassSymbol classSymbol) {
         FunctionSymbol functionSymbol = (FunctionSymbol)curSymbolTable.getTypeSymbol(node.name);
+//        System.out.println("defining function" + node.name );
+        //if (functionSymbol == null)
+        //    System.out.println("can not find such function" + node.name );
+
         functionSymbol.funtionSymbolTable = new SymbolTable(curSymbolTable);
         enter(functionSymbol.funtionSymbolTable);
+
         if (classSymbol != null) {
+//            VariableDeclaration thisVar = (new VariableDeclaration(new ClassTypeNode(classSymbol.name), "this", null, classSymbol));
+//            curSymbolTable.putTypeSymbol("this", thisVar.symbol);
             defineVariable(new VariableDeclaration(new ClassTypeNode(classSymbol.name), "this", null));
         }
         for (VariableDeclaration d: node.parameters)
             defineVariable(d);
-        for (Statement d: node.body)
+        for (Statement d: node.body) {
+//            if (d == null)
+//                System.out.println("fuck");
             d.accept(this);
+        }
+
         leave();
+        /*if (node.name.equals( "init")) {
+            System.out.println("now out init");
+            getCurrentDepth();
+        }*/
+        //getCurrentDepth();
     }
 
     private void defineClassFunction(ClassDeclaration node) {
@@ -226,26 +265,28 @@ public class SymbolTableBuilder implements IAstVisitor {
         }
         if (errorListener.hasError())
             return;
-        for (VariableDeclaration d : node.globalVariables) {
-            defineVariable(d);
-        }
-        if (errorListener.hasError())
-            return;
+
         for (ClassDeclaration d : node.classDeclarations) {
             defineClassFields(d);
         }
         if (errorListener.hasError())
             return;
-        for (ClassDeclaration d : node.classDeclarations) {
-            defineClassFunction(d);
+        //enter(globalSymbolTable.getClassSymbol("moment_ring").symbolTable);
+        //leave();
+        for (Declaration d : node.declarations) {
+            //if (!(curSymbolTable instanceof  GlobalSymbolTable))
+                //System.out.println("out error");
+            if (d instanceof VariableDeclaration) {
+                System.out.println("variable");
+                defineVariable((VariableDeclaration)d);
+            } else if (d instanceof ClassDeclaration) {
+                System.out.println("class");
+                defineClassFunction((ClassDeclaration)d);
+            } else {
+                System.out.println("function");
+                defineFunction((FuncDeclaration)d, null);
+            }
         }
-        if (errorListener.hasError())
-            return;
-        for (FuncDeclaration d : node.funcDeclarations) {
-            defineFunction(d, null);
-        }
-        if (errorListener.hasError())
-            return;
 
     }
 
@@ -324,6 +365,7 @@ public class SymbolTableBuilder implements IAstVisitor {
 
     @Override
     public void visit(BlockStmt node) {
+//        System.out.println("in block stmt now");
         SymbolTable symbolTable = new SymbolTable(curSymbolTable);
         enter(symbolTable);
         for (Statement d: node.statements) {
@@ -339,6 +381,7 @@ public class SymbolTableBuilder implements IAstVisitor {
 
     @Override
     public void visit(ExprStmt node) {
+//        System.out.println("in expr stmt now");
         node.expression.accept(this);
     }
 
@@ -351,10 +394,14 @@ public class SymbolTableBuilder implements IAstVisitor {
     public void visit(Identifier node) {
         VariableSymbol symbol = resolveVariableSymbol(node.name, curSymbolTable);
         if (symbol == null) {
+            //System.out.println("have not find symbol");
             errorListener.addError(node.location, "cannot resolve variable");
             node.type = null;
         } else {
             node.type = symbol.variableType;
+            if (node.type == null) {
+                System.out.println("");
+            }
             node.symbol = symbol;
         }
     }
@@ -444,16 +491,33 @@ public class SymbolTableBuilder implements IAstVisitor {
             }
         } else {
             ClassType classType = (ClassType) node.object.type;
-            SymbolTable symbolTable = classType.symbol.symbolTable;
-            enter(symbolTable);
-            if (node.methodCall != null) {
-                node.methodCall.accept(this);
-                node.type = node.methodCall.type;
-            } else {
-                node.fieldAccess.accept(this);
-                node.type = node.fieldAccess.type;
+            /*if (classType == null) {
+                System.out.println("no such class type");
             }
-            leave();
+            SymbolTable symbolTable = classType.symbol.symbolTable;
+            enter(symbolTable);*/
+            if (node.methodCall != null) {
+                node.methodCall.functionSymbol = resolveFunctionSymbol(node.methodCall.functionName, classType.symbol.symbolTable);
+                if (node.methodCall.functionSymbol == null) {
+                    node.type = null;
+                    errorListener.addError(node.location, "don't have such method");
+                } else {
+                    node.methodCall.type = node.methodCall.functionSymbol.returnType;
+                    node.type = node.methodCall.type;
+                    for (Expression e : node.methodCall.arguments)
+                        e.accept(this);
+                }
+            } else {
+                node.fieldAccess.symbol = resolveVariableSymbol(node.fieldAccess.name, classType.symbol.symbolTable);
+                if (node.fieldAccess.symbol == null) {
+                    node.type = null;
+                    errorListener.addError(node.location, "don't have such component");
+                } else {
+                    node.fieldAccess.type = node.fieldAccess.symbol.variableType;
+                    node.type = node.fieldAccess.type;
+                }
+            }
+            //leave();
         }
     }
 

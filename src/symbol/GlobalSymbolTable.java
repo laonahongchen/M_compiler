@@ -99,7 +99,7 @@ public class GlobalSymbolTable extends SymbolTable{
         f.returnType = voidType();
         f.location = new Location(0, 0);
         f.parameterTypes.add(stringType());
-        f.parameterNames.add("this");
+        f.parameterNames.add("str");
         return f;
     }
 
@@ -109,7 +109,7 @@ public class GlobalSymbolTable extends SymbolTable{
         f.returnType = voidType();
         f.location = new Location(0, 0);
         f.parameterTypes.add(stringType());
-        f.parameterNames.add("this");
+        f.parameterNames.add("str");
         return f;
     }
 
