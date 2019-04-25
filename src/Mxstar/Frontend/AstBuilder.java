@@ -234,6 +234,11 @@ public class AstBuilder extends MxstarBaseVisitor<Object> {
                 jumpStmt.retExpr = (Expression)ctx.expression().accept(this);
         } else
             jumpStmt.isReturn = false;
+//        if (ctx.BREAK() != null) {
+          jumpStmt.isBreak = ctx.BREAK() != null;
+//        } else {
+//            jumpStmt.isBreak = false;
+//        }
 //        System.out.println(jumpStmt.location);
 //        System.out.println(jumpStmt.isReturn);
         return jumpStmt;
