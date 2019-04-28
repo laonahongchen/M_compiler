@@ -4,15 +4,20 @@ import Mxstar.SemanticError.CompileErrorListener;
 import Mxstar.Ast.*;
 import Mxstar.Symbol.*;
 
+import java.util.HashMap;
+
 public class SymbolTableBuilder implements IAstVisitor {
     public SymbolTable curSymbolTable;
     public GlobalSymbolTable globalSymbolTable;
     public CompileErrorListener errorListener;
+    public FunctionSymbol curFunc;
+    public HashMap<SymbolTable, ClassSymbol> symbolTableToClassSymbol;
 
     public SymbolTableBuilder () {
         globalSymbolTable = new GlobalSymbolTable();
         curSymbolTable = globalSymbolTable;
         errorListener = new CompileErrorListener();
+        symbolTableToClassSymbol = new HashMap<>();
     }
 
     public SymbolTableBuilder(CompileErrorListener errorListener) {
@@ -20,6 +25,7 @@ public class SymbolTableBuilder implements IAstVisitor {
         //curSymbolTable = new SymbolTable();
         globalSymbolTable = new GlobalSymbolTable();
         curSymbolTable = globalSymbolTable;
+        symbolTableToClassSymbol = new HashMap<>();
     }
 
     private void enter(SymbolTable symbolTable) {
@@ -37,7 +43,7 @@ public class SymbolTableBuilder implements IAstVisitor {
         VariableSymbol symbol = symbolTable.getVariableSymbol(name);
         if (symbol != null) {
 //            if(symbol instanceof  VariableSymbol)
-                return (VariableSymbol) symbol;
+                return symbol;
 //            else {
 //                System.out.println("wrong type");
 //                return null;
@@ -109,7 +115,9 @@ public class SymbolTableBuilder implements IAstVisitor {
         FunctionSymbol functionSymbol = new FunctionSymbol();
         functionSymbol.location = node.location;
         functionSymbol.returnType = resolveVariableType(node.retType);
-        functionSymbol.name = node.name;
+        functionSymbol.name = (curClass == null ? "" : curClass.name + ".") + node.name;
+//        System.out.println("register: " + functionSymbol.name);
+        functionSymbol.isGlobalFunction = curClass == null;
         functionSymbol.funtionSymbolTable = null;
         if (curClass != null) {
             functionSymbol.parameterNames.add("this");
@@ -148,7 +156,6 @@ public class SymbolTableBuilder implements IAstVisitor {
     private void registerClass(ClassDeclaration node) {
         if (globalSymbolTable.getClassSymbol(node.name) != null) {
             errorListener.addError(node.location, "the class has already been defined!");
-            return ;
         } else {
             ClassSymbol classSymbol = new ClassSymbol();
             classSymbol.name = node.name;
@@ -180,16 +187,16 @@ public class SymbolTableBuilder implements IAstVisitor {
         if (type != null) {
             if (curSymbolTable.getVariableSymbol(node.name) != null) {
                 errorListener.addError(node.location, "the variable has already been defined");
-                return ;
             }  else if (curSymbolTable.getFunctionSymbol(node.name) != null) {
                 errorListener.addError(node.location, "the variable has already been defined");
-                return ;
             }  else if (curSymbolTable.parent == null && globalSymbolTable.getClassSymbol(node.name) != null) {
                 errorListener.addError(node.location, "there is a class already been defined in the same field with this variable and has the same name.");
-                return ;
             } else {
 //                System.out.println("define " + node.name);
-                node.symbol = new VariableSymbol(node.name, type,node.location);
+                if (symbolTableToClassSymbol == null) {
+                    System.out.println("node wrong");
+                }
+                node.symbol = new VariableSymbol(node.name, type,node.location, symbolTableToClassSymbol.containsKey(curSymbolTable), curSymbolTable == globalSymbolTable);
                 curSymbolTable.putVariableSymbol(node.name, node.symbol);
             }
         }
@@ -215,7 +222,8 @@ public class SymbolTableBuilder implements IAstVisitor {
     }
 
     private void defineFunction(FuncDeclaration node, ClassSymbol classSymbol) {
-        FunctionSymbol functionSymbol = (FunctionSymbol)curSymbolTable.getFunctionSymbol(node.name);
+        FunctionSymbol functionSymbol = curSymbolTable.getFunctionSymbol(node.name);
+        curFunc = functionSymbol;
 //        System.out.println("defining function" + node.name );
         //if (functionSymbol == null)
         //    System.out.println("can not find such function" + node.name );
@@ -237,6 +245,9 @@ public class SymbolTableBuilder implements IAstVisitor {
         }
 
         leave();
+        curFunc.finish();
+        curFunc = null;
+
         /*if (node.name.equals( "init")) {
             System.out.println("now out init");
             getCurrentDepth();
@@ -407,6 +418,14 @@ public class SymbolTableBuilder implements IAstVisitor {
         } else {
             node.type = symbol.variableType;
             node.symbol = symbol;
+            if (symbol.isGlobalVariable) {
+                if (curFunc == null) {
+                    globalSymbolTable.globalInitVars.add(symbol);
+                } else {
+                    curFunc.usedGlobalVariables.add(symbol);
+                    curFunc.withSideEffect = true;
+                }
+            }
         }
     }
 
@@ -486,12 +505,10 @@ public class SymbolTableBuilder implements IAstVisitor {
         node.object.accept(this);
         if (node.object.type instanceof  PrimitiveType) {
             errorListener.addError(node.location, "this is not a class");
-            return ;
         } else if (node.object.type instanceof ArrayType) {
             ArrayType arrayType = (ArrayType)node.object.type;
-            if (node.methodCall == null || node.methodCall.functionName.equals("size") == false) {
+            if (node.methodCall == null || !node.methodCall.functionName.equals("size")) {
                 errorListener.addError(node.location, "this is not a class");
-                return ;
             } else {
                 node.type = new PrimitiveType("int", globalSymbolTable.getPrimitiveSymbol("int"));
             }
@@ -503,10 +520,10 @@ public class SymbolTableBuilder implements IAstVisitor {
             SymbolTable symbolTable = classType.Mxstar.Symbol.symbolTable;
             enter(symbolTable);*/
             if (node.methodCall != null) {
-                if (classType.symbol == null) {
+//                if (classType.symbol == null) {
 
-                    System.out.println(classType.name);
-                }
+//                    System.out.println(classType.name);
+//                }
                 node.methodCall.functionSymbol = resolveFunctionSymbol(node.methodCall.functionName, classType.symbol.symbolTable);
                 if (node.methodCall.functionSymbol == null) {
                     node.type = null;

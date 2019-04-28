@@ -32,19 +32,19 @@ public class SemanticChecker implements IAstVisitor {
         for (VariableDeclaration d : node.globalVariables) {
             d.accept(this);
         }
-        TypeSymbol functionSymbol = globalSymbolTable.getFunctionSymbol("main");
-        if (!(functionSymbol instanceof FunctionSymbol)) {
+        FunctionSymbol functionSymbol = globalSymbolTable.getFunctionSymbol("main");
+        if (functionSymbol == null) {
             errorListener.addError(node.location, "there are some problem with the main function.");
             return ;
         }
-        FunctionSymbol symbol = (FunctionSymbol) functionSymbol;
+        FunctionSymbol symbol = functionSymbol;
         if (!(symbol.returnType instanceof PrimitiveType && ((PrimitiveType)symbol.returnType).name.equals("int"))) {
             errorListener.addError(node.location, "the main should has return value with integer.");
             return ;
         }
         if (symbol.parameterNames.size() != 0) {
             errorListener.addError(node.location, "the main should not have any parameters.");
-            return ;
+
         }
     }
 
@@ -129,10 +129,9 @@ public class SemanticChecker implements IAstVisitor {
 
     @Override
     public void visit(JumpStmt node) {
-        if (node.isReturn == false) {
+        if (!node.isReturn) {
             if (loop == 0) {
                 errorListener.addError(node.location, "here is not in a loop!");
-                return ;
             }
         } else {//return here
 //            System.out.println("return!!!");
@@ -151,7 +150,6 @@ public class SemanticChecker implements IAstVisitor {
 //            System.out.println(retType instanceof ClassType);
             if (!retType.match(requireType)) {
                 errorListener.addError(node.location, "the return type does not match");
-                return ;
             }
         }
     }
@@ -195,10 +193,10 @@ public class SemanticChecker implements IAstVisitor {
 
     @Override
     public void visit(Identifier node) {
-        if (node.name.equals("this"))
-            node.modifiable = false;
-        else
-            node.modifiable = true;
+        //if (node.name.equals("this"))
+        node.modifiable = (!node.name.equals("this"));
+        //else
+        //    node.modifiable = true;
     }
 
     @Override
