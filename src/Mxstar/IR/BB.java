@@ -11,8 +11,8 @@ import java.util.List;
 public class BB {
     public String hint;
     public Func func;
-    public IRInst head;
-    public IRInst tail;
+    public IRInst head = null;
+    public IRInst tail = null;
 
     public List<BB> frontiers;
     public List<BB> successers;

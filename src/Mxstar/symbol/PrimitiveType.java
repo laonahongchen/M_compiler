@@ -19,10 +19,8 @@ public class PrimitiveType extends VariableType {
     public boolean match(VariableType other) {
         if(other instanceof ClassType && ((ClassType) other).name.equals("null")) {
             return false;
-        } else if(other instanceof PrimitiveType && ((PrimitiveType) other).name.equals(name))
-            return true;
-        else {
-            return false;
+        } else  {
+            return other instanceof PrimitiveType && ((PrimitiveType) other).name.equals(name);
         }
     }
 

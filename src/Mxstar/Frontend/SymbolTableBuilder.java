@@ -115,7 +115,9 @@ public class SymbolTableBuilder implements IAstVisitor {
         FunctionSymbol functionSymbol = new FunctionSymbol();
         functionSymbol.location = node.location;
         functionSymbol.returnType = resolveVariableType(node.retType);
-        functionSymbol.name = node.name;
+        functionSymbol.name = (curClass == null ? "" : curClass.name + ".") + node.name;
+//        System.out.println("register: " + functionSymbol.name);
+        functionSymbol.isGlobalFunction = curClass == null;
         functionSymbol.funtionSymbolTable = null;
         if (curClass != null) {
             functionSymbol.parameterNames.add("this");
@@ -243,7 +245,9 @@ public class SymbolTableBuilder implements IAstVisitor {
         }
 
         leave();
+        curFunc.finish();
         curFunc = null;
+
         /*if (node.name.equals( "init")) {
             System.out.println("now out init");
             getCurrentDepth();
@@ -516,10 +520,10 @@ public class SymbolTableBuilder implements IAstVisitor {
             SymbolTable symbolTable = classType.Mxstar.Symbol.symbolTable;
             enter(symbolTable);*/
             if (node.methodCall != null) {
-                if (classType.symbol == null) {
+//                if (classType.symbol == null) {
 
-                    System.out.println(classType.name);
-                }
+//                    System.out.println(classType.name);
+//                }
                 node.methodCall.functionSymbol = resolveFunctionSymbol(node.methodCall.functionName, classType.symbol.symbolTable);
                 if (node.methodCall.functionSymbol == null) {
                     node.type = null;

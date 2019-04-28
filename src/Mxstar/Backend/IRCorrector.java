@@ -148,6 +148,16 @@ public class IRCorrector implements IIRVisitor {
     }
 
     @Override
+    public void visit(Cdq inst) {
+
+    }
+
+    @Override
+    public void visit(Lea inst) {
+
+    }
+
+    @Override
     public void visit(IRInst inst) {
 
     }
@@ -183,6 +193,11 @@ public class IRCorrector implements IIRVisitor {
 
     @Override
     public void visit(StaticData operand) {
+
+    }
+
+    @Override
+    public void visit(Constant operand) {
 
     }
 }

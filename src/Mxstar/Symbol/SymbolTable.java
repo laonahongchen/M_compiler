@@ -5,6 +5,8 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+
+import Mxstar.Config_Cons;
 import org.antlr.v4.misc.OrderedHashMap;
 
 public class SymbolTable {
@@ -43,6 +45,8 @@ public class SymbolTable {
     }
     public void putVariableSymbol(String name, VariableSymbol variableSymbol) {
         variables.put(name, variableSymbol);
+        offset.put(name, curOffset);
+        curOffset += Config_Cons.REGISTER_WIDTH;
     }
     public void putFunctionSymbol(String name, FunctionSymbol functionSymbol) {
         functions.put(name, functionSymbol);

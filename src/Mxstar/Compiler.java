@@ -1,11 +1,13 @@
 package Mxstar;
 
 import Mxstar.Ast.AstProgram;
+import Mxstar.Backend.*;
 import Mxstar.Frontend.*;
+import Mxstar.IR.IRProgram;
+import Mxstar.IR.RegisterSet;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
-import Mxstar.SemanticError.CompileErrorListener;
-import Mxstar.SemanticError.ParserErrorListener;
+import Mxstar.SemanticError.*;
 import Mxstar.Parser.MxstarLexer;
 import Mxstar.Parser.MxstarParser;
 import Mxstar.Symbol.GlobalSymbolTable;
@@ -22,8 +24,9 @@ public class Compiler {
         exit(0);
     }
     public static void compile() throws IOException{
-        BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+//        BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
         //InputStream is = Config.in;
+        FileInputStream is = new FileInputStream("program.txt");
         ANTLRInputStream ais = new ANTLRInputStream(is);
         MxstarLexer mstarLexer = new MxstarLexer(ais);
         CommonTokenStream tokens = new CommonTokenStream(mstarLexer);
@@ -70,7 +73,33 @@ public class Compiler {
             errorListener.printTo(System.err);
             exit(1);
         }
-        System.out.print("compiler success");
-        //exit(0);
+
+        RegisterSet.init();
+//        System.out.print("compiler success");
+        IRBuilder irBuilder = new IRBuilder(globalSymbolTable);
+        astProgram.accept(irBuilder);
+        IRProgram irProgram = irBuilder.irProgram;
+        IRPrinter irPrinter = new IRPrinter();
+        irPrinter.visit(irProgram);
+        irPrinter.printTo(System.err);
+
+        IRCorrector irCorrector = new IRCorrector();
+        irProgram.accept(irCorrector);
+
+        switch (Config_Cons.allocator) {
+            case NAIVE_ALLOCATOR:
+                NaiveAllocator naiveAllocator = new NaiveAllocator(irProgram);
+                break;
+            default:
+                break;
+        }
+
+        StackFrameBuilder stackFrameBuilder = new StackFrameBuilder(irProgram);
+        stackFrameBuilder.run();
+        IRPrinter.showNasm = true;
+        irPrinter.stringBuilder = new StringBuilder();
+        irPrinter.visit(irProgram);
+        PrintStream printStream = new PrintStream("mx.asm");
+        irPrinter.printTo(printStream);
     }
 }

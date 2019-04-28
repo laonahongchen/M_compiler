@@ -1,5 +1,7 @@
 package Mxstar.Ast;
 
+import Mxstar.Symbol.ClassSymbol;
+
 import java.util.List;
 
 public class ClassDeclaration extends  Declaration {
@@ -8,6 +10,8 @@ public class ClassDeclaration extends  Declaration {
     public List<VariableDeclaration> fields;
     public List<FuncDeclaration> methods;
     public FuncDeclaration construct = null;
+
+    public ClassSymbol symbol;
 
     @Override
     public String toString() {

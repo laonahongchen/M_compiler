@@ -42,9 +42,6 @@ public class IRBuilder implements IAstVisitor {
     private static Func library_string_substring;
     private static Func library_string_parseInt;
     private static Func library_string_ord;
-    private static Func library_hasValue;
-    private static Func library_setValue;
-    private static Func library_getValue;
     private static Func library_init;
     private static Func external_malloc;
     private static Func library_stringComp;
@@ -59,6 +56,11 @@ public class IRBuilder implements IAstVisitor {
         this.loopConditionBB = new Stack<>();
         this.funcDeclarationMap = new HashMap<>();
         this.functionMap = new HashMap<>();
+
+        this.trueBBMap = new HashMap<>();
+        this.falseBBMap = new HashMap<>();
+        this.exprResultMap = new HashMap<>();
+        this.assignToMap = new HashMap<>();
         initLibraryFunc();
 
     }
@@ -86,9 +88,6 @@ public class IRBuilder implements IAstVisitor {
         library_init = new Func(Func.Type.Library, "init", true);
         library_stringComp = new Func(Func.Type.Library, "stringComp", true);
         library_stringConcat = new Func(Func.Type.Library, "stringConcat", true);
-        library_hasValue = new Func(Func.Type.Library, "hasValue", true);
-        library_getValue = new Func(Func.Type.Library, "getValue", true);
-        library_setValue = new Func(Func.Type.Library, "setValue", true);
 
         external_malloc = new Func(Func.Type.External, "malloc", true);
     }
@@ -243,7 +242,9 @@ public class IRBuilder implements IAstVisitor {
             statement.accept(this);
         }
         if (!(curBB.tail instanceof Ret)) {
+//            System.out.println(curBB.tail.toString());
             if (isVoidType(node.symbol.returnType)) {
+//                System.out.println("current in " + curBB.hint + "without Ret");
                 curBB.append(new Ret(curBB));
             } else {
                 curBB.append(new Mov(curBB, vrax, new Imm(0)));
@@ -254,7 +255,8 @@ public class IRBuilder implements IAstVisitor {
         LinkedList<Ret> returnInst = new LinkedList<>();
         for (BB bb: curFunc.basicblocks) {
             for (IRInst inst = bb.head; inst != null; inst = inst.next) {
-                returnInst.add((Ret) inst);
+                if (inst instanceof Ret)
+                    returnInst.add((Ret) inst);
             }
         }
 
@@ -345,14 +347,18 @@ public class IRBuilder implements IAstVisitor {
         if (node.isBreak) {
             curBB.append(new Jump(curBB, loopAfterBB.peek()));
         } else if (node.isReturn) {
+
             if (node.retExpr != null) {
-                if (isVoidType(node.retExpr.type)) {
+                System.out.println(node.location);
+                if (isBoolType(node.retExpr.type)) {
                     boolAssign(node.retExpr, vrax);
                 } else {
                     node.retExpr.accept(this);
                     curBB.append(new Mov(curBB, vrax, exprResultMap.get(node.retExpr)));
                 }
             }
+
+            curBB.append(new Ret(curBB));
         }
     }
 
@@ -479,11 +485,16 @@ public class IRBuilder implements IAstVisitor {
         LinkedList<Operand> args = new LinkedList<>();
         if (!node.functionSymbol.isGlobalFunction)
             args.add(curThisPointer);
+        System.out.println(node.functionName + node.location + args.size());
         for (int i = 0; i < node.arguments.size(); ++i) {
             Expression e = node.arguments.get(i);
             e.accept(this);
+            if (!exprResultMap.containsKey(e) || exprResultMap.get(e) == null) {
+                System.out.println(e.location);
+            }
             args.add(exprResultMap.get(e));
         }
+
         curBB.append(new Call(curBB, vrax, functionMap.get(node.functionName), args));
         if (trueBBMap.containsKey(node)) {
             curBB.append(new Cjump(curBB, vrax, Cjump.CompareOP.NE, new Imm(0), trueBBMap.get(node), falseBBMap.get(node)));
@@ -531,6 +542,11 @@ public class IRBuilder implements IAstVisitor {
             if (dims.size() == 1 ) {
                 Operand pointer = allocateArray(new LinkedList<>(), baseBytes, constructor);
                 curBB.append(new Mov(curBB,new Memory(addr, size, Config_Cons.REGISTER_WIDTH), pointer));
+            } else {
+                LinkedList<Operand> restDimensions = new LinkedList<>(dims);
+                restDimensions.removeFirst();
+                Operand pointer = allocateArray(restDimensions, baseBytes, constructor);
+                curBB.append(new Mov(curBB, new Memory(addr, size, Config_Cons.REGISTER_WIDTH), pointer));
             }
             curBB.append(new UnaryInst(curBB, UnaryInst.UnaryOp.DEC, size));
             curBB.append(new Jump(curBB, condBB));
@@ -572,7 +588,7 @@ public class IRBuilder implements IAstVisitor {
             if (node.type instanceof ClassType && ((ClassType)node.type).name.equals("string"))
                 bytes = Config_Cons.REGISTER_WIDTH * 2;
             else
-                bytes = node.type.getBytes();
+                bytes = node.type.getBytes() * node.restDimension;
             Operand pointer = allocateArray(dims, bytes, constructor);
             exprResultMap.put(node, pointer);
         }
@@ -592,7 +608,10 @@ public class IRBuilder implements IAstVisitor {
             if (node.fieldAccess != null) {
                 operand = new Memory(baseAddr, new Imm(classType.symbol.symbolTable.getVariableOffset(node.fieldAccess.name)));
             } else {
-                Func func = functionMap.get(node.methodCall.functionName);
+                Func func = functionMap.get(node.methodCall.functionSymbol.name);
+                if (func == null) {
+                    System.out.println(node.methodCall.functionSymbol.name);
+                }
                 LinkedList<Operand> args = new LinkedList<>();
                 args.add(baseAddr);
                 for (Expression expression: node.methodCall.arguments) {
@@ -805,7 +824,7 @@ public class IRBuilder implements IAstVisitor {
             case "<": cop = Cjump.CompareOP.L; break;
             case "<=": cop = Cjump.CompareOP.LE; break;
             case "==": cop = Cjump.CompareOP.E; break;
-            case "!=": cop = Cjump.CompareOP.NE; break;
+            case "!=": System.out.println("here is ne!" + lhs.location);cop = Cjump.CompareOP.NE; break;
         }
         if (lhs.type instanceof ClassType && ((ClassType)lhs.type).name.equals("string")) {
             VirReg result = new VirReg("");

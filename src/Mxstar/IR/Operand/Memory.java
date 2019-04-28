@@ -22,8 +22,8 @@ public class Memory extends Address {
         this.scale = scale;
     }
 
-    public Memory(Register base, int scale, Constant constant) {
-        this.base = base;
+    public Memory(Register index, int scale, Constant constant) {
+        this.index = index;
         this.scale = scale;
         this.constant = constant;
     }

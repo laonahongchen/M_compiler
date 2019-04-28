@@ -5,7 +5,7 @@ import Mxstar.Symbol.VariableSymbol;
 public class VariableDeclaration extends  Declaration {
     public TypeNode type;
     public String name;
-    public Expression init = null;
+    public Expression init;
 
     public VariableSymbol symbol = null;
 

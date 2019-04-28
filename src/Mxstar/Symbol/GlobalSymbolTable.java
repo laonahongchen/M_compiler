@@ -53,18 +53,19 @@ public class GlobalSymbolTable extends SymbolTable{
 
     private FunctionSymbol stringLength() {
         FunctionSymbol f = new FunctionSymbol();
-        f.name = "length";
+        f.name = "string.length";
         f.parameterTypes.add(stringType());
         f.parameterNames.add("this");
         f.location = new Location(0, 0);
         f.returnType = intType();
-
+        f.withSideEffect = false;
+        f.isGlobalFunction = true;
         return f;
     }
 
     private  FunctionSymbol stringSubString() {
         FunctionSymbol f = new FunctionSymbol();
-        f.name = "substring";
+        f.name = "string.substring";
         f.location = new Location(0, 0);
         f.parameterTypes.add(stringType());
         f.parameterNames.add("this");
@@ -73,28 +74,34 @@ public class GlobalSymbolTable extends SymbolTable{
         f.parameterTypes.add(intType());
         f.parameterNames.add("right");
         f.parameterTypes.add(intType());
+        f.withSideEffect = false;
+        f.isGlobalFunction = true;
         return f;
     }
 
     private  FunctionSymbol stringParseInt() {
         FunctionSymbol f = new FunctionSymbol();
-        f.name = "parseInt";
+        f.name = "string.parseInt";
         f.location = new Location(0,0);
         f.parameterTypes.add(stringType());
         f.parameterNames.add("this");
         f.returnType = intType();
+        f.withSideEffect = false;
+        f.isGlobalFunction = true;
         return f;
     }
 
     private FunctionSymbol stringOrd() {
         FunctionSymbol f = new FunctionSymbol();
-        f.name = "ord";
+        f.name = "string.ord";
         f.location = new Location(0, 0);
         f.parameterTypes.add(stringType());
         f.parameterNames.add("this");
         f.parameterTypes.add(intType());
         f.parameterNames.add("pos");
         f.returnType = intType();
+        f.withSideEffect = false;
+        f.isGlobalFunction = true;
         return f;
     }
 
@@ -105,6 +112,8 @@ public class GlobalSymbolTable extends SymbolTable{
         f.location = new Location(0, 0);
         f.parameterTypes.add(stringType());
         f.parameterNames.add("str");
+        f.withSideEffect = true;
+        f.isGlobalFunction = true;
         return f;
     }
 
@@ -115,6 +124,8 @@ public class GlobalSymbolTable extends SymbolTable{
         f.location = new Location(0, 0);
         f.parameterTypes.add(stringType());
         f.parameterNames.add("str");
+        f.withSideEffect = true;
+        f.isGlobalFunction = true;
         return f;
     }
 
@@ -123,6 +134,8 @@ public class GlobalSymbolTable extends SymbolTable{
         f.name = "getString";
         f.returnType = stringType();
         f.location = new Location(0, 0);
+        f.withSideEffect = true;
+        f.isGlobalFunction = true;
         return f;
     }
 
@@ -131,6 +144,8 @@ public class GlobalSymbolTable extends SymbolTable{
         f.name = "getInt";
         f.returnType = intType();
         f.location = new Location(0, 0);
+        f.withSideEffect = true;
+        f.isGlobalFunction = true;
         return f;
     }
 
@@ -141,6 +156,8 @@ public class GlobalSymbolTable extends SymbolTable{
         f.location = new Location(0, 0);
         f.parameterTypes.add(intType());
         f.parameterNames.add("i");
+        f.withSideEffect = false;
+        f.isGlobalFunction = true;
         return f;
     }
 

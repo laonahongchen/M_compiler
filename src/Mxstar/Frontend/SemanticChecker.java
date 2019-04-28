@@ -194,7 +194,7 @@ public class SemanticChecker implements IAstVisitor {
     @Override
     public void visit(Identifier node) {
         //if (node.name.equals("this"))
-        node.modifiable = node.name.equals("this");
+        node.modifiable = (!node.name.equals("this"));
         //else
         //    node.modifiable = true;
     }
