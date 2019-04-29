@@ -115,8 +115,8 @@ public class SymbolTableBuilder implements IAstVisitor {
         FunctionSymbol functionSymbol = new FunctionSymbol();
         functionSymbol.location = node.location;
         functionSymbol.returnType = resolveVariableType(node.retType);
-        functionSymbol.name = (curClass == null ? "" : curClass.name + ".") + node.name;
-//        System.out.println("register: " + functionSymbol.name);
+        functionSymbol.name = (curClass != null ? curClass.name + "." : "") + node.name;
+        System.out.println("register: " + functionSymbol.name);
         functionSymbol.isGlobalFunction = curClass == null;
         functionSymbol.funtionSymbolTable = null;
         if (curClass != null) {
@@ -222,11 +222,11 @@ public class SymbolTableBuilder implements IAstVisitor {
     }
 
     private void defineFunction(FuncDeclaration node, ClassSymbol classSymbol) {
-        FunctionSymbol functionSymbol = curSymbolTable.getFunctionSymbol(node.name);
+        FunctionSymbol functionSymbol = curSymbolTable.getFunctionSymbol(node.symbol.name);
         curFunc = functionSymbol;
 //        System.out.println("defining function" + node.name );
-        //if (functionSymbol == null)
-        //    System.out.println("can not find such function" + node.name );
+        if (functionSymbol == null)
+            System.out.println("can not find such function" + node.symbol.name );
 
         functionSymbol.funtionSymbolTable = new SymbolTable(curSymbolTable);
         enter(functionSymbol.funtionSymbolTable);
@@ -258,6 +258,7 @@ public class SymbolTableBuilder implements IAstVisitor {
     private void defineClassFunction(ClassDeclaration node) {
         ClassSymbol classSymbol = globalSymbolTable.getClassSymbol(node.name);
         enter(classSymbol.symbolTable);
+//        if (node.construct != null)
         defineFunction(node.construct, classSymbol);
         for (FuncDeclaration d: node.methods) {
             defineFunction(d, classSymbol);
