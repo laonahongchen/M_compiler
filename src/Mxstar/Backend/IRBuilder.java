@@ -349,7 +349,7 @@ public class IRBuilder implements IAstVisitor {
         } else if (node.isReturn) {
 
             if (node.retExpr != null) {
-                System.out.println(node.location);
+//                System.out.println(node.location);
                 if (isBoolType(node.retExpr.type)) {
                     boolAssign(node.retExpr, vrax);
                 } else {
@@ -412,6 +412,7 @@ public class IRBuilder implements IAstVisitor {
             String fieldName = node.name;
             int offset = curClassSymbol.symbolTable.getVariableOffset(fieldName);
             operand = new Memory(curThisPointer, new Imm(offset));
+//            System.out.println("Identifier:" + node.location);
         } else {
             operand = node.symbol.virReg;
             if (node.symbol.isGlobalVariable)
@@ -485,13 +486,13 @@ public class IRBuilder implements IAstVisitor {
         LinkedList<Operand> args = new LinkedList<>();
         if (!node.functionSymbol.isGlobalFunction)
             args.add(curThisPointer);
-        System.out.println(node.functionName + node.location + args.size());
+//        System.out.println(node.functionName + node.location + args.size());
         for (int i = 0; i < node.arguments.size(); ++i) {
             Expression e = node.arguments.get(i);
             e.accept(this);
-            if (!exprResultMap.containsKey(e) || exprResultMap.get(e) == null) {
-                System.out.println(e.location);
-            }
+//            if (!exprResultMap.containsKey(e) || exprResultMap.get(e) == null) {
+//                System.out.println(e.location);
+//            }
             args.add(exprResultMap.get(e));
         }
 
@@ -609,9 +610,9 @@ public class IRBuilder implements IAstVisitor {
                 operand = new Memory(baseAddr, new Imm(classType.symbol.symbolTable.getVariableOffset(node.fieldAccess.name)));
             } else {
                 Func func = functionMap.get(node.methodCall.functionSymbol.name);
-                if (func == null) {
-                    System.out.println(node.methodCall.functionSymbol.name);
-                }
+//                if (func == null) {
+//                    System.out.println(node.methodCall.functionSymbol.name);
+//                }
                 LinkedList<Operand> args = new LinkedList<>();
                 args.add(baseAddr);
                 for (Expression expression: node.methodCall.arguments) {
@@ -824,7 +825,7 @@ public class IRBuilder implements IAstVisitor {
             case "<": cop = Cjump.CompareOP.L; break;
             case "<=": cop = Cjump.CompareOP.LE; break;
             case "==": cop = Cjump.CompareOP.E; break;
-            case "!=": System.out.println("here is ne!" + lhs.location);cop = Cjump.CompareOP.NE; break;
+            case "!=": cop = Cjump.CompareOP.NE; break;
         }
         if (lhs.type instanceof ClassType && ((ClassType)lhs.type).name.equals("string")) {
             VirReg result = new VirReg("");
@@ -865,8 +866,13 @@ public class IRBuilder implements IAstVisitor {
 
     @Override
     public void visit(AssignExpr node) {
+//        System.out.println(node.lhs.location + ":" + (node.lhs instanceof Identifier));
         node.lhs.accept(this);
         Operand lval = exprResultMap.get(node.lhs);
+        assert  lval instanceof Address;
+        if (lval == null) {
+            System.out.println(node.location);
+        }
         assign(node.rhs, (Address)lval);
     }
 }

@@ -226,6 +226,9 @@ public class IRPrinter implements IIRVisitor {
         if (inst.dest == inst.src)
             return ;
         stringBuilder.append("\tmov ");
+//        if (inst.dest == null) {
+//            System.out.println("inst in null");
+//        }
         inst.dest.accept(this);
         stringBuilder.append(", ");
         inst.src.accept(this);

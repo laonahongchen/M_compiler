@@ -322,6 +322,7 @@ public class AstBuilder extends MxstarBaseVisitor<Object> {
             Identifier identifier = new Identifier();
             identifier.name = ctx.Identifier().getSymbol().getText();
             identifier.location = new Location(ctx);
+//            System.out.println(identifier.location);
             return identifier;
         } else if (ctx.THIS() != null) {
             Identifier identifier = new Identifier();
@@ -374,6 +375,7 @@ public class AstBuilder extends MxstarBaseVisitor<Object> {
     @Override public AssignExpr visitAssignExpr(AssignExprContext ctx) {
         AssignExpr assignExpr = new AssignExpr();
         assignExpr.lhs = (Expression)ctx.expression(0).accept(this);
+//        System.out.println(assignExpr.lhs.location + ":" + (assignExpr.lhs instanceof Identifier));
         assignExpr.rhs = (Expression)ctx.expression(1).accept(this);
         assignExpr.location = new Location(ctx);
         return assignExpr;

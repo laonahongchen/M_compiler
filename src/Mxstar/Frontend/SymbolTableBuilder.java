@@ -116,7 +116,7 @@ public class SymbolTableBuilder implements IAstVisitor {
         functionSymbol.location = node.location;
         functionSymbol.returnType = resolveVariableType(node.retType);
         functionSymbol.name = (curClass != null ? curClass.name + "." : "") + node.name;
-        System.out.println("register: " + functionSymbol.name);
+//        System.out.println("register: " + functionSymbol.name);
         functionSymbol.isGlobalFunction = curClass == null;
         functionSymbol.funtionSymbolTable = null;
         if (curClass != null) {
@@ -138,7 +138,7 @@ public class SymbolTableBuilder implements IAstVisitor {
     }
 
     private  FunctionSymbol resolveFunctionSymbol(String name, SymbolTable symbolTable) {
-        System.out.println(name);
+//        System.out.println(name);
         FunctionSymbol symbol = symbolTable.getFunctionSymbol(name);
         if (symbol != null) {
 //            if (symbol instanceof FunctionSymbol)
@@ -157,14 +157,18 @@ public class SymbolTableBuilder implements IAstVisitor {
     private void registerClass(ClassDeclaration node) {
         if (globalSymbolTable.getClassSymbol(node.name) != null) {
             errorListener.addError(node.location, "the class has already been defined!");
+        } else if (globalSymbolTable.getFunctionSymbol(node.name) != null) {
+            errorListener.addError(node.location, "the class has already been defined as a function!");
         } else {
-            ClassSymbol classSymbol = new ClassSymbol();
-            classSymbol.name = node.name;
-            classSymbol.location = node.location;
-            classSymbol.symbolTable = new SymbolTable(globalSymbolTable);
-            classSymbol.variableType = new ClassType(node.name, classSymbol);
+                ClassSymbol classSymbol = new ClassSymbol();
+                classSymbol.name = node.name;
+                classSymbol.location = node.location;
+                classSymbol.symbolTable = new SymbolTable(globalSymbolTable);
+                classSymbol.variableType = new ClassType(node.name, classSymbol);
+                node.symbol = classSymbol;
 
-            globalSymbolTable.putClassSymbol(node.name, classSymbol);
+                globalSymbolTable.putClassSymbol(node.name, classSymbol);
+                symbolTableToClassSymbol.put(classSymbol.symbolTable, classSymbol);
         }
     }
 
@@ -226,8 +230,8 @@ public class SymbolTableBuilder implements IAstVisitor {
         FunctionSymbol functionSymbol = curSymbolTable.getFunctionSymbol(node.name);
         curFunc = functionSymbol;
 //        System.out.println("defining function" + node.name );
-        if (functionSymbol == null)
-            System.out.println("can not find such function" + node.name );
+//        if (functionSymbol == null)
+//            System.out.println("can not find such function" + node.name );
 
         functionSymbol.funtionSymbolTable = new SymbolTable(curSymbolTable);
         enter(functionSymbol.funtionSymbolTable);
@@ -485,8 +489,8 @@ public class SymbolTableBuilder implements IAstVisitor {
         }
         int dimension = node.expressionDimension.size() + node.restDimension;
         node.type = resolveVariableType(node.typeNode);
-        System.out.println(node.location);
-        System.out.println(dimension);
+//        System.out.println(node.location);
+//        System.out.println(dimension);
         if (node.type == null) {
             errorListener.addError(node.location, "cannot resolve the type 2");
             node.type = null;
