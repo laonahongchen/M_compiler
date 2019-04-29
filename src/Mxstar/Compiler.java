@@ -24,9 +24,9 @@ public class Compiler {
         exit(0);
     }
     public static void compile() throws IOException{
-        BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+//        BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
         //InputStream is = Config.in;
-//        FileInputStream is = new FileInputStream("program.txt");
+        FileInputStream is = new FileInputStream("program.txt");
         ANTLRInputStream ais = new ANTLRInputStream(is);
         MxstarLexer mstarLexer = new MxstarLexer(ais);
         CommonTokenStream tokens = new CommonTokenStream(mstarLexer);
@@ -79,12 +79,17 @@ public class Compiler {
         IRBuilder irBuilder = new IRBuilder(globalSymbolTable);
         astProgram.accept(irBuilder);
         IRProgram irProgram = irBuilder.irProgram;
+
         IRPrinter irPrinter = new IRPrinter();
         irPrinter.visit(irProgram);
         irPrinter.printTo(System.err);
 
         IRCorrector irCorrector = new IRCorrector();
         irProgram.accept(irCorrector);
+
+        irPrinter = new IRPrinter();
+        irPrinter.visit(irProgram);
+        irPrinter.printTo(System.err);
 
         switch (Config_Cons.allocator) {
             case NAIVE_ALLOCATOR:
