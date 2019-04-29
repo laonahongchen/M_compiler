@@ -87,7 +87,7 @@ public class IRPrinter implements IIRVisitor {
     public void visit(IRProgram program) {
         if (showNasm) {
             try {
-                BufferedReader br = new BufferedReader(new FileReader("bin/c2nasm/lib.asm"));
+                BufferedReader br = new BufferedReader(new FileReader("lib/c2nasm/lib.asm"));
                 String line;
                 while((line = br.readLine()) != null)
                     stringBuilder.append(line + "\n");

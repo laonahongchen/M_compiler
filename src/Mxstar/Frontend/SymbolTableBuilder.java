@@ -133,11 +133,12 @@ public class SymbolTableBuilder implements IAstVisitor {
 
         node.symbol = functionSymbol;
 
-        curSymbolTable.putFunctionSymbol(functionSymbol.name, functionSymbol);
+        curSymbolTable.putFunctionSymbol(node.name, functionSymbol);
         //System.out.println(functionSymbol.name);
     }
 
     private  FunctionSymbol resolveFunctionSymbol(String name, SymbolTable symbolTable) {
+        System.out.println(name);
         FunctionSymbol symbol = symbolTable.getFunctionSymbol(name);
         if (symbol != null) {
 //            if (symbol instanceof FunctionSymbol)
@@ -222,11 +223,11 @@ public class SymbolTableBuilder implements IAstVisitor {
     }
 
     private void defineFunction(FuncDeclaration node, ClassSymbol classSymbol) {
-        FunctionSymbol functionSymbol = curSymbolTable.getFunctionSymbol(node.symbol.name);
+        FunctionSymbol functionSymbol = curSymbolTable.getFunctionSymbol(node.name);
         curFunc = functionSymbol;
 //        System.out.println("defining function" + node.name );
         if (functionSymbol == null)
-            System.out.println("can not find such function" + node.symbol.name );
+            System.out.println("can not find such function" + node.name );
 
         functionSymbol.funtionSymbolTable = new SymbolTable(curSymbolTable);
         enter(functionSymbol.funtionSymbolTable);
