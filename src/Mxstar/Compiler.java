@@ -74,6 +74,8 @@ public class Compiler {
             exit(1);
         }
 
+        exit(0);
+
         RegisterSet.init();
 //        System.out.print("compiler success");
         IRBuilder irBuilder = new IRBuilder(globalSymbolTable);
