@@ -370,6 +370,8 @@ public class IRBuilder implements IAstVisitor {
     @Override
     public void visit(JumpStmt node) {
         if (node.isBreak) {
+//            if (loopAfterBB.peek() == null)
+//                System.out.println("loopafter is null");
             curBB.append(new Jump(curBB, loopAfterBB.peek()));
         } else if (node.isReturn) {
 
@@ -461,8 +463,19 @@ public class IRBuilder implements IAstVisitor {
                 operand = new Imm(0);
                 break;
             case "bool":
-                curBB.append(new Jump(curBB, node.value.equals("true") ? trueBBMap.get(node) : falseBBMap.get(node)));
-                return ;
+                /*if (!trueBBMap.containsKey(node) && !isInParameter) {
+                    System.out.println("no this boolean !!!: " + node.location);
+                }
+                System.out.println(isInParameter + " " + node.location);*/
+                if (trueBBMap.containsKey(node)) {
+                    curBB.append(new Jump(curBB, node.value.equals("true") ? trueBBMap.get(node) : falseBBMap.get(node)));
+                    return ;
+                }
+                else {
+                    operand = new Imm(node.value.equals("true") ? 1 : 0);
+                }
+
+                break ;
             default:
                 StaticData sd = new StaticData("static_string", node.value.substring(1, node.value.length() - 1));
                 irProgram.staticData.add(sd);

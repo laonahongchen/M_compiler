@@ -15,8 +15,8 @@ typedef char* pointer_t;
 	library_string_substring;
 	library_string_parseInt;
 	library_string_ord;
-	library_stringConcate;
-	library_stringCompare
+	library_stringConcat;
+	library_stringComp
 */
 
 extern int __init();
@@ -72,7 +72,7 @@ int64_t __string_ord(pointer_t ptr, int64_t pos) {
 	return ptr[8 + pos];
 }
 
-pointer_t __stringConcate(pointer_t sa, pointer_t sb) {
+pointer_t __stringConcat(pointer_t sa, pointer_t sb) {
 	int64_t la = *((int64_t*)sa);
 	int64_t lb = *((int64_t*)sb);
 	pointer_t ret = malloc(la + lb + 1 + 8);
@@ -86,7 +86,7 @@ pointer_t __stringConcate(pointer_t sa, pointer_t sb) {
 	return ret;
 }
 
-int64_t __stringCompare(pointer_t sa, pointer_t sb) {
+int64_t __stringComp(pointer_t sa, pointer_t sb) {
 	return strcmp(sa+8, sb+8);
 }
 

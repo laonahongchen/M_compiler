@@ -16,8 +16,8 @@ global __string_length
 global __string_substring
 global __string_parseInt
 global __string_ord
-global __stringConcate
-global __stringCompare
+global __stringConcat
+global __stringComp
 
 extern strcmp
 extern atoi
@@ -245,7 +245,7 @@ __string_ord:
         ret
 
 
-__stringConcate:
+__stringConcat:
         push    rbp
         mov     rbp, rsp
         sub     rsp, 48
@@ -325,7 +325,7 @@ L_007:  mov     eax, dword [rbp-1CH]
         ret
 
 
-__stringCompare:
+__stringComp:
         push    rbp
         mov     rbp, rsp
         sub     rsp, 16

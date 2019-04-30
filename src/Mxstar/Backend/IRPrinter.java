@@ -104,7 +104,7 @@ public class IRPrinter implements IIRVisitor {
         if (showNasm) {
             stringBuilder.append("\t section .data\n");
             for (StaticData staticData: program.staticData) {
-                stringBuilder.append(getSDName(staticData) + "\n");
+                stringBuilder.append(getSDName(staticData) + ":\n");
                 if (staticData.init != null) {
                     stringBuilder.append("\tdq " + staticData.init.length() + "\n\tdb ");
                     for (int i = 0; i < staticData.init.length(); ++i) {
