@@ -10,8 +10,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class AstBuilder extends MxstarBaseVisitor<Object> {
-    public AstProgram astProgram;
-    public CompileErrorListener errorListener;
+    private AstProgram astProgram;
+    private CompileErrorListener errorListener;
 
     public AstBuilder() {
         this.astProgram = new AstProgram();

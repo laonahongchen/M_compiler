@@ -6,36 +6,69 @@
 
 default rel
 
-global s3
-global s2
-global s1
+global tak
 global main
-
-extern puts
-extern strcat
-extern memcpy
-extern _GLOBAL_OFFSET_TABLE_
 
 
 SECTION .text   
 
+tak:
+        push    rbp
+        mov     rbp, rsp
+        push    r12
+        push    rbx
+        sub     rsp, 16
+        mov     dword [rbp-14H], edi
+        mov     dword [rbp-18H], esi
+        mov     dword [rbp-1CH], edx
+        mov     eax, dword [rbp-18H]
+        cmp     eax, dword [rbp-14H]
+        jge     L_001
+        mov     eax, dword [rbp-1CH]
+        lea     ecx, [rax-1H]
+        mov     edx, dword [rbp-18H]
+        mov     eax, dword [rbp-14H]
+        mov     esi, eax
+        mov     edi, ecx
+        call    tak
+        mov     r12d, eax
+        mov     eax, dword [rbp-18H]
+        lea     ecx, [rax-1H]
+        mov     edx, dword [rbp-14H]
+        mov     eax, dword [rbp-1CH]
+        mov     esi, eax
+        mov     edi, ecx
+        call    tak
+        mov     ebx, eax
+        mov     eax, dword [rbp-14H]
+        lea     ecx, [rax-1H]
+        mov     edx, dword [rbp-1CH]
+        mov     eax, dword [rbp-18H]
+        mov     esi, eax
+        mov     edi, ecx
+        call    tak
+        mov     edx, r12d
+        mov     esi, ebx
+        mov     edi, eax
+        call    tak
+        add     eax, 1
+        jmp     L_002
+
+L_001:  mov     eax, dword [rbp-1CH]
+L_002:  add     rsp, 16
+        pop     rbx
+        pop     r12
+        pop     rbp
+        ret
+
+
 main:
         push    rbp
         mov     rbp, rsp
-        mov     edx, 5
-        lea     rsi, [rel L_001]
-        lea     rdi, [rel s1]
-        call    memcpy
-        mov     edx, 5
-        lea     rsi, [rel L_002]
-        lea     rdi, [rel s2]
-        call    memcpy
-        lea     rsi, [rel s2]
-        lea     rdi, [rel s1]
-        call    strcat
-        lea     rdi, [rel s1]
-        call    puts
-        mov     eax, 0
+        mov     edx, 6
+        mov     esi, 12
+        mov     edi, 18
+        call    tak
         pop     rbp
         ret
 
@@ -45,14 +78,5 @@ SECTION .data
 
 
 SECTION .bss    
-
-
-SECTION .rodata 
-
-L_001:
-        db 68H, 65H, 6CH, 6CH, 6FH, 00H
-
-L_002:
-        db 77H, 6FH, 72H, 6CH, 64H, 00H
 
 

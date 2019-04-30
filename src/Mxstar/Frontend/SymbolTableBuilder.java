@@ -512,7 +512,7 @@ public class SymbolTableBuilder implements IAstVisitor {
         if (node.object.type instanceof  PrimitiveType) {
             errorListener.addError(node.location, "this is not a class");
         } else if (node.object.type instanceof ArrayType) {
-            ArrayType arrayType = (ArrayType)node.object.type;
+//            ArrayType arrayType = (ArrayType)node.object.type;
             if (node.methodCall == null || !node.methodCall.functionName.equals("size")) {
                 errorListener.addError(node.location, "this is not a class");
             } else {

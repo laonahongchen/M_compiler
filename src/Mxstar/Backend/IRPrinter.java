@@ -35,7 +35,7 @@ public class IRPrinter implements IIRVisitor {
     public static int sdCount = 0;
 
     public static boolean showId = false;
-    public static boolean showBlockHint = true;
+    public static boolean showBlockHint = false;
     public static boolean showNasm = false;
 
     public IRPrinter() {
@@ -60,13 +60,13 @@ public class IRPrinter implements IIRVisitor {
 
     public String getBBName(BB bb) {
         if (!bbName.containsKey(bb)) {
-            bbName.put(bb, "l_" + (bbCount++) + (showId ? "(" + bb.blockID + ")" : ""));
+            bbName.put(bb, "l_" + (bbCount++) + (showId ? "(1" + bb.blockID + ")" : ""));
         }
         return bbName.get(bb);
     }
     public String getVarName(VirReg bb) {
         if (!varName.containsKey(bb)) {
-            varName.put(bb, "v" + (varCount++) + (showId ? "(" + bb.id + ")" : ""));
+            varName.put(bb, "v" + (varCount++) + (showId ? "(3" + bb.id + ")" : ""));
         }
         return varName.get(bb);
     }
@@ -94,10 +94,10 @@ public class IRPrinter implements IIRVisitor {
                 stringBuilder.append(";====================================================");
                 stringBuilder.append("\t section .text\n");
             } catch (IOException e) {
-                e.printStackTrace();
-                exit(0);
+                exit(1);
             }
         }
+
         for (Func func: program.funcs)
             func.accept(this);
 
@@ -106,10 +106,10 @@ public class IRPrinter implements IIRVisitor {
             for (StaticData staticData: program.staticData) {
                 stringBuilder.append(getSDName(staticData) + "\n");
                 if (staticData.init != null) {
-                    stringBuilder.append("\tdq" + staticData.init.length() + "\n\tdb");
+                    stringBuilder.append("\tdq " + staticData.init.length() + "\n\tdb ");
                     for (int i = 0; i < staticData.init.length(); ++i) {
                         Formatter formatter = new Formatter();
-                        formatter.format("%02XH", (int)staticData.init.charAt(i));
+                        formatter.format("%02XH, ", (int)staticData.init.charAt(i));
                         stringBuilder.append(formatter);
                     }
                     stringBuilder.append("00H\n");
@@ -152,7 +152,7 @@ public class IRPrinter implements IIRVisitor {
     @Override
     public void visit(Func func) {
         if (showNasm) {
-            stringBuilder.append(getNasmFuncName(func) + "\n");
+            stringBuilder.append(getNasmFuncName(func) + ":\n");
         } else {
             stringBuilder.append("define " + getNasmFuncName(func) + " (");
             for (VirReg virReg: func.parameters) {
@@ -180,7 +180,7 @@ public class IRPrinter implements IIRVisitor {
     public void visit(BB bb) {
         if (bb.head == null)
             return ;
-        stringBuilder.append("\t" + getBBName(bb) + (showBlockHint ? "(" + bb.hint+ ")" : "") + ":\n");
+        stringBuilder.append("\t" + getBBName(bb) + (showBlockHint ? "(2" + bb.hint+ ")" : "") + ":\n");
         for (IRInst inst = bb.head; inst != null; inst = inst.next) {
             inst.accept(this);
         }
@@ -188,7 +188,6 @@ public class IRPrinter implements IIRVisitor {
 
     @Override
     public void visit(BinInst inst) {
-        String op = null;
         if ((inst.op == BinInst.BinOp.MUL)) {
             stringBuilder.append("\timul ");
             inst.src.accept(this);
@@ -290,12 +289,13 @@ public class IRPrinter implements IIRVisitor {
     public void visit(Call inst) {
         stringBuilder.append("\tcall ");
         stringBuilder.append(getNasmFuncName(inst.func) + " ");
+
         if (!showNasm && inst.dest != null) {
             inst.dest.accept(this);
             stringBuilder.append(" = ");
         }
 
-        if (!showNasm && inst.args != null) {
+        if (!showNasm) {
             for (Operand operand: inst.args) {
                 stringBuilder.append(", ");
                 if (operand == null) {
@@ -364,6 +364,7 @@ public class IRPrinter implements IIRVisitor {
         if (!inLeaInst) {
             stringBuilder.append("qword ");
         }
+
         stringBuilder.append("[");
         if (operand.base != null) {
             operand.base.accept(this);
@@ -390,9 +391,9 @@ public class IRPrinter implements IIRVisitor {
                 if (occur && val >= 0)
                     stringBuilder.append(" + ");
                 stringBuilder.append(val);
-
             }
         }
+
         stringBuilder.append("]");
     }
 

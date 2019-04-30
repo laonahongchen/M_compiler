@@ -8,6 +8,8 @@ import Mxstar.Symbol.VariableSymbol;
 
 import java.util.HashSet;
 
+import static java.lang.System.exit;
+
 public class IRCorrector implements IIRVisitor {
     IRProgram irProgram;
 
@@ -70,8 +72,8 @@ public class IRCorrector implements IIRVisitor {
                 if (pdest != null && inst.src instanceof Memory) {
                     VirReg virReg = new VirReg("");
                     inst.prepend(new Mov(inst.bb, virReg, inst.src));
-                    System.out.println((((Memory) inst.src).index));
-                    System.out.println((((Memory) inst.src).scale));
+//                    System.out.println((((Memory) inst.src).index));
+//                    System.out.println((((Memory) inst.src).scale));
                     inst.src = virReg;
                 } else if (psrc != null && inst.dest instanceof Memory) {
                     VirReg virReg = new VirReg("");
@@ -80,6 +82,7 @@ public class IRCorrector implements IIRVisitor {
                 }
             }
         }
+
     }
 
     @Override

@@ -33,6 +33,9 @@ public class IRBuilder implements IAstVisitor {
     private HashMap<Expression, Operand> exprResultMap;
     private HashMap<Expression, Address> assignToMap;
 
+    boolean isInClassDeclaration;
+    boolean isInParameter;
+
     private static Func library_print;
     private static Func library_println;
     private static Func library_getString;
@@ -61,6 +64,11 @@ public class IRBuilder implements IAstVisitor {
         this.falseBBMap = new HashMap<>();
         this.exprResultMap = new HashMap<>();
         this.assignToMap = new HashMap<>();
+
+
+        this.isInClassDeclaration = false;
+        this.isInParameter = false;
+
         initLibraryFunc();
 
     }
@@ -200,10 +208,12 @@ public class IRBuilder implements IAstVisitor {
     @Override
     public void visit(ClassDeclaration node) {
         curClassSymbol = node.symbol;
+        isInClassDeclaration = true;
         if (node.construct != null)
             node.construct.accept(this);
         for (FuncDeclaration func: node.methods)
             func.accept(this);
+        isInClassDeclaration = false;
     }
 
     @Override
@@ -223,9 +233,18 @@ public class IRBuilder implements IAstVisitor {
         curFunc = functionMap.get(node.symbol.name);
         curBB = curFunc.enterBB = new BB(curFunc, "enter" + node.symbol.name);
 
+        if (isInClassDeclaration) {
+            VirReg vthis = new VirReg("");
+            curFunc.parameters.add(vthis);
+            curThisPointer = vthis;
+        }
+
+        isInParameter = true;
         for (VariableDeclaration variableDeclaration: node.parameters)
             variableDeclaration.accept(this);
+        isInParameter = false;
 
+        System.out.println(node.symbol.name + curFunc.parameters.size());
         for (int i = 0; i < curFunc.parameters.size(); ++i) {
             if (i < 6) {
                 curBB.append(new Mov(curBB, curFunc.parameters.get(i), vargs.get(i)));
@@ -280,6 +299,12 @@ public class IRBuilder implements IAstVisitor {
     @Override
     public void visit(VariableDeclaration node) {
         VirReg virReg = new VirReg(node.name);
+        if (isInParameter) {
+            if (curFunc.parameters.size() > 6) {
+                virReg.spillPlace = new StackSlot(virReg.hint);
+            }
+            curFunc.parameters.add(virReg);
+        }
         node.symbol.virReg = virReg;
         if (node.init != null) {
             assign(node.init, virReg);
@@ -540,15 +565,12 @@ public class IRBuilder implements IAstVisitor {
             curBB.append(new Jump(curBB, condBB));
             condBB.append(new Cjump(condBB, size, Cjump.CompareOP.G, new Imm(0), bodyBB, afterBB));
             curBB = bodyBB;
-            if (dims.size() == 1 ) {
-                Operand pointer = allocateArray(new LinkedList<>(), baseBytes, constructor);
-                curBB.append(new Mov(curBB,new Memory(addr, size, Config_Cons.REGISTER_WIDTH), pointer));
-            } else {
-                LinkedList<Operand> restDimensions = new LinkedList<>(dims);
-                restDimensions.removeFirst();
-                Operand pointer = allocateArray(restDimensions, baseBytes, constructor);
-                curBB.append(new Mov(curBB, new Memory(addr, size, Config_Cons.REGISTER_WIDTH), pointer));
-            }
+
+            LinkedList<Operand> restDimensions = new LinkedList<>(dims);
+            restDimensions.removeFirst();
+            Operand pointer = allocateArray(restDimensions, baseBytes, constructor);
+            curBB.append(new Mov(curBB, new Memory(addr, size, Config_Cons.REGISTER_WIDTH), pointer));
+
             curBB.append(new UnaryInst(curBB, UnaryInst.UnaryOp.DEC, size));
             curBB.append(new Jump(curBB, condBB));
             curBB = afterBB;

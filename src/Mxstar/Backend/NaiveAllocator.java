@@ -13,6 +13,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 
 import static Mxstar.IR.RegisterSet.*;
+import static java.lang.System.exit;
 
 public class NaiveAllocator {
     public IRProgram irProgram;
@@ -82,6 +83,10 @@ public class NaiveAllocator {
                         if (mov.dest instanceof VirReg) {
                             mov.dest = ((VirReg) mov.dest).spillPlace;
                         }
+                    } else {
+//                        System.out.println("IR corrector has some error!");
+//                        assert false;
+//                        exit(2);
                     }
                 }
 

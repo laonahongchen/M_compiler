@@ -2,15 +2,39 @@
 #include <stdlib.h>
 #include <string.h>
 
-char s1[10];
-char s2[10];
-char s3[10];
+int tak(int x, int y, int z) {
+    if(y < x) {
+        return 1 + tak( tak(x - 1, y , z),
+            tak(y - 1, z , x),
+            tak(z - 1, x , y)
+        );
+    } else {
+       return z;
+    }
+}
 
 int main() {
-	memcpy(s1, "hello", 5);
-	memcpy(s2, "world", 5);
-	strcat(s1, s2);
-	printf("%s\n", s1);
-	
-	return 0;
+    return tak(18,12,6);
 }
+
+
+
+
+
+/*!! metadata:
+=== comment ===
+function2.mx
+=== assert ===
+exitcode
+=== timeout ===
+0.1
+=== input ===
+
+=== phase ===
+codegen pretest
+=== is_public ===
+True
+=== exitcode ===
+13
+
+!!*/

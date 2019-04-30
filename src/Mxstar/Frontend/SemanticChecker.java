@@ -8,7 +8,7 @@ public class SemanticChecker implements IAstVisitor {
     private GlobalSymbolTable globalSymbolTable;
     private int loop;
     private FunctionSymbol curFunction;
-    public CompileErrorListener errorListener;
+    private CompileErrorListener errorListener;
 
     public SemanticChecker(CompileErrorListener errorListener, GlobalSymbolTable globalSymbolTable) {
         this.errorListener = errorListener;
@@ -37,12 +37,12 @@ public class SemanticChecker implements IAstVisitor {
             errorListener.addError(node.location, "there are some problem with the main function.");
             return ;
         }
-        FunctionSymbol symbol = functionSymbol;
-        if (!(symbol.returnType instanceof PrimitiveType && ((PrimitiveType)symbol.returnType).name.equals("int"))) {
+//        FunctionSymbol symbol = functionSymbol;
+        if (!(functionSymbol.returnType instanceof PrimitiveType && ((PrimitiveType)functionSymbol.returnType).name.equals("int"))) {
             errorListener.addError(node.location, "the main should has return value with integer.");
             return ;
         }
-        if (symbol.parameterNames.size() != 0) {
+        if (functionSymbol.parameterNames.size() != 0) {
             errorListener.addError(node.location, "the main should not have any parameters.");
 
         }
@@ -103,7 +103,7 @@ public class SemanticChecker implements IAstVisitor {
     }
 
     private boolean checkBooleanExpr(VariableType type) {
-        return (type instanceof PrimitiveType && ((PrimitiveType) type).name.equals("bool"));
+        return !(type instanceof PrimitiveType && ((PrimitiveType) type).name.equals("bool"));
     }
 
     @Override
@@ -113,7 +113,7 @@ public class SemanticChecker implements IAstVisitor {
 
         if (node.condition != null) {
             node.condition.accept(this);
-            if (!checkBooleanExpr(node.condition.type)) {
+            if (checkBooleanExpr(node.condition.type)) {
                 errorListener.addError(node.location, "the condition should be a boolean experssion.");
                 return ;
             }
@@ -157,7 +157,7 @@ public class SemanticChecker implements IAstVisitor {
     @Override
     public void visit(ConditionStmt node) {
         node.expression.accept(this);
-        if (!checkBooleanExpr(node.expression.type)) {
+        if (checkBooleanExpr(node.expression.type)) {
             errorListener.addError(node.location, "the condition expression should be boolean");
             return ;
         }

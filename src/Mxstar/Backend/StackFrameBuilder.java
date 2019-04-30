@@ -12,6 +12,24 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 
+
+/*
+          +----------+
+         rsp-24 |    a     |
+                +----------+
+         rsp-16 |    b     |
+                +----------+
+         rsp-8  |    c     |
+                +----------+
+         rsp    | retaddr  |
+                +----------+
+         rsp+8  | caller's |
+                | stack    |
+                | frame    |
+                | ...     |
+                +----------+
+ */
+
 public class StackFrameBuilder {
     class Frame{
         public LinkedList<StackSlot> parameters = new LinkedList<>();
@@ -40,24 +58,21 @@ public class StackFrameBuilder {
             StackSlot stackSlot = (StackSlot)parameters.get(i).spillPlace;
             frame.parameters.add(stackSlot);
         }
+
         HashSet<StackSlot> slots = new HashSet<>();
         for (BB bb: func.basicblocks) {
             for (IRInst inst = bb.head; inst != null; inst = inst.next) {
-                /*LinkedList<StackSlot> curSlots = inst.getStackSlots();
-                for (StackSlot stackSlot: curSlots) {
-                    if (!slots.contains(stackSlot)) {
-                        slots.add(stackSlot);
-                    }
-                }*/
                 slots.addAll(inst.getStackSlots());
             }
         }
+
         frame.temporaries.addAll(slots);
         for (int i = 0; i < frame.parameters.size(); ++i) {
             StackSlot stackSlot = frame.parameters.get(i);
             stackSlot.base = RegisterSet.rbp;
             stackSlot.constant = new Imm(16 + 8 * i);
         }
+
         for (int i = 0; i < frame.temporaries.size(); ++i) {
             StackSlot stackSlot = frame.temporaries.get(i);
             stackSlot.base = RegisterSet.rbp;
@@ -68,6 +83,7 @@ public class StackFrameBuilder {
         headinst.prepend(new Push(headinst.bb, RegisterSet.rbp));
         headinst.prepend(new Mov(headinst.bb, RegisterSet.rbp, RegisterSet.rsp));
         headinst.prepend(new BinInst(headinst.bb, BinInst.BinOp.SUB, RegisterSet.rsp, new Imm(frame.getFrameSize())));
+
         HashSet<PhyReg> needToSave = new HashSet<>(func.usedPhysicalRegister);
         needToSave.retainAll(RegisterSet.calleeSave);
         headinst = headinst.prev;

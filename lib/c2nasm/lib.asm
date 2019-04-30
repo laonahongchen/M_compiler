@@ -29,7 +29,6 @@ extern strlen
 extern __isoc99_scanf
 extern puts
 extern printf
-extern __init
 extern _GLOBAL_OFFSET_TABLE_
 
 
