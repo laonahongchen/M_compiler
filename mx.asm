@@ -363,113 +363,169 @@ L_009:
 
 
 ;====================================================	 section .text
-_qpow_User_Defined_fihriaifhiahidsafans:
-	l_10:
+_main_User_Defined_fihriaifhiahidsafans:
+	l_19:
 	push rbp
 	mov rbp, rsp
-	sub rsp, 96
-	mov qword [rbp-64], rdi
-	mov qword [rbp-64], rbx
-	mov qword [rbp-16], rsi
-	mov qword [rbp-16], rbx
-	mov qword [rbp-24], rdx
-	mov qword [rbp-24], rbx
-	mov rbx, 1
-	mov qword [rbp-72], rbx
-	mov rbx, qword [rbp-64]
-	mov r10, rbx
-	mov qword [rbp-48], r10
-	l_11:
-	mov rbx, qword [rbp-16]
-	cmp rbx, 0
-	jg l_12
-	l_13:
-	mov rbx, qword [rbp-72]
-	mov rax, qword [rbp-72]
-	l_14:
+	sub rsp, 64
+	mov rbx, 0
+	mov qword [rbp-8], rbx
+	mov rbx, 0
+	mov qword [rbp-32], rbx
+	l_20:
+	mov rbx, qword [rbp-32]
+	cmp rbx, 5
+	jl l_21
+	l_22:
+	mov rax, 0
+	l_23:
 	leave 
 	ret
-	l_12:
-	mov rbx, qword [rbp-16]
-	mov r10, rbx
-	mov qword [rbp-80], r10
-	mov rbx, qword [rbp-80]
-	and rbx, 1
-	mov qword [rbp-80], rbx
-	mov rbx, qword [rbp-80]
-	cmp rbx, 1
-	jne l_15
-	l_16:
-	mov rbx, qword [rbp-72]
-	mov rax, qword [rbp-72]
-	mov rbx, qword [rbp-48]
-	imul rbx
-	mov qword [rbp-8], rax
-	mov qword [rbp-8], rbx
+	l_21:
 	mov rbx, qword [rbp-8]
-	mov rax, qword [rbp-8]
-	cdq
-	mov rbx, qword [rbp-24]
-	idiv rbx
-	mov qword [rbp-96], rdx
-	mov qword [rbp-96], rbx
-	mov rbx, qword [rbp-96]
-	mov r10, rbx
-	mov qword [rbp-72], r10
-	l_15:
-	mov rbx, qword [rbp-48]
-	mov rax, qword [rbp-48]
-	mov rbx, qword [rbp-48]
-	imul rbx
-	mov qword [rbp-88], rax
-	mov qword [rbp-88], rbx
-	mov rbx, qword [rbp-88]
-	mov rax, qword [rbp-88]
-	cdq
-	mov rbx, qword [rbp-24]
-	idiv rbx
-	mov qword [rbp-32], rdx
-	mov qword [rbp-32], rbx
-	mov rbx, qword [rbp-32]
 	mov r10, rbx
 	mov qword [rbp-48], r10
-	mov rbx, qword [rbp-16]
-	mov rax, qword [rbp-16]
-	cdq
-	mov rbx, 2
-	mov qword [rbp-56], rbx
-	mov rbx, qword [rbp-56]
-	idiv rbx
-	mov qword [rbp-40], rax
-	mov qword [rbp-40], rbx
-	mov r10, qword [rbp-40]
-	mov rbx, r10
-	mov qword [rbp-16], rbx
-_main_User_Defined_fihriaifhiahidsafans:
-	l_17:
-	push rbp
-	mov rbp, rsp
-	sub rsp, 16
-	mov rdx, 10000
-	mov rsi, 10
-	mov rdi, 2
-	call _qpow_User_Defined_fihriaifhiahidsafans 
-	mov qword [rbp-8], rax
-	mov qword [rbp-8], rbx
+	mov rbx, qword [rbp-32]
+	mov rsi, qword [rbp-32]
+	mov rbx, qword [rbp-48]
+	mov rdi, qword [rbp-48]
+	call _set_problem_User_Defined_fihriaifhiahidsafans 
 	mov rbx, qword [rbp-8]
-	mov rdi, qword [rbp-8]
+	mov r10, rbx
+	mov qword [rbp-40], r10
+	mov rbx, qword [rbp-40]
+	mov rdi, qword [rbp-40]
+	call _get_result_User_Defined_fihriaifhiahidsafans 
+	mov qword [rbp-24], rax
+	mov qword [rbp-24], rbx
+	mov rbx, qword [rbp-24]
+	mov rdi, qword [rbp-24]
 	call __toString 
 	mov qword [rbp-16], rax
 	mov qword [rbp-16], rbx
 	mov rbx, qword [rbp-16]
 	mov rdi, qword [rbp-16]
 	call __println 
-	mov rax, 0
-	l_18:
+	l_24:
+	mov r10, qword [rbp-32]
+	mov rbx, r10
+	mov qword [rbp-56], rbx
+	mov rbx, qword [rbp-32]
+	inc rbx
+	mov qword [rbp-32], rbx
+	jmp l_20
+_Fibonacci_User_Defined_fihriaifhiahidsafans:
+	l_25:
+	push rbp
+	mov rbp, rsp
+	sub rsp, 16
+	mov qword [rbp-8], rdi
+	mov qword [rbp-8], rbx
+	l_26:
+	leave 
+	ret
+_reset_User_Defined_fihriaifhiahidsafans:
+	l_27:
+	push rbp
+	mov rbp, rsp
+	sub rsp, 16
+	mov qword [rbp-8], rdi
+	mov qword [rbp-8], rbx
+	mov rbx, qword [rbp-8]
+	mov qword [rbx + 0], 0
+	mov rbx, qword [rbp-8]
+	mov qword [rbx + 8], 0
+	l_28:
+	leave 
+	ret
+_set_problem_User_Defined_fihriaifhiahidsafans:
+	l_29:
+	push rbp
+	mov rbp, rsp
+	sub rsp, 16
+	mov qword [rbp-8], rdi
+	mov qword [rbp-8], rbx
+	mov qword [rbp-16], rsi
+	mov qword [rbp-16], rbx
+	mov rbx, qword [rbp-8]
+	mov rdi, qword [rbp-8]
+	call _reset_User_Defined_fihriaifhiahidsafans 
+	mov rbx, qword [rbp-16]
+	mov r10, qword [rbp-8]
+	mov qword [r10 + 0], rbx
+	l_30:
+	leave 
+	ret
+_calc_User_Defined_fihriaifhiahidsafans:
+	l_31:
+	push rbp
+	mov rbp, rsp
+	sub rsp, 48
+	mov qword [rbp-40], rdi
+	mov qword [rbp-40], rbx
+	mov qword [rbp-8], rsi
+	mov qword [rbp-8], rbx
+	mov rbx, qword [rbp-8]
+	cmp rbx, 0
+	je l_32
+	l_33:
+	mov r10, qword [rbp-8]
+	mov rbx, r10
+	mov qword [rbp-24], rbx
+	mov rbx, qword [rbp-24]
+	sub rbx, 1
+	mov qword [rbp-24], rbx
+	mov rbx, qword [rbp-24]
+	mov rsi, qword [rbp-24]
+	mov rbx, qword [rbp-40]
+	mov rdi, qword [rbp-40]
+	call _calc_User_Defined_fihriaifhiahidsafans 
+	mov qword [rbp-16], rax
+	mov qword [rbp-16], rbx
+	mov rbx, qword [rbp-8]
+	mov rax, qword [rbp-8]
+	mov rbx, qword [rbp-16]
+	imul rbx
+	mov qword [rbp-32], rax
+	mov qword [rbp-32], rbx
+	mov rbx, qword [rbp-32]
+	mov rax, qword [rbp-32]
+	jmp l_34
+	l_32:
+	mov rax, 1
+	l_34:
+	leave 
+	ret
+_get_result_User_Defined_fihriaifhiahidsafans:
+	l_35:
+	push rbp
+	mov rbp, rsp
+	sub rsp, 32
+	mov qword [rbp-16], rdi
+	mov qword [rbp-16], rbx
+	mov r10, qword [rbp-16]
+	mov rbx, qword [r10 + 0]
+	mov qword [rbp-24], rbx
+	mov rbx, qword [rbp-24]
+	mov rsi, qword [rbp-24]
+	mov rbx, qword [rbp-16]
+	mov rdi, qword [rbp-16]
+	call _calc_User_Defined_fihriaifhiahidsafans 
+	mov qword [rbp-32], rax
+	mov qword [rbp-32], rbx
+	mov rbx, qword [rbp-32]
+	mov r10, qword [rbp-16]
+	mov qword [r10 + 8], rbx
+	mov r10, qword [rbp-16]
+	mov rbx, qword [r10 + 8]
+	mov qword [rbp-8], rbx
+	mov rbx, qword [rbp-8]
+	mov rax, qword [rbp-8]
+	l_36:
 	leave 
 	ret
 __init:
-	l_19:
+	l_37:
 	push rbp
 	mov rbp, rsp
 	sub rsp, 0

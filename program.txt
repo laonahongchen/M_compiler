@@ -1,38 +1,51 @@
-int qpow(int a,int p,int mod) {
-    int t = 1;
-    int y = a;
-    while(p>0){
-        if((p&1) == 1)t=t*y % mod;
-        y=y*y % mod;
-        p=p / 2;
-    }
-    return t;
+class Fibonacci{
+	int x;
+	int result;
+
+	void reset(){
+		x = 0;
+		result = 0;
+	}
+
+	void set_problem(int x_in){
+		reset();
+		x = x_in;
+	}
+
+	int calc(int cur_num){
+		if (cur_num == 0)
+			return 1;
+		else
+			return cur_num * calc(cur_num-1);
+	}
+
+	int get_result(){
+		result = calc(x);
+		return result;
+	}
 }
 
-
-
-
-
-int main() {
-    println(toString(qpow(2,10,10000)));
-    return 0;
+int main(){
+	Fibonacci teacher;
+	teacher = new Fibonacci;
+	int x;
+	for (x = 0; x < 5; x++){
+		teacher.set_problem(x);
+		println(toString(teacher.get_result()));
+	}
+	return 0;
 }
 
 
 
 /*!! metadata:
 === comment ===
-codegen1-5140309569-xushichao.txt
-=== input ===
-
+class-5140309536-xuxiaojun.txt
+Test class and recursive function
 === assert ===
-output
-=== timeout ===
-1.0
-=== output ===
-1024
+success_compile
 === phase ===
-codegen pretest
+semantic pretest
 === is_public ===
 True
 

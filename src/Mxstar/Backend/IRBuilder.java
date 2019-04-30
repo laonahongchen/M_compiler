@@ -520,8 +520,10 @@ public class IRBuilder implements IAstVisitor {
 //            }
             args.add(exprResultMap.get(e));
         }
-
-        curBB.append(new Call(curBB, vrax, functionMap.get(node.functionName), args));
+        /*if (!functionMap.containsKey(node.functionName)) {
+            System.out.println("func error: " + node.functionName + node.location);
+        }*/
+        curBB.append(new Call(curBB, vrax, functionMap.get(node.functionSymbol.name), args));
         if (trueBBMap.containsKey(node)) {
             curBB.append(new Cjump(curBB, vrax, Cjump.CompareOP.NE, new Imm(0), trueBBMap.get(node), falseBBMap.get(node)));
         } else {
@@ -632,9 +634,9 @@ public class IRBuilder implements IAstVisitor {
                 operand = new Memory(baseAddr, new Imm(classType.symbol.symbolTable.getVariableOffset(node.fieldAccess.name)));
             } else {
                 Func func = functionMap.get(node.methodCall.functionSymbol.name);
-//                if (func == null) {
-//                    System.out.println(node.methodCall.functionSymbol.name);
-//                }
+                if (func == null) {
+                    System.out.println(node.methodCall.functionSymbol.name);
+                }
                 LinkedList<Operand> args = new LinkedList<>();
                 args.add(baseAddr);
                 for (Expression expression: node.methodCall.arguments) {
