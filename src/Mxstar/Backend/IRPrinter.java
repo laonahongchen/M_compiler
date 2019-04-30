@@ -299,7 +299,7 @@ public class IRPrinter implements IIRVisitor {
             for (Operand operand: inst.args) {
                 stringBuilder.append(", ");
                 if (operand == null) {
-                    System.out.println(getNasmFuncName(inst.func) + " ");
+//                    System.out.println(getNasmFuncName(inst.func) + " ");
                 }
                 operand.accept(this);
             }

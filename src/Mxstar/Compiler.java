@@ -101,8 +101,8 @@ public class Compiler {
                 break;
         }
 
-        StackFrameBuilder stackFrameBuilder = new StackFrameBuilder(irProgram);
-        stackFrameBuilder.run();
+        StackBuilder stackBuilder = new StackBuilder(irProgram);
+        stackBuilder.run();
         IRPrinter.showNasm = true;
         irPrinter.stringBuilder = new StringBuilder();
         irPrinter.visit(irProgram);

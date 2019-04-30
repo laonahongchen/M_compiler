@@ -225,7 +225,7 @@ public class IRBuilder implements IAstVisitor {
          *  3. function body
          *  4. save global variables in virtual registers to memory
          *
-         *  callee and caller register saving code are added in StackFrameBuilder
+         *  callee and caller register saving code are added in StackBuilder
          *                                                                  ---- copy from @Idy002 's compiler
          */
 
@@ -244,7 +244,7 @@ public class IRBuilder implements IAstVisitor {
             variableDeclaration.accept(this);
         isInParameter = false;
 
-        System.out.println(node.symbol.name + curFunc.parameters.size());
+//        System.out.println(node.symbol.name + curFunc.parameters.size());
         for (int i = 0; i < curFunc.parameters.size(); ++i) {
             if (i < 6) {
                 curBB.append(new Mov(curBB, curFunc.parameters.get(i), vargs.get(i)));
@@ -893,7 +893,7 @@ public class IRBuilder implements IAstVisitor {
         Operand lval = exprResultMap.get(node.lhs);
         assert  lval instanceof Address;
         if (lval == null) {
-            System.out.println(node.location);
+//            System.out.println(node.location);
         }
         assign(node.rhs, (Address)lval);
     }

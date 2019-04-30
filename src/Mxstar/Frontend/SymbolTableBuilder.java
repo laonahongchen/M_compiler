@@ -199,7 +199,7 @@ public class SymbolTableBuilder implements IAstVisitor {
             } else {
 //                System.out.println("define " + node.name);
                 if (symbolTableToClassSymbol == null) {
-                    System.out.println("node wrong");
+//                    System.out.println("node wrong");
                 }
                 node.symbol = new VariableSymbol(node.name, type,node.location, symbolTableToClassSymbol.containsKey(curSymbolTable), curSymbolTable == globalSymbolTable);
                 curSymbolTable.putVariableSymbol(node.name, node.symbol);

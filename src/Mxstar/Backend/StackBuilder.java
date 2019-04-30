@@ -30,7 +30,7 @@ import java.util.LinkedList;
                 +----------+
  */
 
-public class StackFrameBuilder {
+public class StackBuilder {
     class Frame{
         public LinkedList<StackSlot> parameters = new LinkedList<>();
         public LinkedList<StackSlot> temporaries = new LinkedList<>();
@@ -44,7 +44,7 @@ public class StackFrameBuilder {
     public IRProgram irProgram;
     public HashMap<Func,  Frame> frameMap;
 
-    public StackFrameBuilder(IRProgram irProgram) {
+    public StackBuilder(IRProgram irProgram) {
         this.irProgram = irProgram;
         frameMap = new HashMap<>();
     }
