@@ -53,13 +53,5 @@ public class FunctionSymbol extends TypeSymbol{
         return type instanceof PrimitiveType;
     }
 
-    public void finish() {
-        for (VariableType type: parameterTypes) {
-            if (!isPrimitiveType(type)) {
-                withSideEffect = true;
-            }
-        }
-        visited.clear();
-        withSideEffect(this);
-    }
+
 }

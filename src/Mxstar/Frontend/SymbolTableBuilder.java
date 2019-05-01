@@ -250,7 +250,6 @@ public class SymbolTableBuilder implements IAstVisitor {
         }
 
         leave();
-        curFunc.finish();
         curFunc = null;
 
         /*if (node.name.equals( "init")) {
