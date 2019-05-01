@@ -548,7 +548,7 @@ public class IRBuilder implements IAstVisitor {
         }
     }
 
-    public Operand allocateArray(LinkedList<Operand> dims, int baseBytes, Func constructor) {
+    private Operand allocateArray(LinkedList<Operand> dims, int baseBytes, Func constructor) {
         if (dims.size() == 0) {
             if (baseBytes == 0) {
                 return new Imm(0);
@@ -626,7 +626,7 @@ public class IRBuilder implements IAstVisitor {
             if (node.type instanceof ClassType && ((ClassType)node.type).name.equals("string"))
                 bytes = Config_Cons.REGISTER_WIDTH * 2;
             else
-                bytes = node.type.getBytes() * node.restDimension;
+                bytes = node.type.getBytes() * (node.restDimension + 1);
             Operand pointer = allocateArray(dims, bytes, constructor);
             exprResultMap.put(node, pointer);
         }

@@ -33,7 +33,8 @@ public class ClassType extends VariableType{
 
     @Override
     public int getBytes() {
-        Collection<VariableSymbol> fields = symbol.symbolTable.variables.values();
-        return fields.size() * Config_Cons.REGISTER_WIDTH;
+//        Collection<VariableSymbol> fields = symbol.symbolTable.variables.values();
+//        return fields.size() * Config_Cons.REGISTER_WIDTH;
+        return symbol.symbolTable.variables.size() * Config_Cons.REGISTER_WIDTH;
     }
 }

@@ -1,30 +1,35 @@
-int[] a = new int[4];
-int main()
-{
-    int[] b = new int[4];
-    b[2]=2;
-    a=b;
-    println(toString(a[2]));
-    return 0;
+class C2 {
+    int x;
+    int y;
+    int z;
 }
+
+int main() {
+    C2 obj = new C2;
+    obj.x = 10;
+    obj.y = 20;
+    obj.z = 40;
+    return obj.x + obj.y + obj.z;
+}
+
 
 
 
 
 /*!! metadata:
 === comment ===
-lvalue2-5110379024-wuhang.mx
-=== input ===
-
+struct2.mx
 === assert ===
-output
+exitcode
 === timeout ===
 0.1
-=== output ===
-2
+=== input ===
+
 === phase ===
 codegen pretest
 === is_public ===
 True
+=== exitcode ===
+70
 
 !!*/
