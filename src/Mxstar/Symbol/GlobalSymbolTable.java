@@ -46,7 +46,7 @@ public class GlobalSymbolTable extends SymbolTable{
     }
     private VariableType stringType() {
         if (classes.get("string") == null) {
-            System.out.println("does not have string type");
+//            System.out.println("does not have string type");
         }
         return new ClassType("string", classes.get("string"));
     }

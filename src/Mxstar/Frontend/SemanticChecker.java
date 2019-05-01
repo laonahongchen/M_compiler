@@ -215,9 +215,9 @@ public class SemanticChecker implements IAstVisitor {
     public void visit(FuncCallExpr node) {
         int inClass = (node.functionSymbol.parameterNames.size() > 0 && node.functionSymbol.parameterNames.get(0).equals("this")) ? 1 : 0;
         if (node.arguments.size() + inClass != node.functionSymbol.parameterTypes.size()) {
-            System.out.println(node.arguments.size());
-            System.out.println(inClass);
-            System.out.println(node.functionSymbol.parameterTypes.size());
+//            System.out.println(node.arguments.size());
+//            System.out.println(inClass);
+//            System.out.println(node.functionSymbol.parameterTypes.size());
             errorListener.addError(node.location, "there is not enough parameters");
         } else {
             for (int i = 0; i < node.arguments.size(); ++i) {
@@ -309,7 +309,7 @@ public class SemanticChecker implements IAstVisitor {
         node.lhs.accept(this);
         node.rhs.accept(this);
         if (!node.lhs.type.match(node.rhs.type)) {
-            System.out.println(node.rhs.type instanceof  ClassType );
+//            System.out.println(node.rhs.type instanceof  ClassType );
             errorListener.addError(node.location, "type can not match");
         } else {
             boolean typeError = false;
@@ -341,7 +341,7 @@ public class SemanticChecker implements IAstVisitor {
         node.rhs.accept(this);
         node.lhs.accept(this);
         if (!node.lhs.type.match(node.rhs.type)) {
-            System.out.println(node.lhs.type instanceof ClassType);
+//            System.out.println(node.lhs.type instanceof ClassType);
             errorListener.addError(node.location, "two expression are not the same type");
         }
         if (!node.lhs.modifiable) {
