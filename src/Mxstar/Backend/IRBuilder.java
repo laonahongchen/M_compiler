@@ -647,9 +647,9 @@ public class IRBuilder implements IAstVisitor {
                 operand = new Memory(baseAddr, new Imm(classType.symbol.symbolTable.getVariableOffset(node.fieldAccess.name)));
             } else {
                 Func func = functionMap.get(node.methodCall.functionSymbol.name);
-                if (func == null) {
-                    System.out.println(node.methodCall.functionSymbol.name);
-                }
+//                if (func == null) {
+//                    System.out.println(node.methodCall.functionSymbol.name);
+//                }
                 LinkedList<Operand> args = new LinkedList<>();
                 args.add(baseAddr);
                 for (Expression expression: node.methodCall.arguments) {

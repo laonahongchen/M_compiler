@@ -97,21 +97,21 @@ public class Func {
         }
         for (BB bb: basicblocks) {
             if (bb.tail instanceof Cjump) {
-                if (((Cjump) bb.tail).thenbb == null)
-                    System.out.println("thenbb null");
+//                if (((Cjump) bb.tail).thenbb == null)
+//                    System.out.println("thenbb null");
                 bb.successers.add(((Cjump)bb.tail).thenbb);
-                if (((Cjump) bb.tail).elsebb == null)
-                    System.out.println("elsebb null");
+//                if (((Cjump) bb.tail).elsebb == null)
+//                    System.out.println("elsebb null");
                 bb.successers.add(((Cjump)bb.tail).elsebb);
 
             } else if (bb.tail instanceof Jump) {
-                if (((Jump) bb.tail).targetBB == null)
-                    System.out.println("targetbb null");
+//                if (((Jump) bb.tail).targetBB == null)
+//                    System.out.println("targetbb null");
                 bb.successers.add(((Jump)bb.tail).targetBB);
             }
             for (BB suc: bb.successers) {
-                if (suc == null)
-                    System.out.println("suc is null!!!");
+//                if (suc == null)
+//                    System.out.println("suc is null!!!");
                 suc.frontiers.add(bb);
             }
         }

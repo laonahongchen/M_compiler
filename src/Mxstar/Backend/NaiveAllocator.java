@@ -104,14 +104,14 @@ public class NaiveAllocator {
                 for (Register regs: usedregs) {
                     if (((VirReg)regs).allocatedPhyReg == null) {
                         //System.out.println(renameMap.get(regs));
-                        System.out.println("in rename use");
+//                        System.out.println("in rename use");
                         inst.prepend(new Mov(bb, renameMap.get(regs), ((VirReg) regs).spillPlace));
                     }
                 }
 
                 for (Register regs: defregs) {
                     if (((VirReg)regs).allocatedPhyReg == null) {
-                        System.out.println("in rename def\n");
+//                        System.out.println("in rename def\n");
                         inst.append(new Mov(bb, ((VirReg) regs).spillPlace, renameMap.get(regs)));
                         inst = inst.next;
                     }
