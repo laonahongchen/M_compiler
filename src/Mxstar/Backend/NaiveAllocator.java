@@ -34,17 +34,16 @@ public class NaiveAllocator {
         }
     }
 
-    public PhyReg getPhyReg(Operand operand) {
+    private PhyReg getPhyReg(Operand operand) {
         if (operand instanceof VirReg) {
             return ((VirReg)operand).allocatedPhyReg;
-        } else if (operand instanceof PhyReg) {
-            return (PhyReg)operand;
         } else {
             return null;
         }
     }
 
-    public void processFunc(Func func) {
+    private void processFunc(Func func) {
+
         for (BB bb: func.basicblocks) {
             for (IRInst inst = bb.head; inst != null; inst = inst.next) {
                 if (inst instanceof Call)
@@ -78,15 +77,13 @@ public class NaiveAllocator {
                         if (mov.src instanceof VirReg) {
                             mov.src = ((VirReg) mov.src).spillPlace;
                         }
+                        continue;
                     } else if (psrc != null) {
                         mov.src = psrc;
                         if (mov.dest instanceof VirReg) {
                             mov.dest = ((VirReg) mov.dest).spillPlace;
                         }
-                    } else {
-//                        System.out.println("IR corrector has some error!");
-//                        assert false;
-//                        exit(2);
+                        continue;
                     }
                 }
 
@@ -106,12 +103,15 @@ public class NaiveAllocator {
                 inst.renameDefReg(renameMap);
                 for (Register regs: usedregs) {
                     if (((VirReg)regs).allocatedPhyReg == null) {
+                        //System.out.println(renameMap.get(regs));
+                        System.out.println("in rename use");
                         inst.prepend(new Mov(bb, renameMap.get(regs), ((VirReg) regs).spillPlace));
                     }
                 }
 
                 for (Register regs: defregs) {
                     if (((VirReg)regs).allocatedPhyReg == null) {
+                        System.out.println("in rename def\n");
                         inst.append(new Mov(bb, ((VirReg) regs).spillPlace, renameMap.get(regs)));
                         inst = inst.next;
                     }
@@ -120,6 +120,8 @@ public class NaiveAllocator {
 
 
         }
+
+
     }
 
 }

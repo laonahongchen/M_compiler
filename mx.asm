@@ -363,98 +363,33 @@ L_009:
 
 
 ;====================================================	 section .text
-_b_User_Defined_fihriaifhiahidsafans:
-	l_12:
-	push rbp
-	mov rbp, rsp
-	sub rsp, 16
-	mov qword [rbp-8], rdi
-	mov qword [rbp-8], rbx
-	mov rbx, qword [rbp-8]
-	cmp rbx, 1
-	je l_13
-	l_14:
-	mov rax, 0
-	jmp l_15
-	l_13:
-	mov rax, 1
-	l_15:
-	l_16:
-	leave 
-	ret
 _main_User_Defined_fihriaifhiahidsafans:
-	l_17:
+	l_3:
 	push rbp
 	mov rbp, rsp
-	sub rsp, 64
-	mov rbx, g_2
-	mov qword [rbp-64], rbx
-	mov rbx, qword [rbp-56]
-	mov r10, rbx
-	mov qword [rbp-16], r10
-	mov rbx, qword [rbp-16]
-	mov rdi, qword [rbp-16]
-	call _x_User_Defined_fihriaifhiahidsafans 
-	mov rdi, 1
-	call _b_User_Defined_fihriaifhiahidsafans 
-	mov qword [rbp-32], rax
-	mov qword [rbp-32], rbx
-	mov rbx, qword [rbp-64]
-	mov r10, rbx
-	mov qword [rbp-48], r10
-	mov rbx, qword [rbp-48]
-	mov rdi, qword [rbp-48]
-	call __string_parseInt 
-	mov qword [rbp-24], rax
+	sub rsp, 32
+	mov rbx, g_1
 	mov qword [rbp-24], rbx
 	mov r10, qword [rbp-24]
 	mov rbx, r10
-	mov qword [rbp-40], rbx
-	mov rbx, qword [rbp-40]
-	mov r10, rbx
-	mov qword [rbp-8], r10
-	mov rbx, qword [rbp-40]
-	mov rax, qword [rbp-40]
-	l_18:
-	leave 
-	ret
-_C_User_Defined_fihriaifhiahidsafans:
-	l_19:
-	push rbp
-	mov rbp, rsp
-	sub rsp, 16
-	mov qword [rbp-8], rdi
-	mov qword [rbp-8], rbx
-	mov rbx, qword [rbp-8]
-	mov rdi, qword [rbp-8]
-	call _x_User_Defined_fihriaifhiahidsafans 
-	l_20:
-	leave 
-	ret
-_x_User_Defined_fihriaifhiahidsafans:
-	l_21:
-	push rbp
-	mov rbp, rsp
-	sub rsp, 16
-	mov qword [rbp-8], rdi
-	mov qword [rbp-8], rbx
-	l_22:
+	mov qword [rbp-16], rbx
+	mov rdi, qword [rbp-16]
+	call __string_length 
+	mov qword [rbp-8], rax
+	mov rax, qword [rbp-8]
+	l_4:
 	leave 
 	ret
 __init:
-	l_23:
+	l_5:
 	push rbp
 	mov rbp, rsp
 	sub rsp, 0
-	mov rbx, 1
-	mov qword [g_3], rbx
 	call _main_User_Defined_fihriaifhiahidsafans 
 	leave 
 	ret
 	 section .data
-g_3:
-	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
-g_2:
-	dq 13
-	db 37H, 38H, 39H, 64H, 63H, 62H, 61H, 64H, 63H, 62H, 61H, 0AH, 6EH, 00H
+g_1:
+	dq 3
+	db 61H, 61H, 61H, 00H
 

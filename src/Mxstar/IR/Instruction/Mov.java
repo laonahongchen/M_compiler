@@ -26,8 +26,7 @@ public class Mov extends IRInst {
         if (src instanceof Memory) {
             src = ((Memory) src).copy();
             ((Memory)src).renameUseRegs(renameMap);
-        }
-        if (src instanceof Register && renameMap.containsKey(src)) {
+        } else if (src instanceof Register && renameMap.containsKey(src)) {
             src = renameMap.get(src);
         }
     }
@@ -53,7 +52,7 @@ public class Mov extends IRInst {
             regs.addAll(((Memory)dest).getUseRegs());
         if (src instanceof Memory)
             regs.addAll(((Memory)src).getUseRegs());
-        if (src instanceof Register)
+        else if (src instanceof Register)
             regs.add((Register) src);
         return regs;
     }

@@ -24,9 +24,9 @@ public class Compiler {
         exit(0);
     }
     public static void compile() throws IOException{
-        BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+//        BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
         //InputStream is = Config.in;
-//        FileInputStream is = new FileInputStream("program.txt");
+        FileInputStream is = new FileInputStream("program.txt");
         ANTLRInputStream ais = new ANTLRInputStream(is);
         MxstarLexer mstarLexer = new MxstarLexer(ais);
         CommonTokenStream tokens = new CommonTokenStream(mstarLexer);
@@ -82,14 +82,12 @@ public class Compiler {
         astProgram.accept(irBuilder);
         IRProgram irProgram = irBuilder.irProgram;
 
-        IRPrinter irPrinter = new IRPrinter();
-        irPrinter.visit(irProgram);
-        irPrinter.printTo(System.err);
+
 
         IRCorrector irCorrector = new IRCorrector();
         irProgram.accept(irCorrector);
 
-        irPrinter = new IRPrinter();
+        IRPrinter irPrinter = new IRPrinter();
         irPrinter.visit(irProgram);
         irPrinter.printTo(System.err);
 
@@ -101,8 +99,14 @@ public class Compiler {
                 break;
         }
 
+        irPrinter = new IRPrinter();
+        irPrinter.visit(irProgram);
+        irPrinter.printTo(System.err);
+
         StackBuilder stackBuilder = new StackBuilder(irProgram);
         stackBuilder.run();
+
+
         IRPrinter.showNasm = true;
         irPrinter.stringBuilder = new StringBuilder();
         irPrinter.visit(irProgram);
