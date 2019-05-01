@@ -364,24 +364,30 @@ L_009:
 
 ;====================================================	 section .text
 _main_User_Defined_fihriaifhiahidsafans:
-	l_3:
+	l_0:
 	push rbp
 	mov rbp, rsp
 	sub rsp, 32
-	mov rbx, g_1
+	mov rbx, 5
 	mov qword [rbp-24], rbx
-	mov r10, qword [rbp-24]
+	mov rbx, qword [rbp-24]
+	mov r10, rbx
+	mov qword [rbp-8], r10
+	mov rbx, qword [rbp-24]
+	inc rbx
+	mov qword [rbp-24], rbx
+	mov r10, qword [rbp-8]
+	mov rbx, r10
+	mov qword [rbp-32], rbx
+	mov r10, qword [rbp-32]
 	mov rbx, r10
 	mov qword [rbp-16], rbx
-	mov rdi, qword [rbp-16]
-	call __string_length 
-	mov qword [rbp-8], rax
-	mov rax, qword [rbp-8]
-	l_4:
+	mov rax, qword [rbp-24]
+	l_1:
 	leave 
 	ret
 __init:
-	l_5:
+	l_2:
 	push rbp
 	mov rbp, rsp
 	sub rsp, 0
@@ -389,7 +395,4 @@ __init:
 	leave 
 	ret
 	 section .data
-g_1:
-	dq 3
-	db 61H, 61H, 61H, 00H
 
