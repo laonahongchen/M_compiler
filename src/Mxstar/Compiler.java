@@ -82,15 +82,25 @@ public class Compiler {
         astProgram.accept(irBuilder);
         IRProgram irProgram = irBuilder.irProgram;
 
-
+        if (Config_Cons.PrintIRAfterBuild) {
+            System.err.println("===============================================");
+            System.err.println("IR after build:");
+            IRPrinter irPrinter = new IRPrinter();
+            irPrinter.visit(irProgram);
+            irPrinter.printTo(System.err);
+        }
 
         IRCorrector irCorrector = new IRCorrector();
         irProgram.accept(irCorrector);
-/*
-        IRPrinter irPrinter = new IRPrinter();
-        irPrinter.visit(irProgram);
-        irPrinter.printTo(System.err);
-*/
+
+        if (Config_Cons.PrintIRAfterCorrector) {
+            System.err.println("===============================================");
+            System.err.println("IR after corrector:");
+            IRPrinter irPrinter = new IRPrinter();
+            irPrinter.visit(irProgram);
+            irPrinter.printTo(System.err);
+        }
+
         switch (Config_Cons.allocator) {
             case NAIVE_ALLOCATOR:
                 NaiveAllocator naiveAllocator = new NaiveAllocator(irProgram);
@@ -98,13 +108,25 @@ public class Compiler {
             default:
                 break;
         }
-/*
-        irPrinter = new IRPrinter();
-        irPrinter.visit(irProgram);
-        irPrinter.printTo(System.err);
-*/
+
+        if (Config_Cons.PrintIRAfterAllocator) {
+            System.err.println("===============================================");
+            System.err.println("IR after allocator:");
+            IRPrinter irPrinter = new IRPrinter();
+            irPrinter.visit(irProgram);
+            irPrinter.printTo(System.err);
+        }
+
         StackBuilder stackBuilder = new StackBuilder(irProgram);
         stackBuilder.run();
+
+        if (Config_Cons.PrintIRAfterAll) {
+            System.err.println("===============================================");
+            System.err.println("IR after all:");
+            IRPrinter irPrinter = new IRPrinter();
+            irPrinter.visit(irProgram);
+            irPrinter.printTo(System.err);
+        }
 
         IRPrinter irPrinter = new IRPrinter();
         IRPrinter.showNasm = true;

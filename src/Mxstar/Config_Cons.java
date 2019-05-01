@@ -1,5 +1,7 @@
 package Mxstar;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import java.io.FileInputStream;
 import java.io.PrintStream;
 
@@ -12,5 +14,8 @@ public class Config_Cons{
 
     public static FileInputStream fin;
     public static PrintStream fout;
-
+    public static boolean PrintIRAfterBuild = false;
+    public static boolean PrintIRAfterCorrector = false;
+    public static boolean PrintIRAfterAllocator = false;
+    public static boolean PrintIRAfterAll = false;
 }
