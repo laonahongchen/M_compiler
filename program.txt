@@ -1,24 +1,20 @@
-class C2 {
-    int x;
-    int y;
-    int z;
-}
-
 int main() {
-    C2 obj = new C2;
-    obj.x = 10;
-    obj.y = 20;
-    obj.z = 40;
-    return obj.x + obj.y + obj.z;
+    int n = 20;
+    int sum = 0;
+    int i = 1;
+    while (i <= n) {
+        sum = sum + i;
+        i = i+1;
+    }
+    return sum;
 }
-
 
 
 
 
 /*!! metadata:
 === comment ===
-struct2.mx
+loop1.mx
 === assert ===
 exitcode
 === timeout ===
@@ -30,6 +26,6 @@ codegen pretest
 === is_public ===
 True
 === exitcode ===
-70
+210
 
 !!*/

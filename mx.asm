@@ -364,77 +364,38 @@ L_009:
 
 ;====================================================	 section .text
 _main_User_Defined_fihriaifhiahidsafans:
-	l_0:
+	l_21:
 	push rbp
 	mov rbp, rsp
-	sub rsp, 80
-	mov rdi, 24
-	call malloc 
-	mov qword [rbp-64], rax
-	mov rbx, qword [rbp-64]
-	add rbx, 8
-	mov qword [rbp-64], rbx
-	mov rbx, qword [rbp-64]
-	mov qword [rbx], 0
-	mov rbx, qword [rbp-64]
-	sub rbx, 8
-	mov qword [rbp-64], rbx
-	mov r10, qword [rbp-64]
-	mov rbx, r10
-	mov qword [rbp-48], rbx
-	mov r10, qword [rbp-48]
-	mov rbx, r10
-	mov qword [rbp-32], rbx
-	mov rbx, qword [rbp-32]
-	mov qword [rbx + 0], 10
-	mov r10, qword [rbp-48]
-	mov rbx, r10
-	mov qword [rbp-16], rbx
-	mov rbx, qword [rbp-16]
-	mov qword [rbx + 8], 20
-	mov rbx, qword [rbp-48]
-	mov r10, rbx
-	mov qword [rbp-72], r10
-	mov rbx, qword [rbp-72]
-	mov qword [rbx + 16], 40
-	mov r10, qword [rbp-48]
-	mov rbx, r10
-	mov qword [rbp-56], rbx
-	mov r10, qword [rbp-48]
-	mov rbx, r10
+	sub rsp, 32
+	mov rbx, 20
 	mov qword [rbp-24], rbx
-	mov r10, qword [rbp-56]
-	mov rbx, qword [r10 + 0]
-	mov qword [rbp-80], rbx
-	mov rbx, qword [rbp-80]
-	mov r10, qword [rbp-24]
-	add rbx, qword [r10 + 8]
-	mov qword [rbp-80], rbx
-	mov rbx, qword [rbp-48]
-	mov r10, rbx
-	mov qword [rbp-40], r10
-	mov rbx, qword [rbp-80]
-	mov r10, rbx
-	mov qword [rbp-8], r10
-	mov rbx, qword [rbp-40]
-	mov r10, qword [rbp-8]
-	add r10, qword [rbx + 16]
-	mov qword [rbp-8], r10
+	mov rbx, 0
+	mov qword [rbp-8], rbx
+	mov rbx, 1
+	mov qword [rbp-16], rbx
+	l_22:
+	mov rbx, qword [rbp-24]
+	mov r10, qword [rbp-16]
+	cmp r10, rbx
+	jle l_23
+	l_24:
 	mov rax, qword [rbp-8]
-	l_1:
+	l_25:
 	leave 
 	ret
-_C2_User_Defined_fihriaifhiahidsafans:
-	l_2:
-	push rbp
-	mov rbp, rsp
-	sub rsp, 16
-	mov qword [rbp-8], rdi
-	l_3:
-	leave 
-	ret
+	l_23:
+	mov rbx, qword [rbp-8]
+	mov r10, qword [rbp-16]
+	add rbx, r10
+	mov qword [rbp-8], rbx
+	mov rbx, qword [rbp-16]
+	add rbx, 1
+	mov qword [rbp-16], rbx
+	l_26:
+	jmp l_22
 __init:
-	l_4:
+	l_27:
 	push rbp
 	mov rbp, rsp
 	sub rsp, 0
