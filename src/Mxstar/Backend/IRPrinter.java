@@ -91,7 +91,7 @@ public class IRPrinter implements IIRVisitor {
                 String line;
                 while((line = br.readLine()) != null)
                     stringBuilder.append(line + "\n");
-                stringBuilder.append(";====================================================");
+                stringBuilder.append(";====================================================\n");
                 stringBuilder.append("\t section .text\n");
             } catch (IOException e) {
                 exit(1);

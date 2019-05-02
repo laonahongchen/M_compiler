@@ -349,18 +349,19 @@ L_007:
         db 25H, 6CH, 64H, 00H
 
 
-;====================================================	 section .text
+;====================================================
+	 section .text
 _a_User_Defined_fihriaifhiahidsafans:
 	l_0:
 	push rbp
 	mov rbp, rsp
 	sub rsp, 64
-	mov qword [rbp-16], rdi
-	mov qword [rbp-32], rsi
-	mov qword [rbp-8], rdx
-	mov qword [rbp-48], rcx
-	mov qword [rbp-40], r8
-	mov qword [rbp-24], r9
+	mov qword [rbp-32], rdi
+	mov qword [rbp-40], rsi
+	mov qword [rbp-16], rdx
+	mov qword [rbp-24], rcx
+	mov qword [rbp-8], r8
+	mov qword [rbp-48], r9
 	mov rbx, qword [rbp + 16]
 	mov qword [rbp + 16], rbx
 	mov rax, qword [rbp + 16]
