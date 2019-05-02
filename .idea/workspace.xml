@@ -3,20 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="35739463-e986-4e75-a4bd-855459eb39c8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/c2nasm/lib.asm" beforeDir="false" afterPath="$PROJECT_DIR$/lib/c2nasm/lib.asm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/c2nasm/lib.c" beforeDir="false" afterPath="$PROJECT_DIR$/lib/c2nasm/lib.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mx.asm" beforeDir="false" afterPath="$PROJECT_DIR$/mx.asm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/program.txt" beforeDir="false" afterPath="$PROJECT_DIR$/program.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/Ast/LiteralExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/Ast/LiteralExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/Backend/IRPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/Backend/IRPrinter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/Backend/StackBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/Backend/StackBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Mxstar/Config_Cons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/Config_Cons.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/IR/Func.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/IR/Func.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/BinInst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/BinInst.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/Call.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/Call.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/Mov.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/Mov.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/IR/RegisterSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/IR/RegisterSet.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -73,20 +60,7 @@
         <entry file="file://$PROJECT_DIR$/mx.asm">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="196">
-              <caret line="374" column="26" lean-forward="true" selection-start-line="374" selection-start-column="26" selection-end-line="374" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Mxstar/IR/Operand/StackSlot.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="13" selection-start-line="13" selection-end-line="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#314#315#0" expanded="true" />
-              </folding>
+              <caret line="361" column="26" lean-forward="true" selection-start-line="361" selection-start-column="26" selection-end-line="361" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -124,11 +98,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/c2nasm/lib.asm">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="29" column="21" lean-forward="true" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
+            <state relative-caret-position="299">
+              <caret line="22" column="11" lean-forward="true" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -148,8 +122,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/program.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="3" column="1" lean-forward="true" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+            <state relative-caret-position="242">
+              <caret line="19" column="14" lean-forward="true" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Mxstar/Config_Cons.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="368">
+              <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -256,13 +239,13 @@
         <option value="$PROJECT_DIR$/src/Mxstar/IR/Instruction/BinInst.java" />
         <option value="$PROJECT_DIR$/src/Mxstar/Backend/StackBuilder.java" />
         <option value="$PROJECT_DIR$/src/Mxstar/IR/RegisterSet.java" />
-        <option value="$PROJECT_DIR$/src/Mxstar/Config_Cons.java" />
         <option value="$PROJECT_DIR$/src/Mxstar/Ast/LiteralExpr.java" />
         <option value="$PROJECT_DIR$/program.txt" />
         <option value="$PROJECT_DIR$/src/Mxstar/IR/Instruction/Mov.java" />
         <option value="$PROJECT_DIR$/mx.asm" />
         <option value="$PROJECT_DIR$/lib/c2nasm/lib.c" />
         <option value="$PROJECT_DIR$/lib/c2nasm/lib.asm" />
+        <option value="$PROJECT_DIR$/src/Mxstar/Config_Cons.java" />
       </list>
     </option>
   </component>
@@ -330,7 +313,7 @@
     <property name="$PROJECT_DIR$/src/parser/mxstar.g4::/gen-visitor" value="true" />
     <property name="$PROJECT_DIR$/src/parser/mxstar.g4::/output-dir" value="D:\homework\2018-19-second\compiler\mxstar\src" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556807577880" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556807750510" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/antlr-4.7.2-complete.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -458,7 +441,7 @@
       <workItem from="1556673520918" duration="25446000" />
       <workItem from="1556708310410" duration="6270000" />
       <workItem from="1556720230432" duration="6537000" />
-      <workItem from="1556798909248" duration="7655000" />
+      <workItem from="1556798909248" duration="7871000" />
     </task>
     <task id="LOCAL-00001" summary="finish coding AST part, need more tests">
       <created>1552728485740</created>
@@ -733,11 +716,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556699444187</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="I still don't understand why the parameters transform has some bug">
+      <created>1556807734139</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1556807734139</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="394242000" />
+    <option name="totallyTimeSpent" value="394458000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -753,7 +743,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32991204" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32844576" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49798927" weight="0.3739003" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49798927" weight="0.7140762" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -852,7 +842,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="is there something else you are searching for" />
     <MESSAGE value="I'm falling" />
     <MESSAGE value="In all the good times I find myself longing" />
     <MESSAGE value="for change, and in the bad times" />
@@ -877,7 +866,8 @@
     <MESSAGE value="fix a bug in IR" />
     <MESSAGE value="fix a bug dealing with NEW" />
     <MESSAGE value="fix a bug with loop" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix a bug with loop" />
+    <MESSAGE value="I still don't understand why the parameters transform has some bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="I still don't understand why the parameters transform has some bug" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1160,13 +1150,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mxstar/Config_Cons.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="17" column="54" selection-start-line="17" selection-start-column="54" selection-end-line="17" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Mxstar/IR/RegisterSet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2714">
@@ -1266,17 +1249,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/program.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="1" lean-forward="true" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mx.asm">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
-          <caret line="374" column="26" lean-forward="true" selection-start-line="374" selection-start-column="26" selection-end-line="374" selection-end-column="26" />
+          <caret line="361" column="26" lean-forward="true" selection-start-line="361" selection-start-column="26" selection-end-line="361" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -1289,8 +1265,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/c2nasm/lib.asm">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="29" column="21" lean-forward="true" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
+        <state relative-caret-position="299">
+          <caret line="22" column="11" lean-forward="true" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/program.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="19" column="14" lean-forward="true" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mxstar/Config_Cons.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
         </state>
       </provider>
     </entry>
