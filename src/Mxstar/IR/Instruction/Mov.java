@@ -19,16 +19,18 @@ public class Mov extends IRInst {
 
     @Override
     public void renameUseReg(HashMap<Register, Register> renameMap) {
-        if (dest instanceof Memory) {
-            dest = ((Memory) dest).copy();
-            ((Memory)dest).renameUseRegs(renameMap);
-        }
         if (src instanceof Memory) {
             src = ((Memory) src).copy();
             ((Memory)src).renameUseRegs(renameMap);
         } else if (src instanceof Register && renameMap.containsKey(src)) {
             src = renameMap.get(src);
         }
+
+        if (dest instanceof Memory) {
+            dest = ((Memory) dest).copy();
+            ((Memory)dest).renameUseRegs(renameMap);
+        }
+
     }
 
     @Override
@@ -48,12 +50,12 @@ public class Mov extends IRInst {
     @Override
     public LinkedList<Register> getUseRegs() {
         LinkedList<Register> regs = new LinkedList<>();
-        if (dest instanceof Memory)
-            regs.addAll(((Memory)dest).getUseRegs());
         if (src instanceof Memory)
             regs.addAll(((Memory)src).getUseRegs());
         else if (src instanceof Register)
             regs.add((Register) src);
+        if (dest instanceof Memory)
+            regs.addAll(((Memory)dest).getUseRegs());
         return regs;
     }
 

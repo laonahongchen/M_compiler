@@ -76,7 +76,7 @@ public class BinInst extends IRInst {
 
     @Override
     public LinkedList<StackSlot> getStackSlots() {
-        return defualtGetSlot(src, dest);
+        return defualtGetSlot(dest, src);
     }
 
     @Override

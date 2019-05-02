@@ -57,15 +57,12 @@ pointer_t __string_substring(pointer_t ptr, int left, int right) {
 	int length = right - left + 1;
 	pointer_t ret = malloc(8 + length + 1);
 	*((int64_t*)ret) = length;
-	int i;
-	for(i = 0; i < length; i++)
-		ret[8 + i] = ptr[8 + left + i];
-	ret[8 + length] = 0;
+	strncpy(ret + 8, ptr + 8 + left, length);
 	return ret;
 }
 
 int64_t __string_parseInt(pointer_t ptr) {
-	return atoi(ptr);
+	return atoi(ptr + 8);
 }
 
 int64_t __string_ord(pointer_t ptr, int64_t pos) {

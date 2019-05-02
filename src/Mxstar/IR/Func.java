@@ -55,7 +55,7 @@ public class Func {
 
         if (type != Type.UserDefined && !name.equals("init")) {
             for (PhyReg pr : RegisterSet.allRegs) {
-                if (pr.name.equals("rbq") || pr.name.equals("rsq"))
+                if (pr.name.equals("rbp") || pr.name.equals("rsp"))
                     continue;
                 this.usedPhysicalRegister.add(pr);
                 this.recursiveUsedPhysicalRegister.add(pr);

@@ -29,10 +29,10 @@ public class IRPrinter implements IIRVisitor {
 
     public BB nextbb = null;
     public boolean inLeaInst;
-    public static int bbCount = 0;
-    public static int varCount = 0;
-    public static int ssCount = 0;
-    public static int sdCount = 0;
+    public int bbCount = 0;
+    public int varCount = 0;
+    public int ssCount = 0;
+    public int sdCount = 0;
 
     public static boolean showId = false;
     public static boolean showBlockHint = false;

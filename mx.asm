@@ -21,6 +21,7 @@ global __stringComp
 
 extern strcmp
 extern atoi
+extern strncpy
 extern sprintf
 extern __stack_chk_fail
 extern strcpy
@@ -51,7 +52,7 @@ __print:
         mov     rax, qword [rbp-8H]
         add     rax, 8
         mov     rsi, rax
-        lea     rdi, [rel L_008]
+        lea     rdi, [rel L_006]
         mov     eax, 0
         call    printf
         nop
@@ -78,7 +79,7 @@ __getString:
         mov     rbp, rsp
         sub     rsp, 16
         lea     rsi, [rel __buffer.2954]
-        lea     rdi, [rel L_008]
+        lea     rdi, [rel L_006]
         mov     eax, 0
         call    __isoc99_scanf
         lea     rdi, [rel __buffer.2954]
@@ -115,7 +116,7 @@ __getInt:
         xor     eax, eax
         lea     rax, [rbp-10H]
         mov     rsi, rax
-        lea     rdi, [rel L_009]
+        lea     rdi, [rel L_007]
         mov     eax, 0
         call    __isoc99_scanf
         mov     rax, qword [rbp-10H]
@@ -141,7 +142,7 @@ __toString:
         lea     rcx, [rax+8H]
         mov     rax, qword [rbp-18H]
         mov     rdx, rax
-        lea     rsi, [rel L_009]
+        lea     rsi, [rel L_007]
         mov     rdi, rcx
         mov     eax, 0
         call    sprintf
@@ -184,33 +185,18 @@ __string_substring:
         movsxd  rdx, eax
         mov     rax, qword [rbp-8H]
         mov     qword [rax], rdx
-        mov     dword [rbp-10H], 0
-        jmp     L_003
-
-L_002:  mov     eax, dword [rbp-1CH]
-        lea     edx, [rax+8H]
-        mov     eax, dword [rbp-10H]
-        add     eax, edx
-        movsxd  rdx, eax
-        mov     rax, qword [rbp-18H]
-        add     rax, rdx
-        mov     edx, dword [rbp-10H]
-        add     edx, 8
-        movsxd  rcx, edx
-        mov     rdx, qword [rbp-8H]
-        add     rdx, rcx
-        movzx   eax, byte [rax]
-        mov     byte [rdx], al
-        add     dword [rbp-10H], 1
-L_003:  mov     eax, dword [rbp-10H]
-        cmp     eax, dword [rbp-0CH]
-        jl      L_002
         mov     eax, dword [rbp-0CH]
-        add     eax, 8
-        movsxd  rdx, eax
-        mov     rax, qword [rbp-8H]
-        add     rax, rdx
-        mov     byte [rax], 0
+        cdqe
+        mov     edx, dword [rbp-1CH]
+        movsxd  rdx, edx
+        lea     rcx, [rdx+8H]
+        mov     rdx, qword [rbp-18H]
+        lea     rsi, [rcx+rdx]
+        mov     rdx, qword [rbp-8H]
+        lea     rcx, [rdx+8H]
+        mov     rdx, rax
+        mov     rdi, rcx
+        call    strncpy
         mov     rax, qword [rbp-8H]
         leave
         ret
@@ -222,6 +208,7 @@ __string_parseInt:
         sub     rsp, 16
         mov     qword [rbp-8H], rdi
         mov     rax, qword [rbp-8H]
+        add     rax, 8
         mov     rdi, rax
         call    atoi
         cdqe
@@ -270,9 +257,9 @@ __stringConcat:
         mov     rax, qword [rbp-8H]
         mov     qword [rax], rdx
         mov     dword [rbp-1CH], 0
-        jmp     L_005
+        jmp     L_003
 
-L_004:  mov     eax, dword [rbp-1CH]
+L_002:  mov     eax, dword [rbp-1CH]
         add     eax, 8
         movsxd  rdx, eax
         mov     rax, qword [rbp-28H]
@@ -285,14 +272,14 @@ L_004:  mov     eax, dword [rbp-1CH]
         movzx   eax, byte [rax]
         mov     byte [rdx], al
         add     dword [rbp-1CH], 1
-L_005:  mov     eax, dword [rbp-1CH]
+L_003:  mov     eax, dword [rbp-1CH]
         cdqe
         cmp     qword [rbp-18H], rax
-        jg      L_004
+        jg      L_002
         mov     dword [rbp-1CH], 0
-        jmp     L_007
+        jmp     L_005
 
-L_006:  mov     eax, dword [rbp-1CH]
+L_004:  mov     eax, dword [rbp-1CH]
         add     eax, 8
         movsxd  rdx, eax
         mov     rax, qword [rbp-30H]
@@ -308,10 +295,10 @@ L_006:  mov     eax, dword [rbp-1CH]
         movzx   eax, byte [rax]
         mov     byte [rdx], al
         add     dword [rbp-1CH], 1
-L_007:  mov     eax, dword [rbp-1CH]
+L_005:  mov     eax, dword [rbp-1CH]
         cdqe
         cmp     qword [rbp-10H], rax
-        jg      L_006
+        jg      L_004
         mov     rax, qword [rbp-18H]
         lea     rdx, [rax+8H]
         mov     rax, qword [rbp-10H]
@@ -355,47 +342,56 @@ __buffer.2954:
 
 SECTION .rodata 
 
-L_008:
+L_006:
         db 25H, 73H, 00H
 
-L_009:
+L_007:
         db 25H, 6CH, 64H, 00H
 
 
 ;====================================================	 section .text
-_main_User_Defined_fihriaifhiahidsafans:
-	l_21:
+_a_User_Defined_fihriaifhiahidsafans:
+	l_0:
 	push rbp
 	mov rbp, rsp
-	sub rsp, 32
-	mov rbx, 20
-	mov qword [rbp-24], rbx
-	mov rbx, 0
-	mov qword [rbp-8], rbx
-	mov rbx, 1
-	mov qword [rbp-16], rbx
-	l_22:
-	mov rbx, qword [rbp-24]
-	mov r10, qword [rbp-16]
-	cmp r10, rbx
-	jle l_23
-	l_24:
-	mov rax, qword [rbp-8]
-	l_25:
+	sub rsp, 64
+	mov qword [rbp-16], rdi
+	mov qword [rbp-32], rsi
+	mov qword [rbp-8], rdx
+	mov qword [rbp-48], rcx
+	mov qword [rbp-40], r8
+	mov qword [rbp-24], r9
+	mov rbx, qword [rbp + 16]
+	mov qword [rbp + 16], rbx
+	mov rax, qword [rbp + 16]
+	l_1:
 	leave 
 	ret
-	l_23:
-	mov rbx, qword [rbp-8]
-	mov r10, qword [rbp-16]
-	add rbx, r10
-	mov qword [rbp-8], rbx
-	mov rbx, qword [rbp-16]
-	add rbx, 1
-	mov qword [rbp-16], rbx
-	l_26:
-	jmp l_22
+_main_User_Defined_fihriaifhiahidsafans:
+	l_2:
+	push rbp
+	mov rbp, rsp
+	sub rsp, 16
+	push 7
+	mov r9, 6
+	mov r8, 5
+	mov rcx, 4
+	mov rdx, 3
+	mov rsi, 2
+	mov rdi, 1
+	call _a_User_Defined_fihriaifhiahidsafans 
+	mov qword [rbp-16], rax
+	mov rdi, qword [rbp-16]
+	call __toString 
+	mov qword [rbp-8], rax
+	mov rdi, qword [rbp-8]
+	call __println 
+	mov rax, 0
+	l_3:
+	leave 
+	ret
 __init:
-	l_27:
+	l_4:
 	push rbp
 	mov rbp, rsp
 	sub rsp, 0

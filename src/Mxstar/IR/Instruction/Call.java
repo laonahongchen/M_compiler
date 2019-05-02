@@ -30,6 +30,7 @@ public class Call extends IRInst {
         this.dest = dest;
         this.func = func;
         this.args = new LinkedList<>(args);
+        update();
     }
 
     public Call(BB bb, Address dest, Func func, Operand... args) {
@@ -37,6 +38,7 @@ public class Call extends IRInst {
         this.dest = dest;
         this.func = func;
         this.args = new LinkedList<>(Arrays.asList(args));
+        update();
     }
 
     public LinkedList<Register> getCallUsed() {

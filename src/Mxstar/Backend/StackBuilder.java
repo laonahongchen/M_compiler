@@ -8,6 +8,7 @@ import Mxstar.IR.Instruction.*;
 import Mxstar.IR.Operand.*;
 import Mxstar.IR.RegisterSet;
 
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -35,6 +36,8 @@ public class StackBuilder {
         public LinkedList<StackSlot> parameters = new LinkedList<>();
         public LinkedList<StackSlot> temporaries = new LinkedList<>();
         public int getFrameSize() {
+//            System.out.println(parameters.size());
+//            System.out.println(temporaries.size() + "\n");
             int bytes = Config_Cons.REGISTER_WIDTH * (parameters.size() + temporaries.size());
             bytes = (bytes + 15) / 16 * 16;
             return bytes;
@@ -53,8 +56,8 @@ public class StackBuilder {
         Frame frame = new Frame();
         frameMap.put(func, frame);
         LinkedList<VirReg> parameters = func.parameters;
-        int[] paraRegisters = new int[] {7,6,2,1,8,9};
-        for (int i = paraRegisters.length; i < parameters.size(); ++i) {
+//        int[] paraRegisters = new int[] {7,6,2,1,8,9};
+        for (int i = 6; i < parameters.size(); ++i) {
             StackSlot stackSlot = (StackSlot)parameters.get(i).spillPlace;
             frame.parameters.add(stackSlot);
         }
@@ -62,8 +65,15 @@ public class StackBuilder {
         HashSet<StackSlot> slots = new HashSet<>();
         for (BB bb: func.basicblocks) {
             for (IRInst inst = bb.head; inst != null; inst = inst.next) {
-                slots.addAll(inst.getStackSlots());
+                LinkedList<StackSlot> stackSlots = new LinkedList<>(inst.getStackSlots());
+                for (StackSlot stackSlot: stackSlots) {
+                    if (!frame.parameters.contains(stackSlot))
+                        slots.add(stackSlot);
+                }
+//                slots.addAll(inst.getStackSlots());
+//                System.out.println(slots.size());
             }
+
         }
 
         frame.temporaries.addAll(slots);

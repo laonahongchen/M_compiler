@@ -8,11 +8,11 @@ import java.util.LinkedList;
 
 public class RegisterSet {
     public static PhyReg rax;
-    public static PhyReg rbx;
     public static PhyReg rcx;
     public static PhyReg rdx;
-    public static PhyReg rbp;
+    public static PhyReg rbx;
     public static PhyReg rsp;
+    public static PhyReg rbp;
     public static PhyReg rsi;
     public static PhyReg rdi;
     public static PhyReg r8;
@@ -25,11 +25,11 @@ public class RegisterSet {
     public static PhyReg r15;
 
     public static VirReg vrax;
-    public static VirReg vrbx;
     public static VirReg vrcx;
     public static VirReg vrdx;
-    public static VirReg vrbp;
+    public static VirReg vrbx;
     public static VirReg vrsp;
+    public static VirReg vrbp;
     public static VirReg vrsi;
     public static VirReg vrdi;
     public static VirReg vr8;
@@ -61,8 +61,8 @@ public class RegisterSet {
         vcallerSave = new LinkedList<>();
         vargs = new LinkedList<>();
 
-        String[] name = new String[]{"rax", "rbx","rcx","rdx","rbp","rsp","rsi","rdi","r8","r9","r10","r11","r12","r13","r14","r15"};
-        Boolean[] isCallerSave = new Boolean[]{true,false,true,true,null,null,true,true,true,true,true,true,false,false,false,false};
+        String[] name = new String[]{"rax","rcx","rdx", "rbx","rsp","rbp","rsi","rdi","r8","r9","r10","r11","r12","r13","r14","r15"};
+        Boolean[] isCallerSave = new Boolean[]{true,true,true,false,null,null,true,true,true,true,true,true,false,false,false,false};
         for (int i = 0; i < 16; ++i) {
             PhyReg pr = new PhyReg();
             VirReg vr = new VirReg("v" + name[i]);
@@ -73,7 +73,7 @@ public class RegisterSet {
             if (isCallerSave[i] != null) {
                 if (isCallerSave[i]) {
                     callerSave.add(pr);
-                    vcalleeSave.add(vr);
+                    vcallerSave.add(vr);
                 } else {
                     calleeSave.add(pr);
                     vcalleeSave.add(vr);
@@ -81,11 +81,11 @@ public class RegisterSet {
             }
         }
         rax = allRegs.get(0);
-        rbx = allRegs.get(1);
-        rcx = allRegs.get(2);
-        rdx = allRegs.get(3);
-        rbp = allRegs.get(4);
-        rsp = allRegs.get(5);
+        rcx = allRegs.get(1);
+        rdx = allRegs.get(2);
+        rbx = allRegs.get(3);
+        rsp = allRegs.get(4);
+        rbp = allRegs.get(5);
         rsi = allRegs.get(6);
         rdi = allRegs.get(7);
         r8 = allRegs.get(8);
@@ -98,11 +98,11 @@ public class RegisterSet {
         r15 = allRegs.get(15);
 
         vrax = vallRegs.get(0);
-        vrbx = vallRegs.get(1);
-        vrcx = vallRegs.get(2);
-        vrdx = vallRegs.get(3);
-        vrbp = vallRegs.get(4);
-        vrsp = vallRegs.get(5);
+        vrcx = vallRegs.get(1);
+        vrdx = vallRegs.get(2);
+        vrbx = vallRegs.get(3);
+        vrsp = vallRegs.get(4);
+        vrbp = vallRegs.get(5);
         vrsi = vallRegs.get(6);
         vrdi = vallRegs.get(7);
         vr8 = vallRegs.get(8);

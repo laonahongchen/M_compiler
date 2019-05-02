@@ -14,8 +14,8 @@ public class Config_Cons{
 
     public static FileInputStream fin;
     public static PrintStream fout;
-    public static boolean PrintIRAfterBuild = true;
+    public static boolean PrintIRAfterBuild = false;
     public static boolean PrintIRAfterCorrector = true;
     public static boolean PrintIRAfterAllocator = true;
-    public static boolean PrintIRAfterAll = false;
+    public static boolean PrintIRAfterAll = true;
 }

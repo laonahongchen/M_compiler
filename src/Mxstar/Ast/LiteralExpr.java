@@ -59,10 +59,12 @@ public class LiteralExpr extends Expression {
                         stringBuilder.append(nc);
 
                 }
+                i++;
             } else {
                 stringBuilder.append(c);
             }
         }
+        System.out.println(stringBuilder);
         return stringBuilder.toString();
     }
 

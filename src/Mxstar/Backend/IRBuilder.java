@@ -163,10 +163,10 @@ public class IRBuilder implements IAstVisitor {
         // vr for global Variables
         for (VariableDeclaration variableDeclaration: node.globalVariables) {
             StaticData data = new StaticData(variableDeclaration.name, Config_Cons.REGISTER_WIDTH);
-            VirReg vr = new VirReg(variableDeclaration.name);
-            vr.spillPlace = new Memory(data);
+            VirReg virReg = new VirReg(variableDeclaration.name);
+            virReg.spillPlace = new Memory(data);
             irProgram.staticData.add(data);
-            variableDeclaration.symbol.virReg = vr;
+            variableDeclaration.symbol.virReg = virReg;
         }
 
         //define functions
@@ -218,18 +218,6 @@ public class IRBuilder implements IAstVisitor {
 
     @Override
     public void visit(FuncDeclaration node) {
-        /******
-         *  Processes in a function:
-         *  1. save arguments in physical registers to virtual registers
-         *  2. load global variables in memory to virtual registers
-         *  3. function body
-         *  4. save global variables in virtual registers to memory
-         *
-         *  callee and caller register saving code are added in StackBuilder
-         *                                                                  ---- copy from @Idy002 's compiler
-         */
-
-
         curFunc = functionMap.get(node.symbol.name);
         curBB = curFunc.enterBB = new BB(curFunc, "enter" + node.symbol.name);
 
@@ -249,6 +237,9 @@ public class IRBuilder implements IAstVisitor {
             if (i < 6) {
                 curBB.append(new Mov(curBB, curFunc.parameters.get(i), vargs.get(i)));
             } else {
+//                if (curFunc.parameters.get(i).spillPlace == null) {
+//                    System.out.println(i + "no spillplace");
+//                }
                 curBB.append(new Mov(curBB, curFunc.parameters.get(i), curFunc.parameters.get(i).spillPlace));
             }
         }
@@ -300,7 +291,9 @@ public class IRBuilder implements IAstVisitor {
     public void visit(VariableDeclaration node) {
         VirReg virReg = new VirReg(node.name);
         if (isInParameter) {
-            if (curFunc.parameters.size() > 6) {
+//            System.out.println(node.location);
+//            System.out.println(curFunc.parameters.size());
+            if (curFunc.parameters.size() >= 6) {
                 virReg.spillPlace = new StackSlot(virReg.hint);
             }
             curFunc.parameters.add(virReg);
