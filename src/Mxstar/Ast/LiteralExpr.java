@@ -64,7 +64,7 @@ public class LiteralExpr extends Expression {
                 stringBuilder.append(c);
             }
         }
-        System.out.println(stringBuilder);
+//        System.out.println(stringBuilder);
         return stringBuilder.toString();
     }
 
