@@ -57,12 +57,26 @@ pointer_t __string_substring(pointer_t ptr, int left, int right) {
 	int length = right - left + 1;
 	pointer_t ret = malloc(8 + length + 1);
 	*((int64_t*)ret) = length;
-	strncpy(ret + 8, ptr + 8 + left, length);
+	int i;
+	for (i = 0; i < length; ++i)
+        ret[8 + i] = ptr[left + i + 8];
+    ret[8 + length] = 0;
 	return ret;
 }
 
 int64_t __string_parseInt(pointer_t ptr) {
-	return atoi(ptr + 8);
+	int64_t value = 0;
+    	int neg = 0;
+    	ptr += 8;
+    	if(*ptr == '-') {
+    		neg = 1;
+    		ptr++;
+    	}
+    	while('0' <= *ptr && *ptr <= '9') {
+    		value = value * 10 + (*ptr - '0');
+    		ptr++;
+    	}
+    	return neg ? -value : value;
 }
 
 int64_t __string_ord(pointer_t ptr, int64_t pos) {

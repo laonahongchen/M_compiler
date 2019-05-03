@@ -232,14 +232,10 @@ public class IRBuilder implements IAstVisitor {
             variableDeclaration.accept(this);
         isInParameter = false;
 
-//        System.out.println(node.symbol.name + curFunc.parameters.size());
         for (int i = 0; i < curFunc.parameters.size(); ++i) {
             if (i < 6) {
                 curBB.append(new Mov(curBB, curFunc.parameters.get(i), vargs.get(i)));
             } else {
-//                if (curFunc.parameters.get(i).spillPlace == null) {
-//                    System.out.println(i + "no spillplace");
-//                }
                 curBB.append(new Mov(curBB, curFunc.parameters.get(i), curFunc.parameters.get(i).spillPlace));
             }
         }
@@ -336,8 +332,9 @@ public class IRBuilder implements IAstVisitor {
         }
         BB bodyBB = new BB(curFunc, "bodyBB");
         BB condBB = node.condition == null ? bodyBB : new BB(curFunc, "condBB");
-        BB updBB = node.updateStmt == null ? condBB : new BB(curFunc, "updBB");
         BB afterBB = new BB(curFunc, "afterBB");
+        BB updBB = node.updateStmt == null ? condBB : new BB(curFunc, "updBB");
+
 
         curBB.append(new Jump(curBB, condBB));
         loopConditionBB.push(condBB);
@@ -366,8 +363,6 @@ public class IRBuilder implements IAstVisitor {
     @Override
     public void visit(JumpStmt node) {
         if (node.isBreak) {
-//            if (loopAfterBB.peek() == null)
-//                System.out.println("loopafter is null");
             curBB.append(new Jump(curBB, loopAfterBB.peek()));
         } else if (node.isReturn) {
 
@@ -388,7 +383,6 @@ public class IRBuilder implements IAstVisitor {
     @Override
     public void visit(ConditionStmt node) {
         BB thenBB = new BB(curFunc, "thenBB");
-
         BB afterBB = new BB(curFunc, "afterBB");
         BB elseBB = node.elseStmt == null ? afterBB : new BB(curFunc,"elseBB");
         trueBBMap.put(node.expression, thenBB);
