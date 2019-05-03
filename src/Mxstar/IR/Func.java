@@ -111,7 +111,7 @@ public class Func {
             }
             for (BB suc: bb.successers) {
 //                if (suc == null)
-//                    System.out.println("suc is null!!!");
+//                    System.out.println(this.name + " suc is null!!!");
                 suc.frontiers.add(bb);
             }
         }

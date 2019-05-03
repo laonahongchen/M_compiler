@@ -841,6 +841,8 @@ public class IRBuilder implements IAstVisitor {
     }
 
     public void doCompCalc(String op, Expression lhs, Expression rhs, BB trueBB, BB falseBB) {
+        if (trueBB == null)
+            return ;
         lhs.accept(this);
         rhs.accept(this);
         Operand rlhs = exprResultMap.get(lhs);
@@ -854,6 +856,9 @@ public class IRBuilder implements IAstVisitor {
             case "==": cop = Cjump.CompareOP.E; break;
             case "!=": cop = Cjump.CompareOP.NE; break;
         }
+//        if (trueBB == null || falseBB == null) {
+//            System.out.println(lhs.location);
+//        }
         if (lhs.type instanceof ClassType && ((ClassType)lhs.type).name.equals("string")) {
             VirReg result = new VirReg("");
             curBB.append(new Call(curBB, vrax, library_stringComp, rlhs, rrhs));
