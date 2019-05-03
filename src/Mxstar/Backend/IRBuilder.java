@@ -332,9 +332,9 @@ public class IRBuilder implements IAstVisitor {
         }
         BB bodyBB = new BB(curFunc, "bodyBB");
         BB condBB = node.condition == null ? bodyBB : new BB(curFunc, "condBB");
-        BB afterBB = new BB(curFunc, "afterBB");
-        BB updBB = node.updateStmt == null ? condBB : new BB(curFunc, "updBB");
 
+        BB updBB = node.updateStmt == null ? condBB : new BB(curFunc, "updBB");
+        BB afterBB = new BB(curFunc, "afterBB");
 
         curBB.append(new Jump(curBB, condBB));
         loopConditionBB.push(condBB);
@@ -565,8 +565,9 @@ public class IRBuilder implements IAstVisitor {
             curBB.append(new Mov(curBB, addr, vrax));
             curBB.append(new Mov(curBB, new Memory(addr), size));
 
-            BB condBB = new BB(curFunc,"condBB" );
+
             BB bodyBB = new BB(curFunc, "bodyBB");
+            BB condBB = new BB(curFunc,"condBB" );
             BB afterBB = new BB(curFunc, "afterBB");
 
             curBB.append(new Jump(curBB, condBB));
