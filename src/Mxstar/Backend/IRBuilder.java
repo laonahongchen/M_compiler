@@ -564,8 +564,9 @@ public class IRBuilder implements IAstVisitor {
             curBB.append(new Call(curBB, vrax, external_malloc, bytes));
             curBB.append(new Mov(curBB, addr, vrax));
             curBB.append(new Mov(curBB, new Memory(addr), size));
-            BB bodyBB = new BB(curFunc, "bodyBB");
+
             BB condBB = new BB(curFunc,"condBB" );
+            BB bodyBB = new BB(curFunc, "bodyBB");
             BB afterBB = new BB(curFunc, "afterBB");
 
             curBB.append(new Jump(curBB, condBB));
