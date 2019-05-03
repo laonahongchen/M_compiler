@@ -23,7 +23,7 @@ O_FILE="$BASE_NAME.o"
 
 NASM_FILE="$BASE_NAME.asm"
 
-gcc -Werror=implicit-function-declaration -fno-asynchronous-unwind-tables -O0 -c -o "$O_FILE" "$C_FILE"
+gcc -Werror=implicit-function-declaration -fno-asynchronous-unwind-tables -O1 -c -o "$O_FILE" "$C_FILE"
 
 ./objconv -fnasm "$O_FILE" "$NASM_FILE"
 
