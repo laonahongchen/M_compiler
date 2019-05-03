@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="35739463-e986-4e75-a4bd-855459eb39c8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/optim.bash" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/c2nasm/lib.asm" beforeDir="false" afterPath="$PROJECT_DIR$/lib/c2nasm/lib.asm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mx.asm" beforeDir="false" afterPath="$PROJECT_DIR$/mx.asm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/IR/Func.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/IR/Func.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,11 +39,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
-              <caret line="846" column="25" lean-forward="true" selection-start-line="846" selection-start-column="25" selection-end-line="846" selection-end-column="25" />
+            <state relative-caret-position="397">
+              <caret line="852" column="53" selection-start-line="852" selection-start-column="53" selection-end-line="852" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -112,11 +110,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/c2nasm/lib.asm">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="598">
-              <caret line="26" column="13" lean-forward="true" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+            <state relative-caret-position="323">
+              <caret line="279" column="12" selection-start-line="279" selection-start-column="12" selection-end-line="279" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -161,7 +159,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Assign</find>
       <find>assign</find>
       <find>Identifier</find>
       <find>VariableSymbol</find>
@@ -173,7 +170,6 @@
       <find>Call</find>
       <find>new Call</find>
       <find>stringComp</find>
-      <find>stringConcat</find>
       <find>new Jump</find>
       <find>finishBui</find>
       <find>finish</find>
@@ -191,6 +187,8 @@
       <find>.Lc0</find>
       <find>strtol</find>
       <find>LoopS</find>
+      <find>section</find>
+      <find>stringConcat</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -254,9 +252,9 @@
         <option value="$PROJECT_DIR$/src/Mxstar/IR/BB.java" />
         <option value="$PROJECT_DIR$/src/Mxstar/Config_Cons.java" />
         <option value="$PROJECT_DIR$/lib/c2nasm/c2nasm.sh" />
-        <option value="$PROJECT_DIR$/lib/c2nasm/lib.asm" />
         <option value="$PROJECT_DIR$/src/Mxstar/IR/Func.java" />
         <option value="$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java" />
+        <option value="$PROJECT_DIR$/lib/c2nasm/lib.asm" />
       </list>
     </option>
   </component>
@@ -338,7 +336,7 @@
     <property name="$PROJECT_DIR$/src/parser/mxstar.g4::/gen-visitor" value="true" />
     <property name="$PROJECT_DIR$/src/parser/mxstar.g4::/output-dir" value="D:\homework\2018-19-second\compiler\mxstar\src" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556871945524" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556874300361" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/antlr-4.7.2-complete.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -470,7 +468,7 @@
       <workItem from="1556812057994" duration="652000" />
       <workItem from="1556849436403" duration="9642000" />
       <workItem from="1556861241279" duration="199000" />
-      <workItem from="1556865918229" duration="5952000" />
+      <workItem from="1556865918229" duration="7672000" />
     </task>
     <task id="LOCAL-00001" summary="finish coding AST part, need more tests">
       <created>1552728485740</created>
@@ -801,11 +799,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556870363554</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="fix a bug due to dead code">
+      <created>1556871965249</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1556871965249</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="413434000" />
+    <option name="totallyTimeSpent" value="415154000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -920,7 +925,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="I fear myself" />
     <MESSAGE value="I'm off the deepend" />
     <MESSAGE value="watch as i diving" />
     <MESSAGE value="change the structure of codes(ignore all the joke name above, they are just all debugging for semantic)" />
@@ -945,7 +949,8 @@
     <MESSAGE value="delete a debugging use output" />
     <MESSAGE value="fix a fatal bug for IR printer(section print wrong)" />
     <MESSAGE value="change loop order to reduce jmp cmd" />
-    <option name="LAST_COMMIT_MESSAGE" value="change loop order to reduce jmp cmd" />
+    <MESSAGE value="fix a bug due to dead code" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix a bug due to dead code" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1300,13 +1305,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/c2nasm/lib.asm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="26" column="13" lean-forward="true" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/c2nasm/c2nasm.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
@@ -1355,11 +1353,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="846" column="25" lean-forward="true" selection-start-line="846" selection-start-column="25" selection-end-line="846" selection-end-column="25" />
+        <state relative-caret-position="397">
+          <caret line="852" column="53" selection-start-line="852" selection-start-column="53" selection-end-line="852" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/c2nasm/lib.asm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="279" column="12" selection-start-line="279" selection-start-column="12" selection-end-line="279" selection-end-column="12" />
         </state>
       </provider>
     </entry>
