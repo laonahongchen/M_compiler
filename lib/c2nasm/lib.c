@@ -66,17 +66,17 @@ pointer_t __string_substring(pointer_t ptr, int left, int right) {
 
 int64_t __string_parseInt(pointer_t ptr) {
 	int64_t value = 0;
-    	int neg = 0;
-    	ptr += 8;
-    	if(*ptr == '-') {
-    		neg = 1;
-    		ptr++;
-    	}
-    	while('0' <= *ptr && *ptr <= '9') {
-    		value = value * 10 + (*ptr - '0');
-    		ptr++;
-    	}
-    	return neg ? -value : value;
+    int neg = 0;
+    ptr += 8;
+    if(*ptr == '-') {
+        neg = 1;
+        ptr++;
+    }
+    while('0' <= *ptr && *ptr <= '9') {
+        value = value * 10 + (*ptr - '0');
+        ptr++;
+    }
+    return neg ? -value : value;
 }
 
 int64_t __string_ord(pointer_t ptr, int64_t pos) {

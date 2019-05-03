@@ -21,7 +21,7 @@ public class Call extends IRInst {
     public void update() {
         Func caller = super.bb.func;
         caller.callee.add(func);
-        if (func.name.equals("println") || func.name.equals("print"))
+        if (func.name.equals("print") || func.name.equals("println"))
             super.bb.func.hasOutput = true;
     }
 
@@ -76,7 +76,6 @@ public class Call extends IRInst {
     @Override
     public LinkedList<StackSlot> getStackSlots() {
         LinkedList<StackSlot> slots = new LinkedList<>(defualtGetSlot(dest));
-//        slots.addAll(defualtGetSlot(dest));
         for (Operand op: args) {
             if (op instanceof StackSlot) {
                 slots.add((StackSlot)op);

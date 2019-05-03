@@ -30,7 +30,7 @@ public class BB {
     }
 
     public boolean isEnded() {
-        return tail instanceof Jump || tail instanceof Ret;
+        return tail instanceof Jump || tail instanceof Ret || tail instanceof Cjump;
     }
 
     public void prepend(IRInst inst)  {

@@ -42,7 +42,7 @@ public class Lea extends IRInst {
     @Override
     public LinkedList<Register> getUseRegs() {
         LinkedList<Register> regs = new LinkedList<>(src.getUseRegs());
-//        regs.add(dest);
+        regs.add(dest);
         return regs;
     }
 

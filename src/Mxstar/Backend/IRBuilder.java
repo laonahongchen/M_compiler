@@ -436,7 +436,7 @@ public class IRBuilder implements IAstVisitor {
                 curFunc.usedGlobalSymbol.add(node.symbol);
         }
         if (trueBBMap.containsKey(node)) {
-            curBB.append(new Cjump(curBB, operand, Cjump.CompareOP.E, new Imm(1), trueBBMap.get(node), falseBBMap.get(node)));
+            curBB.append(new Cjump(curBB, operand, Cjump.CompareOP.NE, new Imm(0), trueBBMap.get(node), falseBBMap.get(node)));
         } else {
             exprResultMap.put(node, operand);
         }
