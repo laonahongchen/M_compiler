@@ -346,7 +346,8 @@ public class IRBuilder implements IAstVisitor {
             node.condition.accept(this);
         }
         curBB = bodyBB;
-        node.body.accept(this);
+        if (node.body != null)
+            node.body.accept(this);
         curBB.append(new Jump(curBB, updBB));
 
         if (node.updateStmt != null) {

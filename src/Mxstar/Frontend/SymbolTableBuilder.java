@@ -367,7 +367,8 @@ public class SymbolTableBuilder implements IAstVisitor {
             node.condition.accept(this);
         if (node.updateStmt != null)
             node.updateStmt.accept(this);
-        node.body.accept(this);
+        if (node.body != null)
+            node.body.accept(this);
     }
 
     @Override
