@@ -565,9 +565,8 @@ public class IRBuilder implements IAstVisitor {
             curBB.append(new Mov(curBB, addr, vrax));
             curBB.append(new Mov(curBB, new Memory(addr), size));
 
-
-            BB bodyBB = new BB(curFunc, "bodyBB");
             BB condBB = new BB(curFunc,"condBB" );
+            BB bodyBB = new BB(curFunc, "bodyBB");
             BB afterBB = new BB(curFunc, "afterBB");
 
             curBB.append(new Jump(curBB, condBB));
@@ -833,8 +832,8 @@ public class IRBuilder implements IAstVisitor {
             falseBBMap.put(lhs, falseBB);
             trueBBMap.put(lhs, checkBB);
         } else {
-            falseBBMap.put(lhs, trueBB);
-            trueBBMap.put(lhs, checkBB);
+            falseBBMap.put(lhs, checkBB);
+            trueBBMap.put(lhs, trueBB);
         }
         lhs.accept(this);
         curBB = checkBB;
