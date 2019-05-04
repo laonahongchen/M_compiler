@@ -148,7 +148,7 @@ public class SemanticChecker implements IAstVisitor {
                 retType = node.retExpr.type;
 //            System.out.println(((PrimitiveType)requireType).name);
 //            System.out.println(retType instanceof ClassType);
-            if (!retType.match(requireType)) {
+            if (!requireType.match(retType)) {
                 errorListener.addError(node.location, "the return type does not match");
             }
         }
