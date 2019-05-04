@@ -332,9 +332,9 @@ public class IRBuilder implements IAstVisitor {
         }
         BB bodyBB = new BB(curFunc, "bodyBB");
         BB condBB = node.condition == null ? bodyBB : new BB(curFunc, "condBB");
-
-        BB updBB = node.updateStmt == null ? condBB : new BB(curFunc, "updBB");
         BB afterBB = new BB(curFunc, "afterBB");
+        BB updBB = node.updateStmt == null ? condBB : new BB(curFunc, "updBB");
+
 
         curBB.append(new Jump(curBB, condBB));
         loopConditionBB.push(condBB);

@@ -5,14 +5,15 @@ import Mxstar.IR.Operand.VirReg;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.function.BiConsumer;
 
-public class InferenceGraph {
+public class Graph {
     public HashMap<VirReg, HashSet<VirReg>> graph;
 
-    public InferenceGraph() {
+    public Graph() {
         graph = new HashMap<>();
     }
-    public InferenceGraph(InferenceGraph g) {
+    public Graph(Graph g) {
         graph = new HashMap<>();
         for (VirReg virReg: g.getAllRegs())
             graph.put(virReg, new HashSet<>(g.getAdjacent(virReg)));
@@ -59,6 +60,13 @@ public class InferenceGraph {
 
     public void clear() {
         graph.clear();
+    }
+
+    public void forEach(BiConsumer<VirReg, VirReg> consumer ) {
+        for (VirReg reg1: graph.keySet())
+            for (VirReg reg2: graph.get(reg1)) {
+                consumer.accept(reg1, reg2);
+            }
     }
 
     public int getDeg(VirReg virReg) {

@@ -90,6 +90,10 @@ public class Compiler {
             irPrinter.printTo(System.err);
         }
 
+        DeadCodeElimination deadCodeElimination = new DeadCodeElimination(irProgram);
+        deadCodeElimination.run();
+
+
         IRCorrector irCorrector = new IRCorrector();
         irProgram.accept(irCorrector);
 
