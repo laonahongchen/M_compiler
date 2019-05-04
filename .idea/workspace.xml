@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/Mxstar/Backend/GraphAllocator.java" line="57" mnemonic="9" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="35739463-e986-4e75-a4bd-855459eb39c8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Mxstar/Backend/GraphAllocator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mx.asm" beforeDir="false" afterPath="$PROJECT_DIR$/mx.asm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/Frontend/SymbolTableBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/Frontend/SymbolTableBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Mxstar/Config_Cons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/Config_Cons.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,11 +42,47 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Mxstar/Backend/GraphAllocator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="356" column="9" lean-forward="true" selection-start-line="356" selection-start-column="9" selection-end-line="356" selection-end-column="9" />
+            <state relative-caret-position="172">
+              <caret line="82" selection-start-line="82" selection-end-line="82" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Mxstar/Backend/LivenessAnalyzer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="506">
+              <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="39" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Mxstar/IR/Func.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1242">
+              <caret line="61" column="13" selection-start-line="56" selection-start-column="12" selection-end-line="61" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Mxstar/Backend/NaiveAllocator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1771">
+              <caret line="90" column="46" selection-start-line="90" selection-start-column="46" selection-end-line="90" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -55,8 +93,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Mxstar/Config_Cons.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="5" column="27" lean-forward="true" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+            <state relative-caret-position="23">
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Mxstar/Compiler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="20" column="59" lean-forward="true" selection-start-line="20" selection-start-column="59" selection-end-line="20" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -64,8 +114,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Mxstar/Frontend/SymbolTableBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="369" column="30" lean-forward="true" selection-start-line="369" selection-start-column="30" selection-end-line="369" selection-end-column="30" />
+            <state relative-caret-position="8257">
+              <caret line="369" column="30" selection-start-line="369" selection-start-column="30" selection-end-line="369" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -73,7 +123,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Mxstar/Ast/LoopStmt.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
+            <state relative-caret-position="138">
               <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
             </state>
           </provider>
@@ -84,48 +134,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="46">
               <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Mxstar/Compiler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1840">
-              <caret line="94" selection-start-line="94" selection-end-line="94" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/program.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="552">
-              <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Mxstar/Backend/Graph.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1242">
-              <caret line="67" column="44" selection-start-line="67" selection-start-column="44" selection-end-line="67" selection-end-column="44" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/c2nasm/lib.asm">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6417">
-              <caret line="279" column="12" selection-start-line="279" selection-start-column="12" selection-end-line="279" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -152,7 +160,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>new Call</find>
       <find>stringComp</find>
       <find>new Jump</find>
       <find>finishBui</find>
@@ -182,6 +189,7 @@
       <find>new BB</find>
       <find>SECTION</find>
       <find>alloca</find>
+      <find>&quot;rsp&quot;</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -197,7 +205,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Mxstar/IR/Instruction/Pop.java" />
         <option value="$PROJECT_DIR$/src/Mxstar/IR/Instruction/Cjump.java" />
         <option value="$PROJECT_DIR$/src/Mxstar/IR/Instruction/UnaryInst.java" />
         <option value="$PROJECT_DIR$/src/Mxstar/Symbol/VariableSymbol.java" />
@@ -245,9 +252,10 @@
         <option value="$PROJECT_DIR$/mx.asm" />
         <option value="$PROJECT_DIR$/program.txt" />
         <option value="$PROJECT_DIR$/src/Mxstar/Compiler.java" />
-        <option value="$PROJECT_DIR$/src/Mxstar/Config_Cons.java" />
         <option value="$PROJECT_DIR$/src/Mxstar/Frontend/SymbolTableBuilder.java" />
         <option value="$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java" />
+        <option value="$PROJECT_DIR$/src/Mxstar/Backend/GraphAllocator.java" />
+        <option value="$PROJECT_DIR$/src/Mxstar/Config_Cons.java" />
       </list>
     </option>
   </component>
@@ -264,7 +272,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -317,6 +324,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -329,7 +337,7 @@
     <property name="$PROJECT_DIR$/src/parser/mxstar.g4::/gen-visitor" value="true" />
     <property name="$PROJECT_DIR$/src/parser/mxstar.g4::/output-dir" value="D:\homework\2018-19-second\compiler\mxstar\src" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556966645883" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556972410148" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/antlr-4.7.2-complete.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -468,14 +476,8 @@
       <workItem from="1556929321895" duration="9591000" />
       <workItem from="1556942619799" duration="4040000" />
       <workItem from="1556951759697" duration="8438000" />
-      <workItem from="1556966399988" duration="619000" />
-    </task>
-    <task id="LOCAL-00008" summary="or do you need more">
-      <created>1553664002214</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1553664002214</updated>
+      <workItem from="1556966399988" duration="4341000" />
+      <workItem from="1556977811232" duration="17000" />
     </task>
     <task id="LOCAL-00009" summary="is there something else you are searching for">
       <created>1553677536307</created>
@@ -813,14 +815,22 @@
       <option name="project" value="LOCAL" />
       <updated>1556958823421</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="fix a bug in semantic...(null loop)">
+      <created>1556967047014</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1556967047014</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="449511000" />
+    <option name="totallyTimeSpent" value="453250000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="1" />
@@ -828,7 +838,7 @@
       <window_info id="Capture Tool" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" weight="0.3297587" />
-      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.24798928" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.25134048" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32991204" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32844576" />
@@ -931,7 +941,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="commit for semantic recheck(stop before IR)" />
     <MESSAGE value="finish IR coding" />
     <MESSAGE value="try codegen now" />
     <MESSAGE value="just a try on codegen(IR may have plenty of probs" />
@@ -956,20 +965,14 @@
     <MESSAGE value="changed lib file to a O3 version" />
     <MESSAGE value="test for runnable for T27..." />
     <MESSAGE value="fix a fatal bug for T27" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix a fatal bug for T27" />
+    <MESSAGE value="fix a bug in semantic...(null loop)" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix a bug in semantic...(null loop)" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/semantic.bash">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/codegen.bash">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
@@ -1058,16 +1061,6 @@
           <folding>
             <element signature="e#763#764#0" expanded="true" />
             <element signature="e#798#799#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mxstar/Backend/NaiveAllocator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1771">
-          <caret line="90" column="46" selection-start-line="90" selection-start-column="46" selection-end-line="90" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1243,16 +1236,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mxstar/IR/Func.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/c2nasm/lib.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1058">
@@ -1277,16 +1260,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mxstar/Backend/LivenessAnalyzer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2461">
-          <caret line="118" column="25" selection-start-line="118" selection-start-column="25" selection-end-line="118" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Mxstar/IR/Instruction/Lea.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
@@ -1298,16 +1271,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1173">
           <caret line="61" column="9" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mxstar/Compiler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1840">
-          <caret line="94" selection-start-line="94" selection-end-line="94" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1338,23 +1301,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mx.asm">
+    <entry file="file://$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30429">
-          <caret line="1323" column="9" selection-start-line="1323" selection-start-column="9" selection-end-line="1323" selection-end-column="9" />
+        <state relative-caret-position="5267">
+          <caret line="241" selection-start-line="241" selection-end-line="241" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mxstar/Config_Cons.java">
+    <entry file="file://$PROJECT_DIR$/src/Mxstar/Backend/LivenessAnalyzer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="5" column="27" lean-forward="true" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+        <state relative-caret-position="506">
+          <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="39" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mxstar/IR/Func.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1242">
+          <caret line="61" column="13" selection-start-line="56" selection-start-column="12" selection-end-line="61" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mxstar/Backend/NaiveAllocator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1771">
+          <caret line="90" column="46" selection-start-line="90" selection-start-column="46" selection-end-line="90" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mxstar/Frontend/SymbolTableBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8257">
+          <caret line="369" column="30" selection-start-line="369" selection-start-column="30" selection-end-line="369" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Mxstar/Ast/LoopStmt.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
+        <state relative-caret-position="138">
           <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
         </state>
       </provider>
@@ -1366,20 +1362,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mxstar/Frontend/SymbolTableBuilder.java">
+    <entry file="file://$PROJECT_DIR$/mx.asm">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="369" column="30" lean-forward="true" selection-start-line="369" selection-start-column="30" selection-end-line="369" selection-end-column="30" />
+        <state relative-caret-position="30429">
+          <caret line="1323" column="9" selection-start-line="1323" selection-start-column="9" selection-end-line="1323" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java">
+    <entry file="file://$PROJECT_DIR$/src/Mxstar/Backend/GraphAllocator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="356" column="9" lean-forward="true" selection-start-line="356" selection-start-column="9" selection-end-line="356" selection-end-column="9" />
+        <state relative-caret-position="172">
+          <caret line="82" selection-start-line="82" selection-end-line="82" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mxstar/Config_Cons.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mxstar/Compiler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="20" column="59" lean-forward="true" selection-start-line="20" selection-start-column="59" selection-end-line="20" selection-end-column="59" />
         </state>
       </provider>
     </entry>
