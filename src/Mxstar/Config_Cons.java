@@ -8,7 +8,7 @@ public class Config_Cons{
     public enum ALLOCATOR {
         NAIVE_ALLOCATOR, GRAPH_ALLOCATOR
     }
-    public static ALLOCATOR allocator = ALLOCATOR.NAIVE_ALLOCATOR;
+    public static ALLOCATOR allocator = ALLOCATOR.GRAPH_ALLOCATOR;
 
     public static FileInputStream fin;
     public static PrintStream fout;

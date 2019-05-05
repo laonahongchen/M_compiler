@@ -3,6 +3,7 @@ package Mxstar.Backend;
 
 import Mxstar.IR.BB;
 import Mxstar.IR.Func;
+import Mxstar.IR.IRProgram;
 import Mxstar.IR.Instruction.Call;
 import Mxstar.IR.Instruction.IRInst;
 import Mxstar.IR.Instruction.Mov;
@@ -18,6 +19,7 @@ public class LivenessAnalyzer {
     private HashMap<BB, HashSet<VirReg>> liveOut;
     private HashMap<BB, HashSet<VirReg>> ueVar;
     private HashMap<BB, HashSet<VirReg>> varKill;
+
 
     void prepare (Func func) {
         liveOut = new HashMap<>();
@@ -90,16 +92,30 @@ public class LivenessAnalyzer {
         return liveOut;
     }
 
-    private boolean isCritialMove(IRInst inst) {
-        return inst instanceof Mov && ((Mov) inst).dest instanceof VirReg && ((Mov) inst).src instanceof VirReg;
+    public void calcUDCnt(Func func) {
+        HashSet<VirReg> alreadyUD = new HashSet<>();
+        for (BB bb: func.basicblocks) {
+            for (IRInst inst = bb.head; inst != null; inst = inst.next) {
+                LinkedList<VirReg> virRegs = tranVir(inst.getUseRegs());
+                virRegs.addAll(tranVir(inst.getDefRegs()));
+                for (VirReg reg: virRegs) {
+                    if (alreadyUD.contains(reg)) {
+                        reg.cntUD = reg.cntUD + 1;
+                    } else {
+                        alreadyUD.add(reg);
+                        reg.cntUD = 1;
+                    }
+                }
+            }
+        }
+
     }
 
-    public void getInferenceGraph(Func func, Graph graph, Graph moveGraph) {
+
+    public void getInterferenceGraph(Func func, Graph graph) {
         calcLiveOut(func, true);
 
         graph.clear();;
-        if (moveGraph != null)
-            moveGraph.clear();
         for (BB bb: func.basicblocks) {
             for (IRInst inst = bb.head; inst != null; inst = inst.next) {
                 graph.addRegisters(tranVir(inst.getUseRegs()));
@@ -110,23 +126,14 @@ public class LivenessAnalyzer {
         for (BB bb: func.basicblocks) {
             HashSet<VirReg> liveNow = new HashSet<>(liveOut.get(bb));
             for (IRInst inst = bb.tail; inst != null; inst = inst.prev ) {
-                boolean isCriMov = isCritialMove(inst);
                 for (VirReg reg1: tranVir(inst.getDefRegs())) {
                     for (VirReg reg2: liveNow) {
-                        if (isCriMov && moveGraph != null && ((Mov)inst).src == reg1) {
-                            moveGraph.addEdge(reg1, reg2);
-                            continue;
-                        }
                         graph.addEdge(reg1, reg2);
                     }
                 }
                 liveNow.removeAll(tranVir(inst.getDefRegs()));
                 liveNow.addAll(tranVir(inst.getUseRegs()));
             }
-        }
-
-        if (moveGraph != null) {
-            graph.forEach(moveGraph::removeEdge);
         }
     }
 }

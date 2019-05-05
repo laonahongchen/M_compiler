@@ -24,9 +24,9 @@ public class Compiler {
         exit(0);
     }
     public static void compile() throws IOException{
-        BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+//        BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
         //InputStream is = Config.in;
-//        FileInputStream is = new FileInputStream("program.txt");
+        FileInputStream is = new FileInputStream("program.txt");
         ANTLRInputStream ais = new ANTLRInputStream(is);
         MxstarLexer mstarLexer = new MxstarLexer(ais);
         CommonTokenStream tokens = new CommonTokenStream(mstarLexer);
@@ -109,7 +109,8 @@ public class Compiler {
             case NAIVE_ALLOCATOR:
                 NaiveAllocator naiveAllocator = new NaiveAllocator(irProgram);
                 break;
-            default:
+            case GRAPH_ALLOCATOR:
+                GraphAllocator graphAllocator = new GraphAllocator(irProgram);
                 break;
         }
 

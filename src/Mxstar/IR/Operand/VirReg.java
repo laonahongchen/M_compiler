@@ -9,6 +9,7 @@ public class VirReg extends Register {
 
     public int id;
     public static int globalId = 0;
+    public int cntUD;
 
     public VirReg(String hint) {
         this.hint = hint;
