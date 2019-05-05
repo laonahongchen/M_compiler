@@ -308,50 +308,52 @@ _main_User_Defined_fihriaifhiahidsafans:
 	l_0:
 	push rbp
 	mov rbp, rsp
-	push r13
-	push rbx
 	push r15
-	push r12
-	push r14
+	push r13
 	sub rsp, 0
-	mov r15, 20
-	lea rbx, [r15 * 8 + 8]
-	mov rdi, rbx
-	call malloc 
-	mov rbx, rax
-	mov qword [rbx], r15
+	mov rdx, 5
+	mov r15, 0
+	mov r13, 1
 	l_1:
-	cmp r15, 0
-	jg l_2
+	cmp r13, rdx
+	jle l_2
 	l_3:
-	mov rax, qword [rbx]
+	mov rax, r15
 	l_4:
-	pop r13
-	pop rbx
 	pop r15
-	pop r12
-	pop r14
+	pop r13
 	leave 
 	ret
 	l_2:
-	mov qword [rbx + r15 * 8], 0
-	dec r15
-	jmp l_1
-__init:
+	mov rsi, 1
 	l_5:
+	cmp rsi, rdx
+	jle l_6
+	l_7:
+	add r15, 1
+	l_8:
+	inc r13
+	jmp l_1
+	l_6:
+	add r15, r13
+	l_9:
+	inc rsi
+	jmp l_5
+__init:
+	l_10:
 	push rbp
 	mov rbp, rsp
-	push r13
-	push rbx
-	push r15
 	push r12
+	push r13
+	push r15
+	push rbx
 	push r14
 	sub rsp, 0
 	call _main_User_Defined_fihriaifhiahidsafans 
-	pop r13
-	pop rbx
-	pop r15
 	pop r12
+	pop r13
+	pop r15
+	pop rbx
 	pop r14
 	leave 
 	ret

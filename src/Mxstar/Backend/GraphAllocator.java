@@ -182,8 +182,6 @@ public class GraphAllocator {
             livenessAnalyzer.getInterferenceGraph(func, originGraph);
             livenessAnalyzer.calcUDCnt(func);
 
-
-
             graph = new Graph(originGraph);
             init();
             do {
