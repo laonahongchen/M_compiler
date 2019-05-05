@@ -48,7 +48,7 @@ public class GraphAllocator {
     private HashSet<VirReg> spillList;
     private HashSet<VirReg> spillRegs;
     private LinkedList<VirReg> selectStack;
-    HashMap<VirReg, PhyReg> color;
+    private HashMap<VirReg, PhyReg> color;
 
     private void init() {
         simplifyList = new HashSet<>();
@@ -117,7 +117,16 @@ public class GraphAllocator {
             if (okColors.isEmpty()) {
                 spillRegs.add(virReg);
             } else {
-                color.put(virReg, okColors.iterator().next());
+                PhyReg phyReg  = null;
+                for (PhyReg reg: RegisterSet.callerSave) {
+                    if (okColors.contains(reg)) {
+                        phyReg = reg;
+                        break;
+                    }
+                }
+                if (phyReg == null)
+                    phyReg = okColors.iterator().next();
+                color.put(virReg, phyReg);
             }
         }
     }

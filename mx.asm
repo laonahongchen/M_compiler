@@ -304,57 +304,84 @@ L_012:
 
 ;====================================================
 	 section .text
-_main_User_Defined_fihriaifhiahidsafans:
+_foo_User_Defined_fihriaifhiahidsafans:
 	l_0:
 	push rbp
 	mov rbp, rsp
-	push r15
-	push r13
 	sub rsp, 0
-	mov rdx, 5
-	mov r15, 0
-	mov r13, 1
+	push rbx
+	push r12
+	push r14
+	mov r12, rdi
+	mov rbx, rsi
+	mov r14, rdx
+	mov rax, r12
+	mov rcx, 1000
+	imul rcx
+	mov rcx, rax
+	mov rax, rbx
+	mov rdx, 10
+	imul rdx
+	mov rdx, rax
+	mov rax, rcx
+	add rax, rdx
+	add rax, r14
+	mov rdi, rax
+	call __toString 
+	mov rdi, rax
+	call __println 
+	cmp r12, 1
+	je l_1
+	l_2:
+	mov rax, rbx
+	mov rbx, r14
+	mov r14, rax
+	mov rdx, r14
+	mov rsi, rbx
+	mov rdi, 1
+	call _foo_User_Defined_fihriaifhiahidsafans 
+	mov rax, r12
+	mov rcx, 1000
+	imul rcx
+	mov rsi, rax
+	mov rax, rbx
+	mov rcx, 10
+	imul rcx
+	mov rcx, rax
+	mov rax, rsi
+	add rax, rcx
+	add rax, r14
+	mov rdi, rax
+	call __toString 
+	mov rdi, rax
+	call __println 
+	jmp l_3
 	l_1:
-	cmp r13, rdx
-	jle l_2
 	l_3:
-	mov rax, r15
-	l_4:
-	pop r15
-	pop r13
+	pop r14
+	pop r12
+	pop rbx
 	leave 
 	ret
-	l_2:
-	mov rsi, 1
-	l_5:
-	cmp rsi, rdx
-	jle l_6
-	l_7:
-	add r15, 1
-	l_8:
-	inc r13
-	jmp l_1
-	l_6:
-	add r15, r13
-	l_9:
-	inc rsi
-	jmp l_5
-__init:
-	l_10:
+_main_User_Defined_fihriaifhiahidsafans:
+	l_4:
 	push rbp
 	mov rbp, rsp
-	push r12
-	push r13
-	push r15
-	push rbx
-	push r14
+	sub rsp, 0
+	mov rdx, 3
+	mov rsi, 5
+	mov rdi, 7
+	call _foo_User_Defined_fihriaifhiahidsafans 
+	mov rax, 0
+	l_5:
+	leave 
+	ret
+__init:
+	l_6:
+	push rbp
+	mov rbp, rsp
 	sub rsp, 0
 	call _main_User_Defined_fihriaifhiahidsafans 
-	pop r12
-	pop r13
-	pop r15
-	pop rbx
-	pop r14
 	leave 
 	ret
 	 section .data

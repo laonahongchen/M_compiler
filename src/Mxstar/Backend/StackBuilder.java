@@ -98,7 +98,7 @@ public class StackBuilder {
         needToSave.retainAll(RegisterSet.calleeSave);
         headinst = headinst.prev;
         for (PhyReg pr: needToSave)
-            headinst.prepend(new Push(headinst.bb, pr));
+            headinst.append(new Push(headinst.bb, pr));
 
 
         Ret ret = (Ret)func.leaveBB.tail;

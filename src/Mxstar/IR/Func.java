@@ -167,7 +167,7 @@ public class Func {
                 if (inst instanceof Ret)
                     return;
                 if (inst instanceof Call) {
-                    usedPhysicalRegister.addAll(RegisterSet.calleeSave);
+                    usedPhysicalRegister.addAll(RegisterSet.callerSave);
                 } else if (inst instanceof BinInst && isSpecialBinaryOp(((BinInst)inst).op)) {
                     usedPhysicalRegister.add(RegisterSet.rax);
                     usedPhysicalRegister.add(RegisterSet.rdx);
