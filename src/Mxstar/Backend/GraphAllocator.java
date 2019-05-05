@@ -106,9 +106,9 @@ public class GraphAllocator {
             if (virReg.allocatedPhyReg != null)
                 continue;
             HashSet<PhyReg> okColors = new HashSet<>(generalRegisters);
-            if (originGraph == null) {
-                System.out.println("is origin graph a idiot");
-            }
+//            if (originGraph == null) {
+//                System.out.println("is origin graph a idiot");
+//            }
             for (VirReg neighbor: originGraph.getAdjacent(virReg)) {
                 if (color.containsKey(neighbor)) {
                     okColors.remove(color.get(neighbor));
@@ -186,8 +186,6 @@ public class GraphAllocator {
 
             graph = new Graph(originGraph);
             init();
-            System.out.println(simplifyList.size());
-            System.out.println(spillList.size());
             do {
                 if (!simplifyList.isEmpty())
                     simplify();
@@ -207,11 +205,13 @@ public class GraphAllocator {
             }
         }
 
+        /*
         System.err.println("===============================================");
         System.err.println("IR for debug: after " + func.name);
         IRPrinter irPrinter = new IRPrinter();
         irPrinter.visit(irProgram);
         irPrinter.printTo(System.err);
+*/
 
         func.finishAllocate();
     }
