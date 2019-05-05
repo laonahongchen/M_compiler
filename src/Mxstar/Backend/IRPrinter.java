@@ -188,6 +188,10 @@ public class IRPrinter implements IIRVisitor {
 
     @Override
     public void visit(BinInst inst) {
+        if (inst.op == BinInst.BinOp.ADD || inst.op == BinInst.BinOp.SUB || inst.op == BinInst.BinOp.SAL || inst.op == BinInst.BinOp.SAR)
+            if (inst.src instanceof Imm && ((Imm) inst.src).value == 0) {
+                return ;
+            }
         if ((inst.op == BinInst.BinOp.MUL)) {
             stringBuilder.append("\timul ");
             inst.src.accept(this);

@@ -35,11 +35,14 @@ public class StackBuilder {
     class Frame{
         public LinkedList<StackSlot> parameters = new LinkedList<>();
         public LinkedList<StackSlot> temporaries = new LinkedList<>();
-        public int getFrameSize() {
+        public int getFrameSize(int offset) {
 //            System.out.println(parameters.size());
 //            System.out.println(temporaries.size() + "\n");
             int bytes = Config_Cons.REGISTER_WIDTH * (parameters.size() + temporaries.size());
             bytes = (bytes + 15) / 16 * 16;
+            if (offset % 2 == 1) {
+                bytes += 8;
+            }
             return bytes;
         }
     }
@@ -92,10 +95,12 @@ public class StackBuilder {
         IRInst headinst = func.enterBB.head;
         headinst.prepend(new Push(headinst.bb, RegisterSet.rbp));
         headinst.prepend(new Mov(headinst.bb, RegisterSet.rbp, RegisterSet.rsp));
-        headinst.prepend(new BinInst(headinst.bb, BinInst.BinOp.SUB, RegisterSet.rsp, new Imm(frame.getFrameSize())));
-
         HashSet<PhyReg> needToSave = new HashSet<>(func.usedPhysicalRegister);
         needToSave.retainAll(RegisterSet.calleeSave);
+        headinst.prepend(new BinInst(headinst.bb, BinInst.BinOp.SUB, RegisterSet.rsp, new Imm(frame.getFrameSize(needToSave.size()))));
+
+//        HashSet<PhyReg> needToSave = new HashSet<>(func.usedPhysicalRegister);
+//        needToSave.retainAll(RegisterSet.calleeSave);
         headinst = headinst.prev;
         for (PhyReg pr: needToSave)
             headinst.append(new Push(headinst.bb, pr));
@@ -112,4 +117,5 @@ public class StackBuilder {
             processFunc(func);
         }
     }
+
 }

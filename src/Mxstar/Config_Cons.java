@@ -10,10 +10,8 @@ public class Config_Cons{
     }
     public static ALLOCATOR allocator = ALLOCATOR.GRAPH_ALLOCATOR;
 
-    public static FileInputStream fin;
-    public static PrintStream fout;
     public static boolean PrintIRAfterBuild = false;
-    public static boolean PrintIRAfterCorrector = true;
-    public static boolean PrintIRAfterAllocator = true;
+    public static boolean PrintIRAfterCorrector = false;
+    public static boolean PrintIRAfterAllocator = false;
     public static boolean PrintIRAfterAll = false;
 }
