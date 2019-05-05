@@ -83,7 +83,7 @@ public class GraphAllocator {
         VirReg candidate = null;
         double mxRank = -2;
         for (VirReg reg: spillList) {
-            double rank = 1.0 * graph.getDeg(reg) / reg.cntUD ;
+            double rank = 1.0 * graph.getDeg(reg) / reg.cntUD  ;
             if (reg.allocatedPhyReg != null) {
                 rank = -1;
             }

@@ -325,8 +325,6 @@ public class IRBuilder implements IAstVisitor {
 
     @Override
     public void visit(LoopStmt node) {
-        if (node.body == null)
-            return ;
         if (node.startStmt != null) {
             node.startStmt.accept(this);
         }
@@ -346,8 +344,8 @@ public class IRBuilder implements IAstVisitor {
             node.condition.accept(this);
         }
         curBB = bodyBB;
-//        if (node.body != null)
-        node.body.accept(this);
+        if (node.body != null)
+            node.body.accept(this);
         curBB.append(new Jump(curBB, updBB));
 
         if (node.updateStmt != null) {

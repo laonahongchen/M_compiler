@@ -8,7 +8,6 @@ import Mxstar.IR.Instruction.*;
 import Mxstar.IR.Operand.*;
 import Mxstar.IR.RegisterSet;
 
-import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
