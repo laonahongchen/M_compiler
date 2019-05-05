@@ -7,9 +7,7 @@ import Mxstar.IR.Instruction.IRInst;
 import Mxstar.IR.Instruction.Mov;
 import Mxstar.IR.Operand.*;
 import Mxstar.IR.RegisterSet;
-import sun.util.resources.cldr.da.CurrencyNames_da;
 
-import java.time.chrono.IsoChronology;
 import java.util.*;
 
 public class GraphAllocator {
