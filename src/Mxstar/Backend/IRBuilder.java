@@ -160,7 +160,7 @@ public class IRBuilder implements IAstVisitor {
 
     @Override
     public void visit(AstProgram node) {
-        // vr for global Variables
+
         for (VariableDeclaration variableDeclaration: node.globalVariables) {
             StaticData data = new StaticData(variableDeclaration.name, Config_Cons.REGISTER_WIDTH);
             VirReg virReg = new VirReg(variableDeclaration.name);
@@ -169,7 +169,6 @@ public class IRBuilder implements IAstVisitor {
             variableDeclaration.symbol.virReg = virReg;
         }
 
-        //define functions
         LinkedList<FuncDeclaration> funcDeclarations = new LinkedList<>(node.funcDeclarations);
         for (ClassDeclaration cd: node.classDeclarations) {
             if (cd.construct != null) {
@@ -186,7 +185,6 @@ public class IRBuilder implements IAstVisitor {
             functionMap.put(funcDeclaration.symbol.name, new Func(Func.Type.UserDefined, funcDeclaration.name, !isVoidType(funcDeclaration.symbol.returnType)));
         }
 
-        //normal visit successors
         for (FuncDeclaration funcDeclaration: node.funcDeclarations)
             funcDeclaration.accept(this);
         for (ClassDeclaration classDeclaration: node.classDeclarations)

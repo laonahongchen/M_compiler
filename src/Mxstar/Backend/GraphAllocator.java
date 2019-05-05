@@ -105,6 +105,12 @@ public class GraphAllocator {
         for (VirReg virReg: selectStack) {
             if (virReg.allocatedPhyReg != null)
                 continue;
+            if (virReg.spillPlace != null) {
+                spillRegs.add(virReg);
+                continue;
+            }
+
+
             HashSet<PhyReg> okColors = new HashSet<>(generalRegisters);
 //            if (originGraph == null) {
 //                System.out.println("is origin graph a idiot");

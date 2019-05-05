@@ -17,11 +17,6 @@ public class VirReg extends Register {
         this.id = globalId++;
     }
 
-    public VirReg(String hint,  PhyReg phyReg) {
-        this.hint = hint;
-        this.allocatedPhyReg = phyReg;
-    }
-
     @Override
     public  void accept(IIRVisitor visitor) {
         visitor.visit(this);
