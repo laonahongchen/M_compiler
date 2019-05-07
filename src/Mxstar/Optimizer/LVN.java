@@ -1,5 +1,6 @@
 package Mxstar.Optimizer;
 
+import Mxstar.Config_Cons;
 import Mxstar.IR.BB;
 import Mxstar.IR.Func;
 import Mxstar.IR.IIRVisitor;
@@ -94,15 +95,10 @@ public class LVN implements IIRVisitor {
 
     @Override
     public void visit(BinInst inst) {
-
         int vrhs = table.getOperandVal(inst.src);
         int vlhs = (inst.op == MUL || inst.op == MOD || inst.op == DIV) ? table.getOperandVal(vrax) : table.getOperandVal(inst.dest);
-//        System.out.println(inst.dest == vrax);
         Operand ilhs = table.getValOperand(vlhs);
         Operand irhs = table.getValOperand(vrhs);
-//        System.out.println(ilhs instanceof Imm);
-//        System.out.println(irhs instanceof Imm);
-//        System.out.println("finish one check");
 
         if (ilhs instanceof Imm && irhs instanceof Imm) {
             if (inst.op == BinInst.BinOp.DIV || inst.op == MOD) {
@@ -132,11 +128,12 @@ public class LVN implements IIRVisitor {
         } else {
             int keyval = table.getKeyVal(table.getOperandVal(inst.dest), table.getOperandVal(inst.src), inst.op);
             Operand operand = table.getValOperand(keyval);
-            if (operand != null) {
+            if (operand != null && Config_Cons.doVNOptimize) {
                 if (inst.op == BinInst.BinOp.DIV || inst.op == MOD) {
                     assert inst.prev instanceof  Cdq;
                     inst.prev.remove();
                 }
+
                 if (inst.op == BinInst.BinOp.MUL || inst.op == DIV) {
                     inst.replace(new Mov(inst.bb, vrax, operand));
                 } else if (inst.op == MOD) {
@@ -172,6 +169,10 @@ public class LVN implements IIRVisitor {
             } else if (inst.op == UnaryInst.UnaryOp.DEC) {
                 res = table.getKeyVal(val, table.getImmVal(1), BinInst.BinOp.SUB);
             }
+            Operand reg = table.getValOperand(res);
+            if (reg instanceof VirReg && Config_Cons.doVNOptimize) {
+                inst.replace(new Mov(inst.bb, inst.dest, reg));
+            }
         }
         if (inst.dest instanceof VirReg) {
             if (res == -1)
@@ -185,7 +186,7 @@ public class LVN implements IIRVisitor {
     @Override
     public void visit(Mov inst) {
         int val = table.getOperandVal(inst.src);
-        if (table.getOperandVal(inst.dest) == val) {
+        if (table.getOperandVal(inst.dest) == val && Config_Cons.doVNOptimize) {
             inst.remove();
             return ;
         }
