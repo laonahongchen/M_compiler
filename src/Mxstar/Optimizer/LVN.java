@@ -44,6 +44,9 @@ public class LVN implements IIRVisitor {
     }
 
     private int doBinary(BinInst.BinOp op, int lhs, int rhs) {
+        System.out.println(lhs);
+        System.out.println(rhs);
+        System.out.println("val");
         switch (op) {
             case MUL:
                 return lhs * rhs;
@@ -87,6 +90,7 @@ public class LVN implements IIRVisitor {
 
     @Override
     public void visit(BinInst inst) {
+
         int vrhs = table.getOperandVal(inst.src);
         int vlhs = (inst.op == MUL || inst.op == MOD || inst.op == DIV) ? table.getOperandVal(vrax) : table.getOperandVal(inst.dest);
 //        System.out.println(inst.dest == vrax);
@@ -116,6 +120,10 @@ public class LVN implements IIRVisitor {
             } else if (inst.op == BinInst.BinOp.MUL || inst.op == BinInst.BinOp.DIV) {
                 table.putRegVal(vrax, table.getImmVal(res));
                 table.putRegVal(vrdx);
+            } else  {
+                if (inst.dest instanceof VirReg) {
+                    table.putRegVal((VirReg) inst.dest, table.getImmVal(res));
+                }
             }
         } else {
             int keyval = table.getKeyVal(table.getOperandVal(inst.dest), table.getOperandVal(inst.src), inst.op);

@@ -304,96 +304,16 @@ L_012:
 
 ;====================================================
 	 section .text
-_add_User_Defined_fihriaifhiahidsafans:
+_main_User_Defined_fihriaifhiahidsafans:
 	l_0:
 	push rbp
 	mov rbp, rsp
-	mov rcx, rdi
-	mov rax, rsi
-	add rcx, rax
-	mov rax, rcx
-	cdq
-	mov rcx, 233
-	idiv rcx
-	mov rax, rdx
+	mov rax, 16
 	l_1:
 	leave 
 	ret
-_dp_User_Defined_fihriaifhiahidsafans:
-	l_2:
-	push rbp
-	mov rbp, rsp
-	sub rsp, 8
-	push r12
-	push r14
-	push r13
-	mov r14, rdi
-	cmp r14, 1
-	jle l_3
-	l_4:
-	mov r13, 0
-	mov r12, 2
-	l_5:
-	cmp r12, r14
-	jle l_6
-	l_7:
-	mov rax, r13
-	jmp l_8
-	l_6:
-	mov rax, r14
-	xor rax, r12
-	cmp rax, r14
-	jge l_9
-	l_10:
-	mov rdi, rax
-	call _dp_User_Defined_fihriaifhiahidsafans 
-	mov rsi, rax
-	mov rdi, r13
-	call _add_User_Defined_fihriaifhiahidsafans 
-	mov r13, rax
-	l_9:
-	l_11:
-	inc r12
-	jmp l_5
-	l_3:
-	mov rax, 36
-	l_8:
-	pop r13
-	pop r14
-	pop r12
-	leave 
-	ret
-_main_User_Defined_fihriaifhiahidsafans:
-	l_12:
-	push rbp
-	mov rbp, rsp
-	push r14
-	push r13
-	call __getInt 
-	mov r13, rax
-	mov r14, 1
-	l_13:
-	cmp r14, r13
-	jle l_14
-	l_15:
-	mov rax, 0
-	l_16:
-	pop r13
-	pop r14
-	leave 
-	ret
-	l_14:
-	mov rdi, r14
-	call _dp_User_Defined_fihriaifhiahidsafans 
-	mov rdi, rax
-	call __toString 
-	mov rdi, rax
-	call __println 
-	l_17:
-	inc r14
-	jmp l_13
 __init:
-	l_18:
+	l_2:
 	push rbp
 	mov rbp, rsp
 	call _main_User_Defined_fihriaifhiahidsafans 
