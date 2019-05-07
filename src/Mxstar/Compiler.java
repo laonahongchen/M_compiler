@@ -5,6 +5,7 @@ import Mxstar.Backend.*;
 import Mxstar.Frontend.*;
 import Mxstar.IR.IRProgram;
 import Mxstar.IR.RegisterSet;
+import Mxstar.Optimizer.SVN;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 import Mxstar.SemanticError.*;
@@ -89,6 +90,9 @@ public class Compiler {
             irPrinter.visit(irProgram);
             irPrinter.printTo(System.err);
         }
+
+        SVN svn = new SVN(irProgram);
+        svn.run();
 
         DeadCodeElimination deadCodeElimination = new DeadCodeElimination(irProgram);
         deadCodeElimination.run();

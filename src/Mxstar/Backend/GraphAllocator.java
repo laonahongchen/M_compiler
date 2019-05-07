@@ -87,6 +87,9 @@ public class GraphAllocator {
             if (reg.allocatedPhyReg != null) {
                 rank = -1;
             }
+            if (reg.spillPlace != null) {
+                rank = 1e50;
+            }
             if (rank > mxRank) {
                 mxRank = rank;
                 candidate = reg;
@@ -199,12 +202,14 @@ public class GraphAllocator {
 
             graph = new Graph(originGraph);
             init();
-            do {
+            while(true) {
                 if (!simplifyList.isEmpty())
                     simplify();
                 else if (!spillList.isEmpty())
                     spill();
-            }while(!simplifyList.isEmpty() || !spillList.isEmpty());
+                else
+                    break;
+            }
 //            if (originGraph == null) {
 //                System.out.println();
 //            }

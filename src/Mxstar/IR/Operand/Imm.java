@@ -8,6 +8,9 @@ public class Imm extends Constant {
     public Imm(int val) {
         this.value = val;
     }
+    public Imm(Imm b) {
+        this.value = b.value;
+    }
 
     @Override
     public void accept(IIRVisitor visitor) {
