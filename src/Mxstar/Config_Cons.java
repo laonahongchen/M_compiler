@@ -17,5 +17,5 @@ public class Config_Cons{
 
 
     //all the optimizers which is not those kind of definitely good for the compiler will have a option here
-    public static boolean doVNOptimize = false; // may extend the UD-list so may don't have such good result
+    public static boolean doVNOptimize = true; // may extend the UD-list so may don't have such good result
 }
