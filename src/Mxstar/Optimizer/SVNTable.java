@@ -70,7 +70,8 @@ public class SVNTable {
         if (!valRegMap.containsKey(val)) {
             valRegMap.put(val, new HashSet<>());
         }
-        valRegMap.get(val).add(reg);
+        if (reg.spillPlace == null)
+            valRegMap.get(val).add(reg);
         regValueMap.put(reg, val);
     }
 

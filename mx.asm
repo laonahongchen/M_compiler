@@ -304,70 +304,357 @@ L_012:
 
 ;====================================================
 	 section .text
-_qpow_User_Defined_fihriaifhiahidsafans:
+_main_User_Defined_fihriaifhiahidsafans:
 	l_0:
 	push rbp
 	mov rbp, rsp
-	mov rax, rdi
-	mov rcx, rsi
-	mov r8, rdx
-	mov rdi, 1
+	sub rsp, 8
+	push r12
+	mov rax, qword [g_0]
+	mov qword [g_0], rax
+	mov rax, qword [g_1]
+	mov qword [g_1], rax
+	mov rax, qword [g_2]
+	mov qword [g_2], rax
+	mov rax, qword [g_3]
+	mov qword [g_3], rax
+	mov rax, qword [g_4]
+	mov qword [g_4], rax
+	mov rax, qword [g_5]
+	mov qword [g_5], rax
+	mov rax, qword [g_6]
+	mov qword [g_6], rax
+	mov rax, qword [g_7]
+	mov qword [g_7], rax
+	mov rax, qword [g_8]
+	mov qword [g_8], rax
+	mov rax, qword [g_9]
+	mov qword [g_9], rax
+	mov rax, qword [g_10]
+	mov qword [g_10], rax
+	mov rax, qword [g_11]
+	mov qword [g_11], rax
+	mov rax, qword [g_12]
+	mov qword [g_12], rax
+	mov rax, qword [g_13]
+	mov qword [g_13], rax
+	mov rax, qword [g_14]
+	mov qword [g_14], rax
+	mov rax, qword [g_15]
+	mov qword [g_15], rax
+	mov rax, qword [g_16]
+	mov qword [g_16], rax
+	mov rax, qword [g_17]
+	mov qword [g_17], rax
+	mov rax, qword [g_18]
+	mov qword [g_18], rax
+	mov rax, qword [g_19]
+	mov qword [g_19], rax
+	mov rax, qword [g_20]
+	mov qword [g_20], rax
+	mov rax, qword [g_21]
+	mov qword [g_21], rax
+	mov rax, qword [g_22]
+	mov qword [g_22], rax
+	mov r12, 0
+	call __getInt 
 	mov rsi, rax
+	mov rax, 0
+	mov qword [g_17], rax
 	l_1:
-	cmp rcx, 0
-	jg l_2
+	mov rax, qword [g_17]
+	cmp rax, rsi
+	jl l_2
 	l_3:
-	mov rax, rdi
-	l_4:
-	leave 
-	ret
-	l_2:
-	mov rax, rcx
-	and rax, 1
-	cmp rax, 1
-	jne l_5
-	l_6:
-	mov rax, rdi
-	imul rsi
-	cdq
-	idiv r8
-	mov rax, rdx
-	mov rdi, rax
-	l_5:
-	mov rax, rsi
-	imul rsi
-	cdq
-	idiv r8
-	mov rax, rdx
-	mov rsi, rax
-	mov rax, rcx
-	cdq
-	mov rcx, 2
-	idiv rcx
-	mov rcx, rax
-	jmp l_1
-_main_User_Defined_fihriaifhiahidsafans:
-	l_7:
-	push rbp
-	mov rbp, rsp
-	mov rdx, 10000
-	mov rsi, 10
-	mov rdi, 2
-	call _qpow_User_Defined_fihriaifhiahidsafans 
-	mov rdi, rax
+	mov rdi, r12
 	call __toString 
 	mov rdi, rax
 	call __println 
 	mov rax, 0
-	l_8:
+	l_4:
+	mov rcx, qword [g_0]
+	mov qword [g_0], rcx
+	mov rcx, qword [g_1]
+	mov qword [g_1], rcx
+	mov rcx, qword [g_2]
+	mov qword [g_2], rcx
+	mov rcx, qword [g_3]
+	mov qword [g_3], rcx
+	mov rcx, qword [g_4]
+	mov qword [g_4], rcx
+	mov rcx, qword [g_5]
+	mov qword [g_5], rcx
+	mov rcx, qword [g_6]
+	mov qword [g_6], rcx
+	mov rcx, qword [g_7]
+	mov qword [g_7], rcx
+	mov rcx, qword [g_8]
+	mov qword [g_8], rcx
+	mov rcx, qword [g_9]
+	mov qword [g_9], rcx
+	mov rcx, qword [g_10]
+	mov qword [g_10], rcx
+	mov rcx, qword [g_11]
+	mov qword [g_11], rcx
+	mov rcx, qword [g_12]
+	mov qword [g_12], rcx
+	mov rcx, qword [g_13]
+	mov qword [g_13], rcx
+	mov rcx, qword [g_14]
+	mov qword [g_14], rcx
+	mov rcx, qword [g_15]
+	mov qword [g_15], rcx
+	mov rcx, qword [g_16]
+	mov qword [g_16], rcx
+	mov rcx, qword [g_17]
+	mov qword [g_17], rcx
+	mov rcx, qword [g_18]
+	mov qword [g_18], rcx
+	mov rcx, qword [g_19]
+	mov qword [g_19], rcx
+	mov rcx, qword [g_20]
+	mov qword [g_20], rcx
+	mov rcx, qword [g_21]
+	mov qword [g_21], rcx
+	mov rcx, qword [g_22]
+	mov qword [g_22], rcx
+	pop r12
 	leave 
 	ret
+	l_2:
+	mov rax, qword [g_9]
+	add rax, 1
+	mov qword [g_9], rax
+	mov rax, qword [g_10]
+	add rax, 1
+	mov qword [g_10], rax
+	mov rax, qword [g_3]
+	add rax, 1
+	mov qword [g_3], rax
+	mov rax, qword [g_9]
+	add rax, 1
+	mov qword [g_12], rax
+	mov rax, qword [g_10]
+	add rax, 1
+	mov qword [g_4], rax
+	mov rax, qword [g_3]
+	add rax, 1
+	mov qword [g_13], rax
+	mov rax, qword [g_9]
+	add rax, 1
+	mov qword [g_7], rax
+	mov rax, qword [g_10]
+	add rax, 1
+	mov qword [g_6], rax
+	mov rax, qword [g_3]
+	add rax, 1
+	mov qword [g_11], rax
+	mov rax, qword [g_9]
+	add rax, 1
+	mov qword [g_18], rax
+	mov rax, qword [g_10]
+	mov qword [g_19], rax
+	mov rax, qword [g_9]
+	mov qword [g_22], rax
+	mov rax, qword [g_10]
+	mov qword [g_1], rax
+	mov rax, qword [g_3]
+	mov qword [g_8], rax
+	mov rax, qword [g_12]
+	mov qword [g_20], rax
+	mov rax, qword [g_4]
+	mov qword [g_5], rax
+	mov rax, qword [g_13]
+	mov qword [g_14], rax
+	mov rax, qword [g_7]
+	mov qword [g_15], rax
+	mov rax, qword [g_6]
+	mov qword [g_2], rax
+	mov rax, qword [g_11]
+	mov qword [g_21], rax
+	mov rax, qword [g_18]
+	mov qword [g_0], rax
+	mov rax, qword [g_19]
+	mov qword [g_16], rax
+	mov rax, qword [g_17]
+	cdq
+	mov rcx, 10000000
+	idiv rcx
+	mov rax, rdx
+	cmp rax, 0
+	jne l_5
+	l_6:
+	mov rcx, r12
+	mov rax, qword [g_9]
+	add rcx, rax
+	mov rax, rcx
+	mov rcx, qword [g_10]
+	add rax, rcx
+	mov rcx, rax
+	mov rax, qword [g_3]
+	add rcx, rax
+	mov rax, qword [g_12]
+	add rcx, rax
+	mov rax, rcx
+	mov rcx, qword [g_4]
+	add rax, rcx
+	mov rcx, qword [g_13]
+	add rax, rcx
+	mov rcx, rax
+	mov rax, qword [g_7]
+	add rcx, rax
+	mov rax, rcx
+	mov rcx, qword [g_6]
+	add rax, rcx
+	mov rcx, rax
+	mov rax, qword [g_11]
+	add rcx, rax
+	mov rax, qword [g_18]
+	add rcx, rax
+	mov rax, rcx
+	mov rcx, qword [g_19]
+	add rax, rcx
+	mov rcx, qword [g_22]
+	add rax, rcx
+	mov rcx, rax
+	mov rax, qword [g_1]
+	add rcx, rax
+	mov rax, rcx
+	mov rcx, qword [g_8]
+	add rax, rcx
+	mov rcx, rax
+	mov rax, qword [g_20]
+	add rcx, rax
+	mov rax, rcx
+	mov rcx, qword [g_5]
+	add rax, rcx
+	mov rcx, rax
+	mov rax, qword [g_14]
+	add rcx, rax
+	mov rax, rcx
+	mov rcx, qword [g_15]
+	add rax, rcx
+	mov rcx, rax
+	mov rax, qword [g_2]
+	add rcx, rax
+	mov rax, qword [g_21]
+	add rcx, rax
+	mov rax, qword [g_0]
+	add rcx, rax
+	mov rdi, rcx
+	mov rax, qword [g_16]
+	add rdi, rax
+	mov rax, 32767
+	mov rcx, 16
+	sal rax, cl
+	or rax, 32767
+	mov rcx, rdi
+	and rcx, rax
+	mov r12, rcx
+	l_5:
+	l_7:
+	mov rax, qword [g_17]
+	add rax, 1
+	mov qword [g_17], rax
+	jmp l_1
 __init:
-	l_9:
+	l_8:
 	push rbp
 	mov rbp, rsp
+	mov rax, 0
+	mov qword [g_17], rax
+	mov rax, 0
+	mov qword [g_9], rax
+	mov rax, 0
+	mov qword [g_10], rax
+	mov rax, 0
+	mov qword [g_3], rax
+	mov rax, 0
+	mov qword [g_12], rax
+	mov rax, 0
+	mov qword [g_4], rax
+	mov rax, 0
+	mov qword [g_13], rax
+	mov rax, 0
+	mov qword [g_7], rax
+	mov rax, 0
+	mov qword [g_6], rax
+	mov rax, 0
+	mov qword [g_11], rax
+	mov rax, 0
+	mov qword [g_18], rax
+	mov rax, 0
+	mov qword [g_19], rax
+	mov rax, 0
+	mov qword [g_22], rax
+	mov rax, 0
+	mov qword [g_1], rax
+	mov rax, 0
+	mov qword [g_8], rax
+	mov rax, 0
+	mov qword [g_20], rax
+	mov rax, 0
+	mov qword [g_5], rax
+	mov rax, 0
+	mov qword [g_14], rax
+	mov rax, 0
+	mov qword [g_15], rax
+	mov rax, 0
+	mov qword [g_2], rax
+	mov rax, 0
+	mov qword [g_21], rax
+	mov rax, 0
+	mov qword [g_0], rax
+	mov rax, 0
+	mov qword [g_16], rax
 	call _main_User_Defined_fihriaifhiahidsafans 
 	leave 
 	ret
 	 section .data
+g_17:
+	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
+g_9:
+	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
+g_10:
+	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
+g_3:
+	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
+g_12:
+	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
+g_4:
+	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
+g_13:
+	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
+g_7:
+	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
+g_6:
+	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
+g_11:
+	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
+g_18:
+	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
+g_19:
+	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
+g_22:
+	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
+g_1:
+	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
+g_8:
+	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
+g_20:
+	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
+g_5:
+	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
+g_14:
+	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
+g_15:
+	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
+g_2:
+	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
+g_21:
+	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
+g_0:
+	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
+g_16:
+	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
 

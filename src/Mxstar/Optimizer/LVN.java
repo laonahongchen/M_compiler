@@ -51,8 +51,12 @@ public class LVN implements IIRVisitor {
             case MUL:
                 return lhs * rhs;
             case DIV:
+                if (rhs == 0)
+                    return 1;
                 return lhs / rhs;
             case MOD:
+                if (rhs == 0)
+                    return 1;
                 return lhs % rhs;
             case ADD:
                 return lhs + rhs;

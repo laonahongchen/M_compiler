@@ -92,7 +92,7 @@ public class Compiler {
         }
 
         SVN svn = new SVN(irProgram);
-        svn.run();
+//        svn.run();
 
         DeadCodeElimination deadCodeElimination = new DeadCodeElimination(irProgram);
         deadCodeElimination.run();
