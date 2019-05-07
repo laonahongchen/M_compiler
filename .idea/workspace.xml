@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="35739463-e986-4e75-a4bd-855459eb39c8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mx.asm" beforeDir="false" afterPath="$PROJECT_DIR$/mx.asm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Mxstar/Compiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/Compiler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/Optimizer/LVN.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/Optimizer/LVN.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/Optimizer/SVNTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/Optimizer/SVNTable.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -56,15 +53,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Mxstar/Optimizer/LVN.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="58" column="29" selection-start-line="58" selection-start-column="29" selection-end-line="58" selection-end-column="29" />
+            <state relative-caret-position="354">
+              <caret line="62" column="21" lean-forward="true" selection-start-line="62" selection-start-column="21" selection-end-line="62" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#7583#7584#0" expanded="true" />
-                <element signature="e#7725#7726#0" expanded="true" />
+                <element signature="e#7584#7585#0" expanded="true" />
+                <element signature="e#7726#7727#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -106,11 +103,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Mxstar/Compiler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2003">
-              <caret line="103" column="48" lean-forward="true" selection-start-line="103" selection-start-column="48" selection-end-line="103" selection-end-column="48" />
+            <state relative-caret-position="163">
+              <caret line="95" lean-forward="true" selection-start-line="95" selection-end-line="95" />
             </state>
           </provider>
         </entry>
@@ -255,8 +252,8 @@
         <option value="$PROJECT_DIR$/mx.asm" />
         <option value="$PROJECT_DIR$/src/Mxstar/Config_Cons.java" />
         <option value="$PROJECT_DIR$/src/Mxstar/Optimizer/SVNTable.java" />
-        <option value="$PROJECT_DIR$/src/Mxstar/Compiler.java" />
         <option value="$PROJECT_DIR$/src/Mxstar/Optimizer/LVN.java" />
+        <option value="$PROJECT_DIR$/src/Mxstar/Compiler.java" />
       </list>
     </option>
   </component>
@@ -338,7 +335,7 @@
     <property name="$PROJECT_DIR$/src/parser/mxstar.g4::/gen-visitor" value="true" />
     <property name="$PROJECT_DIR$/src/parser/mxstar.g4::/output-dir" value="D:\homework\2018-19-second\compiler\mxstar\src" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557205414677" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557205789094" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/antlr-4.7.2-complete.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -487,14 +484,7 @@
       <workItem from="1557130029904" duration="2225000" />
       <workItem from="1557145354269" duration="1033000" />
       <workItem from="1557151808546" duration="5970000" />
-      <workItem from="1557186701234" duration="17021000" />
-    </task>
-    <task id="LOCAL-00024" summary="commit for semantic recheck">
-      <created>1556536237939</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1556536237939</updated>
+      <workItem from="1557186701234" duration="17398000" />
     </task>
     <task id="LOCAL-00025" summary="commit for semantic recheck(stop before IR)">
       <created>1556537394769</created>
@@ -832,11 +822,18 @@
       <option name="project" value="LOCAL" />
       <updated>1557204144138</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="fix a bug in calc which will make me RE">
+      <created>1557205536248</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1557205536249</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="511996000" />
+    <option name="totallyTimeSpent" value="512373000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -960,7 +957,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix a bug dealing with NEW" />
     <MESSAGE value="fix a bug with loop" />
     <MESSAGE value="I still don't understand why the parameters transform has some bug" />
     <MESSAGE value="delete a debugging use output" />
@@ -985,7 +981,8 @@
     <MESSAGE value="fix a bug in constant propogation" />
     <MESSAGE value="delete debugging output" />
     <MESSAGE value="fix a bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix a bug" />
+    <MESSAGE value="fix a bug in calc which will make me RE" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix a bug in calc which will make me RE" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1398,6 +1395,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mxstar/Optimizer/LVN.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="62" column="21" lean-forward="true" selection-start-line="62" selection-start-column="21" selection-end-line="62" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#7584#7585#0" expanded="true" />
+            <element signature="e#7726#7727#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Mxstar/Optimizer/SVN.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1410,20 +1419,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Mxstar/Compiler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2003">
-          <caret line="103" column="48" lean-forward="true" selection-start-line="103" selection-start-column="48" selection-end-line="103" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mxstar/Optimizer/LVN.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="58" column="29" selection-start-line="58" selection-start-column="29" selection-end-line="58" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#7583#7584#0" expanded="true" />
-            <element signature="e#7725#7726#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="163">
+          <caret line="95" lean-forward="true" selection-start-line="95" selection-end-line="95" />
         </state>
       </provider>
     </entry>
