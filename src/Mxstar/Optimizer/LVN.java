@@ -44,9 +44,9 @@ public class LVN implements IIRVisitor {
     }
 
     private int doBinary(BinInst.BinOp op, int lhs, int rhs) {
-        System.out.println(lhs);
-        System.out.println(rhs);
-        System.out.println("val");
+//        System.out.println(lhs);
+//        System.out.println(rhs);
+//        System.out.println("val");
         switch (op) {
             case MUL:
                 return lhs * rhs;
