@@ -304,16 +304,66 @@ L_012:
 
 ;====================================================
 	 section .text
-_main_User_Defined_fihriaifhiahidsafans:
+_qpow_User_Defined_fihriaifhiahidsafans:
 	l_0:
 	push rbp
 	mov rbp, rsp
-	mov rax, 16
+	mov rax, rdi
+	mov rcx, rsi
+	mov r8, rdx
+	mov rdi, 1
+	mov rsi, rax
 	l_1:
+	cmp rcx, 0
+	jg l_2
+	l_3:
+	mov rax, rdi
+	l_4:
+	leave 
+	ret
+	l_2:
+	mov rax, rcx
+	and rax, 1
+	cmp rax, 1
+	jne l_5
+	l_6:
+	mov rax, rdi
+	imul rsi
+	cdq
+	idiv r8
+	mov rax, rdx
+	mov rdi, rax
+	l_5:
+	mov rax, rsi
+	imul rsi
+	cdq
+	idiv r8
+	mov rax, rdx
+	mov rsi, rax
+	mov rax, rcx
+	cdq
+	mov rcx, 2
+	idiv rcx
+	mov rcx, rax
+	jmp l_1
+_main_User_Defined_fihriaifhiahidsafans:
+	l_7:
+	push rbp
+	mov rbp, rsp
+	mov rdx, 10000
+	mov rsi, 10
+	mov rdi, 2
+	call _qpow_User_Defined_fihriaifhiahidsafans 
+	mov rdi, rax
+	call __toString 
+	mov rdi, rax
+	call __println 
+	mov rax, 0
+	l_8:
 	leave 
 	ret
 __init:
-	l_2:
+	l_9:
 	push rbp
 	mov rbp, rsp
 	call _main_User_Defined_fihriaifhiahidsafans 

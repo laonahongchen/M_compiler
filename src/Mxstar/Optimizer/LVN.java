@@ -141,7 +141,13 @@ public class LVN implements IIRVisitor {
                     inst.replace(new Mov(inst.bb, inst.dest, operand));
                 }
             }
-            if (inst.dest instanceof VirReg) {
+            if (inst.op == MOD) {
+                table.putRegVal(vrax);
+                table.putRegVal(vrdx, keyval);
+            } else if (inst.op == BinInst.BinOp.MUL || inst.op == BinInst.BinOp.DIV) {
+                table.putRegVal(vrax, keyval);
+                table.putRegVal(vrdx);
+            } else if (inst.dest instanceof VirReg) {
                 table.putRegVal((VirReg) inst.dest, keyval);
             }
         }
