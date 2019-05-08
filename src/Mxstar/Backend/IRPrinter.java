@@ -387,7 +387,7 @@ public class IRPrinter implements IIRVisitor {
 
     private String toSixTeenDigit(String name) {
         if (name.charAt(1) > '0' && name.charAt(1) <= '9') {
-            return (name.substring(1) + "d");
+            return (name + "d");
         } else {
             return ("e" + name.substring(1));
         }
@@ -401,7 +401,7 @@ public class IRPrinter implements IIRVisitor {
             stringBuilder.append(operand.name);
         } else {
 //            stringBuilder.append(toSixTeenDigit(operand.name));
-            stringBuilder.append("e" + operand.name.substring(1));
+            stringBuilder.append(toSixTeenDigit(operand.name));
         }
     }
 

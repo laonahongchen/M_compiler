@@ -304,92 +304,135 @@ L_012:
 
 ;====================================================
 	 section .text
-_f_User_Defined_fihriaifhiahidsafans:
+_main_User_Defined_fihriaifhiahidsafans:
 	l_0:
 	push rbp
 	mov rbp, rsp
-	mov rcx, rdi
-	mov rax, 0
-	mov r8, 0
-	l_1:
-	cmp r8, rcx
-	jl l_2
-	l_3:
-	l_4:
-	leave 
-	ret
-	l_2:
-	add rax, r8
-	mov rsi, r8
-	sub rsi, 1
-	mov rdi, rcx
-	and rdi, rsi
-	xor rax, rdi
-	cdq
-	mov rsi, 10000
-	idiv esi
-	mov rax, rdx
-	l_5:
-	add r8, 1
-	jmp l_1
-_main_User_Defined_fihriaifhiahidsafans:
-	l_6:
-	push rbp
-	mov rbp, rsp
-	sub rsp, 8
-	push r15
-	push r13
+	sub rsp, 24
+	push r12
 	push r14
-	mov r13, 0
-	mov r14, 0
+	push r13
+	push rbx
+	push r15
+	mov rbx, 10000
+	mov rcx, 0
+	mov qword [rbp-8], rcx
+	mov r13, 2800
+	mov r12, 0
+	mov r15, 2801
+	lea rax, [r15 * 8 + 8]
+	mov rdi, rax
+	call malloc 
+	mov qword [rax], 2801
+	l_1:
+	cmp r15, 0
+	jg l_2
+	l_3:
+	mov r14, rax
+	l_4:
+	mov rax, qword [rbp-8]
+	sub rax, r13
+	cmp rax, 0
+	jne l_5
+	l_6:
 	l_7:
-	cmp r14, 90000000
-	jl l_8
+	mov r15, 0
+	mov rax, r13
+	mov rcx, 2
+	imul rcx
+	mov rcx, rax
+	cmp rcx, 0
+	je l_8
 	l_9:
-	mov rdi, r13
+	mov rax, r13
+	mov qword [rbp-8], rax
+	l_10:
+	mov rax, qword [rbp-8]
+	mov rax, qword [r14 + rax * 8 + 8]
+	imul rbx
+	add r15, rax
+	dec rcx
+	mov rax, r15
+	cdq
+	idiv ecx
+	mov rsi, rdx
+	mov rax, qword [rbp-8]
+	mov qword [r14 + rax * 8 + 8], rsi
+	mov rsi, rcx
+	dec rcx
+	mov rax, r15
+	cdq
+	idiv esi
+	mov rsi, rax
+	mov r15, rsi
+	mov rsi, qword [rbp-8]
+	dec rsi
+	mov qword [rbp-8], rsi
+	mov rsi, qword [rbp-8]
+	cmp rsi, 0
+	je l_11
+	l_12:
+	l_13:
+	mov rdx, qword [rbp-8]
+	imul rdx
+	mov r15, rax
+	jmp l_10
+	l_11:
+	l_14:
+	sub r13, 14
+	cdq
+	idiv ebx
+	mov rcx, r12
+	add rcx, rax
+	mov rdi, rcx
 	call __toString 
 	mov rdi, rax
-	call __println 
+	call __print 
+	l_15:
+	mov rax, r15
+	cdq
+	idiv ebx
+	mov rax, rdx
+	mov r12, rax
+	jmp l_7
+	l_8:
+	l_16:
+	mov rdi, g_0
+	call __print 
 	mov rax, 0
-	l_10:
-	pop r14
-	pop r13
+	l_17:
 	pop r15
+	pop rbx
+	pop r13
+	pop r14
+	pop r12
 	leave 
 	ret
-	l_8:
-	mov r15, 0
-	l_11:
-	cmp r15, 10
-	jl l_12
-	l_13:
-	l_14:
-	inc r14
-	jmp l_7
-	l_12:
-	cmp r14, 89999999
-	jl l_15
-	l_16:
-	cmp r15, 9
-	jl l_17
-	l_18:
-	mov rax, r14
-	mov rcx, 8
-	imul rcx
-	mov rdi, rax
-	call _f_User_Defined_fihriaifhiahidsafans 
-	add r13, rax
-	l_17:
-	l_15:
-	l_19:
-	inc r15
-	jmp l_11
+	l_5:
+	mov rax, qword [rbp-8]
+	mov rsi, rax
+	mov rax, qword [rbp-8]
+	inc rax
+	mov qword [rbp-8], rax
+	mov rax, rbx
+	cdq
+	mov rcx, 5
+	idiv ecx
+	mov qword [r14 + rsi * 8 + 8], rax
+	jmp l_4
+	l_2:
+	mov qword [rax + r15 * 8], 0
+	dec r15
+	jmp l_1
 __init:
-	l_20:
+	l_18:
 	push rbp
 	mov rbp, rsp
 	call _main_User_Defined_fihriaifhiahidsafans 
 	leave 
 	ret
 	 section .data
+g_0:
+	dq 1
+	db 0AH, 00H
 
