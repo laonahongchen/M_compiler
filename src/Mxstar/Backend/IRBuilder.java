@@ -813,6 +813,7 @@ public class IRBuilder implements IAstVisitor {
                 curBB.append(new Mov(curBB, result, vrax));
             } else {
                 curBB.append(new Mov(curBB, vrax, rlhs));
+                curBB.append(new BinInst(curBB, BinInst.BinOp.XOR, vrdx, vrdx));
                 curBB.append(new Cdq(curBB));
                 curBB.append(new BinInst(curBB, bop, null, rrhs));
                 if (op.equals("/")) {

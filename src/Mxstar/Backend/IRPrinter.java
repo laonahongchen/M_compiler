@@ -30,6 +30,7 @@ public class IRPrinter implements IIRVisitor {
 
     private boolean inDIV;
     private boolean inCMP;
+    private boolean inMem;
 
     public BB nextbb = null;
     public boolean inLeaInst;
@@ -55,6 +56,7 @@ public class IRPrinter implements IIRVisitor {
         this.inLeaInst = false;
         this.inDIV = false;
         this.inCMP = false;
+        this.inMem = false;
     }
 
     public String toString() {
@@ -397,7 +399,7 @@ public class IRPrinter implements IIRVisitor {
     public void visit(PhyReg operand) {
         if (inCMP) {
             stringBuilder.append(toEightDigit(operand.name));
-        } else if (!inDIV) {
+        } else if (!inDIV || inMem) {
             stringBuilder.append(operand.name);
         } else {
 //            stringBuilder.append(toSixTeenDigit(operand.name));
@@ -416,6 +418,7 @@ public class IRPrinter implements IIRVisitor {
         if (!inLeaInst) {
             stringBuilder.append("qword ");
         }
+        inMem = true;
 
         stringBuilder.append("[");
         if (operand.base != null) {
@@ -445,6 +448,7 @@ public class IRPrinter implements IIRVisitor {
                 stringBuilder.append(val);
             }
         }
+        inMem = false;
 
         stringBuilder.append("]");
     }
