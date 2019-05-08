@@ -304,242 +304,92 @@ L_012:
 
 ;====================================================
 	 section .text
-_printBool_User_Defined_fihriaifhiahidsafans:
+_f_User_Defined_fihriaifhiahidsafans:
 	l_0:
 	push rbp
 	mov rbp, rsp
-	mov rax, rdi
-	cmp rax, 0
-	jne l_1
-	l_2:
-	mov rdi, g_0
-	call __println 
-	jmp l_3
+	mov rcx, rdi
+	mov rax, 0
+	mov r8, 0
 	l_1:
-	mov rdi, g_1
-	call __println 
+	cmp r8, rcx
+	jl l_2
 	l_3:
 	l_4:
 	leave 
 	ret
-_main_User_Defined_fihriaifhiahidsafans:
+	l_2:
+	add rax, r8
+	mov rsi, r8
+	sub rsi, 1
+	mov rdi, rcx
+	and rdi, rsi
+	xor rax, rdi
+	cdq
+	mov rsi, 10000
+	idiv esi
+	mov rax, rdx
 	l_5:
+	add r8, 1
+	jmp l_1
+_main_User_Defined_fihriaifhiahidsafans:
+	l_6:
 	push rbp
 	mov rbp, rsp
+	sub rsp, 8
+	push r15
 	push r13
-	push rbx
 	push r14
-	push r12
-	mov rbx, g_2
-	mov r14, g_3
-	mov r12, g_4
-	mov rax, r14
-	mov rdx, 2
-	mov rsi, 0
+	mov r13, 0
+	mov r14, 0
+	l_7:
+	cmp r14, 90000000
+	jl l_8
+	l_9:
+	mov rdi, r13
+	call __toString 
 	mov rdi, rax
-	call __string_substring 
-	mov r13, rax
-	mov rsi, r13
-	mov rdi, rbx
-	call __stringComp 
-	mov rcx, rax
-	xor rax, rax
-	cmp rcx, 0
-	sete al
-	mov rdi, rax
-	call _printBool_User_Defined_fihriaifhiahidsafans 
-	mov rsi, r13
-	mov rdi, rbx
-	call __stringComp 
-	mov rcx, rax
-	xor rax, rax
-	cmp rcx, 0
-	setne al
-	mov rdi, rax
-	call _printBool_User_Defined_fihriaifhiahidsafans 
-	mov rsi, r13
-	mov rdi, rbx
-	call __stringComp 
-	mov rcx, rax
-	xor rax, rax
-	cmp rcx, 0
-	setl al
-	mov rdi, rax
-	call _printBool_User_Defined_fihriaifhiahidsafans 
-	mov rsi, r13
-	mov rdi, rbx
-	call __stringComp 
-	mov rcx, rax
-	xor rax, rax
-	cmp rcx, 0
-	setg al
-	mov rdi, rax
-	call _printBool_User_Defined_fihriaifhiahidsafans 
-	mov rsi, r13
-	mov rdi, rbx
-	call __stringComp 
-	mov rcx, rax
-	xor rax, rax
-	cmp rcx, 0
-	setle al
-	mov rdi, rax
-	call _printBool_User_Defined_fihriaifhiahidsafans 
-	mov rsi, r13
-	mov rdi, rbx
-	call __stringComp 
-	mov rcx, rax
-	xor rax, rax
-	cmp rcx, 0
-	setge al
-	mov rdi, rax
-	call _printBool_User_Defined_fihriaifhiahidsafans 
-	mov rdi, g_5
 	call __println 
-	mov rsi, r14
-	mov rdi, rbx
-	call __stringComp 
-	mov rcx, rax
-	xor rax, rax
-	cmp rcx, 0
-	sete al
-	mov rdi, rax
-	call _printBool_User_Defined_fihriaifhiahidsafans 
-	mov rsi, r14
-	mov rdi, rbx
-	call __stringComp 
-	mov rcx, rax
-	xor rax, rax
-	cmp rcx, 0
-	setne al
-	mov rdi, rax
-	call _printBool_User_Defined_fihriaifhiahidsafans 
-	mov rsi, r14
-	mov rdi, rbx
-	call __stringComp 
-	mov rcx, rax
-	xor rax, rax
-	cmp rcx, 0
-	setl al
-	mov rdi, rax
-	call _printBool_User_Defined_fihriaifhiahidsafans 
-	mov rsi, r14
-	mov rdi, rbx
-	call __stringComp 
-	mov rcx, rax
-	xor rax, rax
-	cmp rcx, 0
-	setg al
-	mov rdi, rax
-	call _printBool_User_Defined_fihriaifhiahidsafans 
-	mov rsi, r14
-	mov rdi, rbx
-	call __stringComp 
-	mov rcx, rax
-	xor rax, rax
-	cmp rcx, 0
-	setle al
-	mov rdi, rax
-	call _printBool_User_Defined_fihriaifhiahidsafans 
-	mov rsi, r14
-	mov rdi, rbx
-	call __stringComp 
-	mov rcx, rax
-	xor rax, rax
-	cmp rcx, 0
-	setge al
-	mov rdi, rax
-	call _printBool_User_Defined_fihriaifhiahidsafans 
-	mov rdi, g_6
-	call __println 
-	mov rsi, r12
-	mov rdi, r14
-	call __stringComp 
-	mov rcx, rax
-	xor rax, rax
-	cmp rcx, 0
-	sete al
-	mov rdi, rax
-	call _printBool_User_Defined_fihriaifhiahidsafans 
-	mov rsi, r12
-	mov rdi, r14
-	call __stringComp 
-	mov rcx, rax
-	xor rax, rax
-	cmp rcx, 0
-	setne al
-	mov rdi, rax
-	call _printBool_User_Defined_fihriaifhiahidsafans 
-	mov rsi, r12
-	mov rdi, r14
-	call __stringComp 
-	mov rcx, rax
-	xor rax, rax
-	cmp rcx, 0
-	setl al
-	mov rdi, rax
-	call _printBool_User_Defined_fihriaifhiahidsafans 
-	mov rsi, r12
-	mov rdi, r14
-	call __stringComp 
-	mov rcx, rax
-	xor rax, rax
-	cmp rcx, 0
-	setg al
-	mov rdi, rax
-	call _printBool_User_Defined_fihriaifhiahidsafans 
-	mov rsi, r12
-	mov rdi, r14
-	call __stringComp 
-	mov rcx, rax
-	xor rax, rax
-	cmp rcx, 0
-	setle al
-	mov rdi, rax
-	call _printBool_User_Defined_fihriaifhiahidsafans 
-	mov rsi, r12
-	mov rdi, r14
-	call __stringComp 
-	mov rcx, rax
-	xor rax, rax
-	cmp rcx, 0
-	setge al
-	mov rdi, rax
-	call _printBool_User_Defined_fihriaifhiahidsafans 
 	mov rax, 0
-	l_6:
-	pop r12
+	l_10:
 	pop r14
-	pop rbx
 	pop r13
+	pop r15
 	leave 
 	ret
+	l_8:
+	mov r15, 0
+	l_11:
+	cmp r15, 10
+	jl l_12
+	l_13:
+	l_14:
+	inc r14
+	jmp l_7
+	l_12:
+	cmp r14, 89999999
+	jl l_15
+	l_16:
+	cmp r15, 9
+	jl l_17
+	l_18:
+	mov rax, r14
+	mov rcx, 8
+	imul rcx
+	mov rdi, rax
+	call _f_User_Defined_fihriaifhiahidsafans 
+	add r13, rax
+	l_17:
+	l_15:
+	l_19:
+	inc r15
+	jmp l_11
 __init:
-	l_7:
+	l_20:
 	push rbp
 	mov rbp, rsp
 	call _main_User_Defined_fihriaifhiahidsafans 
 	leave 
 	ret
 	 section .data
-g_1:
-	dq 4
-	db 54H, 72H, 75H, 65H, 00H
-g_0:
-	dq 5
-	db 46H, 61H, 6CH, 73H, 65H, 00H
-g_2:
-	dq 3
-	db 41H, 43H, 4DH, 00H
-g_3:
-	dq 7
-	db 41H, 43H, 4DH, 69H, 6CH, 61H, 6EH, 00H
-g_4:
-	dq 8
-	db 41H, 43H, 4DH, 43H, 6CH, 61H, 73H, 73H, 00H
-g_5:
-	dq 0
-	db 00H
-g_6:
-	dq 0
-	db 00H
 
