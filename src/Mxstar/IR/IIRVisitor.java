@@ -19,6 +19,7 @@ public interface IIRVisitor {
     void visit(Ret inst);
     void visit(Cdq inst);
     void visit(Lea inst);
+    void visit(Setcc inst);
     void visit(IRInst inst);
     void visit(FuncAddr operand);
     void visit(VirReg operand);

@@ -173,6 +173,14 @@ public class Func {
                     usedPhysicalRegister.add(RegisterSet.rdx);
                     if (((BinInst)inst).src instanceof Register)
                         usedPhysicalRegister.add((PhyReg)(((BinInst)inst).src));
+                } else if (inst instanceof Setcc) {
+                    usedPhysicalRegister.add(RegisterSet.rax);
+                    if (((Setcc)inst).src1 instanceof Register)
+                        usedPhysicalRegister.add((PhyReg)(((Setcc)inst).src1));
+                    if (((Setcc)inst).src2 instanceof Register)
+                        usedPhysicalRegister.add((PhyReg)(((Setcc)inst).src2));
+                    if (((Setcc)inst).dest instanceof Register)
+                        usedPhysicalRegister.add((PhyReg)(((Setcc)inst).dest));
                 } else {
                     usedPhysicalRegister.addAll(trans(inst.getUseRegs()));
                     usedPhysicalRegister.addAll(trans(inst.getDefRegs()));

@@ -6,77 +6,62 @@
 
 default rel
 
-global tak
 global main
+
+extern __stack_chk_fail
+extern __printf_chk
+extern __isoc99_scanf
+extern _GLOBAL_OFFSET_TABLE_
 
 
 SECTION .text   
 
-tak:
-        push    rbp
-        mov     rbp, rsp
-        push    r12
-        push    rbx
-        sub     rsp, 16
-        mov     dword [rbp-14H], edi
-        mov     dword [rbp-18H], esi
-        mov     dword [rbp-1CH], edx
-        mov     eax, dword [rbp-18H]
-        cmp     eax, dword [rbp-14H]
-        jge     L_001
-        mov     eax, dword [rbp-1CH]
-        lea     ecx, [rax-1H]
-        mov     edx, dword [rbp-18H]
-        mov     eax, dword [rbp-14H]
-        mov     esi, eax
-        mov     edi, ecx
-        call    tak
-        mov     r12d, eax
-        mov     eax, dword [rbp-18H]
-        lea     ecx, [rax-1H]
-        mov     edx, dword [rbp-14H]
-        mov     eax, dword [rbp-1CH]
-        mov     esi, eax
-        mov     edi, ecx
-        call    tak
-        mov     ebx, eax
-        mov     eax, dword [rbp-14H]
-        lea     ecx, [rax-1H]
-        mov     edx, dword [rbp-1CH]
-        mov     eax, dword [rbp-18H]
-        mov     esi, eax
-        mov     edi, ecx
-        call    tak
-        mov     edx, r12d
-        mov     esi, ebx
-        mov     edi, eax
-        call    tak
-        add     eax, 1
-        jmp     L_002
-
-L_001:  mov     eax, dword [rbp-1CH]
-L_002:  add     rsp, 16
-        pop     rbx
-        pop     r12
-        pop     rbp
-        ret
-
-
 main:
-        push    rbp
-        mov     rbp, rsp
-        mov     edx, 6
-        mov     esi, 12
-        mov     edi, 18
-        call    tak
-        pop     rbp
+        sub     rsp, 24
+
+
+        mov     rax, qword [fs:abs 28H]
+        mov     qword [rsp+8H], rax
+        xor     eax, eax
+        lea     rdx, [rsp+4H]
+        mov     rsi, rsp
+        lea     rdi, [rel .LC0]
+        call    __isoc99_scanf
+        mov     eax, dword [rsp+4H]
+        cmp     dword [rsp], eax
+        setg    dl
+        movzx   edx, dl
+        lea     rsi, [rel .LC1]
+        mov     edi, 1
+        mov     eax, 0
+        call    __printf_chk
+        mov     rcx, qword [rsp+8H]
+
+
+        xor     rcx, qword [fs:abs 28H]
+        jnz     L_001
+        mov     eax, 0
+        add     rsp, 24
         ret
 
+
+L_001:
+
+        call    __stack_chk_fail
 
 
 SECTION .data   
 
 
 SECTION .bss    
+
+
+SECTION .rodata.str1.1 
+
+.LC0:
+        db 25H, 64H, 25H, 64H, 00H
+
+.LC1:
+        db 25H, 64H, 0AH, 00H
 
 

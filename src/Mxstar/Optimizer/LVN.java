@@ -262,6 +262,47 @@ public class LVN implements IIRVisitor {
     }
 
     @Override
+    public void visit(Setcc inst) {
+        int lhs = table.getOperandVal(inst.src1);
+        int rhs = table.getOperandVal(inst.src2);
+        Operand rlhs = table.getValOperand(lhs);
+        Operand rrhs = table.getValOperand(rhs);
+        if (rlhs instanceof Imm) {
+            inst.src1 = new Imm((Imm)rlhs);
+        }
+        if (rrhs instanceof Imm) {
+            inst.src2 = new Imm((Imm)rrhs);
+        }
+        if (inst.src1 instanceof Imm && inst.src2 instanceof Imm) {
+            boolean tmp;
+            switch (inst.op) {
+                case NE:
+                    tmp =  ((Imm) inst.src1).value != ((Imm) inst.src2).value;
+                    break;
+                case LE:
+                    tmp =  ((Imm) inst.src1).value <= ((Imm) inst.src2).value;
+                    break;
+                case L:
+                    tmp =  ((Imm) inst.src1).value < ((Imm) inst.src2).value;
+                    break;
+                case E:
+                    tmp =  ((Imm) inst.src1).value == ((Imm) inst.src2).value;
+                    break;
+                case G:
+                    tmp =  ((Imm) inst.src1).value > ((Imm) inst.src2).value;
+                    break;
+                case GE:
+                    tmp =  ((Imm) inst.src1).value >= ((Imm) inst.src2).value;
+                    break;
+                default:
+                    tmp = true;
+            }
+            int value = tmp ? 1 : 0;
+            inst.replace(new Mov(inst.bb, inst.dest, new Imm(value)));
+        }
+    }
+
+    @Override
     public void visit(IRInst inst) {
 
     }

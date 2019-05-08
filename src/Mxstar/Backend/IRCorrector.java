@@ -165,6 +165,16 @@ public class IRCorrector implements IIRVisitor {
     }
 
     @Override
+    public void visit(Setcc inst) {
+        if (inst.src1 instanceof Constant) {
+            Operand tmp = inst.src1;
+            inst.src1 = inst.src2;
+            inst.src2 = tmp;
+            inst.op = inst.getReverseOp();
+        }
+    }
+
+    @Override
     public void visit(IRInst inst) {
 
     }

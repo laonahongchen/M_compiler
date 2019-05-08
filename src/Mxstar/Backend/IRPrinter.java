@@ -18,6 +18,7 @@ import java.util.Formatter;
 import java.util.HashMap;
 import java.util.HashSet;
 
+import static Mxstar.IR.RegisterSet.rax;
 import static java.lang.System.exit;
 
 public class IRPrinter implements IIRVisitor {
@@ -26,6 +27,9 @@ public class IRPrinter implements IIRVisitor {
     public HashMap<VirReg, String> varName;
     public HashMap<StackSlot, String> ssNames;
     public HashMap<StaticData, String > sdNames;
+
+    private boolean inDIV;
+    private boolean inCMP;
 
     public BB nextbb = null;
     public boolean inLeaInst;
@@ -49,6 +53,8 @@ public class IRPrinter implements IIRVisitor {
         this.ssNames = new HashMap<>();
         this.sdNames = new HashMap<>();
         this.inLeaInst = false;
+        this.inDIV = false;
+        this.inCMP = false;
     }
 
     public String toString() {
@@ -200,7 +206,9 @@ public class IRPrinter implements IIRVisitor {
         }
         if ((inst.op == BinInst.BinOp.MOD) || (inst.op == BinInst.BinOp.DIV)) {
             stringBuilder.append("\tidiv ");
+            inDIV = true;
             inst.src.accept(this);
+            inDIV = false;
             stringBuilder.append("\n");
             return ;
         }
@@ -333,6 +341,22 @@ public class IRPrinter implements IIRVisitor {
     }
 
     @Override
+    public void visit(Setcc inst) {
+        stringBuilder.append("\txor rax, rax\n\tcmp ");
+        inst.src1.accept(this);
+        stringBuilder.append(", ");
+        inst.src2.accept(this);
+        stringBuilder.append("\n\t");
+        String op = "set" + inst.op.toString().toLowerCase() + " ";
+        stringBuilder.append(op + "al\n");
+        if (!(inst.dest instanceof PhyReg && inst.dest == rax)) {
+            stringBuilder.append("\tmov ");
+            inst.dest.accept(this);
+            stringBuilder.append(", rax\n");
+        }
+    }
+
+    @Override
     public void visit(IRInst inst) {
 
     }
@@ -352,9 +376,33 @@ public class IRPrinter implements IIRVisitor {
         }
     }
 
+    private  String toEightDigit(String name) {
+//        System.out.println(name.charAt(1));
+        if (name.charAt(1) > '0' && name.charAt(1) <= '9') {
+            return (name + "b");
+        } else {
+            return (name.charAt(1) + "l");
+        }
+    }
+
+    private String toSixTeenDigit(String name) {
+        if (name.charAt(1) > '0' && name.charAt(1) <= '9') {
+            return (name.substring(1) + "d");
+        } else {
+            return ("e" + name.substring(1));
+        }
+    }
+
     @Override
     public void visit(PhyReg operand) {
-        stringBuilder.append(operand.name);
+        if (inCMP) {
+            stringBuilder.append(toEightDigit(operand.name));
+        } else if (!inDIV) {
+            stringBuilder.append(operand.name);
+        } else {
+//            stringBuilder.append(toSixTeenDigit(operand.name));
+            stringBuilder.append("e" + operand.name.substring(1));
+        }
     }
 
     @Override

@@ -841,6 +841,49 @@ public class IRBuilder implements IAstVisitor {
         rhs.accept(this);
     }
 
+    private Operand getLogicVal(String op, Expression lhs, Expression rhs) {
+        lhs.accept(this);
+        rhs.accept(this);
+        if (op.equals("&&")) {
+            curBB.append(new BinInst(curBB, BinInst.BinOp.AND, (Address)exprResultMap.get(lhs), exprResultMap.get(rhs)));
+        } else {
+            curBB.append(new BinInst(curBB, BinInst.BinOp.OR, (Address)exprResultMap.get(lhs), exprResultMap.get(rhs)));
+        }
+        return exprResultMap.get(lhs);
+    }
+
+    private Operand getCompVal(String op, Expression lhs, Expression rhs) {
+        VirReg reg = new VirReg("");
+        lhs.accept(this);
+        rhs.accept(this);
+        Cjump.CompareOP cop = null;
+        switch (op) {
+            case ">": cop = Cjump.CompareOP.G; break;
+            case ">=": cop = Cjump.CompareOP.GE; break;
+            case "<": cop = Cjump.CompareOP.L; break;
+            case "<=": cop = Cjump.CompareOP.LE; break;
+            case "==": cop = Cjump.CompareOP.E; break;
+            case "!=": cop = Cjump.CompareOP.NE; break;
+        }
+        Operand rlhs = exprResultMap.get(lhs);
+        Operand rrhs = exprResultMap.get(rhs);
+        if (lhs.type instanceof ClassType && ((ClassType)lhs.type).name.equals("string")) {
+            VirReg result = new VirReg("");
+            curBB.append(new Call(curBB, vrax, library_stringComp, rlhs, rrhs));
+            curBB.append(new Mov(curBB, result, vrax));
+            curBB.append(new Setcc(curBB, reg, result, cop, new Imm(0)));
+        } else {
+            if (rlhs instanceof Memory && rrhs instanceof  Memory) {
+                VirReg virReg = new VirReg("");
+                curBB.append(new Mov(curBB, virReg, rlhs));
+                rlhs = virReg;
+            }
+            curBB.append(new Setcc(curBB, reg, rlhs, cop, rrhs));
+        }
+
+        return reg;
+    }
+
     public void doCompCalc(String op, Expression lhs, Expression rhs, BB trueBB, BB falseBB) {
         if (trueBB == null)
             return ;
@@ -887,11 +930,19 @@ public class IRBuilder implements IAstVisitor {
                 break;
             }
             case "<": case ">": case "<=": case ">=": case"==": case "!=": {
-                doCompCalc(node.op, node.lhs, node.rhs, trueBBMap.get(node), falseBBMap.get(node));
+                if (trueBBMap.containsKey(node)) {
+                    doCompCalc(node.op, node.lhs, node.rhs, trueBBMap.get(node), falseBBMap.get(node));
+                } else {
+                    exprResultMap.put(node, getCompVal(node.op, node.lhs, node.rhs));
+                }
                 break;
             }
             case "&&": case "||": {
-                doLogicCalc(node.op, node.lhs, node.rhs, trueBBMap.get(node), falseBBMap.get(node));
+                if (trueBBMap.containsKey(node)) {
+                    doLogicCalc(node.op, node.lhs, node.rhs, trueBBMap.get(node), falseBBMap.get(node));
+                } else {
+                    exprResultMap.put(node, getLogicVal(node.op, node.lhs, node.rhs));
+                }
                 break;
             }
         }
