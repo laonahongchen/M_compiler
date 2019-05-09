@@ -19,6 +19,7 @@ public class IRBuilder implements IAstVisitor {
     private Stack<BB> loopUpdBB;
     private Stack<BB> loopAfterBB;
     private Func curFunc;
+    private FunctionSymbol curFuncSymbol;
     private ClassSymbol curClassSymbol;
     private VirReg curThisPointer;
 
@@ -151,6 +152,7 @@ public class IRBuilder implements IAstVisitor {
         irProgram.funcs.add(library_init);
         curFunc = library_init;
         library_init.usedGlobalSymbol = new HashSet<>(gst.globalInitVars);
+//        System.out.println(gst.globalInitVars.size());
         BB enterBB = new BB(curFunc, "enterBB");
         curBB = curFunc.enterBB = enterBB;
         for (VariableDeclaration d: node.globalVariables) {
@@ -222,6 +224,7 @@ public class IRBuilder implements IAstVisitor {
     @Override
     public void visit(FuncDeclaration node) {
         curFunc = functionMap.get(node.symbol.name);
+        curFuncSymbol = node.symbol;
         curBB = curFunc.enterBB = new BB(curFunc, "enter" + node.symbol.name);
 
         if (isInClassDeclaration) {
@@ -548,13 +551,14 @@ public class IRBuilder implements IAstVisitor {
 
     private void doInline(String name, LinkedList<Operand> args) {
 //        System.out.println(curFunc.name);
+        System.out.println("false");
         FuncDeclaration funcDeclaration = funcDeclarationMap.get(name);
         variableMap.addLast(new HashMap<>());
         LinkedList<VirReg> vregArgs = new LinkedList<>();
         for (Operand op:  args) {
-            VirReg virReg = new VirReg("");
-            curBB.append(new Mov(curBB, virReg, op));
-            vregArgs.add(virReg);
+                VirReg virReg = new VirReg("");
+                curBB.append(new Mov(curBB, virReg, op));
+                vregArgs.add(virReg);
         }
         for (int i = 0; i < funcDeclaration.parameters.size(); ++i) {
             variableMap.getLast().put(funcDeclaration.parameters.get(i).symbol, vregArgs.get(i));
@@ -602,9 +606,6 @@ public class IRBuilder implements IAstVisitor {
             System.out.println("func error: " + node.functionName + node.location);
         }*/
         if (!checkInline(node.functionSymbol.name)) {
-//            System.out.println(node.functionSymbol.name);
-//            System.out.println(curFunc.name);
-//            System.out.println(curBB.hint);
             curBB.append(new Call(curBB, vrax, functionMap.get(node.functionSymbol.name), args));
         } else {
             doInline(node.functionSymbol.name, args);

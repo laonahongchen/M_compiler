@@ -164,7 +164,7 @@ public class SymbolTableBuilder implements IAstVisitor {
                 classSymbol.name = node.name;
                 classSymbol.location = node.location;
                 classSymbol.symbolTable = new SymbolTable(globalSymbolTable);
-                classSymbol.variableType = new ClassType(node.name, classSymbol);
+
                 node.symbol = classSymbol;
 
                 globalSymbolTable.putClassSymbol(node.name, classSymbol);
@@ -198,11 +198,14 @@ public class SymbolTableBuilder implements IAstVisitor {
                 errorListener.addError(node.location, "there is a class already been defined in the same field with this variable and has the same name.");
             } else {
 //                System.out.println("define " + node.name);
-                if (symbolTableToClassSymbol == null) {
+//                if (symbolTableToClassSymbol == null) {
 //                    System.out.println("node wrong");
-                }
+//                }
                 node.symbol = new VariableSymbol(node.name, type,node.location, symbolTableToClassSymbol.containsKey(curSymbolTable), curSymbolTable == globalSymbolTable);
                 curSymbolTable.putVariableSymbol(node.name, node.symbol);
+                if (node.init != null && node.symbol.isGlobalVariable) {
+                    globalSymbolTable.globalInitVars.add(node.symbol);
+                }
             }
         }
     }
@@ -418,7 +421,6 @@ public class SymbolTableBuilder implements IAstVisitor {
     public void visit(Identifier node) {
         VariableSymbol symbol = resolveVariableSymbol(node.name, curSymbolTable);
         if (symbol == null) {
-            //System.out.println("have not find Mxstar.Symbol");
             errorListener.addError(node.location, "cannot resolve variable");
             node.type = null;
         } else {

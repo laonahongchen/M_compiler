@@ -87,9 +87,7 @@ public class GraphAllocator {
             if (reg.allocatedPhyReg != null) {
                 rank = -1;
             }
-            if (reg.spillPlace != null) {
-                rank = 1e50;
-            }
+
             if (rank > mxRank) {
                 mxRank = rank;
                 candidate = reg;
@@ -108,11 +106,6 @@ public class GraphAllocator {
         for (VirReg virReg: selectStack) {
             if (virReg.allocatedPhyReg != null)
                 continue;
-            if (virReg.spillPlace != null) {
-                spillRegs.add(virReg);
-                continue;
-            }
-
 
             HashSet<PhyReg> okColors = new HashSet<>(generalRegisters);
 //            if (originGraph == null) {

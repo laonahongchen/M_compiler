@@ -220,6 +220,10 @@ public class IRPrinter implements IIRVisitor {
             stringBuilder.append(", cl\n");
             return ;
         }
+        if (inst.src == null) {
+            System.out.println(inst.op.toString());
+        }
+
         stringBuilder.append("\t" + inst.op.toString().toLowerCase() + " ");
         inst.dest.accept(this);
         stringBuilder.append(", ");
@@ -443,9 +447,11 @@ public class IRPrinter implements IIRVisitor {
                 constant.accept(this);
             } else if (constant instanceof  Imm) {
                 int val = ((Imm) constant).value;
-                if (occur && val >= 0)
-                    stringBuilder.append(" + ");
-                stringBuilder.append(val);
+                if (val != 0) {
+                    if (occur && val >= 0)
+                        stringBuilder.append(" + ");
+                    stringBuilder.append(val);
+                }
             }
         }
         inMem = false;
