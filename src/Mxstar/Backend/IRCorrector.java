@@ -124,13 +124,10 @@ public class IRCorrector implements IIRVisitor {
 
     @Override
     public void visit(Call inst) {
-        System.out.println(inst.func.name);
         Func caller = inst.bb.func;
         Func callee = inst.func;
         HashSet<VariableSymbol> callerUsed = caller.usedGlobalSymbol;
         HashSet<VariableSymbol> calleeUsed = callee.recursiveUsedGlobalSymbol;
-        System.out.println(calleeUsed.size());
-        System.out.println(callerUsed.size());
         for (VariableSymbol variableSymbol: callerUsed) {
             if (calleeUsed.contains(variableSymbol)) {
                 inst.prepend(new Mov(inst.bb, variableSymbol.virReg.spillPlace, variableSymbol.virReg));

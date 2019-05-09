@@ -220,9 +220,9 @@ public class IRPrinter implements IIRVisitor {
             stringBuilder.append(", cl\n");
             return ;
         }
-        if (inst.src == null) {
-            System.out.println(inst.op.toString());
-        }
+//        if (inst.src == null) {
+//            System.out.println(inst.op.toString());
+//        }
 
         stringBuilder.append("\t" + inst.op.toString().toLowerCase() + " ");
         inst.dest.accept(this);
