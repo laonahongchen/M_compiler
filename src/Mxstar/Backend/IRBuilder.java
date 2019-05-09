@@ -36,7 +36,6 @@ public class IRBuilder implements IAstVisitor {
     private boolean inInline;
     private LinkedList<HashMap<VariableSymbol, VirReg>> variableMap;
     private LinkedList<BB> funcAfter;
-    private HashMap<FunctionSymbol, Integer> operationCountMap;
 
 
     private static Func library_print;
@@ -76,7 +75,6 @@ public class IRBuilder implements IAstVisitor {
 
         this.inInline = false;
         this.funcAfter = new LinkedList<>();
-        this.operationCountMap = new HashMap<>();
         this.variableMap = new LinkedList<>();
     }
 
@@ -531,10 +529,6 @@ public class IRBuilder implements IAstVisitor {
         }
     }
 
-    private int calcOperation(List<Statement> body) {
-        return body.size();
-    }
-
     private boolean checkInline(String name) {
         if (!Config_Cons.doInline)
             return false;
@@ -547,9 +541,7 @@ public class IRBuilder implements IAstVisitor {
             System.out.println("symbol null");
         }
         List<Statement> body = funcDeclaration.body;
-        if (!operationCountMap.containsKey(funcDeclaration.symbol))
-            operationCountMap.put(funcDeclaration.symbol, calcOperation(body));
-        if (operationCountMap.get(funcDeclaration.symbol) >= Config_Cons.inlineLimit)
+        if (funcDeclaration.body.size() >= Config_Cons.inlineLimit)
             return false;
         return true;
     }
