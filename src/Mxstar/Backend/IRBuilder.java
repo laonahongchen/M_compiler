@@ -7,10 +7,7 @@ import Mxstar.IR.Operand.*;
 import Mxstar.Symbol.*;
 import Mxstar.IR.*;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Stack;
+import java.util.*;
 
 import static Mxstar.IR.RegisterSet.*;
 
@@ -19,7 +16,7 @@ public class IRBuilder implements IAstVisitor {
     private GlobalSymbolTable gst;
 
     private BB curBB;
-    private Stack<BB> loopConditionBB;
+    private Stack<BB> loopUpdBB;
     private Stack<BB> loopAfterBB;
     private Func curFunc;
     private ClassSymbol curClassSymbol;
@@ -33,8 +30,14 @@ public class IRBuilder implements IAstVisitor {
     private HashMap<Expression, Operand> exprResultMap;
     private HashMap<Expression, Address> assignToMap;
 
-    boolean isInClassDeclaration;
-    boolean isInParameter;
+    private boolean isInClassDeclaration;
+    private boolean isInParameter;
+
+    private boolean inInline;
+    private LinkedList<HashMap<VariableSymbol, VirReg>> variableMap;
+    private LinkedList<BB> funcAfter;
+    private HashMap<FunctionSymbol, Integer> operationCountMap;
+
 
     private static Func library_print;
     private static Func library_println;
@@ -56,7 +59,7 @@ public class IRBuilder implements IAstVisitor {
         this.gst = gst;
         this.irProgram = new IRProgram();
         this.loopAfterBB = new Stack<>();
-        this.loopConditionBB = new Stack<>();
+        this.loopUpdBB = new Stack<>();
         this.funcDeclarationMap = new HashMap<>();
         this.functionMap = new HashMap<>();
 
@@ -71,6 +74,10 @@ public class IRBuilder implements IAstVisitor {
 
         initLibraryFunc();
 
+        this.inInline = false;
+        this.funcAfter = new LinkedList<>();
+        this.operationCountMap = new HashMap<>();
+        this.variableMap = new LinkedList<>();
     }
 
     private void initLibraryFunc() {
@@ -284,17 +291,24 @@ public class IRBuilder implements IAstVisitor {
     @Override
     public void visit(VariableDeclaration node) {
         VirReg virReg = new VirReg(node.name);
-        if (isInParameter) {
+        if (inInline) {
+            variableMap.getLast().put(node.symbol, virReg);
+            if (node.init != null) {
+                assign(node.init, virReg);
+            }
+        } else {
+            if (isInParameter) {
 //            System.out.println(node.location);
 //            System.out.println(curFunc.parameters.size());
-            if (curFunc.parameters.size() >= 6) {
-                virReg.spillPlace = new StackSlot(virReg.hint);
+                if (curFunc.parameters.size() >= 6) {
+                    virReg.spillPlace = new StackSlot(virReg.hint);
+                }
+                curFunc.parameters.add(virReg);
             }
-            curFunc.parameters.add(virReg);
-        }
-        node.symbol.virReg = virReg;
-        if (node.init != null) {
-            assign(node.init, virReg);
+            node.symbol.virReg = virReg;
+            if (node.init != null) {
+                assign(node.init, virReg);
+            }
         }
     }
 
@@ -335,7 +349,7 @@ public class IRBuilder implements IAstVisitor {
 
 
         curBB.append(new Jump(curBB, condBB));
-        loopConditionBB.push(condBB);
+        loopUpdBB.push(updBB);
         loopAfterBB.push(afterBB);
         if (node.condition != null) {
             trueBBMap.put(node.condition, bodyBB);
@@ -355,7 +369,7 @@ public class IRBuilder implements IAstVisitor {
         }
 
         curBB = afterBB;
-        loopConditionBB.pop();
+        loopUpdBB.pop();
         loopAfterBB.pop();
     }
 
@@ -374,8 +388,13 @@ public class IRBuilder implements IAstVisitor {
                     curBB.append(new Mov(curBB, vrax, exprResultMap.get(node.retExpr)));
                 }
             }
-
-            curBB.append(new Ret(curBB));
+            if (inInline) {
+                curBB.append(new Jump(curBB, funcAfter.getLast()));
+            } else {
+                curBB.append(new Ret(curBB));
+            }
+        } else {
+            curBB.append(new Jump(curBB, loopUpdBB.peek()));
         }
     }
 
@@ -430,7 +449,11 @@ public class IRBuilder implements IAstVisitor {
             operand = new Memory(curThisPointer, new Imm(offset));
 //            System.out.println("Identifier:" + node.location);
         } else {
-            operand = node.symbol.virReg;
+            if (inInline) {
+                operand = variableMap.getLast().get(node.symbol);
+            } else {
+                operand = node.symbol.virReg;
+            }
             if (node.symbol.isGlobalVariable)
                 curFunc.usedGlobalSymbol.add(node.symbol);
         }
@@ -508,6 +531,67 @@ public class IRBuilder implements IAstVisitor {
         }
     }
 
+    private int calcOperation(List<Statement> body) {
+        return body.size();
+    }
+
+    private boolean checkInline(String name) {
+        if (!Config_Cons.doInline)
+            return false;
+        if (!funcDeclarationMap.containsKey(name))
+            return false;
+        FuncDeclaration funcDeclaration = funcDeclarationMap.get(name);
+        if (variableMap.size() > Config_Cons.inlineDepth)
+            return false;
+        if (funcDeclaration.symbol == null) {
+            System.out.println("symbol null");
+        }
+        List<Statement> body = funcDeclaration.body;
+        if (!operationCountMap.containsKey(funcDeclaration.symbol))
+            operationCountMap.put(funcDeclaration.symbol, calcOperation(body));
+        if (operationCountMap.get(funcDeclaration.symbol) >= Config_Cons.inlineLimit)
+            return false;
+        return true;
+    }
+
+    private void doInline(String name, LinkedList<Operand> args) {
+//        System.out.println(curFunc.name);
+        FuncDeclaration funcDeclaration = funcDeclarationMap.get(name);
+        variableMap.addLast(new HashMap<>());
+        LinkedList<VirReg> vregArgs = new LinkedList<>();
+        for (Operand op:  args) {
+            VirReg virReg = new VirReg("");
+            curBB.append(new Mov(curBB, virReg, op));
+            vregArgs.add(virReg);
+        }
+        for (int i = 0; i < funcDeclaration.parameters.size(); ++i) {
+            variableMap.getLast().put(funcDeclaration.parameters.get(i).symbol, vregArgs.get(i));
+        }
+
+        BB bodyBB = new BB(curFunc, "inlineBodyBB");
+        BB afterBB = new BB(curFunc, "inlineAfterBB");
+        funcAfter.addLast(afterBB);
+        curBB.append(new Jump(curBB, bodyBB));
+        curBB = bodyBB;
+
+        boolean oldInline = inInline;
+        inInline = true;
+
+        for (Statement st: funcDeclaration.body) {
+            st.accept(this);
+        }
+        if (!(curBB.tail instanceof  Jump)) {
+            curBB.append(new Jump(curBB, afterBB));
+        }
+//        System.out.println(curBB.tail instanceof Ret);
+        curBB = afterBB;
+
+
+        variableMap.removeLast();
+        funcAfter.removeLast();
+        inInline = oldInline;
+    }
+
     @Override
     public void visit(FuncCallExpr node) {
         LinkedList<Operand> args = new LinkedList<>();
@@ -525,7 +609,14 @@ public class IRBuilder implements IAstVisitor {
         /*if (!functionMap.containsKey(node.functionName)) {
             System.out.println("func error: " + node.functionName + node.location);
         }*/
-        curBB.append(new Call(curBB, vrax, functionMap.get(node.functionSymbol.name), args));
+        if (!checkInline(node.functionSymbol.name)) {
+//            System.out.println(node.functionSymbol.name);
+//            System.out.println(curFunc.name);
+//            System.out.println(curBB.hint);
+            curBB.append(new Call(curBB, vrax, functionMap.get(node.functionSymbol.name), args));
+        } else {
+            doInline(node.functionSymbol.name, args);
+        }
         if (trueBBMap.containsKey(node)) {
             curBB.append(new Cjump(curBB, vrax, Cjump.CompareOP.NE, new Imm(0), trueBBMap.get(node), falseBBMap.get(node)));
         } else {
