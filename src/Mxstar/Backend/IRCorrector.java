@@ -130,11 +130,13 @@ public class IRCorrector implements IIRVisitor {
 //        HashSet<VariableSymbol> calleeUsed = callee.recursiveUsedGlobalSymbol;
         HashSet<VariableSymbol> needToSave = new HashSet<>(caller.usedGlobalSymbol);
         needToSave.retainAll(callee.recursiveUsedGlobalSymbol);
-        for (VariableSymbol variableSymbol: needToSave) {
+        if (Config_Cons.doGlobalAllocate) {
+            for (VariableSymbol variableSymbol : needToSave) {
 //            if (calleeUsed.contains(variableSymbol)) {
                 inst.prepend(new Mov(inst.bb, variableSymbol.virReg.spillPlace, variableSymbol.virReg));
                 inst.prev.accept(this);
 //            }
+            }
         }
         while (inst.args.size() > 6 ) {
             inst.prepend(new Push(inst.bb, inst.args.removeLast()));
@@ -143,11 +145,13 @@ public class IRCorrector implements IIRVisitor {
             inst.prepend(new Mov(inst.bb, RegisterSet.vargs.get(i), inst.args.get(i)));
             inst.prev.accept(this);
         }
-        for (VariableSymbol variableSymbol: needToSave) {
+        if (Config_Cons.doGlobalAllocate) {
+            for (VariableSymbol variableSymbol : needToSave) {
 //            if (calleeUsed.contains(variableSymbol)) {
                 inst.append(new Mov(inst.bb, variableSymbol.virReg, variableSymbol.virReg.spillPlace));
 //                inst.prev.accept(this);
 //            }
+            }
         }
     }
 

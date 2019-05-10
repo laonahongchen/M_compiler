@@ -245,9 +245,10 @@ public class IRBuilder implements IAstVisitor {
                 curBB.append(new Mov(curBB, curFunc.parameters.get(i), curFunc.parameters.get(i).spillPlace));
             }
         }
-
-        for (VariableSymbol variableSymbol: node.symbol.usedGlobalVariables) {
-            curBB.append(new Mov(curBB, variableSymbol.virReg, variableSymbol.virReg.spillPlace));
+        if (Config_Cons.doGlobalAllocate) {
+            for (VariableSymbol variableSymbol : node.symbol.usedGlobalVariables) {
+                curBB.append(new Mov(curBB, variableSymbol.virReg, variableSymbol.virReg.spillPlace));
+            }
         }
 
         for (Statement statement: node.body) {
@@ -281,9 +282,12 @@ public class IRBuilder implements IAstVisitor {
         curFunc.leaveBB = leaveBB;
 
         //save global variable
-        IRInst retInst = curFunc.leaveBB.tail;
-        for (VariableSymbol variableSymbol: node.symbol.usedGlobalVariables) {
-            retInst.prepend(new Mov(retInst.bb, variableSymbol.virReg.spillPlace, variableSymbol.virReg));
+
+        if (Config_Cons.doGlobalAllocate) {
+            IRInst retInst = curFunc.leaveBB.tail;
+            for (VariableSymbol variableSymbol : node.symbol.usedGlobalVariables) {
+                retInst.prepend(new Mov(retInst.bb, variableSymbol.virReg.spillPlace, variableSymbol.virReg));
+            }
         }
         functionMap.put(node.symbol.name, curFunc);
         irProgram.funcs.add(curFunc);

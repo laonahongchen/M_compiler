@@ -1,5 +1,6 @@
 package Mxstar.Backend;
 
+import Mxstar.Config_Cons;
 import Mxstar.IR.BB;
 import Mxstar.IR.Func;
 import Mxstar.IR.IRProgram;
@@ -87,6 +88,9 @@ public class GraphAllocator {
             if (reg.allocatedPhyReg != null) {
                 rank = -1;
             }
+            if (reg.spillPlace != null && !Config_Cons.doGlobalAllocate) {
+                rank = 1e50;
+            }
 
             if (rank > mxRank) {
                 mxRank = rank;
@@ -106,6 +110,9 @@ public class GraphAllocator {
         for (VirReg virReg: selectStack) {
             if (virReg.allocatedPhyReg != null)
                 continue;
+            if (!Config_Cons.doGlobalAllocate && virReg.spillPlace != null) {
+                spillRegs.add(virReg);
+            }
 
             HashSet<PhyReg> okColors = new HashSet<>(generalRegisters);
 //            if (originGraph == null) {
