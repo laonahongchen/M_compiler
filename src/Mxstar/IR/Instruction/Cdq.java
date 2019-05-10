@@ -15,6 +15,11 @@ public class Cdq extends IRInst {
     }
 
     @Override
+    public IRInst copy(BB bb) {
+        return new Cdq(bb);
+    }
+
+    @Override
     public void renameUseReg(HashMap<Register, Register> renameMap) {}
 
     @Override

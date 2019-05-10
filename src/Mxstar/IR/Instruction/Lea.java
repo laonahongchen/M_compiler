@@ -33,6 +33,11 @@ public class Lea extends IRInst {
     }
 
     @Override
+    public IRInst copy(BB bb) {
+        return new Lea(bb, dest, src);
+    }
+
+    @Override
     public LinkedList<Register> getDefRegs() {
         LinkedList<Register> regs = new LinkedList<>();
         regs.add(dest);

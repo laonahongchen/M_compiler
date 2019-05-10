@@ -34,6 +34,11 @@ public class Pop extends IRInst {
     }
 
     @Override
+    public IRInst copy(BB bb) {
+        return new Pop(bb, dest);
+    }
+
+    @Override
     public LinkedList<Register> getDefRegs() {
         LinkedList<Register> regs = new LinkedList<>();
         if (dest instanceof Register)

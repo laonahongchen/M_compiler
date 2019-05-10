@@ -34,6 +34,11 @@ public class Push extends IRInst {
     }
 
     @Override
+    public IRInst copy(BB bb) {
+        return new Push(bb, src);
+    }
+
+    @Override
     public LinkedList<Register> getDefRegs() {
         LinkedList<Register> regs = new LinkedList<>();
         if (src instanceof Register)

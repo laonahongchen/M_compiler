@@ -23,6 +23,11 @@ public class Jump extends IRInst {
     public void renameDefReg(HashMap<Register, Register> renameMap) {}
 
     @Override
+    public IRInst copy(BB bb) {
+        return new Jump(bb, targetBB);
+    }
+
+    @Override
     public LinkedList<Register> getDefRegs() {
         return new LinkedList<>();
     }

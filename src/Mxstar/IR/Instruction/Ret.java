@@ -15,6 +15,11 @@ public class Ret extends IRInst {
     }
 
     @Override
+    public IRInst copy(BB bb) {
+        return new Ret(bb);
+    }
+
+    @Override
     public void renameUseReg(HashMap<Register, Register> renameMap) {}
 
     @Override

@@ -131,6 +131,11 @@ public class Cjump extends IRInst {
     }
 
     @Override
+    public IRInst copy(BB bb) {
+        return new Cjump(bb, src1, op, src2, thenbb, elsebb);
+    }
+
+    @Override
     public LinkedList<Register> getDefRegs() {
         return new LinkedList<>();
     }

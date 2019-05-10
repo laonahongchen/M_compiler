@@ -14,6 +14,11 @@ public class Leave extends IRInst {
     }
 
     @Override
+    public IRInst copy(BB bb) {
+        return new Leave(bb);
+    }
+
+    @Override
     public void renameUseReg(HashMap<Register, Register> renameMap) {}
 
     @Override

@@ -21,6 +21,9 @@ public abstract class IRInst {
     public IRInst(BB bb) {
         this.bb = bb;
     }
+
+    public abstract IRInst copy(BB bb);
+
     public void prepend(IRInst inst) {
         if (prev == null) {
             inst.next = this;

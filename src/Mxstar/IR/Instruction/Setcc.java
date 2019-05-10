@@ -79,6 +79,11 @@ public class Setcc extends IRInst {
     }
 
     @Override
+    public IRInst copy(BB bb) {
+        return null;
+    }
+
+    @Override
     public LinkedList<Register> getDefRegs() {
         LinkedList<Register> regs = new LinkedList<>();
         if (dest instanceof Register)

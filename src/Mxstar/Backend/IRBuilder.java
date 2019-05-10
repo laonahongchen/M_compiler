@@ -6,6 +6,7 @@ import Mxstar.IR.Instruction.*;
 import Mxstar.IR.Operand.*;
 import Mxstar.Symbol.*;
 import Mxstar.IR.*;
+import com.sun.org.apache.xpath.internal.operations.Variable;
 
 import java.util.*;
 
@@ -556,12 +557,15 @@ public class IRBuilder implements IAstVisitor {
         variableMap.addLast(new HashMap<>());
         LinkedList<VirReg> vregArgs = new LinkedList<>();
         for (Operand op:  args) {
-                VirReg virReg = new VirReg("");
-                curBB.append(new Mov(curBB, virReg, op));
-                vregArgs.add(virReg);
+            VirReg virReg = new VirReg("");
+            curBB.append(new Mov(curBB, virReg, op));
+            vregArgs.add(virReg);
         }
         for (int i = 0; i < funcDeclaration.parameters.size(); ++i) {
             variableMap.getLast().put(funcDeclaration.parameters.get(i).symbol, vregArgs.get(i));
+        }
+        for (VariableSymbol vr: functionMap.get(name).usedGlobalSymbol) {
+            variableMap.getLast().put(vr, vr.virReg);
         }
 
         BB bodyBB = new BB(curFunc, "inlineBodyBB");
@@ -1015,18 +1019,46 @@ public class IRBuilder implements IAstVisitor {
                 break;
             }
             case "<": case ">": case "<=": case ">=": case"==": case "!=": {
-                if (trueBBMap.containsKey(node)) {
+                if (!trueBBMap.containsKey(node)) {
+                    VirReg ret = new VirReg("");
+                    BB valTrueBB = new BB(curFunc, "trueBB");
+                    trueBBMap.put(node, valTrueBB);
+                    BB valFalseBB = new BB(curFunc, "falseBB");
+                    falseBBMap.put(node, valFalseBB);
+                    BB valAfterBB = new BB(curFunc, "afterBB");
                     doCompCalc(node.op, node.lhs, node.rhs, trueBBMap.get(node), falseBBMap.get(node));
+                    curBB = valTrueBB;
+                    curBB.append(new Mov(curBB, ret, new Imm(1)));
+                    curBB.append(new Jump(curBB, valAfterBB));
+                    curBB = valFalseBB;
+                    curBB.append(new Mov(curBB, ret, new Imm(0)));
+                    curBB.append(new Jump(curBB, valAfterBB));
+                    curBB = valAfterBB;
+                    exprResultMap.put(node, ret);
                 } else {
-                    exprResultMap.put(node, getCompVal(node.op, node.lhs, node.rhs));
+                    doCompCalc(node.op, node.lhs, node.rhs, trueBBMap.get(node), falseBBMap.get(node));
                 }
                 break;
             }
             case "&&": case "||": {
-                if (trueBBMap.containsKey(node)) {
+                if (!trueBBMap.containsKey(node)) {
+                    VirReg ret = new VirReg("");
+                    BB valTrueBB = new BB(curFunc, "trueBB");
+                    trueBBMap.put(node, valTrueBB);
+                    BB valFalseBB = new BB(curFunc, "falseBB");
+                    falseBBMap.put(node, valFalseBB);
+                    BB valAfterBB = new BB(curFunc, "afterBB");
                     doLogicCalc(node.op, node.lhs, node.rhs, trueBBMap.get(node), falseBBMap.get(node));
+                    curBB = valTrueBB;
+                    curBB.append(new Mov(curBB, ret, new Imm(1)));
+                    curBB.append(new Jump(curBB, valAfterBB));
+                    curBB = valFalseBB;
+                    curBB.append(new Mov(curBB, ret, new Imm(0)));
+                    curBB.append(new Jump(curBB, valAfterBB));
+                    curBB = valAfterBB;
+                    exprResultMap.put(node, ret);
                 } else {
-                    exprResultMap.put(node, getLogicVal(node.op, node.lhs, node.rhs));
+                    doLogicCalc(node.op, node.lhs, node.rhs, trueBBMap.get(node), falseBBMap.get(node));
                 }
                 break;
             }

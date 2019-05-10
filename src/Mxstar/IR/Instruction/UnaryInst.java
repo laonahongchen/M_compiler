@@ -52,6 +52,11 @@ public class UnaryInst extends IRInst {
     }
 
     @Override
+    public IRInst copy(BB bb) {
+        return new UnaryInst(bb, op, dest);
+    }
+
+    @Override
     public LinkedList<Register> getDefRegs() {
         LinkedList<Register> regs = new LinkedList<>();
         if (dest instanceof Register)

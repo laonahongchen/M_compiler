@@ -64,6 +64,11 @@ public class Call extends IRInst {
     }
 
     @Override
+    public IRInst copy(BB bb) {
+        return new Call(bb, dest, func, args);
+    }
+
+    @Override
     public LinkedList<Register> getDefRegs() {
         return new LinkedList<>(RegisterSet.vcallerSave);
     }

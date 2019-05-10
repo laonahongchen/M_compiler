@@ -25,6 +25,8 @@ public class BinInst extends IRInst {
         this.src = src;
     }
 
+
+
     @Override
     public void renameUseReg(HashMap<Register, Register> renameMap) {
         if (src instanceof Memory) {
@@ -77,6 +79,11 @@ public class BinInst extends IRInst {
     @Override
     public LinkedList<StackSlot> getStackSlots() {
         return defualtGetSlot(dest, src);
+    }
+
+    @Override
+    public IRInst copy(BB bb) {
+        return new BinInst(bb, op, dest, src);
     }
 
     @Override
