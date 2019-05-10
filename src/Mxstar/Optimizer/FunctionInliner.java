@@ -7,7 +7,6 @@ import Mxstar.IR.IRProgram;
 import Mxstar.IR.Instruction.*;
 import Mxstar.IR.Operand.Register;
 import Mxstar.IR.Operand.VirReg;
-import com.sun.corba.se.spi.legacy.interceptor.RequestInfoExt;
 
 import java.util.Collection;
 import java.util.HashMap;

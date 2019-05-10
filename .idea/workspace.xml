@@ -1,28 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/Mxstar/Backend/GraphAllocator.java" line="59" mnemonic="9" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="35739463-e986-4e75-a4bd-855459eb39c8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Mxstar/Optimizer/FunctionInliner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mx.asm" beforeDir="false" afterPath="$PROJECT_DIR$/mx.asm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/BinInst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/BinInst.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/Call.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/Call.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/Cdq.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/Cdq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/Cjump.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/Cjump.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/IRInst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/IRInst.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/Jump.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/Jump.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/Lea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/Lea.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/Leave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/Leave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/Mov.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/Mov.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/Pop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/Pop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/Push.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/Push.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/Ret.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/Ret.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/Setcc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/Setcc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/UnaryInst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/IR/Instruction/UnaryInst.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -57,14 +38,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="567" column="51" selection-start-line="567" selection-start-column="51" selection-end-line="567" selection-end-column="51" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="184">
+              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
@@ -141,14 +119,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Mxstar/Optimizer/FunctionInliner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="563">
-              <caret line="52" column="58" selection-start-line="52" selection-start-column="58" selection-end-line="52" selection-end-column="58" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="184">
+              <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -220,7 +195,6 @@
       <find>curFunc</find>
       <find>curFunc =</find>
       <find>Memory</find>
-      <find>usedGlobal</find>
       <find>VariableDeclaration</find>
       <find>defineVar</find>
       <find>irProgram.funcs</find>
@@ -235,6 +209,7 @@
       <find>tranvir</find>
       <find>allreg</find>
       <find>variableMap</find>
+      <find>usedGlobal</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -298,9 +273,9 @@
         <option value="$PROJECT_DIR$/src/Mxstar/IR/Instruction/Ret.java" />
         <option value="$PROJECT_DIR$/src/Mxstar/IR/Instruction/UnaryInst.java" />
         <option value="$PROJECT_DIR$/src/Mxstar/IR/Instruction/Setcc.java" />
-        <option value="$PROJECT_DIR$/src/Mxstar/Optimizer/FunctionInliner.java" />
         <option value="$PROJECT_DIR$/src/Mxstar/Config_Cons.java" />
         <option value="$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java" />
+        <option value="$PROJECT_DIR$/src/Mxstar/Optimizer/FunctionInliner.java" />
       </list>
     </option>
   </component>
@@ -385,7 +360,7 @@
     <property name="$PROJECT_DIR$/src/parser/mxstar.g4::/gen-visitor" value="true" />
     <property name="$PROJECT_DIR$/src/parser/mxstar.g4::/output-dir" value="D:\homework\2018-19-second\compiler\mxstar\src" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557451283569" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557452056741" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../MWCompiler-master" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -543,14 +518,7 @@
       <workItem from="1557387901124" duration="4977000" />
       <workItem from="1557393204829" duration="1676000" />
       <workItem from="1557394892273" duration="15388000" />
-      <workItem from="1557447379436" duration="3900000" />
-    </task>
-    <task id="LOCAL-00038" summary="fix a bug dealing with NEW">
-      <created>1556697787003</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1556697787003</updated>
+      <workItem from="1557447379436" duration="4666000" />
     </task>
     <task id="LOCAL-00039" summary="fix a bug with loop">
       <created>1556699444187</created>
@@ -888,11 +856,18 @@
       <option name="project" value="LOCAL" />
       <updated>1557411059099</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="commit a simple inline which will definitely perform bad">
+      <created>1557451334544</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1557451334545</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="572013000" />
+    <option name="totallyTimeSpent" value="572779000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1016,7 +991,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="changed lib file to a O3 version" />
     <MESSAGE value="test for runnable for T27..." />
     <MESSAGE value="fix a fatal bug for T27" />
     <MESSAGE value="fix a bug in semantic...(null loop)" />
@@ -1041,7 +1015,8 @@
     <MESSAGE value="fix a bug in the special case with idiv" />
     <MESSAGE value="added inline" />
     <MESSAGE value="changed global variable spill strategy" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed global variable spill strategy" />
+    <MESSAGE value="commit a simple inline which will definitely perform bad" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit a simple inline which will definitely perform bad" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1491,16 +1466,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mxstar/Optimizer/FunctionInliner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="563">
-          <caret line="52" column="58" selection-start-line="52" selection-start-column="58" selection-end-line="52" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Mxstar/Config_Cons.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="449">
@@ -1513,11 +1478,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="567" column="51" selection-start-line="567" selection-start-column="51" selection-end-line="567" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="184">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mxstar/Optimizer/FunctionInliner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
         </state>
       </provider>
     </entry>
