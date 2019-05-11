@@ -684,10 +684,17 @@ public class IRBuilder implements IAstVisitor {
                 if (classType.name.equals("string")) {
                     constructor = null;
                 } else {
-                    if (classType.symbol.symbolTable.getFunctionSymbol(classType.name) == null)
+                    if (classType.symbol.symbolTable.getFunctionSymbol(classType.name) == null) {
+//                        System.out.println(classType.name);
                         constructor = null;
-                    else
-                        constructor = functionMap.get(classType.name);
+                    }
+                    else {
+
+                        constructor = functionMap.get(classType.name + "." + classType.name);
+                        if (constructor == null) {
+                            System.out.println("didn't find" + classType.name);
+                        }
+                    }
                 }
             } else {
                 constructor = null;

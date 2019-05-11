@@ -310,258 +310,56 @@ _main_User_Defined_fihriaifhiahidsafans:
 	mov rbp, rsp
 	sub rsp, 8
 	push r14
-	push r15
-	push r13
-	push r12
-	push rbx
-	mov rbx, qword [g_0]
-	mov rax, qword [g_1]
-	mov qword [g_1], rax
-	mov r15, qword [g_2]
-	mov r12, qword [g_3]
-	mov r14, qword [g_4]
-	mov r13, qword [g_5]
-	call __getInt 
-	mov r12, rax
-	mov r9, 1
-	l_1:
-	cmp r9, r12
-	jle l_2
-	l_3:
+	mov rdi, 8
+	call malloc 
+	mov r14, rax
 	mov rdi, r14
-	call __toString 
+	call _SomeClass_User_Defined_fihriaifhiahidsafans 
+	mov rax, r14
+	mov rcx, rax
+	inc qword [rcx]
 	mov rdi, rax
-	call __println 
+	call _print_User_Defined_fihriaifhiahidsafans 
 	mov rax, 0
-	l_4:
-	mov qword [g_0], rbx
-	mov rcx, qword [g_1]
-	mov qword [g_1], rcx
-	mov qword [g_2], r15
-	mov qword [g_3], r12
-	mov qword [g_4], r14
-	mov qword [g_5], r13
-	pop rbx
-	pop r12
-	pop r13
-	pop r15
+	l_1:
 	pop r14
 	leave 
 	ret
+_SomeClass_User_Defined_fihriaifhiahidsafans:
 	l_2:
-	mov rdi, 1
-	l_5:
-	cmp rdi, r12
-	jle l_6
-	l_7:
-	l_8:
-	inc r9
-	jmp l_1
-	l_6:
-	mov rsi, 1
-	l_9:
-	cmp rsi, r12
-	jle l_10
-	l_11:
-	l_12:
-	inc rdi
-	jmp l_5
-	l_10:
-	mov r8, 1
-	l_13:
-	cmp r8, r12
-	jle l_14
-	l_15:
-	l_16:
-	inc rsi
-	jmp l_9
-	l_14:
-	mov rcx, 1
-	l_17:
-	cmp rcx, r12
-	jle l_18
-	l_19:
-	l_20:
-	inc r8
-	jmp l_13
-	l_18:
-	mov rax, 1
-	l_21:
-	cmp rax, r12
-	jle l_22
-	l_23:
-	l_24:
-	inc rcx
-	jmp l_17
-	l_22:
-	cmp r9, rdi
-	je l_25
-	l_26:
-	cmp r9, rsi
-	je l_25
-	l_27:
-	cmp r9, r8
-	je l_25
-	l_28:
-	cmp r9, rcx
-	je l_25
-	l_29:
-	cmp r9, rax
-	je l_25
-	l_30:
-	cmp r9, r13
-	je l_25
-	l_31:
-	cmp r9, rbx
-	je l_25
-	l_32:
-	mov rdx, qword [g_1]
-	cmp r9, rdx
-	je l_25
-	l_33:
-	cmp r9, r15
-	je l_25
-	l_34:
-	cmp rdi, rsi
-	je l_25
-	l_35:
-	cmp rdi, r8
-	je l_25
-	l_36:
-	cmp rdi, rcx
-	je l_25
-	l_37:
-	cmp rdi, rax
-	je l_25
-	l_38:
-	cmp rdi, r13
-	je l_25
-	l_39:
-	cmp rdi, rbx
-	je l_25
-	l_40:
-	mov rdx, qword [g_1]
-	cmp rdi, rdx
-	je l_25
-	l_41:
-	cmp rdi, r15
-	je l_25
-	l_42:
-	cmp rsi, r8
-	je l_25
-	l_43:
-	cmp rsi, rcx
-	je l_25
-	l_44:
-	cmp rsi, rax
-	je l_25
-	l_45:
-	cmp rsi, r13
-	je l_25
-	l_46:
-	cmp rsi, rbx
-	je l_25
-	l_47:
-	mov rdx, qword [g_1]
-	cmp rsi, rdx
-	je l_25
-	l_48:
-	cmp rsi, r15
-	je l_25
-	l_49:
-	cmp r8, rcx
-	je l_25
-	l_50:
-	cmp r8, rax
-	je l_25
-	l_51:
-	cmp r8, r13
-	je l_25
-	l_52:
-	cmp r8, rbx
-	je l_25
-	l_53:
-	mov rdx, qword [g_1]
-	cmp r8, rdx
-	je l_25
-	l_54:
-	cmp r8, r15
-	je l_25
-	l_55:
-	cmp rcx, rax
-	je l_25
-	l_56:
-	cmp rcx, r13
-	je l_25
-	l_57:
-	cmp rcx, rbx
-	je l_25
-	l_58:
-	mov rdx, qword [g_1]
-	cmp rcx, rdx
-	je l_25
-	l_59:
-	cmp rcx, r15
-	je l_25
-	l_60:
-	cmp rax, r13
-	je l_25
-	l_61:
-	cmp rax, rbx
-	je l_25
-	l_62:
-	mov rdx, qword [g_1]
-	cmp rax, rdx
-	je l_25
-	l_63:
-	cmp rax, r15
-	je l_25
-	l_64:
-	mov rdx, qword [g_1]
-	cmp rbx, rdx
-	je l_25
-	l_65:
-	cmp r13, r15
-	je l_25
-	l_66:
-	inc r14
-	l_25:
-	l_67:
-	inc rax
-	jmp l_21
-__init:
-	l_68:
 	push rbp
 	mov rbp, rsp
-	mov rdx, 99
-	mov rcx, 100
-	mov r8, 101
-	mov rsi, 102
-	mov rdi, 0
-	mov qword [g_0], rcx
-	mov qword [g_1], r8
-	mov qword [g_2], rsi
-	mov qword [g_4], rdi
-	mov qword [g_5], rdx
+	mov rax, rdi
+	mov qword [rax], 0
+	inc qword [rax]
+	inc qword [rax]
+	l_3:
+	leave 
+	ret
+_print_User_Defined_fihriaifhiahidsafans:
+	l_4:
+	push rbp
+	mov rbp, rsp
+	mov rax, rdi
+	mov rdi, qword [rax]
+	call __toString 
+	mov rsi, rax
+	mov rdi, g_0
+	call __stringConcat 
+	mov rdi, rax
+	call __println 
+	l_5:
+	leave 
+	ret
+__init:
+	l_6:
+	push rbp
+	mov rbp, rsp
 	call _main_User_Defined_fihriaifhiahidsafans 
-	mov rdx, qword [g_5]
-	mov rdi, qword [g_4]
-	mov rsi, qword [g_2]
-	mov r8, qword [g_1]
-	mov rcx, qword [g_0]
 	leave 
 	ret
 	 section .data
-g_3:
-	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
-g_5:
-	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
 g_0:
-	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
-g_1:
-	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
-g_2:
-	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
-g_4:
-	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
+	dq 6
+	db 6EH, 75H, 6DH, 20H, 3DH, 20H, 00H
 
