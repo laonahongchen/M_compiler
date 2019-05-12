@@ -308,58 +308,16 @@ _main_User_Defined_fihriaifhiahidsafans:
 	l_0:
 	push rbp
 	mov rbp, rsp
-	sub rsp, 8
-	push r14
-	mov rdi, 8
-	call malloc 
-	mov r14, rax
-	mov rdi, r14
-	call _SomeClass_User_Defined_fihriaifhiahidsafans 
-	mov rax, r14
-	mov rcx, rax
-	inc qword [rcx]
-	mov rdi, rax
-	call _print_User_Defined_fihriaifhiahidsafans 
-	mov rax, 0
+	mov rax, 16
 	l_1:
-	pop r14
-	leave 
-	ret
-_SomeClass_User_Defined_fihriaifhiahidsafans:
-	l_2:
-	push rbp
-	mov rbp, rsp
-	mov rax, rdi
-	mov qword [rax], 0
-	inc qword [rax]
-	inc qword [rax]
-	l_3:
-	leave 
-	ret
-_print_User_Defined_fihriaifhiahidsafans:
-	l_4:
-	push rbp
-	mov rbp, rsp
-	mov rax, rdi
-	mov rdi, qword [rax]
-	call __toString 
-	mov rsi, rax
-	mov rdi, g_0
-	call __stringConcat 
-	mov rdi, rax
-	call __println 
-	l_5:
 	leave 
 	ret
 __init:
-	l_6:
+	l_2:
 	push rbp
 	mov rbp, rsp
 	call _main_User_Defined_fihriaifhiahidsafans 
 	leave 
 	ret
 	 section .data
-g_0:
-	dq 6
-	db 6EH, 75H, 6DH, 20H, 3DH, 20H, 00H
 
