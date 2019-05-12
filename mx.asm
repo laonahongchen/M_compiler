@@ -304,16 +304,155 @@ L_012:
 
 ;====================================================
 	 section .text
-_main_User_Defined_fihriaifhiahidsafans:
+_worka_User_Defined_fihriaifhiahidsafans:
 	l_0:
 	push rbp
 	mov rbp, rsp
-	mov rax, 16
+	mov rax, rdi
+	mov rcx, rsi
+	mov rdx, rax
+	add rdx, rax
+	mov rax, rdx
+	sub rax, rcx
 	l_1:
 	leave 
 	ret
-__init:
+_workb_User_Defined_fihriaifhiahidsafans:
 	l_2:
+	push rbp
+	mov rbp, rsp
+	mov rcx, rdi
+	mov rax, rsi
+	neg rcx
+	add rcx, rax
+	add rcx, rax
+	mov rax, rcx
+	l_3:
+	leave 
+	ret
+_workc_User_Defined_fihriaifhiahidsafans:
+	l_4:
+	push rbp
+	mov rbp, rsp
+	mov rcx, rdi
+	mov rax, rsi
+	mov rdx, rcx
+	add rdx, rcx
+	add rdx, rcx
+	mov rcx, rdx
+	sub rcx, rax
+	sub rcx, rax
+	mov rax, rcx
+	l_5:
+	leave 
+	ret
+_main_User_Defined_fihriaifhiahidsafans:
+	l_6:
+	push rbp
+	mov rbp, rsp
+	push rbx
+	push r14
+	call __getInt 
+	mov r8, rax
+	mov rsi, 0
+	mov rdi, 0
+	mov r10, 1
+	mov rcx, 0
+	mov r9, 1
+	mov r11, 1
+	l_7:
+	cmp r11, 100000000
+	jle l_8
+	l_9:
+	mov rdi, r9
+	call __toString 
+	mov rdi, rax
+	call __println 
+	mov rax, 0
+	l_10:
+	pop r14
+	pop rbx
+	leave 
+	ret
+	l_8:
+	mov rdx, rsi
+	l_11:
+	mov rax, r8
+	add rax, r8
+	sub rax, rdx
+	l_12:
+	mov r8, rax
+	mov rdx, r8
+	mov rax, rsi
+	l_13:
+	neg rdx
+	add rdx, rax
+	add rdx, rax
+	mov rax, rdx
+	l_14:
+	mov rsi, rax
+	mov rdx, r8
+	mov r14, rsi
+	l_15:
+	mov rax, rdx
+	add rax, rdx
+	add rax, rdx
+	sub rax, r14
+	sub rax, r14
+	l_16:
+	mov rdx, rax
+	mov rax, r8
+	neg rax
+	add rax, rsi
+	sub rax, rdx
+	add rax, rdi
+	add rax, r10
+	sub rax, rcx
+	add rax, r9
+	mov rdi, rax
+	mov rax, r8
+	add rax, rsi
+	mov r14, rax
+	add r14, rdx
+	mov rbx, r14
+	sub rbx, rdi
+	sub rbx, r10
+	mov r10, rbx
+	sub r10, rcx
+	add r10, r9
+	sub rax, rdx
+	add rax, rdi
+	sub rax, r10
+	add rax, rcx
+	sub rax, r9
+	mov rcx, rax
+	mov rax, r8
+	sub rax, rsi
+	sub rax, rdx
+	sub rax, rdi
+	add rax, r10
+	add rax, rcx
+	add r9, rax
+	mov rax, r14
+	add rax, rdi
+	add rax, r10
+	add rax, rcx
+	add rax, r9
+	cmp rax, 100000000
+	jle l_17
+	l_18:
+	mov r8, 123
+	mov rsi, 456
+	mov rdi, 155
+	mov r10, 123
+	mov rcx, 55
+	mov r9, 32
+	l_17:
+	l_19:
+	inc r11
+	jmp l_7
+__init:
+	l_20:
 	push rbp
 	mov rbp, rsp
 	call _main_User_Defined_fihriaifhiahidsafans 

@@ -4,7 +4,11 @@
     <bookmark url="file://$PROJECT_DIR$/src/Mxstar/Backend/GraphAllocator.java" line="60" mnemonic="9" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="35739463-e986-4e75-a4bd-855459eb39c8" name="Default Changelist" comment="added a useless variable elimination" />
+    <list default="true" id="35739463-e986-4e75-a4bd-855459eb39c8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mx.asm" beforeDir="false" afterPath="$PROJECT_DIR$/mx.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,8 +45,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Mxstar/Optimizer/UselessVariableElimination.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="16" column="41" lean-forward="true" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
+            <state relative-caret-position="207">
+              <caret line="16" column="41" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -50,11 +54,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Mxstar/Config_Cons.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="10" column="66" lean-forward="true" selection-start-line="10" selection-start-column="66" selection-end-line="10" selection-end-column="66" />
+            <state relative-caret-position="322">
+              <caret line="15" column="50" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -71,17 +75,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24794">
-              <caret line="1091" selection-start-line="1091" selection-end-line="1091" />
+            <state relative-caret-position="115">
+              <caret line="638" column="10" selection-start-line="638" selection-start-column="10" selection-end-line="638" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#14906#14907#0" expanded="true" />
-                <element signature="e#14951#14952#0" expanded="true" />
-                <element signature="e#15005#15006#0" expanded="true" />
-                <element signature="e#15049#15050#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -117,8 +117,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Mxstar/Frontend/SymbolTableBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="13340">
-              <caret line="594" selection-start-line="594" selection-end-line="594" />
+            <state relative-caret-position="231">
+              <caret line="228" column="8" selection-start-line="228" selection-start-column="8" selection-end-line="228" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -177,7 +177,6 @@
       <find>g_9</find>
       <find>call</find>
       <find>new Call</find>
-      <find>System.out</find>
       <find>BinExpr</find>
       <find>tranvir</find>
       <find>allreg</find>
@@ -188,6 +187,7 @@
       <find>SomeClass</find>
       <find>FuncCall</find>
       <find>Empty</find>
+      <find>System.out</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -252,8 +252,8 @@
         <option value="$PROJECT_DIR$/src/Mxstar/Ast/IAstVisitor.java" />
         <option value="$PROJECT_DIR$/src/Mxstar/Frontend/SemanticChecker.java" />
         <option value="$PROJECT_DIR$/src/Mxstar/Frontend/SymbolTableBuilder.java" />
-        <option value="$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java" />
         <option value="$PROJECT_DIR$/src/Mxstar/Optimizer/UselessVariableElimination.java" />
+        <option value="$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java" />
       </list>
     </option>
   </component>
@@ -273,6 +273,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -307,14 +309,21 @@
               <item name="mxstar" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Mxstar" type="462c0819:PsiDirectoryNode" />
-              <item name="Optimizer" type="462c0819:PsiDirectoryNode" />
+              <item name="Ast" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mxstar" type="b2602c69:ProjectViewProjectNode" />
               <item name="mxstar" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Mxstar" type="462c0819:PsiDirectoryNode" />
-              <item name="Symbol" type="462c0819:PsiDirectoryNode" />
+              <item name="Backend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mxstar" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mxstar" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Mxstar" type="462c0819:PsiDirectoryNode" />
+              <item name="Optimizer" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mxstar" type="b2602c69:ProjectViewProjectNode" />
@@ -324,8 +333,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -338,7 +345,7 @@
     <property name="$PROJECT_DIR$/src/parser/mxstar.g4::/gen-visitor" value="true" />
     <property name="$PROJECT_DIR$/src/parser/mxstar.g4::/output-dir" value="D:\homework\2018-19-second\compiler\mxstar\src" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557641669993" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557677555723" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../MWCompiler-master" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -506,13 +513,8 @@
       <workItem from="1557564073644" duration="926000" />
       <workItem from="1557579281608" duration="3691000" />
       <workItem from="1557624534420" duration="1412000" />
-    </task>
-    <task id="LOCAL-00043" summary="fix a fatal bug for IR printer(section print wrong)">
-      <created>1556812320249</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1556812320249</updated>
+      <workItem from="1557641637676" duration="963000" />
+      <workItem from="1557677063429" duration="486000" />
     </task>
     <task id="LOCAL-00044" summary="change loop order to reduce jmp cmd">
       <created>1556855299774</created>
@@ -850,11 +852,18 @@
       <option name="project" value="LOCAL" />
       <updated>1557624623645</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="added a useless variable elimination">
+      <created>1557641686243</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1557641686244</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="594697000" />
+    <option name="totallyTimeSpent" value="596146000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -875,11 +884,11 @@
       <window_info id="Capture Tool" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" weight="0.3297587" />
-      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.19839142" />
+      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.20375335" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32991204" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32844576" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49798927" weight="0.52052784" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49798927" visible="true" weight="0.52052784" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32991204" />
@@ -1380,16 +1389,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mxstar/Optimizer/UselessVariableElimination.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="16" column="41" lean-forward="true" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Mxstar/Ast/EmptyStmt.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
@@ -1397,24 +1396,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mxstar/Optimizer/UselessVariableElimination.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="16" column="41" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mxstar/Config_Cons.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="15" column="50" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Mxstar/Ast/IAstVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="828">
           <caret line="36" column="29" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24794">
-          <caret line="1091" selection-start-line="1091" selection-end-line="1091" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#14906#14907#0" expanded="true" />
-            <element signature="e#14951#14952#0" expanded="true" />
-            <element signature="e#15005#15006#0" expanded="true" />
-            <element signature="e#15049#15050#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1439,13 +1444,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mxstar/Frontend/SymbolTableBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13340">
-          <caret line="594" selection-start-line="594" selection-end-line="594" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Documents/Tencent Files/1764567558/FileRecv/UselessLoopEliminator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6095">
@@ -1464,10 +1462,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mxstar/Config_Cons.java">
+    <entry file="file://$PROJECT_DIR$/src/Mxstar/Frontend/SymbolTableBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="10" column="66" lean-forward="true" selection-start-line="10" selection-start-column="66" selection-end-line="10" selection-end-column="66" />
+        <state relative-caret-position="231">
+          <caret line="228" column="8" selection-start-line="228" selection-start-column="8" selection-end-line="228" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="638" column="10" selection-start-line="638" selection-start-column="10" selection-end-line="638" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

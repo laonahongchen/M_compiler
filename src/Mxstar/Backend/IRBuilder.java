@@ -7,6 +7,7 @@ import Mxstar.IR.Operand.*;
 import Mxstar.Symbol.*;
 import Mxstar.IR.*;
 
+import javax.print.attribute.IntegerSyntax;
 import java.util.*;
 
 import static Mxstar.IR.RegisterSet.*;
@@ -37,6 +38,7 @@ public class IRBuilder implements IAstVisitor {
     private boolean inInline;
     private LinkedList<HashMap<VariableSymbol, VirReg>> variableMap;
     private LinkedList<BB> funcAfter;
+    private HashMap<FunctionSymbol, Integer> operationCntMap;
 
 
     private static Func library_print;
@@ -77,6 +79,7 @@ public class IRBuilder implements IAstVisitor {
         this.inInline = false;
         this.funcAfter = new LinkedList<>();
         this.variableMap = new LinkedList<>();
+        this.operationCntMap = new HashMap<>();
     }
 
     private void initLibraryFunc() {
@@ -536,6 +539,80 @@ public class IRBuilder implements IAstVisitor {
         }
     }
 
+    private int operationCntex(List<Expression> expressions) {
+        int cnt = 0;
+        for (Expression expr: expressions) {
+            cnt += operationCnt(expr);
+        }
+        return cnt;
+    }
+
+    private int operationCnt(Expression expr) {
+        if (expr == null)
+            return 0;
+        int cnt = 0;
+        if (expr instanceof BinExpr) {
+            cnt += operationCnt(((BinExpr) expr).lhs);
+            cnt += operationCnt(((BinExpr) expr).rhs);
+        } else if (expr instanceof UnaryExpr) {
+            cnt += operationCnt(((UnaryExpr) expr).expr);
+        } else if (expr instanceof ArrayExpr) {
+            cnt += operationCnt(((ArrayExpr) expr).idx);
+            cnt += operationCnt(((ArrayExpr) expr).expr);
+        } else if (expr instanceof LiteralExpr) {
+            cnt++;
+        } else if (expr instanceof NewExpr) {
+            cnt += operationCntex(((NewExpr) expr).expressionDimension);
+        } else if (expr instanceof FuncCallExpr) {
+            cnt += operationCntex(((FuncCallExpr) expr).arguments);
+        } else if (expr instanceof MembExpr) {
+            if (((MembExpr) expr).fieldAccess != null)
+                cnt++;
+            else
+                cnt += operationCnt(((MembExpr) expr).methodCall);
+        } else if (expr instanceof AssignExpr) {
+            cnt += operationCnt(((AssignExpr) expr).lhs);
+            cnt += operationCnt(((AssignExpr) expr).rhs);
+        } else {
+            cnt++;
+        }
+
+        return cnt;
+    }
+
+    private int operationCnt(Statement statement) {
+        if (statement == null)
+            return 0;
+        int cnt = 0;
+        if (statement instanceof ConditionStmt) {
+            cnt += operationCnt(((ConditionStmt) statement).elseStmt);
+            cnt += operationCnt(((ConditionStmt) statement).thenStmt);
+        } else if (statement instanceof LoopStmt) {
+            cnt += operationCnt(((LoopStmt) statement).body);
+            cnt += operationCnt(((LoopStmt) statement).updateStmt);
+            cnt += operationCnt(((LoopStmt) statement).startStmt);
+            cnt += operationCnt(((LoopStmt) statement).condition);
+        } else if (statement instanceof BlockStmt) {
+            cnt += operationCnt(((BlockStmt) statement).statements);
+        } else if (statement instanceof ExprStmt) {
+            cnt += operationCnt(((ExprStmt) statement).expression);
+        } else if (statement instanceof JumpStmt && ((JumpStmt) statement).isReturn) {
+            cnt += operationCnt(((JumpStmt) statement).retExpr);
+        } else if (statement instanceof VarDeclStmt) {
+            cnt += operationCnt(((VarDeclStmt) statement).declaration.init);
+        }
+        return cnt;
+    }
+
+
+    private int operationCnt(List<Statement> statements) {
+        int cnt = 0;
+        for (Statement st: statements) {
+            cnt += operationCnt(st);
+        }
+        return 0;
+    }
+
     private boolean checkInline(String name) {
         if (!Config_Cons.doInline)
             return false;
@@ -548,14 +625,17 @@ public class IRBuilder implements IAstVisitor {
             System.out.println("symbol null");
         }
         List<Statement> body = funcDeclaration.body;
-        if (funcDeclaration.body.size() >= Config_Cons.inlineLimit)
+        if (!operationCntMap.containsKey(funcDeclaration.symbol)) {
+            operationCntMap.put(funcDeclaration.symbol, operationCnt(funcDeclaration.body));
+        }
+        if (operationCntMap.get(funcDeclaration.symbol) >= Config_Cons.inlineLimit)
             return false;
         return true;
     }
 
     private void doInline(String name, LinkedList<Operand> args) {
 //        System.out.println(curFunc.name);
-        System.out.println("false");
+//        System.out.println("false");
         FuncDeclaration funcDeclaration = funcDeclarationMap.get(name);
         variableMap.addLast(new HashMap<>());
         LinkedList<VirReg> vregArgs = new LinkedList<>();
