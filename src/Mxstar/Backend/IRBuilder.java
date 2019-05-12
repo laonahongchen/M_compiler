@@ -1086,4 +1086,9 @@ public class IRBuilder implements IAstVisitor {
         }
         assign(node.rhs, (Address)lval);
     }
+
+    @Override
+    public void visit(EmptyStmt node) {
+
+    }
 }

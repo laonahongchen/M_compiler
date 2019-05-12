@@ -589,4 +589,9 @@ public class SymbolTableBuilder implements IAstVisitor {
         node.rhs.accept(this);
         node.type = new PrimitiveType("void", globalSymbolTable.getPrimitiveSymbol("void"));
     }
+
+    @Override
+    public void visit(EmptyStmt node) {
+
+    }
 }

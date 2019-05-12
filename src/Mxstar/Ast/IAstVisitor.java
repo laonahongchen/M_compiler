@@ -33,4 +33,6 @@ public interface IAstVisitor {
     void visit(UnaryExpr node);
     void visit(BinExpr node);
     void visit(AssignExpr node);
+
+    void visit(EmptyStmt node);
 }

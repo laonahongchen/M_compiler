@@ -349,4 +349,9 @@ public class SemanticChecker implements IAstVisitor {
         }
         node.modifiable = false;
     }
+
+    @Override
+    public void visit(EmptyStmt node) {
+
+    }
 }
