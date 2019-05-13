@@ -20,7 +20,7 @@ public class Config_Cons{
     public static boolean doVNOptimize = true; // may extend the UD-list so may don't have such good result
     public static boolean doGlobalAllocate = false;
 
-    public static boolean doInline = false;
+    public static boolean doInline = true;
     public static int inlineLimit = 50;
     public static int inlineDepth = 1;
 }
