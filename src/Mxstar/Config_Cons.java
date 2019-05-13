@@ -21,6 +21,6 @@ public class Config_Cons{
     public static boolean doGlobalAllocate = false;
 
     public static boolean doInline = true;
-    public static int inlineLimit = 30;
+    public static int inlineLimit = 60;
     public static int inlineDepth = 3;
 }

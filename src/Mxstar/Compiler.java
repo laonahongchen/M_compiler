@@ -6,6 +6,7 @@ import Mxstar.Frontend.*;
 import Mxstar.IR.IRProgram;
 import Mxstar.IR.RegisterSet;
 import Mxstar.Optimizer.SVN;
+import Mxstar.Optimizer.UselessLoopElimination;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 import Mxstar.SemanticError.*;
@@ -74,6 +75,9 @@ public class Compiler {
             errorListener.printTo(System.err);
             exit(1);
         }
+
+        UselessLoopElimination uselessLoopElimination = new UselessLoopElimination(astProgram);
+        uselessLoopElimination.visit(astProgram);
 
 //        exit(0);
 
