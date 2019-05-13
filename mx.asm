@@ -308,113 +308,69 @@ _cost_a_lot_of_time_User_Defined_fihriaifhiahidsafans:
 	l_0:
 	push rbp
 	mov rbp, rsp
-	mov rdi, 3100
-	mov rsi, 0
-	mov r8, 1
+	mov rax, 3100
+	mov rdi, rax
+	call __toString 
+	mov rdi, rax
+	call __println 
 	l_1:
-	cmp rsi, 100000000
-	jl l_2
+	leave 
+	ret
+_main_User_Defined_fihriaifhiahidsafans:
+	l_2:
+	push rbp
+	mov rbp, rsp
+	sub rsp, 8
+	push r14
+	push rbx
+	push r12
+	mov rax, 3100
+	mov rdi, rax
+	call __toString 
+	mov rdi, rax
+	call __println 
 	l_3:
+	mov rax, 3100
+	mov rdi, rax
 	call __toString 
 	mov rdi, rax
 	call __println 
 	l_4:
-	leave 
-	ret
-	l_2:
-	mov rax, r8
-	mov rcx, 2
-	imul rcx
-	sub rax, r8
-	mov r8, rax
-	l_5:
-	inc rsi
-	jmp l_1
-_main_User_Defined_fihriaifhiahidsafans:
-	l_6:
-	push rbp
-	mov rbp, rsp
-	sub rsp, 8
-	push r12
-	push r14
-	push rbx
-	mov rcx, 3100
-	mov rdi, 0
-	mov rsi, 1
-	l_7:
-	cmp rdi, 100000000
-	jl l_8
-	l_9:
-	mov rdi, rcx
-	call __toString 
-	mov rdi, rax
-	call __println 
-	l_10:
-	mov rsi, 3100
-	mov r8, 0
-	mov rdi, 1
-	l_11:
-	cmp r8, 100000000
-	jl l_12
-	l_13:
-	mov rdi, rsi
-	call __toString 
-	mov rdi, rax
-	call __println 
-	l_14:
-	mov r12, 10
-	lea r14, [r12 * 8 + 8]
-	mov rdi, r14
+	mov r14, 10
+	lea r12, [r14 * 8 + 8]
+	mov rdi, r12
 	call malloc 
 	mov qword [rax], 10
-	l_15:
-	cmp r12, 0
-	jg l_16
-	l_17:
-	mov r14, 2
-	lea rbx, [r14 * 8 + 8]
+	l_5:
+	cmp r14, 0
+	jg l_6
+	l_7:
+	mov r12, 2
+	lea rbx, [r12 * 8 + 8]
 	mov rdi, rbx
 	call malloc 
 	mov qword [rax], 2
-	l_18:
-	cmp r14, 0
-	jg l_19
-	l_20:
+	l_8:
+	cmp r12, 0
+	jg l_9
+	l_10:
 	mov rax, 0
-	l_21:
+	l_11:
+	pop r12
 	pop rbx
 	pop r14
-	pop r12
 	leave 
 	ret
-	l_19:
-	mov qword [rax + r14 * 8], 0
-	dec r14
-	jmp l_18
-	l_16:
+	l_9:
 	mov qword [rax + r12 * 8], 0
 	dec r12
-	jmp l_15
-	l_12:
-	mov rax, rdi
-	mov rcx, 2
-	imul rcx
-	sub rax, rdi
-	mov rdi, rax
-	l_22:
-	inc r8
-	jmp l_11
-	l_8:
-	mov rax, rsi
-	mov rdx, 2
-	imul rdx
-	sub rax, rsi
-	mov rsi, rax
-	l_23:
-	inc rdi
-	jmp l_7
+	jmp l_8
+	l_6:
+	mov qword [rax + r14 * 8], 0
+	dec r14
+	jmp l_5
 __init:
-	l_24:
+	l_12:
 	push rbp
 	mov rbp, rsp
 	call _main_User_Defined_fihriaifhiahidsafans 

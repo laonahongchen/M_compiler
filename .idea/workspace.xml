@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35739463-e986-4e75-a4bd-855459eb39c8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Mxstar/Optimizer/UselessLoopElimination.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/Compiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/Compiler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/Config_Cons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/Config_Cons.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Mxstar/Optimizer/UselessLoopElimination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/Optimizer/UselessLoopElimination.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -64,16 +62,25 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mx.asm">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="81">
+              <caret line="319" column="19" lean-forward="true" selection-start-line="319" selection-start-column="19" selection-end-line="319" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Mxstar/Optimizer/UselessLoopElimination.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="82" column="16" selection-start-line="82" selection-start-column="16" selection-end-line="82" selection-end-column="16" />
+            <state relative-caret-position="23">
+              <caret line="188" column="12" selection-start-line="188" selection-start-column="12" selection-end-line="188" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4285#4286#0" expanded="true" />
-                <element signature="e#4383#4384#0" expanded="true" />
-                <element signature="e#5693#5694#0" expanded="true" />
+                <element signature="e#4398#4399#0" expanded="true" />
+                <element signature="e#4496#4497#0" expanded="true" />
+                <element signature="e#5948#5949#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -328,7 +335,7 @@
     <property name="$PROJECT_DIR$/src/parser/mxstar.g4::/gen-visitor" value="true" />
     <property name="$PROJECT_DIR$/src/parser/mxstar.g4::/output-dir" value="D:\homework\2018-19-second\compiler\mxstar\src" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557763299811" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557763828930" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../MWCompiler-master" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -499,14 +506,7 @@
       <workItem from="1557641637676" duration="963000" />
       <workItem from="1557677063429" duration="1666000" />
       <workItem from="1557734883772" duration="13083000" />
-      <workItem from="1557755328522" duration="7768000" />
-    </task>
-    <task id="LOCAL-00052" summary="changed BB order to decline jmp cmd(Loop)">
-      <created>1556892517444</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1556892517445</updated>
+      <workItem from="1557755328522" duration="8295000" />
     </task>
     <task id="LOCAL-00053" summary="changed lib file to a O3 version">
       <created>1556899215579</created>
@@ -844,11 +844,18 @@
       <option name="project" value="LOCAL" />
       <updated>1557750573923</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary="test useless loop elimination">
+      <created>1557763341059</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1557763341060</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="618177000" />
+    <option name="totallyTimeSpent" value="618704000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -873,7 +880,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32991204" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32844576" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49798927" weight="0.7800586" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49798927" visible="true" weight="0.7800586" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32991204" />
@@ -972,7 +979,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix a fatal bug in null handling..." />
     <MESSAGE value="added VN (prep for test" />
     <MESSAGE value="fix a bug in constant propogation" />
     <MESSAGE value="delete debugging output" />
@@ -997,7 +1003,8 @@
     <MESSAGE value="no inline for base score" />
     <MESSAGE value="test inline" />
     <MESSAGE value="change inline option" />
-    <option name="LAST_COMMIT_MESSAGE" value="change inline option" />
+    <MESSAGE value="test useless loop elimination" />
+    <option name="LAST_COMMIT_MESSAGE" value="test useless loop elimination" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1355,13 +1362,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mx.asm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8004">
-          <caret line="348" column="9" selection-start-line="348" selection-start-column="9" selection-end-line="348" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Mxstar/Ast/ArrayExpr.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="69">
@@ -1408,13 +1408,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mxstar/Compiler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="79" column="47" selection-start-line="79" selection-start-column="47" selection-end-line="79" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Mxstar/Config_Cons.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="33">
@@ -1452,15 +1445,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mx.asm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="319" column="19" lean-forward="true" selection-start-line="319" selection-start-column="19" selection-end-line="319" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mxstar/Compiler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="79" column="47" selection-start-line="79" selection-start-column="47" selection-end-line="79" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Mxstar/Optimizer/UselessLoopElimination.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="82" column="16" selection-start-line="82" selection-start-column="16" selection-end-line="82" selection-end-column="16" />
+        <state relative-caret-position="23">
+          <caret line="188" column="12" selection-start-line="188" selection-start-column="12" selection-end-line="188" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4285#4286#0" expanded="true" />
-            <element signature="e#4383#4384#0" expanded="true" />
-            <element signature="e#5693#5694#0" expanded="true" />
+            <element signature="e#4398#4399#0" expanded="true" />
+            <element signature="e#4496#4497#0" expanded="true" />
+            <element signature="e#5948#5949#0" expanded="true" />
           </folding>
         </state>
       </provider>
