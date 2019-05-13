@@ -248,7 +248,12 @@ public class IRPrinter implements IIRVisitor {
 //        }
         inst.dest.accept(this);
         stringBuilder.append(", ");
+        if (inst.src != null)
         inst.src.accept(this);
+        else {
+            stringBuilder.append("null\n");
+//            System.out.println("null");
+        }
         stringBuilder.append("\n");
     }
 

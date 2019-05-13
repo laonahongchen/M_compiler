@@ -18,9 +18,9 @@ public class Config_Cons{
 
     //all the optimizers which is not those kind of definitely good for the compiler will have a option here
     public static boolean doVNOptimize = true; // may extend the UD-list so may don't have such good result
-    public static boolean doGlobalAllocate = true;
+    public static boolean doGlobalAllocate = false;
 
-    public static boolean doInline = true;
-    public static int inlineLimit = 5;
-    public static int inlineDepth = 3;
+    public static boolean doInline = false;
+    public static int inlineLimit = 50;
+    public static int inlineDepth = 1;
 }

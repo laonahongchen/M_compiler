@@ -565,6 +565,7 @@ public class IRBuilder implements IAstVisitor {
             cnt += operationCntex(((NewExpr) expr).expressionDimension);
         } else if (expr instanceof FuncCallExpr) {
             cnt += operationCntex(((FuncCallExpr) expr).arguments);
+            cnt += 4;
         } else if (expr instanceof MembExpr) {
             if (((MembExpr) expr).fieldAccess != null)
                 cnt++;
@@ -641,6 +642,7 @@ public class IRBuilder implements IAstVisitor {
         LinkedList<VirReg> vregArgs = new LinkedList<>();
         for (Operand op:  args) {
             VirReg virReg = new VirReg("");
+
             curBB.append(new Mov(curBB, virReg, op));
             vregArgs.add(virReg);
         }
