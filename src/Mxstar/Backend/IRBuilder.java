@@ -611,7 +611,7 @@ public class IRBuilder implements IAstVisitor {
         for (Statement st: statements) {
             cnt += operationCnt(st);
         }
-        return 0;
+        return cnt;
     }
 
     private boolean checkInline(String name) {

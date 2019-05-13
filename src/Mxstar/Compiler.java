@@ -88,7 +88,8 @@ public class Compiler {
             System.err.println("IR after build:");
             IRPrinter irPrinter = new IRPrinter();
             irPrinter.visit(irProgram);
-            irPrinter.printTo(System.err);
+            PrintStream printStream = new PrintStream("ir.asm");
+            irPrinter.printTo(printStream);
         }
 
         SVN svn = new SVN(irProgram);
