@@ -308,76 +308,67 @@ _fibo_User_Defined_fihriaifhiahidsafans:
 	l_0:
 	push rbp
 	mov rbp, rsp
-	sub rsp, 8
-	push r14
-	mov rax, rdi
-	cmp rax, 2
+	push r15
+	push r12
+	mov r12, rdi
+	cmp r12, 2
 	jl l_1
 	l_2:
+	mov rax, r12
 	sub rax, 1
-	mov r14, rax
+	mov r15, rax
 	l_3:
-	cmp r14, 2
+	cmp r15, 2
 	jl l_4
 	l_5:
-	mov rax, r14
+	mov rax, r15
 	sub rax, 1
 	mov rdi, rax
 	call _fibo_User_Defined_fihriaifhiahidsafans 
 	mov rcx, rax
-	mov rax, r14
-	imul rcx
+	mov rax, r15
+	add rax, rcx
 	jmp l_6
 	l_4:
-	mov rax, r14
+	mov rax, r15
 	l_6:
-	mov rcx, rax
-	mov rax, r14
-	imul rcx
+	mov rcx, r12
+	add rcx, rax
+	mov rax, rcx
 	jmp l_7
 	l_1:
+	mov rax, r12
 	l_7:
-	pop r14
+	pop r12
+	pop r15
 	leave 
 	ret
 _main_User_Defined_fihriaifhiahidsafans:
 	l_8:
 	push rbp
 	mov rbp, rsp
-	sub rsp, 8
-	push r14
-	mov r14, 0
 	l_9:
-	cmp r14, 100
-	jle l_10
-	l_11:
-	mov rax, 0
-	l_12:
-	pop r14
-	leave 
-	ret
 	l_10:
-	l_13:
-	l_14:
 	mov rax, 9
 	mov rdi, rax
 	call _fibo_User_Defined_fihriaifhiahidsafans 
 	mov rcx, rax
 	mov rax, 10
-	imul rcx
-	jmp l_15
-	l_16:
+	add rax, rcx
+	jmp l_11
+	l_12:
 	mov rax, 10
-	l_15:
+	l_11:
 	mov rdi, rax
 	call __toString 
 	mov rdi, rax
 	call __println 
-	l_17:
-	inc r14
-	jmp l_9
+	mov rax, 0
+	l_13:
+	leave 
+	ret
 __init:
-	l_18:
+	l_14:
 	push rbp
 	mov rbp, rsp
 	call _main_User_Defined_fihriaifhiahidsafans 

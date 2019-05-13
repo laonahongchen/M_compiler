@@ -457,9 +457,11 @@ public class IRBuilder implements IAstVisitor {
             operand = new Memory(curThisPointer, new Imm(offset));
 //            System.out.println("Identifier:" + node.location);
         } else {
+            System.out.println(curFunc.name + ": " + inInline + node.symbol.name + variableMap.size());
             if (inInline) {
                 operand = variableMap.getLast().get(node.symbol);
             } else {
+
                 operand = node.symbol.virReg;
             }
             if (node.symbol.isGlobalVariable)
@@ -679,6 +681,7 @@ public class IRBuilder implements IAstVisitor {
         variableMap.removeLast();
         funcAfter.removeLast();
         inInline = oldInline;
+        System.out.println(inInline);
     }
 
     @Override
@@ -888,8 +891,9 @@ public class IRBuilder implements IAstVisitor {
     public Operand doStringConcat(Expression lhs, Expression rhs) {
         Address result = new VirReg("");
         lhs.accept(this);
-        rhs.accept(this);
         Operand rlhs = exprResultMap.get(lhs);
+        rhs.accept(this);
+
         Operand rrhs = exprResultMap.get(rhs);
         VirReg virReg;
         if (rlhs instanceof Memory && !(rlhs instanceof StackSlot)) {
@@ -910,8 +914,9 @@ public class IRBuilder implements IAstVisitor {
     public Operand doArithCalc(String op, Address dest, Expression lhs, Expression rhs) {
         Address result = new VirReg("");
         lhs.accept(this);
-        rhs.accept(this);
         Operand rlhs = exprResultMap.get(lhs);
+        rhs.accept(this);
+
         Operand rrhs = exprResultMap.get(rhs);
         BinInst.BinOp bop = null;
         boolean isSpecial = false;
@@ -1026,6 +1031,7 @@ public class IRBuilder implements IAstVisitor {
         rhs.accept(this);
     }
 
+    /*
     private Operand getLogicVal(String op, Expression lhs, Expression rhs) {
         lhs.accept(this);
         rhs.accept(this);
@@ -1068,13 +1074,15 @@ public class IRBuilder implements IAstVisitor {
 
         return reg;
     }
+    */
 
     public void doCompCalc(String op, Expression lhs, Expression rhs, BB trueBB, BB falseBB) {
         if (trueBB == null)
             return ;
         lhs.accept(this);
-        rhs.accept(this);
         Operand rlhs = exprResultMap.get(lhs);
+        rhs.accept(this);
+
         Operand rrhs = exprResultMap.get(rhs);
         Cjump.CompareOP cop = null;
         switch (op) {

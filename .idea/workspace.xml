@@ -4,7 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/src/Mxstar/Backend/GraphAllocator.java" line="60" mnemonic="9" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="35739463-e986-4e75-a4bd-855459eb39c8" name="Default Changelist" comment="">
+    <list default="true" id="35739463-e986-4e75-a4bd-855459eb39c8" name="Default Changelist" comment="test inline">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mx.asm" beforeDir="false" afterPath="$PROJECT_DIR$/mx.asm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java" afterDir="false" />
@@ -44,11 +44,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Mxstar/Config_Cons.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
+            <state relative-caret-position="172">
+              <caret line="12" column="51" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -72,16 +72,16 @@
         <entry file="file://$PROJECT_DIR$/mx.asm">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-80">
-              <caret line="310" column="14" lean-forward="true" selection-start-line="310" selection-start-column="14" selection-end-line="310" selection-end-column="14" />
+              <caret line="310" column="12" selection-start-line="310" selection-start-column="12" selection-end-line="310" selection-end-column="12" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Mxstar/Compiler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="90" column="57" selection-start-line="90" selection-start-column="57" selection-end-line="90" selection-end-column="57" />
+            <state relative-caret-position="401">
+              <caret line="91" column="40" selection-start-line="91" selection-start-column="40" selection-end-line="91" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -89,8 +89,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ir.asm">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="16" column="11" lean-forward="true" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+            <state relative-caret-position="391">
+              <caret line="23" column="14" lean-forward="true" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -98,8 +98,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="666" column="24" lean-forward="true" selection-start-line="666" selection-start-column="24" selection-end-line="666" selection-end-column="24" />
+            <state relative-caret-position="93">
+              <caret line="1169" column="5" lean-forward="true" selection-start-line="1169" selection-start-column="5" selection-end-line="1169" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -111,7 +111,7 @@
         <entry file="file://$USER_HOME$/Documents/Tencent Files/1764567558/FileRecv/UselessLoopEliminator.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="29">
-              <caret line="11" column="50" lean-forward="true" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
+              <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -142,14 +142,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>variableDecla</find>
-      <find>.spill</find>
-      <find>FuncDe</find>
-      <find>curFunc</find>
-      <find>curFunc =</find>
-      <find>Memory</find>
-      <find>VariableDeclaration</find>
-      <find>defineVar</find>
       <find>irProgram.funcs</find>
       <find>System.out.</find>
       <find>usedGlobalSymbol</find>
@@ -160,7 +152,6 @@
       <find>BinExpr</find>
       <find>tranvir</find>
       <find>allreg</find>
-      <find>variableMap</find>
       <find>usedGlobal</find>
       <find>jmp</find>
       <find>.sun</find>
@@ -170,8 +161,17 @@
       <find>System.out</find>
       <find>new Mov</find>
       <find>new mov</find>
-      <find>doInline</find>
       <find>isRetu</find>
+      <find>variableMap</find>
+      <find>Litera</find>
+      <find>Lite</find>
+      <find>Binexpr</find>
+      <find>FuncDecla</find>
+      <find>JumpSt</find>
+      <find>BinEx</find>
+      <find>doInline</find>
+      <find>lhs</find>
+      <find>exprResultMap.get</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -187,7 +187,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/lib/c2nasm/c2nasm.sh" />
         <option value="$USER_HOME$/Documents/Tencent Files/1764567558/FileRecv/lib.asm" />
         <option value="$PROJECT_DIR$/src/Mxstar/Backend/DeadCodeElimination.java" />
         <option value="$PROJECT_DIR$/src/Mxstar/Backend/InferenceGraph.java" />
@@ -235,9 +234,10 @@
         <option value="$PROJECT_DIR$/src/Mxstar/Frontend/SymbolTableBuilder.java" />
         <option value="$PROJECT_DIR$/src/Mxstar/Optimizer/UselessVariableElimination.java" />
         <option value="$PROJECT_DIR$/src/Mxstar/Backend/IRPrinter.java" />
+        <option value="$PROJECT_DIR$/ir.asm" />
         <option value="$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java" />
-        <option value="$PROJECT_DIR$/src/Mxstar/Compiler.java" />
         <option value="$PROJECT_DIR$/src/Mxstar/Config_Cons.java" />
+        <option value="$PROJECT_DIR$/src/Mxstar/Compiler.java" />
       </list>
     </option>
   </component>
@@ -308,7 +308,7 @@
     <property name="$PROJECT_DIR$/src/parser/mxstar.g4::/gen-visitor" value="true" />
     <property name="$PROJECT_DIR$/src/parser/mxstar.g4::/output-dir" value="D:\homework\2018-19-second\compiler\mxstar\src" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557746230653" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557748943434" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../MWCompiler-master" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -478,14 +478,7 @@
       <workItem from="1557624534420" duration="1412000" />
       <workItem from="1557641637676" duration="963000" />
       <workItem from="1557677063429" duration="1666000" />
-      <workItem from="1557734883772" duration="8696000" />
-    </task>
-    <task id="LOCAL-00048" summary="fix a bug due to dead code">
-      <created>1556871965249</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1556871965249</updated>
+      <workItem from="1557734883772" duration="11143000" />
     </task>
     <task id="LOCAL-00049" summary="changed lib to improve the speed a little">
       <created>1556874390289</created>
@@ -823,11 +816,18 @@
       <option name="project" value="LOCAL" />
       <updated>1557739037043</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary="no inline for base score">
+      <created>1557746249900</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1557746249900</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="606022000" />
+    <option name="totallyTimeSpent" value="608469000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -848,7 +848,7 @@
       <window_info id="Capture Tool" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" weight="0.3297587" />
-      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.20978552" />
+      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.20978552" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32991204" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32844576" />
@@ -951,7 +951,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix a bug in push&amp;pop order" />
     <MESSAGE value="changed input source" />
     <MESSAGE value="fix a align prob" />
     <MESSAGE value="fix a fatal bug in null handling..." />
@@ -976,7 +975,8 @@
     <MESSAGE value="update inline func" />
     <MESSAGE value="update submit" />
     <MESSAGE value="change inline to reduce fault(to reduce the time i needc to debug)" />
-    <option name="LAST_COMMIT_MESSAGE" value="change inline to reduce fault(to reduce the time i needc to debug)" />
+    <MESSAGE value="no inline for base score" />
+    <option name="LAST_COMMIT_MESSAGE" value="no inline for base score" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1395,35 +1395,28 @@
     <entry file="file://$USER_HOME$/Documents/Tencent Files/1764567558/FileRecv/UselessLoopEliminator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="29">
-          <caret line="11" column="50" lean-forward="true" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
+          <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mx.asm">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-80">
-          <caret line="310" column="14" lean-forward="true" selection-start-line="310" selection-start-column="14" selection-end-line="310" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mxstar/Compiler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="90" column="57" selection-start-line="90" selection-start-column="57" selection-end-line="90" selection-end-column="57" />
+          <caret line="310" column="12" selection-start-line="310" selection-start-column="12" selection-end-line="310" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ir.asm">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="16" column="11" lean-forward="true" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+        <state relative-caret-position="391">
+          <caret line="23" column="14" lean-forward="true" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="666" column="24" lean-forward="true" selection-start-line="666" selection-start-column="24" selection-end-line="666" selection-end-column="24" />
+        <state relative-caret-position="93">
+          <caret line="1169" column="5" lean-forward="true" selection-start-line="1169" selection-start-column="5" selection-end-line="1169" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1432,11 +1425,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Mxstar/Config_Cons.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
+        <state relative-caret-position="172">
+          <caret line="12" column="51" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mxstar/Compiler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="91" column="40" selection-start-line="91" selection-start-column="40" selection-end-line="91" selection-end-column="40" />
         </state>
       </provider>
     </entry>
