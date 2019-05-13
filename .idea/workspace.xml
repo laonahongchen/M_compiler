@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="35739463-e986-4e75-a4bd-855459eb39c8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mx.asm" beforeDir="false" afterPath="$PROJECT_DIR$/mx.asm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/Backend/IRPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/Backend/IRPrinter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mxstar/Config_Cons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mxstar/Config_Cons.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,11 +41,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Mxstar/Config_Cons.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="12" column="51" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
+            <state relative-caret-position="253">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -77,11 +74,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="651" column="73" lean-forward="true" selection-start-line="651" selection-start-column="73" selection-end-line="651" selection-end-column="73" />
+            <state relative-caret-position="202">
+              <caret line="628" column="25" selection-start-line="628" selection-start-column="25" selection-end-line="628" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -253,9 +250,9 @@
         <option value="$PROJECT_DIR$/src/Mxstar/Frontend/SemanticChecker.java" />
         <option value="$PROJECT_DIR$/src/Mxstar/Frontend/SymbolTableBuilder.java" />
         <option value="$PROJECT_DIR$/src/Mxstar/Optimizer/UselessVariableElimination.java" />
-        <option value="$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java" />
         <option value="$PROJECT_DIR$/src/Mxstar/Backend/IRPrinter.java" />
         <option value="$PROJECT_DIR$/src/Mxstar/Config_Cons.java" />
+        <option value="$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java" />
       </list>
     </option>
   </component>
@@ -326,7 +323,7 @@
     <property name="$PROJECT_DIR$/src/parser/mxstar.g4::/gen-visitor" value="true" />
     <property name="$PROJECT_DIR$/src/parser/mxstar.g4::/output-dir" value="D:\homework\2018-19-second\compiler\mxstar\src" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557738482171" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557738880828" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../MWCompiler-master" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -496,14 +493,7 @@
       <workItem from="1557624534420" duration="1412000" />
       <workItem from="1557641637676" duration="963000" />
       <workItem from="1557677063429" duration="1666000" />
-      <workItem from="1557734883772" duration="3591000" />
-    </task>
-    <task id="LOCAL-00045" summary="change loop order to reduce jmp cmd">
-      <created>1556868063673</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1556868063673</updated>
+      <workItem from="1557734883772" duration="3953000" />
     </task>
     <task id="LOCAL-00046" summary="change loop order to reduce jmp cmd">
       <created>1556870232843</created>
@@ -841,11 +831,18 @@
       <option name="project" value="LOCAL" />
       <updated>1557677576645</updated>
     </task>
-    <option name="localTasksCounter" value="94" />
+    <task id="LOCAL-00094" summary="update submit">
+      <created>1557738506272</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1557738506272</updated>
+    </task>
+    <option name="localTasksCounter" value="95" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="600917000" />
+    <option name="totallyTimeSpent" value="601279000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -969,7 +966,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix a bug in semantic" />
     <MESSAGE value="updated graph coloring" />
     <MESSAGE value="fix a bug in push&amp;pop order" />
     <MESSAGE value="changed input source" />
@@ -994,7 +990,8 @@
     <MESSAGE value="fix a bug in constructor recognizer" />
     <MESSAGE value="added a useless variable elimination" />
     <MESSAGE value="update inline func" />
-    <option name="LAST_COMMIT_MESSAGE" value="update inline func" />
+    <MESSAGE value="update submit" />
+    <option name="LAST_COMMIT_MESSAGE" value="update submit" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1441,20 +1438,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java">
+    <entry file="file://$PROJECT_DIR$/src/Mxstar/Config_Cons.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="651" column="73" lean-forward="true" selection-start-line="651" selection-start-column="73" selection-end-line="651" selection-end-column="73" />
+        <state relative-caret-position="253">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mxstar/Config_Cons.java">
+    <entry file="file://$PROJECT_DIR$/src/Mxstar/Backend/IRBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="12" column="51" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
+        <state relative-caret-position="202">
+          <caret line="628" column="25" selection-start-line="628" selection-start-column="25" selection-end-line="628" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

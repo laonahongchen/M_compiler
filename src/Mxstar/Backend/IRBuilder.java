@@ -625,7 +625,11 @@ public class IRBuilder implements IAstVisitor {
         if (funcDeclaration.symbol == null) {
             System.out.println("symbol null");
         }
-        List<Statement> body = funcDeclaration.body;
+        if (!funcDeclaration.symbol.usedGlobalVariables.isEmpty()) {
+            return false;
+        }
+
+
         if (!operationCntMap.containsKey(funcDeclaration.symbol)) {
             operationCntMap.put(funcDeclaration.symbol, operationCnt(funcDeclaration.body));
         }
