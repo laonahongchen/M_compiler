@@ -71,7 +71,7 @@ public class UselessLoopElimination implements IAstVisitor {
         for (Statement st: node.body) {
             if (st instanceof LoopStmt && !UsefulLoops.contains(st)) {
                 deleteList.add((LoopStmt) st);
-                System.out.println("delete loop!");
+//                System.out.println("delete loop!");
             }
         }
         node.body.removeAll(deleteList);
