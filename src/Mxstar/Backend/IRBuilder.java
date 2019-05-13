@@ -248,6 +248,9 @@ public class IRBuilder implements IAstVisitor {
                 curBB.append(new Mov(curBB, curFunc.parameters.get(i), curFunc.parameters.get(i).spillPlace));
             }
         }
+
+        curFunc.usedGlobalSymbol.addAll(node.symbol.usedGlobalVariables);
+
         if (Config_Cons.doGlobalAllocate) {
             for (VariableSymbol variableSymbol : node.symbol.usedGlobalVariables) {
                 curBB.append(new Mov(curBB, variableSymbol.virReg, variableSymbol.virReg.spillPlace));
@@ -460,12 +463,14 @@ public class IRBuilder implements IAstVisitor {
 //            System.out.println(curFunc.name + ": " + inInline + node.symbol.name + variableMap.size());
             if (inInline) {
                 operand = variableMap.getLast().get(node.symbol);
+//                if (operand == null) {
+//                    System.out.println(node.symbol.name);
+//                }
             } else {
-
                 operand = node.symbol.virReg;
             }
-            if (node.symbol.isGlobalVariable)
-                curFunc.usedGlobalSymbol.add(node.symbol);
+//            if (node.symbol.isGlobalVariable)
+//                curFunc.usedGlobalSymbol.add(node.symbol);
         }
         if (trueBBMap.containsKey(node)) {
             curBB.append(new Cjump(curBB, operand, Cjump.CompareOP.NE, new Imm(0), trueBBMap.get(node), falseBBMap.get(node)));
@@ -518,6 +523,9 @@ public class IRBuilder implements IAstVisitor {
             base = (VirReg) baseAddr;
         } else{
             base = new VirReg("");
+//            if (baseAddr == null) {
+//                System.out.println("base null");
+//            }
             curBB.append(new Mov(curBB, base, baseAddr));
         }
         Memory memory;
@@ -627,9 +635,9 @@ public class IRBuilder implements IAstVisitor {
         if (funcDeclaration.symbol == null) {
             System.out.println("symbol null");
         }
-        if (!funcDeclaration.symbol.usedGlobalVariables.isEmpty()) {
-            return false;
-        }
+//        if (!funcDeclaration.symbol.usedGlobalVariables.isEmpty()) {
+//            return false;
+//        }
 
 
         if (!operationCntMap.containsKey(funcDeclaration.symbol)) {

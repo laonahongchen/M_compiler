@@ -339,7 +339,7 @@ public class AstBuilder extends MxstarBaseVisitor<Object> {
         expr.location = new Location(ctx);
         expr.expr = (Expression) ctx.expression(0).accept(this);
         expr.idx = (Expression) ctx.expression(1).accept(this);
-        if(expr.idx instanceof  NewExpr && ctx.expression(0).stop.getText().equals("]")) {
+        if(expr.expr instanceof  NewExpr && ctx.expression(0).stop.getText().equals("]")) {
             errorListener.addError(expr.idx.location, "can not mess new a[n][i] with (new a[n])[i]");
         }
         return expr;
