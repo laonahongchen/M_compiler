@@ -457,7 +457,7 @@ public class IRBuilder implements IAstVisitor {
             operand = new Memory(curThisPointer, new Imm(offset));
 //            System.out.println("Identifier:" + node.location);
         } else {
-            System.out.println(curFunc.name + ": " + inInline + node.symbol.name + variableMap.size());
+//            System.out.println(curFunc.name + ": " + inInline + node.symbol.name + variableMap.size());
             if (inInline) {
                 operand = variableMap.getLast().get(node.symbol);
             } else {
@@ -681,7 +681,7 @@ public class IRBuilder implements IAstVisitor {
         variableMap.removeLast();
         funcAfter.removeLast();
         inInline = oldInline;
-        System.out.println(inInline);
+//        System.out.println(inInline);
     }
 
     @Override

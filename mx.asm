@@ -308,67 +308,153 @@ _fibo_User_Defined_fihriaifhiahidsafans:
 	l_0:
 	push rbp
 	mov rbp, rsp
+	sub rsp, 8
+	push r14
+	push rbx
+	push r13
 	push r15
 	push r12
-	mov r12, rdi
-	cmp r12, 2
+	mov r14, rdi
+	cmp r14, 2
 	jl l_1
 	l_2:
+	mov rax, r14
+	sub rax, 1
+	mov rbx, rax
+	l_3:
+	cmp rbx, 2
+	jl l_4
+	l_5:
+	mov rax, rbx
+	sub rax, 1
+	mov r12, rax
+	l_6:
+	cmp r12, 2
+	jl l_7
+	l_8:
 	mov rax, r12
 	sub rax, 1
 	mov r15, rax
-	l_3:
+	l_9:
 	cmp r15, 2
-	jl l_4
-	l_5:
+	jl l_10
+	l_11:
 	mov rax, r15
+	sub rax, 1
+	mov r13, rax
+	l_12:
+	cmp r13, 2
+	jl l_13
+	l_14:
+	mov rax, r13
 	sub rax, 1
 	mov rdi, rax
 	call _fibo_User_Defined_fihriaifhiahidsafans 
-	mov rcx, rax
+	mov rcx, r13
+	add rcx, rax
+	mov rax, rcx
+	jmp l_15
+	l_13:
+	mov rax, r13
+	l_15:
+	mov rcx, r15
+	add rcx, rax
+	mov rax, rcx
+	jmp l_16
+	l_10:
 	mov rax, r15
-	add rax, rcx
-	jmp l_6
-	l_4:
-	mov rax, r15
-	l_6:
+	l_16:
 	mov rcx, r12
 	add rcx, rax
 	mov rax, rcx
-	jmp l_7
-	l_1:
-	mov rax, r12
+	jmp l_17
 	l_7:
+	mov rax, r12
+	l_17:
+	mov rcx, rax
+	mov rax, rbx
+	add rax, rcx
+	jmp l_18
+	l_4:
+	mov rax, rbx
+	l_18:
+	mov rcx, rax
+	mov rax, r14
+	add rax, rcx
+	jmp l_19
+	l_1:
+	mov rax, r14
+	l_19:
 	pop r12
 	pop r15
+	pop r13
+	pop rbx
+	pop r14
 	leave 
 	ret
 _main_User_Defined_fihriaifhiahidsafans:
-	l_8:
+	l_20:
 	push rbp
 	mov rbp, rsp
-	l_9:
-	l_10:
-	mov rax, 9
+	sub rsp, 8
+	push r13
+	push r15
+	push r12
+	mov r12, 10
+	l_21:
+	l_22:
+	mov r13, 9
+	l_23:
+	l_24:
+	mov r15, 8
+	l_25:
+	l_26:
+	l_27:
+	l_28:
+	mov rax, 6
 	mov rdi, rax
 	call _fibo_User_Defined_fihriaifhiahidsafans 
 	mov rcx, rax
-	mov rax, 10
+	mov rax, 7
 	add rax, rcx
-	jmp l_11
-	l_12:
+	jmp l_29
+	l_30:
+	mov rax, 7
+	l_29:
+	mov rcx, r15
+	add rcx, rax
+	mov rax, rcx
+	jmp l_31
+	l_32:
+	mov rax, 8
+	l_31:
+	mov rcx, rax
+	mov rax, r13
+	add rax, rcx
+	jmp l_33
+	l_34:
+	mov rax, 9
+	l_33:
+	mov rcx, rax
+	mov rax, r12
+	add rax, rcx
+	jmp l_35
+	l_36:
 	mov rax, 10
-	l_11:
+	l_35:
 	mov rdi, rax
 	call __toString 
 	mov rdi, rax
 	call __println 
 	mov rax, 0
-	l_13:
+	l_37:
+	pop r12
+	pop r15
+	pop r13
 	leave 
 	ret
 __init:
-	l_14:
+	l_38:
 	push rbp
 	mov rbp, rsp
 	call _main_User_Defined_fihriaifhiahidsafans 
