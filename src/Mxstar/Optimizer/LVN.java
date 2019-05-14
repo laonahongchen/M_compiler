@@ -1,10 +1,7 @@
 package Mxstar.Optimizer;
 
 import Mxstar.Config_Cons;
-import Mxstar.IR.BB;
-import Mxstar.IR.Func;
-import Mxstar.IR.IIRVisitor;
-import Mxstar.IR.IRProgram;
+import Mxstar.IR.*;
 import Mxstar.IR.Instruction.*;
 import Mxstar.IR.Operand.*;
 
@@ -29,7 +26,7 @@ public class LVN implements IIRVisitor {
         LinkedList<Register> useRegs = inst.getUseRegs();
         LinkedList<Register> defRegs = inst.getDefRegs();
         useRegs.removeAll(defRegs);
-//        useRegs.clear();
+        useRegs.clear();
         HashMap<Register, Register> renameMap = new HashMap<>();
         for (Register reg: useRegs) {
             int val = table.getOperandVal(reg);
@@ -265,7 +262,10 @@ public class LVN implements IIRVisitor {
     @Override
     public void visit(Call inst) {
         copyPropagation(inst);
-        table.putRegVal(vrax);
+//        table.putRegVal(vrax);
+        for (VirReg reg: vcallerSave) {
+            table.putRegVal(reg);
+        }
     }
 
     @Override

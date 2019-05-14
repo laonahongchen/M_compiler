@@ -20,7 +20,7 @@ public class SVNTable {
 
         @Override
         public int hashCode() {
-            return lhs * 12281 + rhs * 13 + op.ordinal();
+            return lhs * rhs + lhs * 13 + rhs * 13 + op.ordinal();
         }
 
         @Override
