@@ -29,6 +29,7 @@ public class LVN implements IIRVisitor {
         LinkedList<Register> useRegs = inst.getUseRegs();
         LinkedList<Register> defRegs = inst.getDefRegs();
         useRegs.removeAll(defRegs);
+//        useRegs.clear();
         HashMap<Register, Register> renameMap = new HashMap<>();
         for (Register reg: useRegs) {
             int val = table.getOperandVal(reg);

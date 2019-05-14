@@ -304,65 +304,351 @@ L_012:
 
 ;====================================================
 	 section .text
-_qpow_User_Defined_fihriaifhiahidsafans:
+_foo_User_Defined_fihriaifhiahidsafans:
 	l_0:
 	push rbp
 	mov rbp, rsp
-	mov r8, rdx
-	mov rcx, 1
-	l_1:
-	cmp rsi, 0
-	jg l_2
-	l_3:
-	mov rax, rcx
-	l_4:
-	leave 
-	ret
-	l_2:
-	mov rax, rsi
-	and rax, 1
-	cmp rax, 1
-	jne l_5
-	l_6:
-	mov rax, rcx
-	imul rdi
-	xor rdx, rdx
-	cdq
-	idiv r8d
-	mov rcx, rdx
-	l_5:
+	sub rsp, 72
+	push rbx
+	push r15
+	push r13
+	push r12
+	push r14
 	mov rax, rdi
-	imul rax
-	xor rdx, rdx
-	cdq
-	idiv r8d
-	mov rax, rdx
-	mov rdi, rax
-	mov rax, rsi
-	xor rdx, rdx
-	cdq
-	mov rsi, 2
-	idiv esi
+	mov qword [rbp-32], rax
+	mov r14, rsi
+	mov r12, rdx
+	mov rax, qword [rbp-32]
+	mov rcx, 1000
+	imul rcx
 	mov rsi, rax
-	jmp l_1
-_main_User_Defined_fihriaifhiahidsafans:
-	l_7:
-	push rbp
-	mov rbp, rsp
-	mov rdx, 10000
-	mov rsi, 10
-	mov rdi, 2
-	call _qpow_User_Defined_fihriaifhiahidsafans 
+	mov rax, r14
+	mov rcx, 10
+	imul rcx
+	mov rcx, rsi
+	add rcx, rax
+	mov rax, rcx
+	add rax, r12
 	mov rdi, rax
 	call __toString 
 	mov rdi, rax
 	call __println 
-	mov rax, 0
+	mov rax, qword [rbp-32]
+	cmp rax, 1
+	je l_1
+	l_2:
+	mov r15, r14
+	mov r14, r12
+	mov r12, r15
+	mov rax, 1
+	mov qword [rbp-16], rax
+	mov rbx, r14
+	l_3:
+	mov rax, rbx
+	mov rcx, 10
+	imul rcx
+	mov rcx, rax
+	mov rax, 1000
+	add rax, rcx
+	add rax, r15
+	mov rdi, rax
+	call __toString 
+	mov rdi, rax
+	call __println 
+	jmp l_4
+	l_5:
+	mov rax, rbx
+	mov rbx, r15
+	mov r13, rax
+	mov rax, 1
+	mov qword [rbp-56], rax
+	l_6:
+	mov rax, r15
+	mov rcx, 10
+	imul rcx
+	mov rcx, rax
+	mov rax, 1000
+	add rax, rcx
+	add rax, r13
+	mov rdi, rax
+	call __toString 
+	mov rdi, rax
+	call __println 
+	jmp l_7
 	l_8:
+	mov rax, r13
+	mov qword [rbp-24], rax
+	mov rax, r15
+	mov qword [rbp-8], rax
+	mov rax, 1
+	mov qword [rbp-40], rax
+	l_9:
+	mov rax, r13
+	mov rcx, 10
+	imul rcx
+	mov rcx, 1000
+	add rcx, rax
+	mov rax, rcx
+	add rax, r15
+	mov rdi, rax
+	call __toString 
+	mov rdi, rax
+	call __println 
+	jmp l_10
+	l_11:
+	mov rax, r15
+	mov qword [rbp-64], rax
+	mov rax, r13
+	mov qword [rbp-48], rax
+	l_12:
+	mov rax, r15
+	mov rcx, 10
+	imul rcx
+	mov rcx, 1000
+	add rcx, rax
+	mov rax, rcx
+	add rax, r13
+	mov rdi, rax
+	call __toString 
+	mov rdi, rax
+	call __println 
+	jmp l_13
+	l_14:
+	mov rcx, r13
+	mov rax, r15
+	mov rdx, rax
+	mov rsi, rcx
+	mov rdi, 1
+	call _foo_User_Defined_fihriaifhiahidsafans 
+	mov rax, r13
+	mov rcx, 10
+	imul rcx
+	mov rcx, 1000
+	add rcx, rax
+	mov rax, rcx
+	add rax, r15
+	mov rdi, rax
+	call __toString 
+	mov rdi, rax
+	call __println 
+	jmp l_15
+	l_13:
+	l_15:
+	mov rax, qword [rbp-40]
+	mov rcx, 1000
+	imul rcx
+	mov rsi, rax
+	mov rax, qword [rbp-64]
+	mov rcx, 10
+	imul rcx
+	mov rcx, rax
+	mov rax, rsi
+	add rax, rcx
+	mov rcx, qword [rbp-48]
+	add rax, rcx
+	mov rdi, rax
+	call __toString 
+	mov rdi, rax
+	call __println 
+	jmp l_16
+	l_10:
+	l_16:
+	mov rax, qword [rbp-56]
+	mov rcx, 1000
+	imul rcx
+	mov rsi, rax
+	mov rax, qword [rbp-24]
+	mov rcx, 10
+	imul rcx
+	mov rcx, rax
+	mov rax, rsi
+	add rax, rcx
+	mov rcx, rax
+	mov rax, qword [rbp-8]
+	add rcx, rax
+	mov rdi, rcx
+	call __toString 
+	mov rdi, rax
+	call __println 
+	jmp l_17
+	l_7:
+	l_17:
+	mov rax, qword [rbp-16]
+	mov rcx, 1000
+	imul rcx
+	mov rsi, rax
+	mov rax, rbx
+	mov rcx, 10
+	imul rcx
+	mov rcx, rax
+	mov rax, rsi
+	add rax, rcx
+	add rax, r13
+	mov rdi, rax
+	call __toString 
+	mov rdi, rax
+	call __println 
+	jmp l_18
+	l_4:
+	l_18:
+	mov rax, qword [rbp-32]
+	mov rcx, 1000
+	imul rcx
+	mov rsi, rax
+	mov rax, r14
+	mov rcx, 10
+	imul rcx
+	mov rcx, rsi
+	add rcx, rax
+	mov rax, rcx
+	add rax, r12
+	mov rdi, rax
+	call __toString 
+	mov rdi, rax
+	call __println 
+	jmp l_19
+	l_1:
+	l_19:
+	pop r14
+	pop r12
+	pop r13
+	pop r15
+	pop rbx
+	leave 
+	ret
+_main_User_Defined_fihriaifhiahidsafans:
+	l_20:
+	push rbp
+	mov rbp, rsp
+	sub rsp, 40
+	push r15
+	push rbx
+	push r13
+	push r12
+	push r14
+	mov r12, 7
+	l_21:
+	mov rax, 7053
+	mov rdi, rax
+	call __toString 
+	mov rdi, rax
+	call __println 
+	l_22:
+	mov r14, 3
+	mov r13, 5
+	mov rax, 1
+	mov qword [rbp-32], rax
+	l_23:
+	mov rax, 1035
+	mov rdi, rax
+	call __toString 
+	mov rdi, rax
+	call __println 
+	jmp l_24
+	l_25:
+	mov rax, 5
+	mov qword [rbp-8], rax
+	mov rbx, 3
+	mov rax, 1
+	mov qword [rbp-16], rax
+	l_26:
+	mov rax, 1053
+	mov rdi, rax
+	call __toString 
+	mov rdi, rax
+	call __println 
+	jmp l_27
+	l_28:
+	mov rax, 3
+	mov qword [rbp-24], rax
+	mov r15, 5
+	l_29:
+	mov rax, 1035
+	mov rdi, rax
+	call __toString 
+	mov rdi, rax
+	call __println 
+	jmp l_30
+	l_31:
+	mov rax, 5
+	mov rcx, 3
+	mov rdx, rcx
+	mov rsi, rax
+	mov rdi, 1
+	call _foo_User_Defined_fihriaifhiahidsafans 
+	mov rax, 1053
+	mov rdi, rax
+	call __toString 
+	mov rdi, rax
+	call __println 
+	jmp l_32
+	l_30:
+	l_32:
+	mov rax, qword [rbp-16]
+	mov rcx, 1000
+	imul rcx
+	mov rcx, rax
+	mov rax, qword [rbp-24]
+	mov rdx, 10
+	imul rdx
+	mov rdx, rax
+	mov rax, rcx
+	add rax, rdx
+	add rax, r15
+	mov rdi, rax
+	call __toString 
+	mov rdi, rax
+	call __println 
+	jmp l_33
+	l_27:
+	l_33:
+	mov rax, qword [rbp-32]
+	mov rcx, 1000
+	imul rcx
+	mov rsi, rax
+	mov rax, qword [rbp-8]
+	mov rcx, 10
+	imul rcx
+	mov rcx, rax
+	mov rax, rsi
+	add rax, rcx
+	add rax, rbx
+	mov rdi, rax
+	call __toString 
+	mov rdi, rax
+	call __println 
+	jmp l_34
+	l_24:
+	l_34:
+	mov rax, r12
+	mov rcx, 1000
+	imul rcx
+	mov rsi, rax
+	mov rax, r14
+	mov rcx, 10
+	imul rcx
+	mov rcx, rsi
+	add rcx, rax
+	mov rax, rcx
+	add rax, r13
+	mov rdi, rax
+	call __toString 
+	mov rdi, rax
+	call __println 
+	jmp l_35
+	l_36:
+	l_35:
+	mov rax, 0
+	l_37:
+	pop r14
+	pop r12
+	pop r13
+	pop rbx
+	pop r15
 	leave 
 	ret
 __init:
-	l_9:
+	l_38:
 	push rbp
 	mov rbp, rsp
 	call _main_User_Defined_fihriaifhiahidsafans 
