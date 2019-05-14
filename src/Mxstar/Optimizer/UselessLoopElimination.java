@@ -59,12 +59,13 @@ public class UselessLoopElimination implements IAstVisitor {
         for (VariableDeclaration d: node.parameters) {
             d.accept(this);
         }
-        /*for (Statement st: node.body){
+        for (Statement st: node.body){
             st.accept(this);
-        }*/
-        for (int i = node.body.size() - 1; i >= 0; --i) {
-            node.body.get(i).accept(this);
         }
+//        for (int i = node.body.size() - 1; i >= 0; --i) {
+//            node.body.get(i).accept(this);
+//        }
+
 
         List<LoopStmt> deleteList = new LinkedList<>();
 
@@ -83,6 +84,7 @@ public class UselessLoopElimination implements IAstVisitor {
             if (!curLoop.isEmpty())
                 loopUseVariables.get(curLoop.getLast()).add(node.symbol);
         } else  {
+//            System.out.println("var decl");
             UsefulLoops.addAll(curLoop);
         }
         if (node.init != null)
@@ -138,6 +140,7 @@ public class UselessLoopElimination implements IAstVisitor {
     @Override
     public void visit(JumpStmt node) {
         if (node.isReturn) {
+//            System.out.println("jump");
             UsefulLoops.addAll(curLoop);
             if (node.retExpr != null) {
                 node.retExpr.accept(this);
@@ -156,9 +159,11 @@ public class UselessLoopElimination implements IAstVisitor {
 
     @Override
     public void visit(BlockStmt node) {
-        for (int i = node.statements.size() - 1; i >= 0; --i) {
-            node.statements.get(i).accept(this);
-        }
+//        for (int i = node.statements.size() - 1; i >= 0; --i) {
+//            node.statements.get(i).accept(this);
+//        }
+        for (Statement st: node.statements)
+            st.accept(this);
     }
 
     @Override
@@ -178,15 +183,32 @@ public class UselessLoopElimination implements IAstVisitor {
 
     @Override
     public void visit(Identifier node) {
-        if (node.name.equals("this"))
+        if (node.name.equals("this")) {
+//            System.out.println("this");
             UsefulLoops.addAll(curLoop);
-        if (allUsedVariables.contains(node.symbol))
+        }
+        /*if (allUsedVariables.contains(node.symbol))
             UsefulLoops.addAll(curLoop);
         else {
             if (!curLoop.isEmpty())
                 loopUseVariables.get(curLoop.getLast()).add(node.symbol);
             else
                allUsedVariables.add(node.symbol);
+        }*/
+        if (!node.symbol.isClassField && !node.symbol.isGlobalVariable) {
+            for (LoopStmt loopStmt: loopUseVariables.keySet()) {
+                if (curLoop.contains(loopStmt)) {
+                    loopUseVariables.get(loopStmt).add(node.symbol);
+                } else {
+//                    System.out.println("loop: " + node.symbol.name);
+                    if (loopUseVariables.get(loopStmt).contains(node.symbol)){
+                        UsefulLoops.add(loopStmt);
+                    }
+                }
+            }
+        } else {
+//            System.out.println("global" + node.symbol.name);
+            UsefulLoops.addAll(curLoop);
         }
     }
 
@@ -203,7 +225,11 @@ public class UselessLoopElimination implements IAstVisitor {
 
     @Override
     public void visit(FuncCallExpr node) {
+        if (node.functionSymbol == null) {
+//            System.out.println("no symbol");
+        }
         if (!node.functionSymbol.usedGlobalVariables.isEmpty()) {
+//            System.out.println("func call");
             UsefulLoops.addAll(curLoop);
         }
         for (Expression expr: node.arguments)
@@ -212,6 +238,7 @@ public class UselessLoopElimination implements IAstVisitor {
 
     @Override
     public void visit(NewExpr node) {
+//        System.out.println("no new expr");
         UsefulLoops.addAll(curLoop);
         for (Expression expr: node.expressionDimension)
             expr.accept(this);
@@ -221,6 +248,8 @@ public class UselessLoopElimination implements IAstVisitor {
     @Override
     public void visit(MembExpr node) {
         node.object.accept(this);
+        if (node.object.type instanceof ArrayType)
+            return ;
         if (node.fieldAccess != null)
             node.fieldAccess.accept(this);
         else
