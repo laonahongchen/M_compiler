@@ -7,10 +7,8 @@ import Mxstar.IR.IIRVisitor;
 import Mxstar.IR.IRProgram;
 import Mxstar.IR.Instruction.*;
 import Mxstar.IR.Operand.*;
-import sun.awt.image.ImageWatched;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedList;
 
 import static Mxstar.IR.Instruction.BinInst.BinOp.*;
