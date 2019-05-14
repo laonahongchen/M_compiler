@@ -27,6 +27,8 @@ public class LVN implements IIRVisitor {
 
     private void copyPropagation(IRInst inst) {
         LinkedList<Register> useRegs = inst.getUseRegs();
+        LinkedList<Register> defRegs = inst.getDefRegs();
+        useRegs.removeAll(defRegs);
         HashMap<Register, Register> renameMap = new HashMap<>();
         for (Register reg: useRegs) {
             int val = table.getOperandVal(reg);

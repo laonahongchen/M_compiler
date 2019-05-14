@@ -304,46 +304,69 @@ L_012:
 
 ;====================================================
 	 section .text
-_main_User_Defined_fihriaifhiahidsafans:
+_qpow_User_Defined_fihriaifhiahidsafans:
 	l_0:
 	push rbp
 	mov rbp, rsp
-	mov rax, qword [g_0]
-	mov qword [rax + 8], 1
-	mov rax, qword [g_0]
-	mov rdi, qword [rax + 8]
+	mov r8, rdx
+	mov rcx, 1
+	l_1:
+	cmp rsi, 0
+	jg l_2
+	l_3:
+	mov rax, rcx
+	l_4:
+	leave 
+	ret
+	l_2:
+	mov rax, rsi
+	and rax, 1
+	cmp rax, 1
+	jne l_5
+	l_6:
+	mov rax, rcx
+	imul rdi
+	xor rdx, rdx
+	cdq
+	idiv r8d
+	mov rcx, rdx
+	l_5:
+	mov rax, rdi
+	imul rax
+	xor rdx, rdx
+	cdq
+	idiv r8d
+	mov rax, rdx
+	mov rdi, rax
+	mov rax, rsi
+	xor rdx, rdx
+	cdq
+	mov rsi, 2
+	idiv esi
+	mov rsi, rax
+	jmp l_1
+_main_User_Defined_fihriaifhiahidsafans:
+	l_7:
+	push rbp
+	mov rbp, rsp
+	mov rdx, 10000
+	mov rsi, 10
+	mov rdi, 2
+	call _qpow_User_Defined_fihriaifhiahidsafans 
+	mov rdi, rax
 	call __toString 
 	mov rdi, rax
 	call __println 
 	mov rax, 0
-	l_1:
+	l_8:
 	leave 
 	ret
 __init:
-	l_2:
+	l_9:
 	push rbp
 	mov rbp, rsp
-	sub rsp, 8
-	push r15
-	mov r15, 4
-	lea rax, [r15 * 8 + 8]
-	mov rdi, rax
-	call malloc 
-	mov qword [rax], 4
-	l_3:
-	cmp r15, 0
-	jg l_4
-	l_5:
-	mov qword [g_0], rax
 	call _main_User_Defined_fihriaifhiahidsafans 
-	pop r15
 	leave 
 	ret
-	l_4:
-	mov qword [rax + r15 * 8], 0
-	dec r15
-	jmp l_3
 	 section .data
-g_0:
-	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
 

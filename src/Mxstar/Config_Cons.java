@@ -10,7 +10,7 @@ public class Config_Cons{
     }
     public static ALLOCATOR allocator = ALLOCATOR.GRAPH_ALLOCATOR;
 
-    public static boolean PrintIRAfterBuild = false;
+    public static boolean PrintIRAfterBuild = true;
     public static boolean PrintIRAfterCorrector = false;
     public static boolean PrintIRAfterAllocator = false;
     public static boolean PrintIRAfterAll = false;
@@ -20,7 +20,7 @@ public class Config_Cons{
     public static boolean doVNOptimize = true; // may extend the UD-list so may don't have such good result
     public static boolean doGlobalAllocate = false;
 
-    public static boolean doInline = true;
+    public static boolean doInline = false;
     public static int inlineLimit = 60;
     public static int inlineDepth = 3;
 
