@@ -68,11 +68,14 @@ public class UselessLoopElimination implements IAstVisitor {
 
 
         List<LoopStmt> deleteList = new LinkedList<>();
-
+        int cnt = 0;
         for (Statement st: node.body) {
-            if (st instanceof LoopStmt && !UsefulLoops.contains(st)) {
-                deleteList.add((LoopStmt) st);
-//                System.out.println("delete loop!");
+            if (st instanceof LoopStmt) {
+                cnt++;
+                 if(!UsefulLoops.contains(st)) {
+                     deleteList.add((LoopStmt) st);
+//                     System.out.println("delete loop!" + cnt);
+                 }
             }
         }
         node.body.removeAll(deleteList);
@@ -230,6 +233,9 @@ public class UselessLoopElimination implements IAstVisitor {
         }
         if (!node.functionSymbol.usedGlobalVariables.isEmpty()) {
 //            System.out.println("func call");
+            UsefulLoops.addAll(curLoop);
+        }
+        if (node.functionSymbol.withSideEffect) {
             UsefulLoops.addAll(curLoop);
         }
         for (Expression expr: node.arguments)

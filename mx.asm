@@ -304,77 +304,133 @@ L_012:
 
 ;====================================================
 	 section .text
-_cost_a_lot_of_time_User_Defined_fihriaifhiahidsafans:
-	l_0:
-	push rbp
-	mov rbp, rsp
-	mov rax, 3100
-	mov rdi, rax
-	call __toString 
-	mov rdi, rax
-	call __println 
-	l_1:
-	leave 
-	ret
 _main_User_Defined_fihriaifhiahidsafans:
-	l_2:
+	l_0:
 	push rbp
 	mov rbp, rsp
 	sub rsp, 8
 	push r14
-	push rbx
-	push r12
-	mov rax, 3100
+	push r15
+	push r13
+	mov r13, 4
+	lea rax, [r13 * 8 + 8]
 	mov rdi, rax
-	call __toString 
-	mov rdi, rax
-	call __println 
+	call malloc 
+	mov qword [rax], 4
+	l_1:
+	cmp r13, 0
+	jg l_2
 	l_3:
-	mov rax, 3100
-	mov rdi, rax
+	mov r15, rax
+	mov rax, qword [g_0]
+	mov qword [r15 + 8], rax
+	mov rax, qword [g_0]
+	mov qword [r15 + 16], rax
+	mov rax, qword [g_0]
+	mov qword [r15 + 24], rax
+	mov rax, qword [g_0]
+	mov qword [r15 + 32], rax
+	mov rax, r15
+	mov rdi, qword [rax]
 	call __toString 
 	mov rdi, rax
 	call __println 
+	mov r14, 0
 	l_4:
-	mov r14, 10
-	lea r12, [r14 * 8 + 8]
-	mov rdi, r12
-	call malloc 
-	mov qword [rax], 10
-	l_5:
-	cmp r14, 0
-	jg l_6
+	mov rax, qword [r15 + 8]
+	cmp r14, qword [rax]
+	jl l_5
+	l_6:
+	mov r14, 0
 	l_7:
-	mov r12, 2
-	lea rbx, [r12 * 8 + 8]
-	mov rdi, rbx
-	call malloc 
-	mov qword [rax], 2
-	l_8:
-	cmp r12, 0
-	jg l_9
+	mov rax, qword [r15 + 16]
+	cmp r14, qword [rax]
+	jl l_8
+	l_9:
+	mov rdi, g_1
+	call __println 
+	mov r14, 0
 	l_10:
+	mov rax, qword [r15 + 24]
+	cmp r14, qword [rax]
+	jl l_11
+	l_12:
+	mov r14, 0
+	l_13:
+	mov rax, qword [r15 + 32]
+	cmp r14, qword [rax]
+	jl l_14
+	l_15:
 	mov rax, 0
-	l_11:
-	pop r12
-	pop rbx
+	l_16:
+	pop r13
+	pop r15
 	pop r14
 	leave 
 	ret
-	l_9:
-	mov qword [rax + r12 * 8], 0
-	dec r12
-	jmp l_8
-	l_6:
-	mov qword [rax + r14 * 8], 0
-	dec r14
-	jmp l_5
+	l_14:
+	mov rax, qword [r15 + 32]
+	mov rdi, qword [rax + r14 * 8 + 8]
+	call __toString 
+	mov rdi, rax
+	call __print 
+	l_17:
+	inc r14
+	jmp l_13
+	l_11:
+	mov rax, qword [r15 + 24]
+	mov qword [rax + r14 * 8 + 8], 0
+	l_18:
+	inc r14
+	jmp l_10
+	l_8:
+	mov rax, qword [r15 + 16]
+	mov rdi, qword [rax + r14 * 8 + 8]
+	call __toString 
+	mov rdi, rax
+	call __print 
+	l_19:
+	inc r14
+	jmp l_7
+	l_5:
+	mov r13, qword [r15 + 8]
+	call __getInt 
+	mov qword [r13 + r14 * 8 + 8], rax
+	l_20:
+	inc r14
+	jmp l_4
+	l_2:
+	mov qword [rax + r13 * 8], 0
+	dec r13
+	jmp l_1
 __init:
-	l_12:
+	l_21:
 	push rbp
 	mov rbp, rsp
+	sub rsp, 8
+	push r13
+	mov r13, 4
+	lea rax, [r13 * 8 + 8]
+	mov rdi, rax
+	call malloc 
+	mov qword [rax], 4
+	l_22:
+	cmp r13, 0
+	jg l_23
+	l_24:
+	mov qword [g_0], rax
 	call _main_User_Defined_fihriaifhiahidsafans 
+	pop r13
 	leave 
 	ret
+	l_23:
+	mov qword [rax + r13 * 8], 0
+	dec r13
+	jmp l_22
 	 section .data
+g_0:
+	db 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
+g_1:
+	dq 0
+	db 00H
 
