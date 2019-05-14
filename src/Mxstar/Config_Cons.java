@@ -24,5 +24,5 @@ public class Config_Cons{
     public static int inlineLimit = 60;
     public static int inlineDepth = 4;
 
-    public static boolean doMemorization = true;
+    public static boolean doMemorization = false;
 }
