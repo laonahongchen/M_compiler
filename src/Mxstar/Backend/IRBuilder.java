@@ -630,6 +630,8 @@ public class IRBuilder implements IAstVisitor {
         if (!funcDeclarationMap.containsKey(name))
             return false;
         FuncDeclaration funcDeclaration = funcDeclarationMap.get(name);
+        if (!funcDeclaration.symbol.isGlobalFunction)
+            return false;
         if (variableMap.size() > Config_Cons.inlineDepth)
             return false;
         if (funcDeclaration.symbol == null) {
