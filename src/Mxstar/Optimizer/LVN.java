@@ -7,6 +7,11 @@ import Mxstar.IR.IIRVisitor;
 import Mxstar.IR.IRProgram;
 import Mxstar.IR.Instruction.*;
 import Mxstar.IR.Operand.*;
+import sun.awt.image.ImageWatched;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
 
 import static Mxstar.IR.Instruction.BinInst.BinOp.*;
 import static Mxstar.IR.RegisterSet.*;
@@ -20,6 +25,18 @@ public class LVN implements IIRVisitor {
             nxtInst = nxtInst.next;
             inst.accept(this);
         }
+    }
+
+    private void copyPropagation(IRInst inst) {
+        LinkedList<Register> useRegs = inst.getUseRegs();
+        HashMap<Register, Register> renameMap = new HashMap<>();
+        for (Register reg: useRegs) {
+            int val = table.getOperandVal(reg);
+            Operand operand = table.getValOperand(val);
+            if (operand instanceof VirReg && operand != reg)
+                renameMap.put(reg, (VirReg)operand);
+        }
+        inst.renameUseReg(renameMap);
     }
 
     public LVN(BB bb, SVNTable table) {
@@ -95,6 +112,7 @@ public class LVN implements IIRVisitor {
 
     @Override
     public void visit(BinInst inst) {
+        copyPropagation(inst);
         int vrhs = table.getOperandVal(inst.src);
         int vlhs = (inst.op == MUL || inst.op == MOD || inst.op == DIV) ? table.getOperandVal(vrax) : table.getOperandVal(inst.dest);
         Operand ilhs = table.getValOperand(vlhs);
@@ -156,6 +174,7 @@ public class LVN implements IIRVisitor {
 
     @Override
     public void visit(UnaryInst inst) {
+        copyPropagation(inst);
         int val = table.getOperandVal(inst.dest);
         int res = -1;
         Operand operand = table.getValOperand(val);
@@ -185,6 +204,7 @@ public class LVN implements IIRVisitor {
 
     @Override
     public void visit(Mov inst) {
+        copyPropagation(inst);
         int val = table.getOperandVal(inst.src);
         if (table.getOperandVal(inst.dest) == val && Config_Cons.doVNOptimize) {
             inst.remove();
@@ -205,11 +225,12 @@ public class LVN implements IIRVisitor {
 
     @Override
     public void visit(Push inst) {
-
+        copyPropagation(inst);
     }
 
     @Override
     public void visit(Pop inst) {
+        copyPropagation(inst);
         if (inst.dest instanceof VirReg) {
             table.putRegVal((VirReg) inst.dest);
         }
@@ -222,9 +243,10 @@ public class LVN implements IIRVisitor {
 
     @Override
     public void visit(Cjump inst) {
+        copyPropagation(inst);
         int lhs = table.getOperandVal(inst.src1);
-        int rhs = table.getOperandVal(inst.src2);
         Operand rlhs = table.getValOperand(lhs);
+        int rhs = table.getOperandVal(inst.src2);
         Operand rrhs = table.getValOperand(rhs);
         if (rlhs instanceof Imm) {
             inst.src1 = new Imm((Imm)rlhs);
@@ -236,26 +258,29 @@ public class LVN implements IIRVisitor {
 
     @Override
     public void visit(Leave inst) {
-
+        copyPropagation(inst);
     }
 
     @Override
     public void visit(Call inst) {
+        copyPropagation(inst);
         table.putRegVal(vrax);
     }
 
     @Override
     public void visit(Ret inst) {
-
+        copyPropagation(inst);
     }
 
     @Override
     public void visit(Cdq inst) {
+        copyPropagation(inst);
         table.putRegVal(vrdx);
     }
 
     @Override
     public void visit(Lea inst) {
+        copyPropagation(inst);
         if (inst.dest instanceof VirReg) {
             table.putRegVal((VirReg) inst.dest);
         }

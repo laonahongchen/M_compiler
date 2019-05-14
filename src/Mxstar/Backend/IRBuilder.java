@@ -40,6 +40,7 @@ public class IRBuilder implements IAstVisitor {
     private LinkedList<BB> funcAfter;
     private HashMap<FunctionSymbol, Integer> operationCntMap;
 
+    private HashMap<FunctionSymbol, Memory> memorizationSpaceMap;
 
     private static Func library_print;
     private static Func library_println;
@@ -80,6 +81,8 @@ public class IRBuilder implements IAstVisitor {
         this.funcAfter = new LinkedList<>();
         this.variableMap = new LinkedList<>();
         this.operationCntMap = new HashMap<>();
+
+        this.memorizationSpaceMap = new HashMap<>();
     }
 
     private void initLibraryFunc() {
@@ -139,7 +142,7 @@ public class IRBuilder implements IAstVisitor {
         curBB = mergeBB;
     }
 
-    private void assign(Expression expr, Address vr) {
+    private void assign(Address vr,Expression expr ) {
         if (isBoolType(expr.type)) {
             boolAssign(expr, vr);
         } else {
@@ -160,7 +163,7 @@ public class IRBuilder implements IAstVisitor {
         curBB = curFunc.enterBB = enterBB;
         for (VariableDeclaration d: node.globalVariables) {
             if (d.init != null)
-                assign(d.init, d.symbol.virReg);
+                assign(d.symbol.virReg, d.init);
         }
         curBB.append(new Call(curBB, vrax, functionMap.get("main")));
         curBB.append(new Ret(curBB));
@@ -224,6 +227,20 @@ public class IRBuilder implements IAstVisitor {
         isInClassDeclaration = false;
     }
 
+    private boolean checkMemorization(FuncDeclaration node) {
+        if (!Config_Cons.doMemorization)
+            return false;
+        if (!node.symbol.isGlobalFunction)
+            return false;
+        if (!node.symbol.usedGlobalVariables.isEmpty())
+            return false;
+        if (node.parameters.size() != 1)
+            return false;
+        if (!(node.retType instanceof PrimitiveTypeNode && ((PrimitiveTypeNode) node.retType).name.equals("int")))
+            return false;
+        return true;
+    }
+
     @Override
     public void visit(FuncDeclaration node) {
         curFunc = functionMap.get(node.symbol.name);
@@ -250,6 +267,10 @@ public class IRBuilder implements IAstVisitor {
         }
 
         curFunc.usedGlobalSymbol.addAll(node.symbol.usedGlobalVariables);
+
+        if (checkMemorization(node)) {
+
+        }
 
         if (Config_Cons.doGlobalAllocate) {
             for (VariableSymbol variableSymbol : node.symbol.usedGlobalVariables) {
@@ -305,7 +326,7 @@ public class IRBuilder implements IAstVisitor {
         if (inInline) {
             variableMap.getLast().put(node.symbol, virReg);
             if (node.init != null) {
-                assign(node.init, virReg);
+                assign(virReg, node.init);
             }
         } else {
             if (isInParameter) {
@@ -318,7 +339,7 @@ public class IRBuilder implements IAstVisitor {
             }
             node.symbol.virReg = virReg;
             if (node.init != null) {
-                assign(node.init, virReg);
+                assign(virReg, node.init);
             }
         }
     }
@@ -1188,7 +1209,7 @@ public class IRBuilder implements IAstVisitor {
         if (lval == null) {
 //            System.out.println(node.location);
         }
-        assign(node.rhs, (Address)lval);
+        assign( (Address)lval, node.rhs);
     }
 
     @Override
