@@ -594,7 +594,7 @@ public class IRBuilder implements IAstVisitor {
             cnt += operationCntex(((NewExpr) expr).expressionDimension);
         } else if (expr instanceof FuncCallExpr) {
             cnt += operationCntex(((FuncCallExpr) expr).arguments);
-            cnt += 4;
+            cnt += 8;
         } else if (expr instanceof MembExpr) {
             if (((MembExpr) expr).fieldAccess != null)
                 cnt++;
