@@ -581,7 +581,7 @@ public class IRBuilder implements IAstVisitor {
     private int operationCnt(Expression expr) {
         if (expr == null)
             return 0;
-        int cnt = 0;
+        int cnt = 1;
         if (expr instanceof BinExpr) {
             cnt += operationCnt(((BinExpr) expr).lhs);
             cnt += operationCnt(((BinExpr) expr).rhs);
@@ -590,8 +590,6 @@ public class IRBuilder implements IAstVisitor {
         } else if (expr instanceof ArrayExpr) {
             cnt += operationCnt(((ArrayExpr) expr).idx);
             cnt += operationCnt(((ArrayExpr) expr).expr);
-        } else if (expr instanceof LiteralExpr) {
-            cnt++;
         } else if (expr instanceof NewExpr) {
             cnt += operationCntex(((NewExpr) expr).expressionDimension);
         } else if (expr instanceof FuncCallExpr) {
@@ -615,7 +613,7 @@ public class IRBuilder implements IAstVisitor {
     private int operationCnt(Statement statement) {
         if (statement == null)
             return 0;
-        int cnt = 0;
+        int cnt = 1;
         if (statement instanceof ConditionStmt) {
             cnt += operationCnt(((ConditionStmt) statement).elseStmt);
             cnt += operationCnt(((ConditionStmt) statement).thenStmt);
@@ -655,9 +653,9 @@ public class IRBuilder implements IAstVisitor {
             return false;
         if (variableMap.size() > Config_Cons.inlineDepth)
             return false;
-        if (funcDeclaration.symbol == null) {
-            System.out.println("symbol null");
-        }
+//        if (funcDeclaration.symbol == null) {
+//            System.out.println("symbol null");
+//        }
 //        if (!funcDeclaration.symbol.usedGlobalVariables.isEmpty()) {
 //            return false;
 //        }
