@@ -886,10 +886,12 @@ public class IRBuilder implements IAstVisitor {
     @Override
     public void visit(UnaryExpr node) {
         if (node.op.equals("!")) {
+            node.expr.accept(this);
+//            if (node.expr.type instanceof VariableType)
             trueBBMap.put(node.expr, falseBBMap.get(node));
             falseBBMap.put(node.expr, trueBBMap.get(node));
-            node.expr.accept(this);
-            return ;
+
+//            return ;
         }
         node.expr.accept(this);
         Operand operand = exprResultMap.get(node.expr);

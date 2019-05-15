@@ -212,6 +212,8 @@ public class IRPrinter implements IIRVisitor {
             inst.src.accept(this);
             inDIV = false;
             stringBuilder.append("\n");
+            stringBuilder.append("\tmovsxd rax, ecx\n\tmovsxd rdx, edx\n");
+
             return ;
         }
         if ((inst.op == BinInst.BinOp.SAL) || (inst.op == BinInst.BinOp.SAR)) {
