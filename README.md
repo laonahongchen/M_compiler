@@ -4,6 +4,8 @@ This project is a compiler for Mx* language(which is designed in compiler@ACM-ho
 
 My project's code frame referenced @idy002 's compiler. So it may seem similar to a few other repos but in many details they are different(probably, I personally didn't check).
 
+To run this compiler, you may want to run the Compiler.java in the src/Mstar directory and then you can input the code in standard input and the nasm code will be output to mx.asm in the root directory of this directory.
+
 # Code Generation List
 
 [X] finish the antlr g4 grammar file
