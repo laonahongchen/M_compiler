@@ -1,7 +1,13 @@
 # M_compiler
-a compiler for M* language(which is designed in compiler class)
 
-# To do list
+This project is a compiler for Mx* language(which is designed in compiler@ACM-honored class@SJTU).
+
+My project's code frame referenced @idy002 's compiler. So it may seem similar to a few other repos but in many details they are different(probably, I personally didn't check).
+
+To run this compiler, you may want to run the Compiler.java in the src/Mstar directory and then you can input the code in standard input and the nasm code will be output to mx.asm in the root directory of this directory.
+
+# Code Generation List
+
 [X] finish the antlr g4 grammar file
 
 [X] change the Mxstar.Parser tree to AST
@@ -10,8 +16,27 @@ a compiler for M* language(which is designed in compiler class)
 
 [X] finish semantic test
 
-[.] build IR
+[X] build IR
 
-[.] naive register allocation
+[X] naive register allocation
 
-[.] codegen successful 
+[X] Stack pointer builder
+
+currently we can already get a nasm.
+
+[X] Global Variable allocation
+
+# Optimize List
+
+[X] Graph coloring allocation
+
+[X] Value Numbering
+
+[X] Bool shortcut optimization
+
+[X] Inline Optimization(very ugly implementation, has a interface for a more beautiful one but not coded)
+
+[X] Dead code Elimination
+
+[X] Useless Loop Elimination on AST
+

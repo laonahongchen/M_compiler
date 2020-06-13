@@ -21,7 +21,6 @@ import static java.lang.System.exit;
 public class Compiler {
 
     public static void main(String args[]) throws IOException {
-        //parseArgs(args);
         compile();
         exit(0);
     }

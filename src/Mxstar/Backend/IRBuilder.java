@@ -195,7 +195,7 @@ public class IRBuilder implements IAstVisitor {
         for (FuncDeclaration funcDeclaration: funcDeclarations) {
             if (functionMap.containsKey(funcDeclaration.symbol.name))
                 continue;
-            functionMap.put(funcDeclaration.symbol.name, new Func(Func.Type.UserDefined, funcDeclaration.name, !isVoidType(funcDeclaration.symbol.returnType)));
+            functionMap.put(funcDeclaration.symbol.name, new Func(Func.Type.UserDefined, funcDeclaration.symbol.name, !isVoidType(funcDeclaration.symbol.returnType)));
         }
 
         for (FuncDeclaration funcDeclaration: node.funcDeclarations)
@@ -228,8 +228,6 @@ public class IRBuilder implements IAstVisitor {
     }
 
     private boolean checkMemorization(FuncDeclaration node) {
-        if (!Config_Cons.doMemorization)
-            return false;
         if (!node.symbol.isGlobalFunction)
             return false;
         if (!node.symbol.usedGlobalVariables.isEmpty())
